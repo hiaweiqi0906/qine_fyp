@@ -210,3 +210,52 @@ html, body, .container{
 	height: 100%;
 	margin: 0;
 }
+
+footer{
+	background: #778A99;
+	text-align: center;
+	text-transform: uppercase;
+	padding-top: 30px;
+}
+
+footer li{
+	list-style: none;
+	display: inline-block;
+	margin: 10px;
+}
+
+.footer-icons a{
+	margin-top: auto;
+	background: #243c6c;
+	color: #778A99;
+	padding: 15px;
+	border-radius: 100px;
+	display: flex;
+	font-size: 25px;
+}
+
+.footer-icons a:hover{
+	color: #fff;
+}
+
+.footer-menu a{
+	color: #fff;
+	display: inline-block;
+	transition: 0.3s;
+}
+
+.footer-menu a:hover{
+	color: #1b1c31;
+	transform: scale(1.05)
+}
+
+.footer-copyright{
+	background-color: #243c6c;
+	color: #fff;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.footer-copyright p{
+	margin-bottom: 0px;
+}
