@@ -43,6 +43,7 @@ html::-webkit-scrollbar-thumb{
 }
 
 body{
+   overflow-x: hidden;
    background-color: var(--light-bg);
    padding-left: 30rem;
 }
@@ -1273,12 +1274,133 @@ section{
    margin: 1rem 0;
 }
 
+.main-body{
+	width: 70%;
+	padding: 1rem;
+}
+.promo_card{
+	width: 100%;
+	color: #fff;
+	margin-top: 8px;
+	border-radius: 8px;
+	padding: 0.5rem 1rem 1rem 3rem;
+	background: rgb(37,37,37);
+}
+.promo_card h1, .promo_card span, button{
+	margin: 10px;
+}
+.promo_card button{
+	display: block;
+	padding: 6px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.promo_card1{
+	width: 100%;
+	color: rgb(37,37,37);
+	margin-top: 8px;
+	border-radius: 8px;
+	padding: 0.5rem 1rem 1rem 3rem;
+	background: #fff;
+}
+.promo_card1 h1, .promo_card1 span, button{
+   margin-top: 10px;
+   font-weight: bold;
+}
+.promo_card1 button{
+	display: block;
+	padding: 6px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.pertanyaan-list{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.row{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem 0;
+}
+
+table{
+	width: 90%;
+	background: #fff;
+	padding: 1rem;
+	text-align: left;
+	border-radius: 10px;
+}
+table td,th{
+	padding: 0.2rem 0.8rem;
+}
+table th{
+	font-size: 15px;
+}
+table td{
+	font-size: 13px;
+	color: rgb(100,100,100);
+}
+
+footer{
+	background: #778A99;
+	text-align: center;
+	text-transform: uppercase;
+	padding-top: 30px;
+}
+
+footer li{
+	list-style: none;
+	display: inline-block;
+	margin: 10px;
+}
+
+.footer-icons a{
+	margin-top: auto;
+	background: #243c6c;
+	color: #778A99;
+	padding: 15px;
+	border-radius: 100px;
+	display: flex;
+	font-size: 25px;
+}
+
+.footer-icons a:hover{
+	color: #fff;
+}
+
+.footer-menu a{
+	color: #fff;
+	display: inline-block;
+	transition: 0.3s;
+}
+
+.footer-menu a:hover{
+	color: #1b1c31;
+	transform: scale(1.05)
+}
+
+.footer-copyright{
+	background-color: #243c6c;
+	color: #fff;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.footer-copyright p{
+	margin-bottom: 0px;
+}
 
 
 
 
 
-.footer{
+
+/*.footer{
    background-color: var(--white);
    border-top: var(--border);
    position: sticky;
@@ -1289,12 +1411,12 @@ section{
    color:var(--black);
    margin-top: 1rem;
    z-index: 1000;
-   /* padding-bottom: 9.5rem; */
+    padding-bottom: 9.5rem; 
 }
 
 .footer span{
    color:var(--main-color);
-}
+}*/
 
 
 

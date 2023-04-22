@@ -336,8 +336,12 @@ main{
 
 #navbar img{
   padding-left: 50px;
-  width: 18rem;
+  width: 30rem;
   height: 5rem;
+}
+
+h3.top-title{
+  margin-bottom: 10px;
 }
 
 
