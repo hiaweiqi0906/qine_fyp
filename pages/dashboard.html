@@ -32,7 +32,6 @@
 			<div class="side_navbar">
 				<span>Main Menu</span>
 				<a href="#" class="active">Dashboard</a>
-				<a href="#">Profil</a>
 				<a href="#">Permohonan</a>
 				<a href="#">Laporan</a>
 				<a href="#">Program</a>
@@ -121,7 +120,42 @@
 
 		</div>
 
+		<div class="sidebar-form">
+			<div class="call-action">
+				<span>Pertanyaan</span>
+			</div>
+			<h3>Pertanyaan</h3>
+			<form action="">
+				<form class="form-group">
+					<label for="">Nama Penuh</label>
+					<input type="text" name="" id="" class="form-control">
+				</form>
+				<form class="form-group">
+					<label for="">Tarikh</label>
+					<input type="text" name="" id="" class="form-control">
+				</form>
+				<form class="form-group">
+					<label for="">Perkara</label>
+					<input type="text" name="" id="" class="form-control">
+				</form>
+				<form class="form-group">
+					<label for="">Ringkasan</label>
+					<input type="text" name="" id="" class="form-control">
+				</form>
+
+				<input type="submit" value="Hantar" id="submit-btn">
+			</form>
+		</div>
+
 	</div>
+
+	<script>
+		$(document).ready(function(){
+			$(".sidebar-form .call-action").click(function(){
+				$(this).parents(".sidebar-form").toggleClass("show");
+			});
+		});
+	</script>
 
 	<footer>
 		<ul class="footer-icons">
