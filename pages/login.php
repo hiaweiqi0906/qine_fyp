@@ -178,7 +178,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" name="submit" value="Masuk" class="sign-btn" />
 
                 <p class="text" align="right">
-                  <a href="/pages/forgotpassword.html">Lupa Kata Laluan?</a>
+                  <a href="./forgotpassword.php">Lupa Kata Laluan?</a>
                 </p>
               </div>
             </form>
@@ -249,7 +249,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="text-slider">
               <div class="text-wrap">
                 <div class="text-group">
-                  <h3>Sistem Pengurusan Ahli Panel Penilai (APP)</h3>
+                  <h3 class="top-title">Sistem Pengurusan Ahli Panel Penilai (APP)</h3>
                   <h3>Kriteria Permohonan sebagai Ahli Panel Penilai</h3>
                 </div>
               </div>
