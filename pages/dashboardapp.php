@@ -10,7 +10,7 @@ include('../components/app_protected_route.php');
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard Pensyarah</title>
+   <title>Dashboard APP</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -41,13 +41,12 @@ include('../components/app_protected_route.php');
            </div>
      
            <div class="profile">
-              <img src="../img/lehqine.jpg" class="image" alt="">
+           <img src="../img/lehqine.jpg" class="image" alt="">
               <h3 class="name">lehqine</h3>
               <p class="role">APP</p>
-              <a href="#" class="btn">view profile</a>
+              <a href="#" class="btn">Lihat Profil</a>
               <div class="flex-btn">
-                 <a href="#" class="option-btn">login</a>
-                 <a href="#" class="option-btn">register</a>
+                 <a href="#" class="option-btn">Log Keluar</a>
               </div>
            </div>
      
@@ -65,26 +64,29 @@ include('../components/app_protected_route.php');
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
            <p class="role">APP</p>
-           <a href="profile.html" class="btn">view profile</a>
+           <a href="#" class="btn">Lihat Profil</a>
         </div>
      
         <nav class="navbar">
-           <a href="dashboard.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-           <a href=""><i class="fas fa-mail"></i><span>Penilaian Program</span></a>
-           <a href="../components/logout.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+            <a href="./dashboardapp.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+            <a href="./penilaianprogram.html"><i class="fas fa-mail"></i><span>Penilaian Program</span></a>
+            <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
         </nav>
      
      </div>
 
      <div class="main-body">
-		<h2>Dashboard</h2>
-		<div class="promo_card">
-			<h1>Selamat Datang!</h1>
-			<span>Lorem ipsum dolor sit amet.</span>
-			<button>Learn More</button>
-		</div>
-     </div>
+      <h2>Dashboard</h2>
+      <div class="promo_card">
+         <h1>Selamat Datang!</h1>
+         <span>Lorem ipsum dolor sit amet.</span>
+         <button>Learn More</button>
+      </div>
 
+      <div class="promo_card1">
+         <h1>Senarai </h1>
+      </div>
+     </div>
 
     <footer>
 		<ul class="footer-icons">

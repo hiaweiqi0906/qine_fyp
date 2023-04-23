@@ -100,11 +100,10 @@ $stmt->close();
             <img src="../img/lehqine.jpg" class="image" alt="">
             <h3 class="name">lehqine</h3>
             <p class="role">APP</p>
-            <a href="#" class="btn">view profile</a>
+            <a href="#" class="btn">Lihat Profil</a>
             <div class="flex-btn">
-               <a href="#" class="option-btn">login</a>
-               <a href="#" class="option-btn">register</a>
-            </div>
+                 <a href="#" class="option-btn">Log Keluar</a>
+              </div>
          </div>
 
       </section>
@@ -121,16 +120,15 @@ $stmt->close();
          <img src="../img/lehqine.jpg" class="image" alt="">
          <h3 class="name">Wong Leh Qine</h3>
          <p class="role">APP</p>
-         <a href="profile.html" class="btn">view profile</a>
+         <a href="profile.html" class="btn">Lihat Profil</a>
       </div>
 
       <nav class="navbar">
-         <a href="./dashboardapp.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-         <a href=""><i class="fas fa-mail"></i><span>Permohonan</span></a>
-         <a href=""><i class="fas fa-align-left"></i><span>Laporan</span></a>
-         <a href=""><i class="fas fa-archive"></i><span>Program</span></a>
-         <a href=""><i class="fas "></i><span>Pengumuman</span></a>
-         <a href="pertanyaan.html"><i class="fas fa-question"></i><span>Pertanyaan</span></a>
+      <nav class="navbar">
+            <a href="./dashboardapp.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+            <a href="./penilaianprogram.html"><i class="fas fa-mail"></i><span>Penilaian Program</span></a>
+            <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+        </nav>
       </nav>
 
    </div>
