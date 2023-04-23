@@ -1,10 +1,16 @@
+<?php
+// session_start();
+include('../components/app_protected_route.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pertanyaan</title>
+   <title>Dashboard Pensyarah</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -31,7 +37,7 @@
             <div id="noti-btn" class="fas fa-bell"></div>
               <div id="menu-btn" class="fas fa-bars"></div>
               <div id="search-btn" class="fas fa-search"></div>
-              <div id="user-btn" class="fas fa-user"></div>
+              <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
            </div>
      
            <div class="profile">
@@ -63,45 +69,20 @@
         </div>
      
         <nav class="navbar">
-           <a href="./dashboardapp.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-           <a href=""><i class="fas fa-mail"></i><span>Permohonan</span></a>
-           <a href=""><i class="fas fa-align-left"></i><span>Laporan</span></a>
-           <a href=""><i class="fas fa-archive"></i><span>Program</span></a>
-           <a href=""><i class="fas "></i><span>Pengumuman</span></a>
-           <a href="pertanyaan.html"><i class="fas fa-question"></i><span>Pertanyaan</span></a>
+           <a href="dashboard.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+           <a href=""><i class="fas fa-mail"></i><span>Penilaian Program</span></a>
+           <a href="../components/logout.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
         </nav>
      
      </div>
 
      <div class="main-body">
-         <h2>Pertanyaan</h2>
-         <div class="pertanyaan-list">
-            <div class="row">
-                <h4>History</h4>
-                <a href="">See all</a>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Tarikh</th>
-                        <th>Perkara</th>
-                        <th>Ringkasan</th>
-                        <th>Status</th>
-                        <th>Tindakan</th>
-                    </tr>
-                    <tbody>
-                        <td>1</td>
-                        <td>2, Aug, 2022</td>
-                        <td>ppppppp</td>
-                        <td>rrrrrrrr</td>
-                        <td>in progress</td>
-                        <td>----</td>
-                    </tbody>
-                </thead>
-            </table>
-        </div>
+		<h2>Dashboard</h2>
+		<div class="promo_card">
+			<h1>Selamat Datang!</h1>
+			<span>Lorem ipsum dolor sit amet.</span>
+			<button>Learn More</button>
+		</div>
      </div>
 
 
@@ -122,7 +103,7 @@
 		</div>
 	  </footer>
 
-     <script src="../js/script.js"></script>
+	  <script src="../js/script.js"></script>
 
 </body>
 </html>
