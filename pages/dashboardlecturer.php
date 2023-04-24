@@ -8,7 +8,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard Pensyarah</title>
+   <title>Dashboard APP</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -80,6 +80,10 @@
       <div class="promo_card">
          <h1>Selamat Datang!</h1>
          <span>Lorem ipsum dolor sit amet.</span>
+      </div>
+
+      <div class="promo_card1">
+         <h1>Senarai </h1>
       </div>
 
       <div class="field">          
