@@ -1,6 +1,8 @@
 <?php
+ include('../components/unprotected_route.php');
+
 // Initialize the session
-session_start();
+// session_start();
 
 // Include config file
 require_once "../php/db.php";
@@ -68,24 +70,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 // Store result
                 mysqli_stmt_store_result($stmt);
-                
+                mysqli_stmt_bind_result($stmt, $id, $emel, $password);
+
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
                     
                             // Password is correct, so start a new session
                             session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["email"] = $email;                            
+                            while (mysqli_stmt_fetch($stmt)) {
+                              // Store data in session variables
+                              $_SESSION["loggedin"] = true;
+                              $_SESSION["id"] = $id;
+                              $_SESSION["emel"] = $emel;  
+                              if($types === "app"){
+                                $_SESSION["type"] = "app"; 
+                              }
+                              else if($types === "lecturer"){
+                                $_SESSION["type"] = "lecturer"; 
+                              }                            
+                           }
+                                                        
                             
                             // Redirect user to welcome page
                             if($types==="app"){                            
-                              header("location: dashboardapp.html");
+                              header("location: dashboardapp.php");
                             } else if($types==="lecturer"){                              
-                              header("location: dashboardlecturer.html");
+                              header("location: dashboardlecturer.php");
                             }
                             alert("login success");
                    

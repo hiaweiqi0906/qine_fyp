@@ -1,3 +1,58 @@
+<?php
+//  include('../components/unprotected_route.php');
+
+// Initialize the session
+session_start();
+
+// Include config file
+require_once "../php/db.php";
+ 
+// Define variables and initialize with empty values
+$email = $password = $types = "";
+$email_err = $password_err = $login_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+   $id= $_SESSION["id"];
+   if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' ")) {
+      // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
+      // $stmt->bind_param('s', $_POST['username']);
+      $stmt->execute();
+      $stmt->store_result();
+      // Store the result so we can check if the account exists in the database.
+      if ($stmt->num_rows > 0) {
+          // Username already exists
+          echo 'We\'re still processing your application. ';
+      } else {
+          if ($stmt = $con->prepare("INSERT INTO appapplication  VALUES 
+          ('10', '10', '10', 'PROCESSING', '$id')")) {
+              // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
+              // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+              // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+              // $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+              $stmt->execute();
+              echo 'You have successfully applied!';
+          } else {
+              // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+              echo 'Could not prepare statement!';
+          }
+      }
+      $stmt->close();
+  } else {
+      // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+      echo 'Could not prepare statement!';
+  }
+
+  $con->close();     
+   }
+    
+    
+    // Close connection
+    mysqli_close($con);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +92,11 @@
            <div class="profile">
               <img src="../img/lehqine.jpg" class="image" alt="">
               <h3 class="name">lehqine</h3>
-              <p class="role">Pensyarah</p>
+              <p class="role">APP</p>
               <a href="#" class="btn">Lihat Profil</a>
               <div class="flex-btn">
-                 <a href="#" class="option-btn">Log Keluar</a>
+                 <a href="#" class="option-btn">login</a>
+                 <a href="#" class="option-btn">register</a>
               </div>
            </div>
      
@@ -57,18 +113,18 @@
         <div class="profile">
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
-           <p class="role">Pensyarah</p>
+           <p class="role">APP</p>
            <a href="#" class="btn">Lihat Profil</a>
         </div>
      
         <nav class="navbar">
-         <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-         <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
-         <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
-         <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
-         <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-         <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
-      </nav>
+           <a href="./dashboardlecturer.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+           <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
+           <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
+           <a href=""><i class="fas fa-align-left"></i><span>Permohonan</span></a>
+           <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
+           <a href=""><i class=""></i><span>Log Keluar</span></a>
+        </nav>
      
      </div>
 
@@ -103,6 +159,11 @@
             <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.html';" required>
         </div>
      </div>
+
+     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+     <input type="submit" name="submit" value="Pohon" class="sign-btn" />
+
+   </form>
 
 
     <footer>
