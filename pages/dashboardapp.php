@@ -64,6 +64,7 @@ include('../components/app_protected_route.php');
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
            <p class="role">APP</p>
+           <a href="#" class="btn">Lihat Profil</a>
         </div>
      
         <nav class="navbar">
