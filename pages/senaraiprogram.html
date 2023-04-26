@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pengumuman</title>
+   <title>Senarai Program</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -62,68 +62,67 @@
         </div>
      
         <nav class="navbar">
-         <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-         <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
-         <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
-         <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
-         <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-         <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+            <nav class="navbar">
+                <a href="./dashboardkualitiukm.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href=""><i class="fas fa-mail"></i><span>Senarai Permohonan</span></a>
+                <a href="./senaraiprogram.html"><i class="fas fa-align-left"></i><span>Program</span></a>
+                <a href=""><i class="fas fa-align-left"></i><span>Laporan</span></a>
+                <a href="./pengumuman.php"><i class="fas fa-align-left"></i><span>Pengumuman</span></a>
+                <a href=""><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+            </nav>
       </nav>
      
      </div>
 
-     <div class="main-body">
-        <h2>Pengumuman</h2>
-        <div>
-         <div class="field input">
-             <label for="nama">Nama Penuh</label>
-             <input type="text" id="nama" name="nama" autocomplete="off" required>
-         </div> <br>
-         <div class="field input">
-             <label for="tarikh">Tarikh</label>
-             <input type="password" name="tarikh" id="tarikh" autocomplete="off" required>
-         </div><br>
-         <div class="field input">
-             <label for="perkara">Perkara</label>
-             <input type="text" name="perkara" id="perkara" autocomplete="off" required>
-         </div><br>
-         <div class="field input">
-            <label for="ringkasan">Ringkasan</label>
-            <input type="text" name="ringkasan" id="ringkasan" autocomplete="off" required>
-        </div><br>
-        <div class="field">          
-         <input type="submit" class="btn" name="submit" value="Hantar" required>
-         </div>
-     </div>
-        <div class="pertanyaan-list">
-            <div class="row">
-                <h4>History</h4>
-                <a href="">See all</a>
+     <section class="courses">
+
+      <h1 class="heading">Senarai Tugasan yang Belum Selesai</h1>
+   
+      <div class="box-container">
+   
+         <div class="box">
+            <div class="tutor">
+               <img src="../img/program.jpg" alt="">
+               <div class="info">
+                  <h3>Nama Program</h3>
+                  <span>Last Submit: 01-06-2023</span>
+               </div>
             </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Tarikh</th>
-                        <th>Perkara</th>
-                        <th>Ringkasan</th>
-                        <th>Status</th>
-                        <th>Tindakan</th>
-                    </tr>
-                    <tbody>
-                        <td>1</td>
-                        <td>2, Aug, 2022</td>
-                        <td>ppppppp</td>
-                        <td>rrrrrrrr</td>
-                        <td>in progress</td>
-                        <td>----</td>
-                    </tbody>
-                </thead>
-            </table>
-        </div>
-     </div>
-
+            <h3 class="title"></h3>
+            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+         </div>
+   
+         <div class="box">
+            <div class="tutor">
+               <img src="../img/program.jpg" alt="">
+               <div class="info">
+                  <h3>Nama Program</h3>
+                  <span>Last Submit: 01-06-2023</span>
+               </div>
+            </div>
+            <h3 class="title"></h3>
+            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+         </div>
+   
+         <div class="box">
+            <div class="tutor">
+               <img src="../img/program.jpg" alt="">
+               <div class="info">
+                  <h3>Nama Program</h3>
+                  <span>Last Submit: 01-06-2023</span>
+               </div>
+            </div>
+            <h3 class="title"></h3>
+            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+         </div>
+   
+      </div>
+   
+      <div class="more-btn">
+         <a href="#" class="inline-option-btn">view all courses</a>
+      </div>
+   
+   </section>
 
     <footer>
 		<ul class="footer-icons">
@@ -141,6 +140,8 @@
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>
 	  </footer>
+
+     <script src="../js/script.js"></script>
 
 </body>
 </html>
