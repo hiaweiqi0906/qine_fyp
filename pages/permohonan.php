@@ -92,11 +92,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            <div class="profile">
               <img src="../img/lehqine.jpg" class="image" alt="">
               <h3 class="name">lehqine</h3>
-              <p class="role">APP</p>
+              <p class="role">Pensyarah</p>
               <a href="#" class="btn">Lihat Profil</a>
               <div class="flex-btn">
-                 <a href="#" class="option-btn">login</a>
-                 <a href="#" class="option-btn">register</a>
+                 <a href="#" class="option-btn">Log Keluar</a>
               </div>
            </div>
      
@@ -113,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="profile">
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
-           <p class="role">APP</p>
+           <p class="role">Pensyarah</p>
            <a href="#" class="btn">Lihat Profil</a>
         </div>
      
