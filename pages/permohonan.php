@@ -65,6 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
    <!-- custom css file link  -->
+   <link rel="stylesheet" href="../style/styleform.css">
    <link rel="stylesheet" href="../style/stylepertanyaan.css">
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
@@ -77,36 +78,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         ?>
      
-     <div class="main-body">
-		<h2>Polisi</h2>
-		<div class="promo_card1">
-			<h1>Permohonan Sebagai Ahli Panel Penilai</h1>
-			<span>POLISI PRIVASI</span>
-			<p>Terima kasih kerana berminat menjadi Ahli Panel Penilai (APP) Universiti Kebangsaan Malaysia (UKM). Untuk makluman, UKM amat prihatin terhadap
-                kerahsiaan data peribadi pemohon yang dikemukakan melalui laman sesawang ini. UKM akan bersifat telus dalam mengendalikan dan memproses data 
-                pemohon yang sangat penting pada UKM.</p> <br>
-            
-            <p>Data peribadi yang dikemukakan ketika pemohon mengisi borang permohonan hanya akan digunakan bagi proses permohonan sebagai APP. Sekiranya dipersetujui
-                lantikan, data tersebut akan digunakan sebagai pendaftaran sebagai APP dalam sistem kami yang akan digunakan untuk tujuan penilaian akreditasi. Maklumat
-                yang mungkin diperlukan adalah termasuk nama, emel, alamat, nombor telefon dan profil yang berkaitan dengan pemohonan. Maklumat gred yang dikemukakan 
-                akan digunakan bagi penetapan gred.</p> <br>
-
-            <p>Pemohon adalah diingatkan bahawa proses ini bukanlah satu bentuk pelantikan sebaliknya ia merupakan satu pertimbangan lanjut dan saringan awal sahaja.
-                Status permohonan yang dikemukakan akan dimaklumkan melalui emel.</p> <br>
-            
-            <span>PERLINDUNGAN DATA</span>
-            <p>UKM melaksanakan pengumpulan, penyimpanan dan pemprosesan data dengan mengambil langkah-langkah keselamatan yang tepat untuk melindungi terhadap akses,
-                perubahan, pendedahan atau pemusnahan maklumat peribadi pemohon dan data yang tersimpan di laman sesawang ini. Pemohon yang mengemukakan maklumat peribadi
-                adalah tertakluk kepada Akta Perlindungan Data Periibadi 2010.</p> <br>
-            
-            <span>DEKLARASI PERMOHONAN</span>
-            <p>Segala data yang dikemukakan oleh pemohon perlu bersifat benar. Sekiranya terdapat maklumat palsu atau tidak benar, UKM berhak untuk membatalkan permohonan
-                dengan serta-merta.</p> <br>
-		</div>
-
-        <div class="field">          
-            <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.html';" required>
+<<<<<<< HEAD
+=======
+        <div class="profile">
+           <img src="../img/lehqine.jpg" class="image" alt="">
+           <h3 class="name">Wong Leh Qine</h3>
+           <p class="role">Pensyarah</p>
+           <a href="#" class="btn">Lihat Profil</a>
         </div>
+     
+        <nav class="navbar">
+        <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+           <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
+           <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
+           <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
+           <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
+           <a href="./pertanyaan1.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+        </nav>
+     
+     </div>
+
+>>>>>>> aee379c85325fe1076767bc4668c2dc9b98286f2
+     <div class="main-body">
+        <?php
+    include("./form.php");
+        ?>
      </div>
 
      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 

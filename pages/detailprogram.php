@@ -16,10 +16,10 @@
 </head>
 <body>
 
+
    <?php
    include("../components/navbar_app.php");
    include("../components/sidebar_app.php");
-
  ?>
 
      
