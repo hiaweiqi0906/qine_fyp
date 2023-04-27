@@ -71,7 +71,7 @@
            <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
            <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
            <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-           <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+           <a href="./pertanyaan1.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
         </nav>
      
      </div>
