@@ -7,7 +7,7 @@
             <div class="links">
               <ul>
                 <li><a href="#">Utama</a></li>
-                <li><a href="./soalanlazim.html">Soalan Lazim</a></li>
+                <li><a href="./soalanlazim.php">Soalan Lazim</a></li>
                 <li><a href="./login.php" class="btn">Log Masuk</a></li>
               </ul>
             </div>
