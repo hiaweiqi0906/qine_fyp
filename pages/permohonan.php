@@ -72,33 +72,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 
-<?php
+        <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
 
         ?>
-     
-<<<<<<< HEAD
-=======
-        <div class="profile">
-           <img src="../img/lehqine.jpg" class="image" alt="">
-           <h3 class="name">Wong Leh Qine</h3>
-           <p class="role">Pensyarah</p>
-           <a href="#" class="btn">Lihat Profil</a>
-        </div>
-     
-        <nav class="navbar">
-        <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-           <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
-           <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
-           <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
-           <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-           <a href="./pertanyaan1.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
-        </nav>
-     
-     </div>
 
->>>>>>> aee379c85325fe1076767bc4668c2dc9b98286f2
      <div class="main-body">
         <?php
     include("./form.php");

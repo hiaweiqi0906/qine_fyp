@@ -6,7 +6,7 @@
               <img src="../img/pjkukm.png" alt="Logo" style="width: 450px;margin-right: 0.6rem;margin-top: -0.6rem;"/>
             </div>     
            <form action="search.html" method="post" class="search-form">
-              <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+              <input type="text" name="search_box" required placeholder="search..." maxlength="100">
               <button type="submit" class="fas fa-search"></button>
            </form>
      
@@ -19,8 +19,8 @@
      
            <div class="profile">
            <img src="../img/lehqine.jpg" class="image" alt="">
-              <h3 class="name">lehqine</h3>
-              <p class="role">Pensyarah</p>
+              <h3 class="name">Wong Leh Qine</h3>
+              <p class="role">APP</p>
               <a href="#" class="btn">Lihat Profil</a>
               <div class="flex-btn">
                  <a href="#" class="option-btn">Log Keluar</a>

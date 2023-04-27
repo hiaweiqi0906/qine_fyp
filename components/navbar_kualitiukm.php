@@ -21,7 +21,7 @@
       <div class="profile">
          <img src="../img/lehqine.jpg" class="image" alt="">
          <h3 class="name">Wong Leh Qine</h3>
-         <p class="role">Pensyarah</p>
+         <p class="role">Kualiti-UKM</p>
          <a href="#" class="btn">Lihat Profil</a>
          <div class="flex-btn">
             <a href="#" class="option-btn">Log Keluar</a>

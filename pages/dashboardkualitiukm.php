@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Maklumat Program</title>
+   <title>Dashboard Kualiti-UKM</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -16,34 +16,22 @@
 </head>
 <body>
 
+         <?php
+          include("../components/navbar_kualitiukm.php");
+          include("../components/sidebar_kualitiukm.php");
+        ?>
 
-   <?php
-   include("../components/navbar_app.php");
-   include("../components/sidebar_app.php");
- ?>
-
-     
      <div class="main-body">
-      <h2>Penilaian Detail Program</h2>
+      <h2>Dashboard</h2>
       <div class="promo_card">
-         <h1>Tajuk Program</h1>
-         <span>Detail</span>
-         <button>Muat Turun</button>
+         <h1>Selamat Datang!</h1>
+         <span>Lorem ipsum dolor sit amet.</span>
+         <button>Learn More</button>
       </div>
 
       <div class="promo_card1">
-         <h1>Penilaian Program</h1>
-         <a href="./area1.html">Area 1</a> <br>
-         <a href="./area2.html">Area 2</a> <br>
-         <a href="./area3.html">Area 3</a> <br>
-         <a href="./area4.html">Area 4</a> <br>
-         <a href="./area5.html">Area 5</a> <br>
-         <a href="./area6.html">Area 6</a> <br>
-         <a href="./area7.html">Area 7</a> <br>
+         <h1>Senarai </h1>
       </div>
-      <div class="field">          
-        <input type="submit" class="btn" name="submit" value="Hantar" required>
-    </div>
      </div>
 
     <footer>
