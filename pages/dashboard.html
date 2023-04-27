@@ -1,163 +1,232 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Dashboard</title>
-	<link rel="stylesheet" href="../style/styledashboard.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dashboard Pentadbir/Admin</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../style/stylepertanyaan.css">
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<header class="header">
-		<div class="logo">
-			<a href="#">Sistem Pengurusan Ahli Panel Penilai (APP)</a>
-			<div class="search_box">
-				<input type="text" placeholder="Carian">
-				<i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-			</div>
+
+    <header class="header">
+   
+        <section class="flex">
+     
+           <a href="#" class="logo">Educa.</a>
+     
+           <form action="search.html" method="post" class="search-form">
+              <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+              <button type="submit" class="fas fa-search"></button>
+           </form>
+     
+           <div class="icons">
+            <div id="noti-btn" class="fas fa-bell"></div>
+              <div id="menu-btn" class="fas fa-bars"></div>
+              <div id="search-btn" class="fas fa-search"></div>
+              <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
+           </div>
+     
+           <div class="profile">
+           <img src="../img/lehqine.jpg" class="image" alt="">
+              <h3 class="name">Wong Leh Qine</h3>
+              <p class="role">Kualiti-UKM</p>
+              <a href="#" class="btn">Lihat Profil</a>
+              <div class="flex-btn">
+                 <a href="#" class="option-btn">Log Keluar</a>
+              </div>
+           </div>
+     
+        </section>
+     
+     </header>
+
+     <div class="side-bar">
+
+        <div id="close-btn">
+           <i class="fas fa-times"></i>
+        </div>
+     
+        <div class="profile">
+           <img src="../img/lehqine.jpg" class="image" alt="">
+           <h3 class="name">Wong Leh Qine</h3>
+           <p class="role">Kualiti-UKM</p>
+           <a href="#" class="btn">Lihat Profil</a>
+        </div>
+     
+        <nav class="navbar">
+            <a href="./dashboardkualitiukm.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+        </nav>
+     
+     </div>
+
+     <div class="main-body">
+      <h2>Dashboard</h2>
+      <div class="promo_card">
+         <h1>Selamat Datang!</h1>
+         <span>Lorem ipsum dolor sit amet.</span>
+         <button>Learn More</button>
+      </div>
+
+      <div class="overview">
+		<div class="title">
+			<h2 class="section--title">Overview</h2>
+			<select name="date" id="date" class="dropdown">
+				<option value="today">Today</option>
+				<option value="lastweek">Last Week</option>
+				<option value="lastmonth">Last Month</option>
+			</select>
 		</div>
-
-		<div class="header-icons">
-			<i class="fas fa-bell"></i>
-			<div class="account">
-				<img src="../img/lehqine.jpg" alt="">
-				<h4>Leh Qine</h4>
-			</div>
-		</div>
-
-	</header>
-
-	<div class="container">
-		<nav class="navbar">
-			<div class="side_navbar">
-				<span>Main Menu</span>
-				<a href="#" class="active">Dashboard</a>
-				<a href="#">Permohonan</a>
-				<a href="#">Laporan</a>
-				<a href="#">Program</a>
-				<a href="#">Pengumuman</a>
-				<a href="/pages/pertanyaan.html">Pertanyaan</a>
-			</div>
-			
-			<div class="logout">
-				<a href="#">Log Keluar</a>
-			</div>
-		</nav>
-
-		<div class="main-body">
-			<h2>Dashboard</h2>
-			<div class="promo_card">
-				<h1>Selamat Datang!</h1>
-				<span>Lorem ipsum dolor sit amet.</span>
-				<button>Learn More</button>
-			</div>
-
-			<div class="history_lists">
-			<div class="list1">
-				<div class="row">
-					<h4>History</h4>
-					<a href="">See all</a>
+		<div class="cards">
+			<div class="card card-1">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah Pensyarah</h5>
+						<h1>50</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
-
-				<table>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Dates</th>
-							<th>Name</th>
-							<th>Type</th>
-							<th>Amount</th>
-						</tr>
-						<tbody>
-							<td>1</td>
-							<td>2, Aug, 2022</td>
-							<td>lehqine</td>
-							<td>Premium</td>
-							<td>$1000.00</td>
-						</tbody>
-					</thead>
-				</table>
-				</div>
-
-				<div class="list2">
-					<div class="row">
-					<h4>Documents</h4>
-					<a href="">Upload</a>
-				</div>
-
-				<table>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Title</th>
-							<th>Type</th>
-							<th>Uploaded</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>CNIC</td>
-							<td>Pdf</td>
-							<td>20</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
 			</div>
-		</div>
-
-		<div class="sidebar">
-			<h4>Balance</h4>
-
-			<div class="balance">
-				<i class="fas fa-dollar icon"></i>
-				<div class="info">
-					<h5>Dollar</h5>
-					<span><i class="fas fa-dollar"></i>25,000.00</span>
+			<div class="card card-2">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah APP</h5>
+						<h1>100</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
+				</div>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
 			</div>
-
-		</div>
-
-		<div class="sidebar-form">
-			<div class="call-action">
-				<span>Pertanyaan</span>
+			<div class="card card-3">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah Kualiti-UKM</h5>
+						<h1>30</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
+				</div>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
+				</div>
 			</div>
-			<h3>Pertanyaan</h3>
-			<form action="">
-				<form class="form-group">
-					<label for="">Nama Penuh</label>
-					<input type="text" name="" id="" class="form-control">
-				</form>
-				<form class="form-group">
-					<label for="">Tarikh</label>
-					<input type="text" name="" id="" class="form-control">
-				</form>
-				<form class="form-group">
-					<label for="">Perkara</label>
-					<input type="text" name="" id="" class="form-control">
-				</form>
-				<form class="form-group">
-					<label for="">Ringkasan</label>
-					<input type="text" name="" id="" class="form-control">
-				</form>
-
-				<input type="submit" value="Hantar" id="submit-btn">
-			</form>
 		</div>
+      </div>
+	  <div class="app">
+		<div class="title">
+			<h2 class="section--title">APP</h2>
+			<div class="app--right--btns">
+				<select name="date" id="date" class="dropdown app--filter">
+					<option>Filter</option>
+					<option value="free">Free</option>
+					<option value="scheduled">Schedule</option>
+				</select>
+				<button class="add">Add APP</button>
+			</div>
+		</div>
+		<div class="app--cards">
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/profile.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/lehqine.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/profile.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/lehqine.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+		</div>
+	  </div>
 
-	</div>
+	  <div class="app">
+		<div class="title">
+			<h2 class="section--title">Kualiti-UKM</h2>
+			<div class="app--right--btns">
+				<select name="date" id="date" class="dropdown app--filter">
+					<option>Filter</option>
+					<option value="free">Free</option>
+					<option value="scheduled">Schedule</option>
+				</select>
+				<button class="add">Add Kualiti-UKM</button>
+			</div>
+		</div>
+		<div class="app--cards">
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/profile.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/lehqine.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/profile.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+			<a href="#" class="app--card">
+				<div class="img--box--cover">
+					<div class="img--box">
+						<img src="../img/lehqine.jpg" alt="">
+					</div>
+				</div>
+				<p class="scheduled">Scheduled</p>
+			</a>
+		</div>
+	  </div>
+     </div>
 
-	<script>
-		$(document).ready(function(){
-			$(".sidebar-form .call-action").click(function(){
-				$(this).parents(".sidebar-form").toggleClass("show");
-			});
-		});
-	</script>
-
-	<footer>
+    <footer>
 		<ul class="footer-icons">
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
@@ -173,6 +242,8 @@
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>
 	  </footer>
+
+	  <script src="../js/script.js"></script>
 
 </body>
 </html>
