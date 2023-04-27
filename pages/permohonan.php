@@ -117,12 +117,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
      
         <nav class="navbar">
-           <a href="./dashboardlecturer.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+        <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
            <a href="./polisi.html"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
            <a href="./kriteria.html"><i class="fas fa-mail"></i><span>Kriteria</span></a>
-           <a href=""><i class="fas fa-align-left"></i><span>Permohonan</span></a>
+           <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
            <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-           <a href=""><i class=""></i><span>Log Keluar</span></a>
+           <a href="./pertanyaan1.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
         </nav>
      
      </div>

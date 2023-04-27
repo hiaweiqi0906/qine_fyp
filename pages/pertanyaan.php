@@ -93,7 +93,7 @@ $stmt->close();
             <div id="noti-btn" class="fas fa-bell"></div>
             <div id="menu-btn" class="fas fa-bars"></div>
             <div id="search-btn" class="fas fa-search"></div>
-            <div id="user-btn" class="fas fa-user"></div>
+            <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
          </div>
 
          <div class="profile">
