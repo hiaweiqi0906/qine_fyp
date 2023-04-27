@@ -44,6 +44,7 @@ html::-webkit-scrollbar-thumb{
 
 body{
    overflow-x: hidden;
+   /*overflow-y: scroll;*/
    background-color: var(--light-bg);
    padding-left: 30rem;
 }
@@ -1278,6 +1279,132 @@ section{
 	width: 70%;
 	padding: 1rem;
 }
+
+.title{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 10px;
+   margin-top: 30px;
+}
+
+.section--title{
+   font-weight: 400;
+}
+
+.dropdown{
+   outline: none;
+   border: none;
+   background-color: #f1f4f8;
+   border-radius: 50px;
+   width: 150px;
+   padding: 5px;
+}
+
+.cards{
+   display: flex;
+   gap: 20px;
+}
+
+.card{
+   padding: 20px;
+   border-radius: 20px;
+   min-width: 230px;
+   height: auto;
+   transition: .3s;
+}
+
+.card:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0,0.2);
+}
+
+.card--data{
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
+.card h1{
+   font-size: 30px;
+   margin-top: 10px;
+} 
+
+.card-1{
+   background-color: rgba(80, 115, 251, .1);
+}
+
+/*.card-1 .card--title{
+   color: rgba(80, 115, 251, 1);
+}*/
+
+.card-2{
+   background-color: rgba(241, 210, 67, .1);
+}
+
+.card-3{
+   background-color: rgba(112, 215, 165, .1);
+}
+
+.app--right--btns{
+   display: flex;
+   align-items: center;
+   gap: 30px;
+}
+
+.add{
+   display: flex;
+   align-items: center;
+   padding: 5px 10px;
+   outline: none;
+   border: none;
+   background-color: #5073fb;
+   color: #fff;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: .3s;
+}
+
+.add:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.app--cards{
+   display: flex;
+   gap: 20px;
+}
+
+.app--card{
+   padding: 20px;
+   border-radius: 20px;
+   height: auto;
+   transition: .3s;
+   border: 2px solid #d1d7ae;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: .8rem;
+}
+
+.app--card:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.img--box--cover{
+   border: 1px solid #5073fb;
+   padding: 2px;
+   border-radius: 50%;
+   display: inline-block;
+   margin-bottom: 10px;
+}
+
+.img--box{
+   position: relative;
+   width: 71px;
+   height: 71px;
+   overflow: hidden;
+   border-radius: 50%;
+}
+
 .promo_card{
 	width: 100%;
 	color: #fff;
