@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column-4 {
+    float: left;
+    width: 33.33%;
+    padding: 5px 10px;
+  }
+
+  .column-8 {
+    float: left;
+    width: 66.66%;
+    padding: 5px 10px;
+  }
+
+  .column-2 {
+    float: left;
+    width: 16.66%;
+    padding: 5px 10px;
+  }
+
+  .column-1 {
+    float: left;
+    width: 8.33%;
+    padding: 5px 10px;
+  }
+
+  .column-3 {
+    float: left;
+    width: 25%;
+    padding: 5px 10px;
+  }
+
+  .column-5 {
+    float: left;
+    width: 41.66%;
+    padding: 5px 10px;
+  }
+
+  .column-7 {
+    float: left;
+    width: 58.33%;
+    padding: 5px 10px;
+  }
+
+  .column-9 {
+    float: left;
+    width: 75%;
+    padding: 5px 10px;
+  }
+
+  .column-10 {
+    float: left;
+    width: 83.33%;
+    padding: 5px 10px;
+  }
+
+  .column-6 {
+    float: left;
+    width: 50%;
+    padding: 5px 10px;
+  }
+
+  .column-12 {
+    float: left;
+    width: 100%;
+    padding: 5px 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .row{
+      margin: 5px 0px;
+  }
+
+  .input-text{
+      width: 100%;
+  }
+
+  label{
+      font-size: 14px;
+
+  }
