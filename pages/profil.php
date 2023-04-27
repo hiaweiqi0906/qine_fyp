@@ -1,16 +1,10 @@
-<?php
-// session_start();
-include('../components/app_protected_route.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard APP</title>
+   <title>Profil</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -25,21 +19,29 @@ include('../components/app_protected_route.php');
 <?php
           include("../components/navbar_app.php");
           include("../components/sidebar_app.php");
+
         ?>
-
      
-     <div class="main-body">
-      <h2>Dashboard</h2>
-      <div class="promo_card">
-         <h1>Selamat Datang!</h1>
-         <span>Lorem ipsum dolor sit amet.</span>
-         <button>Learn More</button>
-      </div>
+     <section class="user-profile">
 
-      <div class="promo_card1">
-         <h1>Senarai </h1>
-      </div>
-     </div>
+        <h1 class="heading">Maklumat Peribadi</h1>
+     
+        <div class="info">
+     
+           <div class="user">
+              <img src="../img/lehqine.jpg" alt="">
+              <h3>Wong Leh Qine</h3>
+              <p>APP</p>
+              <a href="#" class="inline-btn">KemasKini</a>
+           </div>
+        
+           <div class="box-container">
+            
+           </div>
+        </div>
+     
+     </section>
+
 
     <footer>
 		<ul class="footer-icons">

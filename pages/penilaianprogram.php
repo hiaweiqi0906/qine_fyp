@@ -16,59 +16,13 @@
 </head>
 <body>
 
-    <header class="header">
-   
-        <section class="flex">
-     
-           <a href="#" class="logo">Educa.</a>
-     
-           <form action="search.html" method="post" class="search-form">
-              <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-              <button type="submit" class="fas fa-search"></button>
-           </form>
-     
-           <div class="icons">
-            <div id="noti-btn" class="fas fa-bell"></div>
-              <div id="menu-btn" class="fas fa-bars"></div>
-              <div id="search-btn" class="fas fa-search"></div>
-              <div id="user-btn" class="fas fa-user"></div>
-           </div>
-     
-           <div class="profile">
-              <img src="../img/lehqine.jpg" class="image" alt="">
-              <h3 class="name">lehqine</h3>
-              <p class="role">APP</p>
-              <a href="#" class="btn">Lihat Profil</a>
-              <div class="flex-btn">
-                 <a href="#" class="option-btn">Log Keluar</a>
-              </div>
-           </div>
-     
-        </section>
-     
-     </header>
+   <?php
+   include("../components/navbar_app.php");
+   include("../components/sidebar_app.php");
 
-     <div class="side-bar">
+ ?>
 
-        <div id="close-btn">
-           <i class="fas fa-times"></i>
-        </div>
      
-        <div class="profile">
-           <img src="../img/lehqine.jpg" class="image" alt="">
-           <h3 class="name">Wong Leh Qine</h3>
-           <p class="role">APP</p>
-           <a href="#" class="btn">Lihat Profil</a>
-        </div>
-     
-        <nav class="navbar">
-         <a href="./dashboardapp.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-         <a href="./penilaianprogram.html"><i class="fas fa-mail"></i><span>Penilaian Program</span></a>
-         <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
-      </nav>
-     
-     </div>
-
      <section class="courses">
 
       <h1 class="heading">Senarai Tugasan yang Belum Selesai</h1>

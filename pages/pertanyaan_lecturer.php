@@ -4,9 +4,8 @@ session_start();
 
 $username = "";
 $email = "";
-$errors = array();
 $id = $_SESSION["id"];
-
+$errors = array();
 
 $list_of_pertanyaan = array();
 
@@ -23,7 +22,7 @@ if (isset($_POST['submit'])) {
 
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan  VALUES 
-    ('$no', '$date', '$perkara', '$ringkasan', '$status', '$tindakan', 'app', '$id')")
+    ('$no', '$date', '$perkara', '$ringkasan', '$status', '$tindakan', 'lecturer', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -38,7 +37,7 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN` FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app'")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'lecturer'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
@@ -54,10 +53,10 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
    echo 'Could not prepare statement!';
 }
 
-
+$stmt->close();
    $con->close();
 
-$stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -81,8 +80,8 @@ $stmt->close();
 <body>
 
 <?php
-          include("../components/navbar_app.php");
-          include("../components/sidebar_app.php");
+          include("../components/navbar_lecturer.php");
+          include("../components/sidebar_lecturer.php");
 
         ?>
    
