@@ -79,10 +79,9 @@ $stmt->close();
 
 <body>
 
-<?php
+         <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
-
         ?>
    
    <div class="main-body">
