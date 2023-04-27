@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
     <div id="navbar">
       <img src="../img/pjkukm.png" alt="">
-      <a href="/index.html">Sistem APP</a>
+      <a href="/index.html"></a>
     </div>
     <main>
       <div class="box">

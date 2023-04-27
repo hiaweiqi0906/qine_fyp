@@ -42,7 +42,7 @@ if(isset($_POST['submit'])){
             echo 'Username exists, please choose another!';
         } else {
             if ($stmt = $con->prepare("INSERT INTO lecturer (LECTURER_ID, KATEGORI_PERMOHONAN, NAMA, NO_KP, FAKULTI, EMEL, ALAMAT, NO_TELEFON, URL_AVATAR, PASSWORD, BIDANG) VALUES 
-            ('11', '', '$username', '', '', '$email', '', '', '', '$password_1', '')")) {
+            ('12', '', '$username', '', '', '$email', '', '', '', '$password_1', '')")) {
                 // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
                 // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);

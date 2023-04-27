@@ -89,8 +89,6 @@ $stmt->close();
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
          <div class="row">
-            <h4>History</h4>
-            <a href="">See all</a>
          </div>
          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
 

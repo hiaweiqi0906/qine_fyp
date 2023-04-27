@@ -16,63 +16,10 @@
 </head>
 <body>
 
-    <header class="header">
-   
-        <section class="flex">
-     
-           <a href="#" class="logo">Educa.</a>
-     
-           <form action="search.html" method="post" class="search-form">
-              <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-              <button type="submit" class="fas fa-search"></button>
-           </form>
-     
-           <div class="icons">
-            <div id="noti-btn" class="fas fa-bell"></div>
-              <div id="menu-btn" class="fas fa-bars"></div>
-              <div id="search-btn" class="fas fa-search"></div>
-              <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
-           </div>
-     
-           <div class="profile">
-              <img src="../img/lehqine.jpg" class="image" alt="">
-              <h3 class="name">Wong Leh Qine</h3>
-              <p class="role">Kualiti-UKM</p>
-              <a href="#" class="btn">Lihat Profil</a>
-              <div class="flex-btn">
-                 <a href="#" class="option-btn">Log Keluar</a>
-              </div>
-           </div>
-     
-        </section>
-     
-     </header>
-
-     <div class="side-bar">
-
-        <div id="close-btn">
-           <i class="fas fa-times"></i>
-        </div>
-     
-        <div class="profile">
-           <img src="../img/lehqine.jpg" class="image" alt="">
-           <h3 class="name">Wong Leh Qine</h3>
-           <p class="role">Kualiti-UKM</p>
-           <a href="#" class="btn">Lihat Profil</a>
-        </div>
-     
-        <nav class="navbar">
-            <nav class="navbar">
-                <a href="./dashboardkualitiukm.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-                <a href=""><i class="fas fa-mail"></i><span>Senarai Permohonan</span></a>
-                <a href="./senaraiprogram.html"><i class="fas fa-align-left"></i><span>Program</span></a>
-                <a href=""><i class="fas fa-align-left"></i><span>Laporan</span></a>
-                <a href="./pengumuman.php"><i class="fas fa-align-left"></i><span>Pengumuman</span></a>
-                <a href=""><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
-            </nav>
-      </nav>
-     
-     </div>
+<?php
+          include("../components/navbar_kualitiukm.php");
+          include("../components/sidebar_kualitiukm.php");
+        ?>
 
      <section class="teachers">
 
