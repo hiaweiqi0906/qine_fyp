@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
     <div id="navbar">
       <img src="../img/pjkukm.png" alt="">
-      <a href="/index.html"></a>
+      <a href="/index.php"></a>
     </div>
     <main>
       <div class="box">
@@ -236,7 +236,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
 
                 <p class="text" align="right">
-                    <a href="/pages/forgotpassword.html" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
+                    <a href="/pages/forgotpassword.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
                 </p>
 
                 <input type="submit" value="Log Masuk" class="sign-btn" /> 

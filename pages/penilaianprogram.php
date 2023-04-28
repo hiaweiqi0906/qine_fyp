@@ -1,3 +1,7 @@
+<?php
+ include('../components/app_protected_route.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +42,7 @@
                </div>
             </div>
             <h3 class="title"></h3>
-            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+            <a href="./detailprogram.php" class="inline-btn">Lihat Progres</a>
          </div>
    
          <div class="box">
@@ -50,7 +54,7 @@
                </div>
             </div>
             <h3 class="title"></h3>
-            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+            <a href="./detailprogram.php" class="inline-btn">Lihat Progres</a>
          </div>
    
          <div class="box">
@@ -62,7 +66,7 @@
                </div>
             </div>
             <h3 class="title"></h3>
-            <a href="./detailprogram.html" class="inline-btn">Lihat Progres</a>
+            <a href="./detailprogram.php" class="inline-btn">Lihat Progres</a>
          </div>
    
       </div>

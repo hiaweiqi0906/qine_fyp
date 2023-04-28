@@ -1,6 +1,7 @@
 <?php 
 include("../php/db.php");
-session_start();
+include('../components/unprotected_route.php');
+
 
 $username = "";
 $email = "";

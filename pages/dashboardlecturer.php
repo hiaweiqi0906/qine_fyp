@@ -37,7 +37,7 @@
       </div>
 
       <div class="field">          
-         <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.html';" required>
+         <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.php';" required>
      </div>
      </div>
 

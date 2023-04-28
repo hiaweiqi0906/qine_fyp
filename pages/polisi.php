@@ -1,3 +1,8 @@
+<?php
+ include('../components/lecturer_protected_route.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +55,7 @@
 		</div>
 
         <div class="field">          
-            <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./kriteria.html';" required>
+            <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./kriteria.php';" required>
         </div>
      </div>
 

@@ -1,8 +1,8 @@
 <?php
-//  include('../components/unprotected_route.php');
 
 // Initialize the session
-session_start();
+// session_start();
+ include('../components/lecturer_protected_route.php');
 
 // Include config file
 require_once "../php/db.php";

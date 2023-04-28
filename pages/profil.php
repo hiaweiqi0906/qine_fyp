@@ -1,3 +1,6 @@
+<?php
+ include('../components/app_protected_route.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

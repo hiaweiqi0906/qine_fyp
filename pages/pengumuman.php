@@ -1,6 +1,6 @@
 <?php
 include("../php/db.php");
-session_start();
+include('../components/lecturer_protected_route.php');
 
 $username = "";
 $email = "";

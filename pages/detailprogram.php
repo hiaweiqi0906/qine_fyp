@@ -1,3 +1,9 @@
+<?php
+
+// session_start();
+include('../components/app_protected_route.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,13 +39,13 @@
 
       <div class="promo_card1">
          <h1>Penilaian Program</h1>
-         <a href="./area1.html">Area 1</a> <br>
-         <a href="./area2.html">Area 2</a> <br>
-         <a href="./area3.html">Area 3</a> <br>
-         <a href="./area4.html">Area 4</a> <br>
-         <a href="./area5.html">Area 5</a> <br>
-         <a href="./area6.html">Area 6</a> <br>
-         <a href="./area7.html">Area 7</a> <br>
+         <a href="./area1.php">Area 1</a> <br>
+         <a href="./area2.php">Area 2</a> <br>
+         <a href="./area3.php">Area 3</a> <br>
+         <a href="./area4.php">Area 4</a> <br>
+         <a href="./area5.php">Area 5</a> <br>
+         <a href="./area6.php">Area 6</a> <br>
+         <a href="./area7.php">Area 7</a> <br>
       </div>
       <div class="field">          
         <input type="submit" class="btn" name="submit" value="Hantar" required>

@@ -1,7 +1,8 @@
 <?php
 
 include("../php/db.php");
-session_start();
+// session_start();
+include('../components/unprotected_route.php');
 
 function send_password_reset($get_name, $get_email,$token){
     
