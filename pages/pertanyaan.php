@@ -8,23 +8,19 @@ $email = "";
 $errors = array();
 $id = $_SESSION["id"];
 
-
 $list_of_pertanyaan = array();
 
 // $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['submit'])) {
-   $no= mysqli_real_escape_string($con, $_POST['no']);
-   $date= mysqli_real_escape_string($con, $_POST['date']);
    $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
    $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
-   $status= mysqli_real_escape_string($con, $_POST['status']);
-   $tindakan= mysqli_real_escape_string($con, $_POST['tindakan']);
-
+   date_default_timezone_set("Asia/Kuala_Lumpur");
+   $today_date = date("Y-m-d");
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan  VALUES 
-    ('$no', '$date', '$perkara', '$ringkasan', '$status', '$tindakan', 'app', '$id')")
+    ('102', '$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'app', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -94,7 +90,7 @@ $stmt->close();
          </div>
          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
 
-            <table>
+         <table>
                <thead>
                   <tr>
                      <th>#</th>
@@ -109,20 +105,20 @@ $stmt->close();
                
                for($x = 0; $x < $arrlength; $x++) {
                   echo '<tbody>';
-                  for($y = 0; $y < 6; $y++) {
+                  echo '<td>',$x+1,'</td>';
+                  for($y = 1; $y < 6; $y++) {
                   echo '<td>', $list_of_pertanyaan[$x][$y], '</td>';
                 }
                 echo '</tbody>';
                }
                ?>
                <tbody>
-                  <td><input type="text" name="no" id="no" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="date" id="date" style="border: 1px black solid; width: 100px"></td>
+                  <td></td>
+                  <td></td>
                   <td><input type="text" name="perkara" id="perkara" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="status" id="status" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="tindakan" id="tindakan" style="border: 1px black solid; width: 100px">
-                  </td>
+                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>   
+                  <td></td>
+                  <td></td>
                </tbody>
 
                <tbody>

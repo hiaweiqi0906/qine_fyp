@@ -9,16 +9,19 @@ $errors = array();
 $id = $_SESSION["id"];
 
 
-$list_of_program = array();
+$list_of_application = array();
 
-if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM `program` WHERE 1")) {
+// $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+// $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID` FROM `appapplication` WHERE `STATUS` = 'PROCESSING'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
+   mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id);
    
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_program, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      array_push($list_of_application, array($application_id, $tarikh, $masa, $status, $lecturer_id));
    }
    // echo $stmt->field_count;
 } else {
@@ -27,7 +30,8 @@ if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `
 }
 
 
-$con->close();
+   $con->close();
+
 $stmt->close();
 ?>
 
@@ -56,7 +60,7 @@ $stmt->close();
 
      <section class="teachers">
 
-      <h1 class="heading">Senarai Program yang Belum Diagihkan</h1>
+      <h1 class="heading">Senarai Permohonan</h1>
    
       <form action="" method="post" class="search-tutor">
          <input type="text" name="search_box" placeholder="cari program..." required maxlength="100">
@@ -64,27 +68,29 @@ $stmt->close();
       </form>
    
       <div class="box-container">
+   
       <?php
-      for($i=0; $i<count($list_of_program); $i++){
-         $current_application_id = $list_of_program[$i][0];
+      for($i=0; $i<count($list_of_application); $i++){
+         $current_application_id = $list_of_application[$i][0];
       
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
                <div>
-                  <h3>Nama Program: ",$list_of_program[$i][1],"</h3>
-                  <span>Tarikh Terima: ",$list_of_program[$i][2],"</span>
+                  <h3>Nama Program</h3>
+                  <span>Tarikh Terima</span>
                </div>
             </div>
             
-            <p>Tarikh: <span>",$list_of_program[$i][2],"</span></p>
-            <p>Masa : <span>",$list_of_program[$i][7],"</span></p>
-            <p>Status : <span>",$list_of_program[$i][5],"</span></p>
-            <a href=\"./program_information.php?id=$current_application_id\" class=\"inline-btn\">Lihat</a>
+            <p>Tarikh: <span>",$list_of_application[$i][1],"</span></p>
+            <p>Masa : <span>",$list_of_application[$i][2],"</span></p>
+            <p>Status : <span>",$list_of_application[$i][3],"</span></p>
+            <a href=\"../functions/application_action.php?action=ACCEPT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TERIMA</a>
+            <a href=\"../functions/application_action.php?action=REJECT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TOLAK</a>
          </div>";
       }
       ?>
-   
+
       </div>
    
    </section>

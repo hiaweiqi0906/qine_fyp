@@ -1,7 +1,7 @@
 <?php
 include("../php/db.php");
 // session_start();
-include('../components/lecturer_protected_route.php');
+include('../components/kualitiukm_protected_route.php');
 
 $username = "";
 $email = "";
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'lecturer'")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE 1")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
@@ -78,8 +78,8 @@ $stmt->close();
 <body>
 
          <?php
-          include("../components/navbar_lecturer.php");
-          include("../components/sidebar_lecturer.php");
+          include("../components/navbar_kualitiukm.php");
+          include("../components/sidebar_kualitiukm.php");
         ?>
    
    <div class="main-body">
