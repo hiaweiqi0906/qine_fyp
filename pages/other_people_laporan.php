@@ -8,15 +8,6 @@ $typel = $_GET["type"];
 
 include('../functions/search_all_laporan.php');
 
-$all_empty = true;
-
-for($yyy=0; $yyy<3; $yyy++){
-  if(count($laporan_all_people[$yyy])!=0){
-    $all_empty = false;
-    break;
-  }
-}
-
 if (isset($_POST['submit'])) {
   $lampiran_1 = "";
   $l1_1_ulasan = $_POST['1_1_ulasan'];
@@ -257,30 +248,30 @@ if (isset($_POST['submit'])) {
      $stmt = $con->prepare("INSERT INTO laporan  VALUES 
    ('101', 'PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel')")
   ) {
+     // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
+     // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+     // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+     // $stmt->bindParam(':email', $email, PDO::PARAM_STR);
      $stmt->execute();
   } else {
+     // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
      echo 'Could not prepare statement!';
   }
+  
 
-  if (
-     $stmt = $con->prepare("UPDATE appprogram SET TARIKH_MASA_KEMASKINI = '$today_date' WHERE APPPROGRAM_ID = '$app_program_id' LIMIT 1")
-  ) {
-     $stmt->execute();
-  } else {
-     echo 'Could not prepare statement!';
-  }
+}
 
-  if($typel == 0){
-    if (
-      $stmt = $con->prepare("UPDATE laporan SET TARIKH_AKHIR = '$today_date' WHERE APPPROGRAM_ID = '$app_program_id'")
-    ) {
-      $stmt->execute();
-    } else {
-     echo 'Could not prepare statement!';
-    }
-  }
-  header("Location: penilaianprogram.php");
+$lampiran_1 = $laporan_all_people[$typel][5];
+$akredasi_penuh = $laporan_all_people[$typel][6];
 
+$lampiran_1_arr = explode("<", $lampiran_1);
+$akredasi_penuh_arr = explode("|", $akredasi_penuh);
+
+$lampiran_1_bidang = array();
+$akredasi_penuh_bidang = array();
+for($jj=0; $jj<7; $jj++){
+  array_push($lampiran_1_bidang, explode("~", $lampiran_1_arr[$jj]));
+  array_push($akredasi_penuh_bidang, explode(";", $akredasi_penuh_arr[$jj]));
 }
 
 ?>
@@ -321,181 +312,157 @@ if (isset($_POST['submit'])) {
          
       </div>
 
-      <div class="box-container">
-        <?php
-        for($i=0; $i<count($laporan_all_people); $i++){
-          if($i==0) {
-            $typee = "Pengerusi";
-          }else if($i == 1){
-            $typee = "Ahli Panel 1";
-          }else{
-            $typee = "Ahli Panel 2";
-          }
-          echo "<div class=\"box\">
-              <div class=\"tutor\">
-                <img src=\"../img/program.jpg\" alt=\"\">
-                <div>
-                    <span>Report 1</span>
-                </div>
+      
+
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form"> 
+        <div class="promo_card1">
+          <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
+          <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
+          <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][0];?></textarea>
+          <br>
+
+          <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
+          <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][1];?></textarea>
+          <br>
+
+          <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+          <textarea id="1_3_penegasan" name="1_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][2];?></textarea>
+          <br>
+
+          <h2><label for="1_4_syor">1.4	Syor (Recommendation):</label></h2>
+          <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][3];?></textarea>
+          <br>
+        </div>
+  
+        <div class="promo_card1">
+                <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
+                <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][0];?></textarea>
+                <br>
+
+                <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][1];?></textarea>
+                <br>
+
+                <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="2_3_penegasan" name="2_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][2];?></textarea>
+                <br>
+
+                <h2><label for="2_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][3];?></textarea>
+                <br>
+        </div>
+  
+        <div class="promo_card1">
+                <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan  </h1>
+                <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][0];?></textarea>
+                <br>
+
+                <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][1];?></textarea>
+                <br>
+
+                <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="3_3_penegasan" name="3_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][2];?></textarea>
+                <br>
+
+                <h2><label for="3_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][3];?></textarea>
+                <br>
+        </div>
+        
+        <div class="promo_card1">
+                <h1>Bidang 4: Kakitangan Akademik</h1>
+                <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][0];?></textarea>
+                <br>
+
+                <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][1];?></textarea>
+                <br>
+
+                <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="4_3_penegasan" name="4_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][2];?></textarea>
+                <br>
+
+                <h2><label for="4_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][3];?></textarea>
+                <br>
+        </div>
+        
+        <div class="promo_card1">
+                <h1>Bidang 5: Sumber Pendidikan</h1>
+                <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][0];?></textarea>
+                <br>
+
+                <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][1];?></textarea>
+                <br>
+
+                <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="5_3_penegasan" name="5_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][2];?></textarea>
+                <br>
+
+                <h2><label for="5_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][3];?></textarea>
+                <br>
+        </div>
+        
+        <div class="promo_card1">
+                <h1>Bidang 6: Pengurusan Program</h1>
+                <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][0];?></textarea>
+                <br>
+
+                <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][1];?></textarea>
+                <br>
+
+                <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="6_3_penegasan" name="6_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][2];?></textarea>
+                <br>
+
+                <h2><label for="6_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][3];?></textarea>
+                <br>
+        </div>
+        
+        <div class="promo_card1">
+                <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
+                <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
+                <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][0];?></textarea>
+                <br>
+
+                <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
+                <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][1];?></textarea>
+                <br>
+
+                <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+                <textarea id="7_3_penegasan" name="7_3_penegasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][2];?></textarea>
+                <br>
+
+                <h2><label for="7_4_syor">1.4	Syor (Recommendation):</label></h2>
+                <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][3];?></textarea>
+                <br>
+        </div>
+        <div class="promo_card1">
+                <h1>Penilaian Program</h1>
+                <?php
+                  include('./area1.php');
+                  include('./area2.php');
+                  include('./area3.php');
+                  include('./area4.php');
+                  include('./area5.php');
+                  include('./area6.php');
+                  include('./area7.php');
+                ?>
               </div>
-              
-              <p>Jawatan: <span>",$typee,"</span></p>
-              <p>Status: <span>",$laporan_all_people[$i][1],"</span></p>
-              <a href=\"./other_people_laporan.php?id=$app_program_id&type=$typel\" class=\"inline-btn\">Lihat</a>
-          </div>";
-        }
-        ?>
-      </div>
-
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form"> 
-      <div class="promo_card1">
-        <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
-        <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-        <br>
-
-        <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-        <br>
-
-        <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-        <textarea id="1_3_penegasan" name="1_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-        <br>
-
-        <h2><label for="1_4_syor">1.4	Syor (Recommendation):</label></h2>
-        <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-        <br>
-      </div>
- 
-      <div class="promo_card1">
-              <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
-              <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="2_3_penegasan" name="2_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="2_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
- 
-      <div class="promo_card1">
-              <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan  </h1>
-              <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="3_3_penegasan" name="3_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="3_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
-      
-      <div class="promo_card1">
-              <h1>Bidang 4: Kakitangan Akademik</h1>
-              <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="4_3_penegasan" name="4_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="4_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
-      
-      <div class="promo_card1">
-              <h1>Bidang 5: Sumber Pendidikan</h1>
-              <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="5_3_penegasan" name="5_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="5_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
-      
-      <div class="promo_card1">
-              <h1>Bidang 6: Pengurusan Program</h1>
-              <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="6_3_penegasan" name="6_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="6_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
-      
-      <div class="promo_card1">
-              <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
-              <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
-              <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
-              <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-              <textarea id="7_3_penegasan" name="7_3_penegasan" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-
-              <h2><label for="7_4_syor">1.4	Syor (Recommendation):</label></h2>
-              <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-              <br>
-      </div>
- <div class="promo_card1">
-         <h1>Penilaian Program</h1>
-         <?php
-          include('./area1.php');
-          include('./area2.php');
-          include('./area3.php');
-          include('./area4.php');
-          include('./area5.php');
-          include('./area6.php');
-          include('./area7.php');
-         ?>
-      </div>
-      <div class="field">          
-        <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
-    </div>
-  </form>
+        <div class="field">          
+          <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
+        </div>
+      </form>
      </div>
     <footer>
 		<ul class="footer-icons">
@@ -519,7 +486,7 @@ if (isset($_POST['submit'])) {
       var coll = document.getElementsByClassName("collapsible");
       var i;
 
-      for (i = 0; i < coll.length; i..) {
+      for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
           this.classList.toggle("active");
           var content = this.nextElementSibling;
