@@ -28,9 +28,12 @@
         ?>
      
      <div class="main-body">
+    <div class="title-size">
 		<h2>Polisi</h2>
+    </div>
 		<div class="promo_card1">
 			<h1>Permohonan Sebagai Ahli Panel Penilai</h1>
+      
 			<span>POLISI PRIVASI</span>
 			<p>Terima kasih kerana berminat menjadi Ahli Panel Penilai (APP) Universiti Kebangsaan Malaysia (UKM). Untuk makluman, UKM amat prihatin terhadap
                 kerahsiaan data peribadi pemohon yang dikemukakan melalui laman sesawang ini. UKM akan bersifat telus dalam mengendalikan dan memproses data 

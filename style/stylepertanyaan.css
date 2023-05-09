@@ -19,6 +19,10 @@
    text-decoration: none;
 }
 
+.title-size{
+   font-size: 1.25rem;
+}
+
 *::selection{
    background-color: var(--main-color);
    color:#fff;
@@ -107,7 +111,7 @@ section{
 
 .btn,
 .inline-btn{
-   background-color: var(--main-color);
+   background-color: #5d7851;
 }
 
 .option-btn,
@@ -186,7 +190,7 @@ section{
 
 .header .flex .icons div{
    font-size: 2rem;
-   color:var(--black);
+   color:#5d7851;
    background-color: var(--light-bg);
    border-radius: .5rem;
    height: 4.5rem;
@@ -1276,8 +1280,11 @@ section{
 }
 
 .main-body{
-	width: 70%;
+	width: 80%;
 	padding: 1rem;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .title{
@@ -1407,11 +1414,8 @@ section{
 
 .promo_card{
 	width: 100%;
-	color: #fff;
-	margin-top: 8px;
-	border-radius: 8px;
-	padding: 0.5rem 1rem 1rem 3rem;
-	background: rgb(37,37,37);
+   height: 10rem;
+   margin-bottom: 1rem;
 }
 .promo_card h1, .promo_card span, button{
 	margin: 10px;
@@ -1476,11 +1480,15 @@ table td{
 }
 
 footer{
-	background: #778A99;
+	background: #89a571;
 	text-align: center;
 	text-transform: uppercase;
 	padding-top: 30px;
+   position: fixed;
+   bottom: 0;
+   width: 80%;
 }
+
 
 footer li{
 	list-style: none;
@@ -1490,8 +1498,8 @@ footer li{
 
 .footer-icons a{
 	margin-top: auto;
-	background: #243c6c;
-	color: #778A99;
+	background: #5d7851;
+	color: #bacf9f;
 	padding: 15px;
 	border-radius: 100px;
 	display: flex;
@@ -1514,7 +1522,7 @@ footer li{
 }
 
 .footer-copyright{
-	background-color: #243c6c;
+	background-color: #5d7851;
 	color: #fff;
 	padding: 15px;
 	margin-top: 30px;
@@ -1622,6 +1630,11 @@ footer li{
 
    .about .row .image img{
       height: 25rem;
+   }
+
+   .pending-message{
+      color:red;
+      font-size: 1rem;
    }
 
 }

@@ -5,10 +5,6 @@
         <div class="logo" style="display: flex;align-items: center;cursor: pointer;">
               <img src="../img/pjkukm.png" alt="Logo" style="width: 450px;margin-right: 0.6rem;margin-top: -0.6rem;"/>
             </div>     
-           <form action="search.html" method="post" class="search-form">
-              <input type="text" name="search_box" required placeholder="search..." maxlength="100">
-              <button type="submit" class="fas fa-search"></button>
-           </form>
      
            <div class="icons">
             <div id="noti-btn" class="fas fa-bell"></div>

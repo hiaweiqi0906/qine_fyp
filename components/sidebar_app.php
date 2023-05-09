@@ -12,9 +12,9 @@
         </div>
      
         <nav class="navbar">
-            <a href="./dashboardapp.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-            <a href="./penilaianprogram.php"><i class="fas fa-list"></i><span>Penilaian Program</span></a>
-            <a href="./pertanyaan.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+            <a href="./dashboardapp.php" class="active"><span>Dashboard</span></a>
+            <a href="./penilaianprogram.php"><span>Penilaian Program</span></a>
+            <a href="./pertanyaan.php"><span>Pertanyaan</span></a>
         </nav>
      
      </div>
