@@ -1,3 +1,4 @@
+<div style="overflow: auto; height:370px;">
 <h1>Maklumat Peribadi</h1>
 <div class="row">
     <div class="column-2">
@@ -114,5 +115,5 @@
         <input type="text" class="input-text" name="penganugerahan" id="penganugerahan">
     </div>
     </div>
-
+ </div>
       

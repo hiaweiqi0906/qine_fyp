@@ -26,10 +26,11 @@
         ?>
 
      <div class="main-body">
+
+      <img src="../img/Selamat Datang.png" class="promo_card">
+
+      <div class="title-size">
       <h2>Dashboard</h2>
-      <div class="promo_card">
-         <h1>Selamat Datang!</h1>
-         <span>Lorem ipsum dolor sit amet.</span>
       </div>
 
       <div class="promo_card1">
