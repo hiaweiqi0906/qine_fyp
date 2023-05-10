@@ -12,12 +12,12 @@
         </div>
      
         <nav class="navbar">
-           <a href="./dashboardlecturer.php" class="active"><span>Dashboard</span></a>
-           <a href="./polisi.php"><span>Polisi</span></a>
-           <a href="./kriteria.php"><span>Kriteria</span></a>
-           <a href="./permohonan.php"><span>Permohonan</span></a>
-           <a href=""><span>Maklumat</span></a>
-           <a href="./pertanyaan_lecturer.php"><span>Pertanyaan</span></a>
+           <a href="./dashboardlecturer.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
+           <a href="./polisi.php"><span style="font-weight:bolder;">Polisi</span></a>
+           <a href="./kriteria.php"><span style="font-weight:bolder;">Kriteria</span></a>
+           <a href="./permohonan.php"><span style="font-weight:bolder;">Permohonan</span></a>
+           <a href=""><span style="font-weight:bolder;">Maklumat</span></a>
+           <a href="./pertanyaan_lecturer.php"><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
      
      </div>
