@@ -33,7 +33,6 @@ include('../components/app_protected_route.php');
       <div class="promo_card">
          <h1>Selamat Datang!</h1>
          <span>Lorem ipsum dolor sit amet.</span>
-         <button>Learn More</button>
       </div>
 
       <div class="promo_card1">

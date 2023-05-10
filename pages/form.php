@@ -1,3 +1,4 @@
+
 <h1>Maklumat Peribadi</h1>
 <div class="row">
     <div class="column-2">
@@ -118,6 +119,5 @@
     <div class="column-10" >
         <input type="text" class="input-text" name="penganugerahan" id="penganugerahan">
     </div>
-    </div>
-
+ </div>
       

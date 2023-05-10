@@ -12,12 +12,12 @@
         </div>
      
         <nav class="navbar">
-           <a href="./dashboardlecturer.php" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-           <a href="./polisi.php"><i class="fas fa-user-circle"></i><span>Polisi</span></a>
-           <a href="./kriteria.php"><i class="fas fa-list"></i><span>Kriteria</span></a>
-           <a href="./permohonan.php"><i class="fas fa-align-left"></i><span>Permohonan</span></a>
-           <a href=""><i class="fas fa-archive"></i><span>Maklumat</span></a>
-           <a href="./pertanyaan_lecturer.php"><i class="fas fa-align-left"></i><span>Pertanyaan</span></a>
+           <a href="./dashboardlecturer.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
+           <a href="./polisi.php"><span style="font-weight:bolder;">Polisi</span></a>
+           <a href="./kriteria.php"><span style="font-weight:bolder;">Kriteria</span></a>
+           <a href="./permohonan.php"><span style="font-weight:bolder;">Permohonan</span></a>
+           <a href=""><span style="font-weight:bolder;">Maklumat</span></a>
+           <a href="./pertanyaan_lecturer.php"><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
      
      </div>

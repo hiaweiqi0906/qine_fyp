@@ -85,10 +85,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $con->close();     
    }
-    
-    
-    // Close connection
-    mysqli_close($con);
 
 ?>
 
@@ -124,8 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         ?>
      
 
-     <input type="submit" name="submit" value="Pohon" class="sign-btn" />
-
+     <input type="submit" name="submit" value="Pohon" class="btn" />
    </form>
 </div>
 
