@@ -43,7 +43,7 @@ html::-webkit-scrollbar-track{
 }
 
 html::-webkit-scrollbar-thumb{
-   background-color: var(--main-color);
+   background-color: #5d7851;
 }
 
 body{
@@ -1434,6 +1434,7 @@ section{
 	border-radius: 8px;
 	padding: 0.5rem 1rem 1rem 3rem;
 	background: #fff;
+   min-height: 250px;
 }
 .promo_card1 h1, .promo_card1 span, .promo_card1 a, button{
    margin-top: 10px;
@@ -1484,9 +1485,7 @@ footer{
 	text-align: center;
 	text-transform: uppercase;
 	padding-top: 30px;
-   position: fixed;
-   bottom: 0;
-   width: 80%;
+   width: 100%;
 }
 
 
@@ -1530,6 +1529,26 @@ footer li{
 
 .footer-copyright p{
 	margin-bottom: 0px;
+}
+
+.sademoji{
+   width: 15rem;
+   height: 15rem;
+   display:block;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+p{
+   font-size: 1.25rem;
+}
+
+span{
+   font-size: 1.5rem;
+}
+
+h1{
+   font-size: 2rem;
 }
 
 

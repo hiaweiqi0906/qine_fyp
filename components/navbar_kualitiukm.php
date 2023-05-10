@@ -14,8 +14,7 @@
       <div class="icons">
        <div id="noti-btn" class="fas fa-bell"></div>
          <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
+         <a href="../components/logout.php"><div id="user-btn" class="fa fa-sign-out"></div></a>
       </div>
 
       <div class="profile">

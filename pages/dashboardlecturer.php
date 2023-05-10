@@ -35,6 +35,7 @@
 
       <div class="promo_card1">
          <h1>Senarai </h1>
+         <img src="../img/sademoji.png" class="sademoji">
       </div>
 
       <div class="field">          
