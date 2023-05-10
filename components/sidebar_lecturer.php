@@ -8,7 +8,7 @@
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
            <p class="role">Pensyarah</p>
-           <a href="#" class="btn">Lihat Profil</a>
+           <a href="./profil_lecturer.php" class="btn">Lihat Profil</a>
         </div>
      
         <nav class="navbar">

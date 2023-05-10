@@ -19,8 +19,8 @@ if (isset($_POST['submit'])) {
    date_default_timezone_set("Asia/Kuala_Lumpur");
    $today_date = date("Y-m-d");
    if (
-      $stmt = $con->prepare("INSERT INTO pertanyaan  VALUES 
-    ('101', '$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'lecturer', '$id')")
+      $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES 
+    ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'lecturer', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);

@@ -58,8 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           // Username already exists
           echo 'We\'re still processing your application. ';
       } else {
-        if ($stmt = $con->prepare("INSERT INTO appapplication  VALUES 
-        ('10', '$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan')")) {
+        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`) VALUES 
+        ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan')")) {
 
             $stmt->execute();
             echo 'You have successfully applied!';

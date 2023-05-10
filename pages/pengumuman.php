@@ -5,27 +5,19 @@ include('../components/lecturer_protected_route.php');
 $username = "";
 $email = "";
 $errors = array();
+$id = $_SESSION["id"];
 
-$list_of_pertanyaan = array();
-
-// $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-// $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$list_of_pengumuman = array();
 
 if (isset($_POST['submit'])) {
-   $no= mysqli_real_escape_string($con, $_POST['no']);
-   $date= mysqli_real_escape_string($con, $_POST['date']);
    $pengumuman= mysqli_real_escape_string($con, $_POST['pengumuman']);
-   $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
-   $tindakan= mysqli_real_escape_string($con, $_POST['tindakan']);
+   date_default_timezone_set("Asia/Kuala_Lumpur");
+   $today_date = date("Y-m-d");
 
    if (
-      $stmt = $con->prepare("INSERT INTO pengumuman  VALUES 
-    ('$no', '$date', '$pengumuman', '$ringkasan', '$tindakan')")
+      $stmt = $con->prepare("INSERT INTO `pengumuman`(`TARIKH`, `PENGUMUMAN`, `KUALITIUKM_ID`) VALUES 
+    ('$today_date', '$pengumuman', '$id')")
    ) {
-      // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
-      // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
-      // $stmt->bindParam(':email', $email, PDO::PARAM_STR);
       $stmt->execute();
    } else {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -35,14 +27,14 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PENGUMUMAN_ID`, `TARIKH`, `PENGUMUMAN`, `RINGKASAN`, `TINDAKAN` FROM `pengumuman` WHERE 1")) {
+if ($stmt = $con->prepare("SELECT `PENGUMUMAN_ID`, `TARIKH`, `PENGUMUMAN`, `KUALITIUKM_ID` FROM `pengumuman` WHERE `KUALITIUKM_ID`='$id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $pengumuman_id, $tarikh, $pengumuman, $ringkasan, $tindakan);
+   mysqli_stmt_bind_result($stmt, $pengumuman_id, $tarikh, $pengumuman, $kualitiukm_id);
    
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_pertanyaan, array($pengumuman_id, $tarikh, $pengumuman, $ringkasan, $tindakan));
+      array_push($list_of_pengumuman, array($pengumuman_id, $tarikh, $pengumuman, $kualitiukm_id));
       
    }
    // echo $stmt->field_count;
@@ -100,12 +92,12 @@ $stmt->close();
                      <th>Tindakan</th>
                   </tr>
                <?php
-               $arrlength = count($list_of_pertanyaan);
+               $arrlength = count($list_of_pengumuman);
                
                for($x = 0; $x < $arrlength; $x++) {
                   echo '<tbody>';
                   for($y = 0; $y < 5; $y++) {
-                  echo '<td>', $list_of_pertanyaan[$x][$y], '</td>';
+                  echo '<td>', $list_of_pengumuman[$x][$y], '</td>';
                 }
                 echo '</tbody>';
                }

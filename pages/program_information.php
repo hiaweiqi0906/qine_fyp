@@ -88,8 +88,8 @@ if(isset($_POST['submit'])){
    $panel_1 = $_POST["panel_1"];
    $panel_2 = $_POST["panel_2"];
    $program_id = $program_details[0][0];
-   if ($stmt = $con->prepare("INSERT INTO `appprogram`(`APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2`) 
-                                             VALUES ('01','$today_date','$pengerusi','$program_id','$id','$panel_1','$panel_2')")) {
+   if ($stmt = $con->prepare("INSERT INTO `appprogram`(`TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2`) 
+                                             VALUES ('$today_date','$pengerusi','$program_id','$id','$panel_1','$panel_2')")) {
                 // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
                 // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
