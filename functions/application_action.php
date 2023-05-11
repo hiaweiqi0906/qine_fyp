@@ -49,8 +49,8 @@ if($action == 'ACCEPT'){
       echo 'Could not prepare statement!2';
   }
 
-  if ($stmt1 = $con->prepare("INSERT INTO `app` (`APP_ID`, `NAMA`, `KATEGORI`, `PASSWORD`, `EMEL`, `NO_KP`, `FAKULTI`, `ALAMAT`, `NO_TELEFON`, `BIDANG`, `URL_AVATAR`, `APPLICATION_ID`, `VERIFY_TOKEN`) VALUES 
-          ('1002', '$nama', 'EKSA', '$password', '$emel', '$nokp', '$fakulti', '$alamat', '$notelefon', '$bidang', '$urlAvatar', '$appid', ' ')")) {
+  if ($stmt1 = $con->prepare("INSERT INTO `app` (`NAMA`, `KATEGORI`, `PASSWORD`, `EMEL`, `NO_KP`, `FAKULTI`, `ALAMAT`, `NO_TELEFON`, `BIDANG`, `URL_AVATAR`, `APPLICATION_ID`, `VERIFY_TOKEN`) VALUES 
+          ('$nama', 'EKSA', '$password', '$emel', '$nokp', '$fakulti', '$alamat', '$notelefon', '$bidang', '$urlAvatar', '$appid', ' ')")) {
 
               $stmt1->execute();
               echo 'You have successfully registered! You can now login!';

@@ -69,7 +69,12 @@
         <input type="text" class="input-text" name="fakulti" id="fakulti">
     </div>
 
-    <div class="column-6"></div>
+    <div class="column-2">
+        <label for="bidang">Bidang: </label>
+    </div>
+    <div class="column-4" >
+        <input type="text" value="<?php if(isset($user[0][10])) echo $user[0][10]; else echo"";?>" class="input-text" name="fakulti" id="fakulti">
+    </div>
     </div>
 
     <div class="row">
