@@ -95,51 +95,81 @@ $headers = "From: hiaweiqi@gmail.com";
 if(!$mail->Send()){//
 echo "Mailer Error: " . $mail->ErrorInfo;
 }else{
-echo "<div class='error'>
-<p>An email has been sent to you with instructions on how to reset your password.</p>
-</div><br /><br /><br />";
+$successEmail = true;
 	}
    }
-}else{
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lupa Kata Laluan</title>
-</head>
-<body>
-    <div>
-        <div class="field input">
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
-
-            <label for="email">Emel</label>
-            <input type="text" id="email" name="email" autocomplete="off" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
+    <link rel="stylesheet" href="../style/stylelogin.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <img src="../img/pjkukm.png" alt="">
+      <a href="/index.php"></a>
+    </div>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <?php 
+            if(!empty($login_err)){
+                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+            }        
+            ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
             
-            <div class="field">
-                <input type="submit" class="btn" name="submit-email" value="Check" required>
-            </div>
+              <div class="heading">
+                <h2>Masukkan Alamat Emel</h2>
+              </div>
+              <input
+                    type="text"
+                    name="types"
+                    hidden
+                    id="types"
+                    class="input-field"
+                    value="app"
+                  />
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    name="email"
+                    id="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Emel</label>
+                </div>
+                <div class="field">
+                    <input type="submit" class="sign-btn" name="submit-email" value="Semak" required>
+                </div>
+                <?php
+                    if(isset($successEmail)){
+                        echo "<div class=\"reset-message\">An email has been sent to you with instructions on how to reset your password.</div>";
+                    }
+                ?>
+              </div>
             </form>
+          </div>
         </div>
-    </div>
-    <div class="field">          
-        <input type="submit" class="btn" name="submit-password" value="Hantar" required>
-    </div>
-</body>
-</html>
+      </div>
+    </main>
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
-<form method="post" action="" name="reset"><br /><br />
-<label><strong>Enter Your Email Address:</strong></label><br /><br />
-<input type="email" name="email" placeholder="username@email.com" />
-<br /><br />
-<input type="submit" value="Reset Password"/>
-</form>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<?php } ?>
+<!-- Javascript file -->
+
+<script src="../js/applogin.js"></script>

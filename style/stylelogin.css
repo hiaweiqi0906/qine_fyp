@@ -301,6 +301,10 @@ main.sign-up-mode .carousel {
   border-radius: 1rem;
 }
 
+.reset-message{
+  color: red;
+}
+
 /* Style the navbar */
 #navbar {
   overflow: hidden;
