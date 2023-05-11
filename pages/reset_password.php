@@ -1,4 +1,5 @@
 <?php
+$error="";
 include('../php/db.php');
 if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
 && ($_GET["action"]=="reset") && !isset($_POST["action"])){
@@ -21,19 +22,85 @@ Click here</a> to reset password.</p>';
   $expDate = $row['expDate'];
   if ($expDate >= $curDate){
   ?>
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
+    <link rel="stylesheet" href="../style/stylelogin.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <img src="../img/pjkukm.png" alt="">
+      <a href="/index.php"></a>
+    </div>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <?php 
+            if(!empty($login_err)){
+                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+            }        
+            ?>
+              <form method="post" action="" name="update">
+            
+              <div class="heading">
+                <h2>Reset Kata Laluan</h2>
+              </div>
+              <input type="hidden" name="action" value="update" />
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="pass1"
+                    id="pass1"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Kata Laluan Baharu</label>
+                </div>
+
+                <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="pass2"
+                    id="pass2"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Sahkan Kata Laluan Baharu</label>
+                </div>
+                <input type="hidden" name="email" value="<?php echo $email;?>"/>
+
+                <div class="field">
+                    <input type="submit" class="sign-btn" name="submit" value="Reset" required>
+                </div>
+                <?php
+                    if(isset($successEmail)){
+                        echo "<div class=\"reset-message\">An email has been sent to you with instructions on how to reset your password.</div>";
+                    }
+                ?>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
   <br />
-  <form method="post" action="" name="update">
-  <input type="hidden" name="action" value="update" />
-  <br /><br />
-  <label><strong>Enter New Password:</strong></label><br />
-  <input type="password" name="pass1" maxlength="15" required />
-  <br /><br />
-  <label><strong>Re-Enter New Password:</strong></label><br />
-  <input type="password" name="pass2" maxlength="15" required/>
-  <br /><br />
-  <input type="hidden" name="email" value="<?php echo $email;?>"/>
-  <input type="submit" value="Reset Password" />
-  </form>
+
+  <!-- Javascript file -->
+
+  <script src="../js/applogin.js"></script>
+
 <?php
 }else{
 $error .= "<h2>Link Expired</h2>
@@ -49,7 +116,7 @@ if($error!=""){
 
 if(isset($_POST["email"]) && isset($_POST["action"]) &&
  ($_POST["action"]=="update")){
-$error="";
+
 $pass1 = $_POST["pass1"];
 $pass2 = $_POST["pass2"];
 $email = $_POST["email"];
@@ -67,9 +134,7 @@ mysqli_query($con,
 
 mysqli_query($con,"DELETE FROM `password_reset_temp` WHERE `email`='".$email."';");
 	
-echo '<div class="error"><p>Congratulations! Your password has been updated successfully.</p>
-<p><a href="./login.php">
-Click here</a> to Login.</p></div><br />';
+header('Location: reset_password_msg.php');
 	  }		
 }
 ?>

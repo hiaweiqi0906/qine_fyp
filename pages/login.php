@@ -189,7 +189,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" name="submit" value="Masuk" class="sign-btn" />
 
                 <p class="text" align="right">
-                  <a href="./forgotpassword.php">Lupa Kata Laluan?</a>
+                  <a href="./forgotpassword_page_1.php">Lupa Kata Laluan?</a>
                 </p>
               </div>
             </form>
