@@ -133,7 +133,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
     <div id="navbar">
       <img src="../img/pjkukm.png" alt="">
-      <a href="/index.php"></a>
     </div>
     <main>
       <div class="box">
@@ -251,7 +250,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
           <div class="carousel">
             <div class="images-wrapper">
-              <img src="../img/login.jpg" class="image img-1 show" alt="" />
+              <img src="../img/login.png" class="image img-1 show" alt="" />
               <img src="../img/download.png" style="height: 240px; width: 240px;
               margin: auto;
               display: block;" class="image img-2" alt="" />
