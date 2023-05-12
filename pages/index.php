@@ -29,15 +29,14 @@
               </div>
               <p class="text">
                 Sistem Pengurusan Ahli Panel Penilai (APP) merupakan sistem berasaskan laman sesawang yang ditumbuhkan sebagai
-                media perkhidmatan dalam talian untuk penilai Pusat Jaminan Kualiti (Kualiti-UKM) mengeuruskan maklumat penilaian.
+                media perkhidmatan dalam talian untuk penilai Pusat Jaminan Kualiti (Kualiti-UKM) menguruskan maklumat penilaian.
               </p>
               <div class="cta">
-                <a href="#" class="btn">Get started</a>
               </div>
             </div>
 
             <div class="right">
-              
+                <img src="../img/home.png" alt="">
             </div>
           </div>
         </div>
