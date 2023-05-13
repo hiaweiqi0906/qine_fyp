@@ -6,14 +6,14 @@
 
 // Include config file
 require_once "../php/db.php";
- 
+
 // Define variables and initialize with empty values
 $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
- 
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
   $types = $_POST["types"];
   if($types==="kualitiukm"){
     // Check if email is empty
@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $email = trim($_POST["email"]);
     }
-    
+
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter your password.";
@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   } else{
       $email = trim($_POST["email1"]);
   }
-  
+
   // Check if password is empty
   if(empty(trim($_POST["password1"]))){
       $password_err = "Please enter your password.";
@@ -44,10 +44,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $password = trim($_POST["password1"]);
   }
   }
-    
 
 
-    
+
+
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
@@ -55,14 +55,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $sql = "SELECT KUALITIUKM_ID, EMEL, PASSWORD FROM kualitiukm WHERE EMEL = '$email' AND PASSWORD = '$password'";
 
         }
-        
+
         if($stmt = mysqli_prepare($con, $sql)){
             // Bind variables to the prepared statement as parameters
             // mysqli_stmt_bind_param($stmt, "s", $param_email);
-            
+
             // Set parameters
             // $param_email = $email;
-            
+
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Store result
@@ -70,28 +70,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_bind_result($stmt, $id, $emel, $password);
 
                 // Check if email exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                if(mysqli_stmt_num_rows($stmt) == 1){
                     // Bind result variables
-                    
+
                             // Password is correct, so start a new session
                             session_start();
                             while (mysqli_stmt_fetch($stmt)) {
                               // Store data in session variables
                               $_SESSION["loggedin"] = true;
                               $_SESSION["id"] = $id;
-                              $_SESSION["emel"] = $emel;  
+                              $_SESSION["emel"] = $emel;
                               if($types === "kualitiukm"){
-                                $_SESSION["type"] = "kualitiukm"; 
-                              }                        
+                                $_SESSION["type"] = "kualitiukm";
+                              }
                            }
-                                                        
-                            
+
+
                             // Redirect user to welcome page
-                            if($types==="kualitiukm"){                            
+                            if($types==="kualitiukm"){
                               header("location: dashboardkualitiukm.php");
-                            } 
+                            }
                             alert("login success");
-                   
+
 
                 } else{
                     // email doesn't exist, display a generic error message
@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
+
     // Close connection
     mysqli_close($con);
 }
@@ -131,17 +131,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-          <?php 
+          <?php
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
+        }
         ?>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
-            
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
+
               <div class="heading">
                 <h2>Log Masuk</h2>
                 <h6>Berminat menjadi Ahli Panel Penilai?</h6>
-                <a href="#" class="toggle">Permohonan Baharu Ahli Panel Penilai</a>
+                <a href="#" class="toggle">Permohonan Baharu UKM</a>
               </div>
               <input
                     type="text"
@@ -186,8 +186,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               </div>
             </form>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-up-form"> 
-            
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-up-form">
+
               <div class="heading">
                 <h2>Log Masuk</h2>
                 <a href="#" class="toggle">Kembali ke Sistem Pengurusan Kualiti UKM</a>
@@ -231,12 +231,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <a href="/pages/forgotpassword.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
                 </p>
 
-                <input type="submit" value="Log Masuk" class="sign-btn" /> 
+                <input type="submit" value="Log Masuk" class="sign-btn" />
 
                 <hr>
 
               </div>
-              <center><h6>Belum mendaftar?</h6></center>          
+              <center><h6>Belum mendaftar?</h6></center>
                 <input type="submit" class="sign-btn" name="submit" value="Daftar Akaun Baharu" onclick = "window.location.href='./register.php';" required>
             </form>
           </div>

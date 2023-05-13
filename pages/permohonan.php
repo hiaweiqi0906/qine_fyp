@@ -6,7 +6,7 @@
 
 // Include config file
 require_once "../php/db.php";
- 
+
 // Define variables and initialize with empty values
 $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
@@ -20,8 +20,8 @@ if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id
   // Store the result so we can check if the account exists in the database.
   if ($stmt->num_rows > 0) {
       // Username already exists
-      echo 'We\'re still processing your application. ';
-  } 
+      header('Location: ./maklumat.php');
+  }
 }
  else {
     // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           // Username already exists
           echo 'We\'re still processing your application. ';
       } else {
-        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`) VALUES 
+        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`) VALUES
         ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan')")) {
 
             $stmt->execute();
@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo 'Could not prepare statement!';
   }
 
-  $con->close();     
+  $con->close();
    }
 
 ?>
@@ -114,11 +114,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         ?>
 
      <div class="main-body">
-       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
         <?php
     include("./form.php");
         ?>
-     
+
 
      <input type="submit" name="submit" value="Pohon" class="btn" />
    </form>
@@ -129,13 +129,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>
