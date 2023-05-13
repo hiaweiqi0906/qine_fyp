@@ -1,6 +1,4 @@
-<?php
- include('../components/lecturer_protected_route.php');
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +6,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard Pensyarah</title>
+   <title>Maklumat</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -23,8 +21,6 @@
     <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
-          include("../components/pengumuman.php");
-
         ?>
 
      <div class="main-body">
@@ -32,11 +28,51 @@
       <img src="../img/Selamat Datang.png" class="promo_card">
 
       <div class="title-size">
-      <h2>Dashboard</h2>
+      <h2>Maklumat</h2>
       </div>
 
       <div class="promo_card1">
          <h1>Senarai </h1>
+         <?php
+// Include config file
+require_once "../php/db.php";
+
+// Initialize the session
+// session_start();
+ include('../components/lecturer_protected_route.php');
+$results = array();
+
+// Define variables and initialize with empty values
+$email = $password = $types = "";
+$email_err = $password_err = $login_err = "";
+
+$id= $_SESSION["id"];
+if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN` FROM `appapplication` WHERE LECTURER_ID = '$id' ")) {
+
+  $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan);
+
+// }   /* fetch values */
+   while (mysqli_stmt_fetch($stmt)) {
+      array_push($results, array($application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan));
+   }
+
+   if(count($results) == 1){
+    if($results[0][3] == "PROCESSING")
+      echo "Processing";
+    else if($results[0][3] == "ACCEPT")
+      echo "Accepted";
+    else  echo "Rejected";
+   }else{
+    echo "No APplication";
+   }
+}
+ else {
+    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+    echo 'Could not prepare statement!';
+  }
+// Processing form data when form is submitted
+?>
          <img src="../img/sademoji.png" class="sademoji">
       </div>
 

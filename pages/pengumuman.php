@@ -1,6 +1,6 @@
 <?php
 include("../php/db.php");
-include('../components/lecturer_protected_route.php');
+include('../components/kualitiukm_protected_route.php');
 
 $username = "";
 $email = "";
@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
    $today_date = date("Y-m-d");
 
    if (
-      $stmt = $con->prepare("INSERT INTO `pengumuman`(`TARIKH`, `PENGUMUMAN`, `KUALITIUKM_ID`) VALUES 
+      $stmt = $con->prepare("INSERT INTO `pengumuman`(`TARIKH`, `PENGUMUMAN`, `KUALITIUKM_ID`) VALUES
     ('$today_date', '$pengumuman', '$id')")
    ) {
       $stmt->execute();
@@ -23,19 +23,17 @@ if (isset($_POST['submit'])) {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
       echo 'Could not prepare statement!';
    }
-   
-
 }
 
 if ($stmt = $con->prepare("SELECT `PENGUMUMAN_ID`, `TARIKH`, `PENGUMUMAN`, `KUALITIUKM_ID` FROM `pengumuman` WHERE `KUALITIUKM_ID`='$id'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pengumuman_id, $tarikh, $pengumuman, $kualitiukm_id);
-   
+
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_pengumuman, array($pengumuman_id, $tarikh, $pengumuman, $kualitiukm_id));
-      
+
    }
    // echo $stmt->field_count;
 } else {
@@ -70,8 +68,8 @@ $stmt->close();
 <body>
 
       <?php
-          include("../components/navbar_lecturer.php");
-          include("../components/sidebar_lecturer.php");
+          include("../components/navbar_kualitiukm.php");
+          include("../components/sidebar_kualitiukm.php");
 
         ?>
 
@@ -80,41 +78,38 @@ $stmt->close();
       <div class="pertanyaan-list">
          <div class="row">
          </div>
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
+
+
 
             <table>
                <thead>
                   <tr>
                      <th>#</th>
                      <th>Tarikh</th>
-                     <th>Pengumuman</th>
-                     <th>Ringkasan Pengumuman</th>
-                     <th>Tindakan</th>
+                     <th>Perkara</th>
+
                   </tr>
                <?php
                $arrlength = count($list_of_pengumuman);
-               
+
                for($x = 0; $x < $arrlength; $x++) {
                   echo '<tbody>';
-                  for($y = 0; $y < 5; $y++) {
+                  echo '<td>',$x+1,'</td>';
+                  for($y = 1; $y < 3; $y++) {
                   echo '<td>', $list_of_pengumuman[$x][$y], '</td>';
                 }
                 echo '</tbody>';
                }
                ?>
                <tbody>
-                  <td><input type="text" name="no" id="no" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="date" id="date" style="border: 1px black solid; width: 100px"></td>
+                  <td></td>
+                  <td></td>
                   <td><input type="text" name="pengumuman" id="pengumuman" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="tindakan" id="tindakan" style="border: 1px black solid; width: 100px">
-                  </td>
+
                </tbody>
 
                <tbody>
-                  <td></td>
-                  <td></td>
-                  <td></td>
                   <td></td>
                   <td></td>
                   <td><input type="submit" name="submit" id="submit" value="Hantar"></td>
