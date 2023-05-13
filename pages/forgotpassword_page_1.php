@@ -117,9 +117,9 @@ $successEmail = true;
       <a href="/index.php"></a>
     </div>
     <main>
-      <div class="box">
+      <div class="box1">
         <div class="inner-box">
-          <div class="forms-wrap">
+          <div class="forms-wrap1">
             <?php 
             if(!empty($login_err)){
                 echo '<div class="alert alert-danger">' . $login_err . '</div>';

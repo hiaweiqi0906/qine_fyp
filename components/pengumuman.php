@@ -1,5 +1,5 @@
 <?php
-require_once "../php/db.php";
+require "../php/db.php";
 
 $pengumuman = array();
 

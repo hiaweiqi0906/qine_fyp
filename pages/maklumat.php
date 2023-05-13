@@ -21,6 +21,7 @@
     <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
+          include("../components/pengumuman.php");
         ?>
 
      <div class="main-body">
