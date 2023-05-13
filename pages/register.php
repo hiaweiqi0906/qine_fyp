@@ -66,7 +66,6 @@ if(isset($_POST['submit'])){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -74,39 +73,112 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
+    <link rel="stylesheet" href="../style/stylelogin.css" />
   </head>
   <body>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
-    <div>
-        <div class="field input">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" autocomplete="off" required>
-        </div>
-        <div class="field input">
-            <label for="email">Emel</label>
-            <input type="text" id="email" name="email" autocomplete="off" required>
-        </div>
-        <div class="field input">
-            <label for="password_1">Kata Laluan</label>
-            <input type="password" name="password_1" id="password_1" autocomplete="off" required>
-        </div>
-        <div class="field input">
-            <label for="password_2">Sah Kata Laluan</label>
-            <input type="password" name="password_2" id="password_2" autocomplete="off" required>
-        </div>
+    <div id="navbar">
+      <img src="../img/pjkukm.png" alt="">
+      <a href="/index.php"></a>
     </div>
-    <div>
-            <label for="agree">
-                <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
-                with the
-                <a href="#" title="term of services">term of services</a>
-            </label>
-        </div>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+          <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+            
+              <div class="heading">
+                <h2>Daftar Menjadi Pengguna</h2>
+              </div>
+              <input
+                    type="text"
+                    name="types"
+                    hidden
+                    id="types"
+                    class="input-field"
+                    value="app"
+                  />
+                  
+                <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    name="name"
+                    id="name"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Nama Pengguna</label>
+                </div>
 
-    <div class="field">          
-        <input type="submit" class="btn" name="submit" value="Daftar" required>
-    </div>
-    </form>
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    name="email"
+                    id="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Emel</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="password_1"
+                    id="password_1"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Kata Laluan</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="password_2"
+                    id="password_2"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Sah Kata Laluan</label>
+                </div>
+              </div>
+              <div>
+                    <label for="agree">
+                        <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
+                        with the
+                        <a href="#" title="term of services">term of services</a>
+                    </label>
+                </div>
+
+                <div class="field">          
+                    <input type="submit" class="sign-btn" name="submit" value="Daftar" required>
+                </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img src="../img/register.png" class="image img-1 show" alt="" />
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
 
   </body>
-  </html>
+</html>

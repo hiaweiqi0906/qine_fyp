@@ -200,7 +200,7 @@ $j = 0;
          </div> -->
    
       <div class="more-btn">
-         <a href="#" class="inline-option-btn">view all courses</a>
+         <a href="#" class="inline-option-btn">Lihat Semua Program</a>
       </div>
    
    </section>

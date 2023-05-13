@@ -59,7 +59,7 @@ if(isset($_POST['submit-password'])){
             <input type="text" id="email" name="email" autocomplete="off" required>
             
             <div class="field">
-                <input type="submit" class="btn" name="submit-email" value="Check" required>
+                <input type="submit" class="sign-btn" name="submit-email" value="Check" required>
             </div>
         </div>
         <div class="field input">
@@ -75,4 +75,99 @@ if(isset($_POST['submit-password'])){
         <input type="submit" class="btn" name="submit-password" value="Hantar" required>
     </div>
 </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
+    <link rel="stylesheet" href="../style/stylelogin.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <img src="../img/pjkukm.png" alt="">
+      <a href="/index.php"></a>
+    </div>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+          <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+            
+              <div class="heading">
+                <h2>Lupa Kata Laluan?</h2>
+              </div>
+              <input
+                    type="text"
+                    name="types"
+                    hidden
+                    id="types"
+                    class="input-field"
+                    value="app"
+                  />
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    name="email"
+                    id="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Emel</label>
+                </div>
+                <div class="field">
+                    <input type="submit" class="sign-btn" name="submit-email" value="Check" required>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="password"
+                    id="password"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Kata Laluan</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="confirmpassword"
+                    id="confirmpassword"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Sah Kata Laluan</label>
+                </div>
+
+                <div class="field">          
+                    <input type="submit" class="sign-btn" name="submit-password" value="Hantar" required>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Javascript file -->
+
+    <script src="../js/applogin.js"></script>
+  </body>
 </html>
