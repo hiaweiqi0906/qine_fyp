@@ -170,9 +170,9 @@ if(isset($_POST['submit'])){
             </form>
           </div>
 
-          <div class="carousel">
+          <div class="carousel1">
             <div class="images-wrapper">
-              <img src="../img/register.png" class="image img-1 show" alt="" />
+              <img src="../img/register.png" class="image-register img-1 show" alt="" />
             </div>
             
           </div>

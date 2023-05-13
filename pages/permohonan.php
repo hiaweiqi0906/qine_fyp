@@ -110,6 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
+          include("../components/pengumuman.php");
 
         ?>
 
