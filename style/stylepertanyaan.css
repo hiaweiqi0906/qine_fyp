@@ -1444,7 +1444,7 @@ section{
 	border-radius: 8px;
 	padding: 0.5rem 1rem 1rem 3rem;
 	background: #fff;
-   min-height: 250px;
+   /* min-height: 250px; */
 }
 .promo_card1 h1, .promo_card1 span, .promo_card1 a, button{
    margin-top: 10px;

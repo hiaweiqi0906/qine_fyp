@@ -1,5 +1,9 @@
 <?php
+ include("../php/db.php");
  include('../components/lecturer_protected_route.php');
+
+// $id = $_SESSION["id"];
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +27,7 @@
     <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
-          include("../components/pengumuman.php");
+          // include("../components/pengumuman.php");
 
         ?>
   <div class="side-bar">

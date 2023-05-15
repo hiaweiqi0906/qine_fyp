@@ -130,7 +130,7 @@ $j = 0;
       <div class="box-container">
       <?php
       for($i=0; $i<count($list_of_program_app); $i++, $j++){
-         $current_application_id = $list_of_program_app[$i][0];      
+         $current_application_id = $penilaian_info[$i][0];      
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
@@ -149,7 +149,7 @@ $j = 0;
       }
 
       for($i=0; $i<count($list_of_program_panel_1); $i++, $j++){
-         $current_application_id = $list_of_program_panel_1[$i][0];      
+         $current_application_id = $penilaian_info[$i][0];      
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
@@ -168,7 +168,7 @@ $j = 0;
       }
 
       for($i=0; $i<count($list_of_program_panel_2); $i++, $j++){
-         $current_application_id = $list_of_program_panel_2[$i][0];      
+         $current_application_id = $penilaian_info[$i][0];      
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">

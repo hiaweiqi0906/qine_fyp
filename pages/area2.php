@@ -1,8 +1,7 @@
 
     <div class="main-body">
-        <h3>Area 2 - Assessment Of Student Learning</h3>
-
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <h3 class="collapsible">Area 2 - Assessment Of Student Learning</h3>
+<div class="invi-at-first"><table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -128,4 +127,4 @@
                 <input type="text" id="score_2" name="score_2" autocomplete="off" required value="<?php if(isset($akredasi_penuh_bidang)){echo $akredasi_penuh_bidang[1][0]; }else echo "";?>"
             </thead>
         </table>
-    </div>
+    </div></div>

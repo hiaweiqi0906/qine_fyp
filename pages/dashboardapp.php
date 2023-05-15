@@ -1,7 +1,90 @@
 <?php
 // session_start();
-include('../components/app_protected_route.php');
+include("../php/db.php");
 
+include('../components/app_protected_route.php');
+// include('../functions/search_all_laporan.php');
+
+$username = "";
+$email = "";
+$errors = array();
+$id = $_SESSION["id"];
+
+$list_of_program_app = array();
+$list_of_program_panel_1 = array();
+$list_of_program_panel_2 = array();
+
+$list_of_appprogram_id = array(array(), array(), array());
+
+$report_of_program_app = 0;
+$report_of_program_panel_1 = 0;
+$report_of_program_panel_2 = 0;
+
+$penilaian_info = array();
+
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_PENGERUSI = '$id'")) {
+
+   $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $appprogram_id);
+   
+   while (mysqli_stmt_fetch($stmt)) {
+      array_push($list_of_appprogram_id[0], array($appprogram_id));
+   }
+} else {
+   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+   echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_PANEL_1 = '$id'")) {
+
+   $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $appprogram_id);
+   
+   while (mysqli_stmt_fetch($stmt)) {
+      array_push($list_of_appprogram_id[1], array($appprogram_id));
+   }
+} else {
+   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+   echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_PANEL_2 = '$id'")) {
+
+   $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $appprogram_id);
+   
+   while (mysqli_stmt_fetch($stmt)) {
+      array_push($list_of_appprogram_id[2], array($appprogram_id));
+   }
+} else {
+   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+   echo 'Could not prepare statement!';
+}
+
+$temp_arr = array(0,0,0);
+
+
+for($xxxx=0; $xxxx<3; $xxxx++){
+  for($jjj=0; $jjj<count($list_of_appprogram_id[$xxxx]); $jjj++){
+    $current_app_id = $list_of_appprogram_id[$xxxx][0];
+
+  }
+  if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM `laporan` WHERE `APPPROGRAM_ID` = '$current_app_id[0]' AND `TYPE` = $xxxx")) {
+
+    $stmt->execute();
+    mysqli_stmt_bind_result($stmt, $laporan1);
+    
+    while (mysqli_stmt_fetch($stmt)) {
+       $temp_arr[$xxxx]++;
+    }
+ } else {
+    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+    echo 'Could not prepare statement!';
+ }
+}
+
+$con->close(); 
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +115,7 @@ include('../components/app_protected_route.php');
       <h2>Dashboard</h2>
       <div class="promo_card">
          <h1>Selamat Datang!</h1>
-         <span>Lorem ipsum dolor sit amet.</span>
+         <span><?php echo $temp_arr[0]."/".count($list_of_appprogram_id[0]) . "_" . $temp_arr[1]."/".count($list_of_appprogram_id[1]) . "_" . $temp_arr[2]."/". count($list_of_appprogram_id[2]) . "_" ;?></span>
       </div>
 
       <div class="promo_card1">

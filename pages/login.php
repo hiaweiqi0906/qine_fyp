@@ -97,9 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               header("location: dashboardapp.php");
                             } else if($types==="lecturer"){                              
                               header("location: dashboardlecturer.php");
-                            }
-                            alert("login success");
-                   
+                            }                   
 
                 } else{
                     // email doesn't exist, display a generic error message
