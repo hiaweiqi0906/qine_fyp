@@ -34,6 +34,16 @@ main {
   box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
 }
 
+.box1 {
+  position: relative;
+  width: 50%;
+  max-width: 1020px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 3.3rem;
+  box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
 .inner-box {
   position: absolute;
   width: calc(100% - 4.1rem);
@@ -53,6 +63,22 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   transition: 0.8s ease-in-out;
+}
+
+.forms-wrap1 {
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transition: 0.8s ease-in-out;
+  display: block;
+  margin: 0 auto;
+}
+
+.forms-wrap1 h2{
+  text-align: center;
 }
 
 form {
@@ -220,6 +246,20 @@ main.sign-up-mode .carousel {
   transition: 0.8s ease-in-out;
 }
 
+.carousel1 {
+  position: absolute;
+  height: 100%;
+  width: 55%;
+  left: 45%;
+  top: 0;
+  background-color: #C7E9B0;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  transition: 0.8s ease-in-out;
+}
+
 .images-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -232,6 +272,16 @@ main.sign-up-mode .carousel {
   grid-row: 1/2;
   opacity: 0;
   transition: opacity 0.3s, transform 0.5s;
+}
+
+.image-register {
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  opacity: 1;
+  position: relative;
+  transition: opacity 0.3s, transform 0.5s;
+  height: 137%;
 }
 
 .img-1 {
