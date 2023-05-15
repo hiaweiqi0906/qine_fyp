@@ -118,6 +118,37 @@ $stmt->close();
          <span><?php echo $temp_arr[0]."/".count($list_of_appprogram_id[0]) . "_" . $temp_arr[1]."/".count($list_of_appprogram_id[1]) . "_" . $temp_arr[2]."/". count($list_of_appprogram_id[2]) . "_" ;?></span>
       </div>
 
+      <div class="cards">
+			<div class="card card-3">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah Laporan Selesai</h5>
+						<h1>15</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
+				</div>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
+				</div>
+			</div>
+			<div class="card card-4">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah Laporan Belum Selesai</h5>
+						<h1>2</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
+				</div>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
+				</div>
+			</div>
+		</div>
+
       <div class="promo_card1">
          <h1>Senarai </h1>
       </div>
