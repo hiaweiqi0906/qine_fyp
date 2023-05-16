@@ -30,6 +30,7 @@
 
 html{
    font-size: 62.5%;
+   height: 100%;
    overflow-x: hidden;
 }
 
@@ -48,6 +49,7 @@ html::-webkit-scrollbar-thumb{
 
 body{
    overflow-x: hidden;
+   height: 100%;
    /*overflow-y: scroll;*/
    background-color: var(--light-bg);
    padding-left: 30rem;
@@ -292,6 +294,15 @@ div.sticky {
    padding: 5px;
    color: #5d7851;
    width: 50px;
+ }
+
+ .table th{
+   background-color: #5d7851;
+   color: white;
+ }
+
+ .table td{
+   border: 1px solid #ddd;
  }
 
 .pengumuman{
@@ -1505,8 +1516,9 @@ div.sticky {
 }
 
 .pertanyaan-list{
-	display: flex;
+	display: block;
 	align-items: center;
+   background-color: #fff;
 	justify-content: space-between;
 }
 
@@ -1541,6 +1553,8 @@ footer{
 	text-transform: uppercase;
 	padding-top: 30px;
    width: 100%;
+   position: absolute;
+   bottom: 0px;
 }
 
 
