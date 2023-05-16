@@ -1,8 +1,7 @@
 
     <div class="main-body">
-        <h3>Area 7 - Programme Monitoring, Review and Continual Quality Improvement</h3>
-
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <h3 class="collapsible">Area 7 - Programme Monitoring, Review and Continual Quality Improvement</h3>
+<div class="invi-at-first"><table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -96,4 +95,5 @@
                 <input type="text" id="score_7" name="score_7" autocomplete="off" required value="<?php if(isset($akredasi_penuh_bidang)){echo $akredasi_penuh_bidang[6][0]; }else echo "";?>"
             </thead>
         </table>
+    </div>
     </div>

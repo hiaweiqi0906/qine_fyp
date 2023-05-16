@@ -97,7 +97,14 @@ $stmt->close();
                      <th>Ringkasan</th>
                      <th>Status</th>
                      <th>Tindakan</th>
-                  </tr>
+                  </tr><tbody>
+                  <td></td>
+                  <td></td>
+                  <td><input type="text" name="perkara" id="perkara" style="border: 1px black solid; width: 100px"></td>
+                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>   
+                  <td></td>
+                  <td></td>
+               </tbody>
                <?php
                $arrlength = count($list_of_pertanyaan);
                
@@ -110,14 +117,7 @@ $stmt->close();
                 echo '</tbody>';
                }
                ?>
-               <tbody>
-                  <td></td>
-                  <td></td>
-                  <td><input type="text" name="perkara" id="perkara" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>   
-                  <td></td>
-                  <td></td>
-               </tbody>
+               
 
                <tbody>
                   <td></td>

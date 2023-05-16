@@ -1,8 +1,7 @@
 
     <div class="main-body">
-        <h3>Area 6 - Programme Management</h3>
-
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <h3 class="collapsible">Area 6 - Programme Management</h3>
+        <div class="invi-at-first"><table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -176,4 +175,4 @@
                 <input type="text" id="score_6" name="score_6" autocomplete="off" required value="<?php if(isset($akredasi_penuh_bidang)){echo $akredasi_penuh_bidang[5][0]; }else echo "";?>"
             </thead>
         </table>
-    </div>
+    </div></div>

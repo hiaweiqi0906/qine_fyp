@@ -97,9 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                               header("location: dashboardapp.php");
                             } else if($types==="lecturer"){                              
                               header("location: dashboardlecturer.php");
-                            }
-                            alert("login success");
-                   
+                            }                   
 
                 } else{
                     // email doesn't exist, display a generic error message
@@ -205,7 +203,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     hidden
                     id="types"
                     class="input-field"
-   value="lecturer"
+                    value="lecturer"
                   />
               <div class="actual-form">
                 <div class="input-wrap">
@@ -235,7 +233,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
 
                 <p class="text" align="right">
-                    <a href="/pages/forgotpassword.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
+                    <a href="./forgotpassword_page_1.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
                 </p>
 
                 <input type="submit" value="Log Masuk" class="sign-btn" /> 
