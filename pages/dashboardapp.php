@@ -115,7 +115,9 @@ $stmt->close();
       <h2>Dashboard</h2>
       <div class="promo_card">
          <h1>Selamat Datang!</h1>
-         <span><?php echo $temp_arr[0]."/".count($list_of_appprogram_id[0]) . "_" . $temp_arr[1]."/".count($list_of_appprogram_id[1]) . "_" . $temp_arr[2]."/". count($list_of_appprogram_id[2]) . "_" ;?></span>
+         <p>Report yang dibahagi: <?php echo $temp_arr[0] + $temp_arr[1] + $temp_arr[2];?></p>
+         <p>Report yang telah diselesaikan: <?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]);?></p>
+         <p>Report yang belum diselesaikan: <?php echo $temp_arr[0] + $temp_arr[1] + $temp_arr[2] - count($list_of_appprogram_id[0]) - count($list_of_appprogram_id[1]) - count($list_of_appprogram_id[2]);?></p>
       </div>
 
       <div class="promo_card1">

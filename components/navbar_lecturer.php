@@ -8,7 +8,7 @@
 
       <div class="icons">
        <div id="noti-btn" class="fas fa-bell"></div>
-         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="menu-btn" class="fas fa-bars" onclick="showOrHidePengumuman()"></div>
          <a href="../components/logout.php"><div id="user-btn" class="fa fa-sign-out"></div></a>
       </div>
 

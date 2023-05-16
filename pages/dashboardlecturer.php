@@ -24,10 +24,11 @@
 </head>
 <body>
 
+<h1 onclick="showOrHidePengumuman()">open</h1>
     <?php
           include("../components/navbar_lecturer.php");
           include("../components/sidebar_lecturer.php");
-          // include("../components/pengumuman.php");
+          include("../components/pengumuman.php");
 
         ?>
 

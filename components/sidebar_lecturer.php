@@ -12,7 +12,7 @@
         </div>
 
         <nav class="navbar">
-           <a href="./dashboardlecturer.php" class="active"><span style="font-weight:bolder;">Dashboarhhd</span></a>
+           <a href="./dashboardlecturer.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
            <a href="./polisi.php"><span style="font-weight:bolder;">Polisi</span></a>
            <a href="./kriteria.php"><span style="font-weight:bolder;">Kriteria</span></a>
            <a href="./permohonan.php"><span style="font-weight:bolder;">Permohonan</span></a>

@@ -267,6 +267,47 @@ section{
    height: 100vh;
    border-right: var(--border);
    z-index: 1200;
+   display: none;
+   padding: 20px;
+}
+
+.closebtn{
+   position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #5d7851;
+}
+
+div.sticky {
+   text-align: right;
+   position: -webkit-sticky;
+   position: sticky;
+   top: 50%;
+   bottom: 50%;
+  font-size: 36px;
+  left: 100%;
+   right: 0px;
+   padding: 5px;
+   color: #5d7851;
+   width: 50px;
+ }
+
+.pengumuman{
+   margin: 10px;
+   border: 1px solid lightgrey;
+   padding: 10px;
+   border-radius: 5px;
+}
+
+.pengumuman-text{
+   color: grey;
+}
+
+.pengumuman-content{
+   color: black;
+   font-size: 1.5rem;
 }
 
 .side-bar #close-btn{
