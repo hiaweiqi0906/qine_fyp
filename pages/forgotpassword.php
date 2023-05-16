@@ -46,39 +46,6 @@ if(isset($_POST['submit-password'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lupa Kata Laluan</title>
-</head>
-<body>
-    <div>
-        <div class="field input">
-            <label for="email">Emel</label>
-            <input type="text" id="email" name="email" autocomplete="off" required>
-            
-            <div class="field">
-                <input type="submit" class="sign-btn" name="submit-email" value="Check" required>
-            </div>
-        </div>
-        <div class="field input">
-            <label for="password">Kata Laluan</label>
-            <input type="password" name="password" id="password" autocomplete="off" required>
-        </div>
-        <div class="field input">
-            <label for="confirmpassword">Sah Kata Laluan</label>
-            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off" required>
-        </div>
-    </div>
-    <div class="field">          
-        <input type="submit" class="btn" name="submit-password" value="Hantar" required>
-    </div>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -162,6 +129,13 @@ if(isset($_POST['submit-password'])){
               </div>
             </form>
           </div>
+
+          <div class="carousel1">
+            <div class="images-wrapper">
+              <img src="../img/forgotpassword.png" class="image-register img-1 show" alt="" />
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
