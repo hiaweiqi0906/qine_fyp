@@ -19,7 +19,7 @@
         <?php
           include("../components/navbar_index.php");
         ?>
-        
+
         <div class="showcase-area">
           <div class="container">
             <div class="left">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="right">
-                <img src="../img/home.png" alt="">
+                <img src="../img/home.png" alt="" style="height: 100%; object-fit: cover;">
             </div>
           </div>
         </div>

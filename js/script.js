@@ -18,14 +18,14 @@ if(darkMode === 'enabled'){
    enableDarkMode();
 }
 
-toggleBtn.onclick = (e) =>{
-   darkMode = localStorage.getItem('dark-mode');
-   if(darkMode === 'disabled'){
-      enableDarkMode();
-   }else{
-      disableDarkMode();
-   }
-}
+// toggleBtn.onclick = (e) =>{
+//    darkMode = localStorage.getItem('dark-mode');
+//    if(darkMode === 'disabled'){
+//       enableDarkMode();
+//    }else{
+//       disableDarkMode();
+//    }
+// }
 
 let profile = document.querySelector('.header .flex .profile');
 
@@ -36,10 +36,7 @@ document.querySelector('#user-btn').onclick = () =>{
 
 let search = document.querySelector('.header .flex .search-form');
 
-document.querySelector('#search-btn').onclick = () =>{
-   search.classList.toggle('active');
-   profile.classList.remove('active');
-}
+
 
 let sideBar = document.querySelector('.side-bar');
 
@@ -70,10 +67,11 @@ function SlideShow() {
   var i;
   var slides = document.getElementsByClassName("Containers");
   for (i = 0; i < slides.length; i++) {
+   console.log('h1');
     slides[i].style.display = "none";
   }
   slidePosition++;
   if (slidePosition > slides.length) {slidePosition = 1}
   slides[slidePosition-1].style.display = "block";
   setTimeout(SlideShow, 2000); // Change image every 2 seconds
-} 
+}

@@ -40,26 +40,20 @@
       </div>
 
       <div class="slideshow-container fade">
-        
+
       <!-- Full images with numbers and message Info -->
       <div class="Containers">
-        <div class="MessageInfo">1 / 3</div>
-        <img src="../img/app1.jpeg" style="width:100%">
-        <div class="Info">First caption</div>
+        <img src="../img/app1.jpeg" style="width:100%; height: 400px; object-fit: cover;">
       </div>
-  
+
       <div class="Containers">
-        <div class="MessageInfo">2 / 3</div>
-        <img src="../img/app2.jpeg" style="width:100%">
-        <div class="Info">Second Caption</div>
+        <img src="../img/app2.jpeg" style="width:100%; height: 400px; object-fit: cover;">
       </div>
-  
+
       <div class="Containers">
-        <div class="MessageInfo">3 / 3</div>
-        <img src="../img/app3.jpg" style="width:100%">
-        <div class="Info">Third Caption</div>
+        <img src="../img/app3.jpg" style="width:100%; height: 400px; object-fit: cover;">
       </div>
-  
+
       <!-- Back and forward buttons -->
       <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
       <a class="forward" onclick="plusSlides(1)">&#10095;</a>
@@ -71,16 +65,9 @@
     <span class="dots" onclick="currentSlide(1)"></span>
     <span class="dots" onclick="currentSlide(2)"></span>
     <span class="dots" onclick="currentSlide(3)"></span>
-  </div> 
+  </div>
 
-      <div class="promo_card1">
-         <h1>Senarai </h1>
-         <img src="../img/sademoji.png" class="sademoji">
-      </div>
 
-      <div class="field">
-         <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.php';" required>
-     </div>
      </div>
 
     <footer>
