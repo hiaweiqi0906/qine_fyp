@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
    $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
    $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
    if (
-      $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES 
+      $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES
     ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'lecturer', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
       echo 'Could not prepare statement!';
    }
-   
+
 
 }
 
@@ -39,11 +39,11 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
-   
+
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_pertanyaan, array($pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan));
-      
+
    }
    // echo $stmt->field_count;
 } else {
@@ -82,11 +82,11 @@ $stmt->close();
           include("../components/sidebar_lecturer.php");
           include("../components/pengumuman.php");
         ?>
-   
+
    <div class="main-body">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+         <form style="padding-bottom: 30px;"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
 
             <table class="table" style="width: 100%; ">
                   <tr>
@@ -100,13 +100,13 @@ $stmt->close();
                   <td>1</td>
                   <td><?php echo $today_date;?></td>
                   <td><input type="text" name="perkara" id="perkara" style="width: 100%"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="width: 100%"></td>   
+                  <td><input type="text" name="ringkasan" id="ringkasan" style="width: 100%"></td>
                   <td>-</td>
                   <td>-</td>
 </tr>
                <?php
                $arrlength = count($list_of_pertanyaan);
-               
+
                for($x = 0; $x < $arrlength; $x++) {
                   echo '<tr>';
                   echo '<td>',$x+1,'</td>';
@@ -116,7 +116,7 @@ $stmt->close();
                 echo '</tr>';
                }
                ?>
-               
+
 
                <tr>
                   <td></td>
@@ -125,9 +125,9 @@ $stmt->close();
                   <td></td>
                   <td></td>
                   <td></td>
-            </tr>             
+            </tr>
                          </table>
-<input type="submit" name="submit" id="submit" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
+<input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
 
          </form>
       </div>
