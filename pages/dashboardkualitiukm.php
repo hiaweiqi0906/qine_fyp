@@ -23,6 +23,8 @@ include('../components/kualitiukm_protected_route.php');
          <?php
           include("../components/navbar_kualitiukm.php");
           include("../components/sidebar_kualitiukm.php");
+          include("../components/pengumuman.php");
+
         ?>
 
      <div class="main-body">
@@ -43,7 +45,7 @@ include('../components/kualitiukm_protected_route.php');
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
 				<div class="card--stats">
-					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
 					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
 					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
@@ -57,7 +59,7 @@ include('../components/kualitiukm_protected_route.php');
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
 				<div class="card--stats">
-					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
 					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
 					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
@@ -74,13 +76,13 @@ include('../components/kualitiukm_protected_route.php');
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>

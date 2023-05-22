@@ -254,7 +254,7 @@ if (isset($_POST['submit'])) {
   $typel = $_GET["type"];
 
   if (
-    $stmt = $con->prepare("INSERT INTO laporan (`STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`) VALUES 
+    $stmt = $con->prepare("INSERT INTO laporan (`STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`) VALUES
    ('PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel')")
   ) {
     $stmt->execute();
@@ -374,6 +374,8 @@ if (isset($_POST['submit'])) {
   <?php
   include("../components/navbar_app.php");
   include("../components/sidebar_app.php");
+  include("../components/pengumuman.php");
+
   ?>
 
 
@@ -404,7 +406,7 @@ if (isset($_POST['submit'])) {
                     <span>Report 1</span>
                 </div>
               </div>
-              
+
               <p>Jawatan: <span>", $typee, "</span></p>
               <p>Status: <span>", $laporan_all_people[$i][1], "</span></p>
               <a href=\"./other_people_laporan.php?id=$app_program_id&type=$typel\" class=\"inline-btn\">Lihat</a>

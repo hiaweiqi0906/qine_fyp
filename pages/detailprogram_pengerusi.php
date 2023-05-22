@@ -191,53 +191,53 @@ if (isset($_POST['submit'])) {
                       $score_1_2_3. ";" . $score_1_2_4 . ";" . $score_1_2_5 . ";" .
                       $score_1_2_6 . ";" . $score_1_3 . ";" . $score_1_3_1 . ";" .
                       $score_1_3_2 . ";" . $score_1_3_3 . ";" . $score_1_3_4 . ";" .
-                      $score_1_3_5 . ";" . $score_1_3_6; 
+                      $score_1_3_5 . ";" . $score_1_3_6;
   $akredasi_penuh = $akredasi_penuh . "|";
-  $akredasi_penuh = $akredasi_penuh . $score_2 . ";" . $score_2_1 . ";" . $score_2_1_1 . ";" . 
-                      $score_2_1_2 . ";" . $score_2_2 . ";" . $score_2_2_1 . ";" . 
-                      $score_2_2_2 . ";" . $score_2_2_3 . ";" . $score_2_2_4 . ";" . 
-                      $score_2_3 . ";" . $score_2_3_1 . ";" . $score_2_3_2 . ";" . 
+  $akredasi_penuh = $akredasi_penuh . $score_2 . ";" . $score_2_1 . ";" . $score_2_1_1 . ";" .
+                      $score_2_1_2 . ";" . $score_2_2 . ";" . $score_2_2_1 . ";" .
+                      $score_2_2_2 . ";" . $score_2_2_3 . ";" . $score_2_2_4 . ";" .
+                      $score_2_3 . ";" . $score_2_3_1 . ";" . $score_2_3_2 . ";" .
                       $score_2_3_3 . ";" . $score_2_3_4 . ";" . $score_2_3_5;
   $akredasi_penuh = $akredasi_penuh . "|";
 
-  $akredasi_penuh = $akredasi_penuh . $score_3 . ";" . $score_3_1 . ";" . $score_3_1_1 . ";" . 
-                      $score_3_1_2 . ";" . $score_3_1_3 . ";" . $score_3_1_4 . ";" . 
-                      $score_3_1_5 . ";" . $score_3_2 . ";" . $score_3_2_1 . ";" . 
-                      $score_3_2_2 . ";" . $score_3_3 . ";" . $score_3_3_1 . ";" . 
-                      $score_3_3_2 . ";" . $score_3_3_3 . ";" . $score_3_3_4 . ";" . 
-                      $score_3_3_5 . ";" . $score_3_3_6 . ";" . $score_3_3_7 . ";" . 
-                      $score_3_3_8 . ";" . $score_3_4 . ";" . $score_3_4_1 . ";" . 
-                      $score_3_4_2 . ";" . $score_3_4_3 . ";" . $score_3_4_4 . ";" . 
+  $akredasi_penuh = $akredasi_penuh . $score_3 . ";" . $score_3_1 . ";" . $score_3_1_1 . ";" .
+                      $score_3_1_2 . ";" . $score_3_1_3 . ";" . $score_3_1_4 . ";" .
+                      $score_3_1_5 . ";" . $score_3_2 . ";" . $score_3_2_1 . ";" .
+                      $score_3_2_2 . ";" . $score_3_3 . ";" . $score_3_3_1 . ";" .
+                      $score_3_3_2 . ";" . $score_3_3_3 . ";" . $score_3_3_4 . ";" .
+                      $score_3_3_5 . ";" . $score_3_3_6 . ";" . $score_3_3_7 . ";" .
+                      $score_3_3_8 . ";" . $score_3_4 . ";" . $score_3_4_1 . ";" .
+                      $score_3_4_2 . ";" . $score_3_4_3 . ";" . $score_3_4_4 . ";" .
                       $score_3_5 . ";" . $score_3_5_1;
   $akredasi_penuh = $akredasi_penuh . "|";
-  $akredasi_penuh = $akredasi_penuh . $score_4 . ";" . $score_4_1 . ";" . $score_4_1_1 . ";" . 
-                      $score_4_1_2 . ";" . $score_4_1_3 . ";" . $score_4_1_4 . ";" . 
-                      $score_4_1_5 . ";" . $score_4_1_6 . ";" . $score_4_1_7 . ";" . 
-                      $score_4_1_8 . ";" . $score_4_2 . ";" . $score_4_2_1 . ";" . 
-                      $score_4_2_2 . ";" . $score_4_2_3 . ";" . $score_4_2_4 . ";" . 
+  $akredasi_penuh = $akredasi_penuh . $score_4 . ";" . $score_4_1 . ";" . $score_4_1_1 . ";" .
+                      $score_4_1_2 . ";" . $score_4_1_3 . ";" . $score_4_1_4 . ";" .
+                      $score_4_1_5 . ";" . $score_4_1_6 . ";" . $score_4_1_7 . ";" .
+                      $score_4_1_8 . ";" . $score_4_2 . ";" . $score_4_2_1 . ";" .
+                      $score_4_2_2 . ";" . $score_4_2_3 . ";" . $score_4_2_4 . ";" .
                       $score_4_2_5 . ";" . $score_4_2_6 . ";" . $score_4_2_7;
 
   $akredasi_penuh = $akredasi_penuh . "|";
-  $akredasi_penuh = $akredasi_penuh . $score_5 . ";" . $score_5_1 . ";" . $score_5_1_1 . ";" . 
-                      $score_5_1_2 . ";" . $score_5_1_3 . ";" . $score_5_1_4 . ";" . 
-                      $score_5_2 . ";" . $score_5_2_1 . ";" . $score_5_2_2 . ";" . 
-                      $score_5_2_3 . ";" . $score_5_3 . ";" . $score_5_3_1 . ";" . 
+  $akredasi_penuh = $akredasi_penuh . $score_5 . ";" . $score_5_1 . ";" . $score_5_1_1 . ";" .
+                      $score_5_1_2 . ";" . $score_5_1_3 . ";" . $score_5_1_4 . ";" .
+                      $score_5_2 . ";" . $score_5_2_1 . ";" . $score_5_2_2 . ";" .
+                      $score_5_2_3 . ";" . $score_5_3 . ";" . $score_5_3_1 . ";" .
                       $score_5_3_2 . ";" . $score_5_3_3;
 
   $akredasi_penuh = $akredasi_penuh . "|";
-  $akredasi_penuh = $akredasi_penuh . $score_6 . ";" . $score_6_1 . ";" . $score_6_1_1 . ";" . 
-                      $score_6_1_2 . ";" . $score_6_1_3 . ";" . $score_6_1_4 . ";" . 
-                      $score_6_1_5 . ";" . $score_6_1_6 . ";" . $score_6_2 . ";" . 
-                      $score_6_2_1 . ";" . $score_6_2_2 . ";" . $score_6_2_3 . ";" . 
-                      $score_6_3 . ";" . $score_6_3_1 . ";" . $score_6_3_2 . ";" . 
-                      $score_6_3_3 . ";" . $score_6_4 . ";" . $score_6_4_1 . ";" . 
+  $akredasi_penuh = $akredasi_penuh . $score_6 . ";" . $score_6_1 . ";" . $score_6_1_1 . ";" .
+                      $score_6_1_2 . ";" . $score_6_1_3 . ";" . $score_6_1_4 . ";" .
+                      $score_6_1_5 . ";" . $score_6_1_6 . ";" . $score_6_2 . ";" .
+                      $score_6_2_1 . ";" . $score_6_2_2 . ";" . $score_6_2_3 . ";" .
+                      $score_6_3 . ";" . $score_6_3_1 . ";" . $score_6_3_2 . ";" .
+                      $score_6_3_3 . ";" . $score_6_4 . ";" . $score_6_4_1 . ";" .
                       $score_6_4_2 . ";" . $score_6_4_3 . ";" . $score_6_4_4;
-                      
+
   $akredasi_penuh = $akredasi_penuh . "|";
-  $akredasi_penuh = $akredasi_penuh . $score_7 . ";" . $score_7_1 . ";" . $score_7_1_1 . ";" . 
-                      $score_7_1_2 . ";" . $score_7_1_3 . ";" . $score_7_1_4 . ";" . 
-                      $score_7_1_5 . ";" . $score_7_1_6 . ";" . $score_7_1_7 . ";" . $score_7_1_8 . ";" . 
-                      $score_7_1_9; 
+  $akredasi_penuh = $akredasi_penuh . $score_7 . ";" . $score_7_1 . ";" . $score_7_1_1 . ";" .
+                      $score_7_1_2 . ";" . $score_7_1_3 . ";" . $score_7_1_4 . ";" .
+                      $score_7_1_5 . ";" . $score_7_1_6 . ";" . $score_7_1_7 . ";" . $score_7_1_8 . ";" .
+                      $score_7_1_9;
 
   date_default_timezone_set("Asia/Kuala_Lumpur");
   $today_date = date("Y-m-d");
@@ -245,7 +245,7 @@ if (isset($_POST['submit'])) {
   $typel = $_GET["type"];
 
   if (
-     $stmt = $con->prepare("INSERT INTO laporan  VALUES 
+     $stmt = $con->prepare("INSERT INTO laporan  VALUES
    ('101', 'PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel')")
   ) {
      // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
@@ -257,7 +257,7 @@ if (isset($_POST['submit'])) {
      // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
      echo 'Could not prepare statement!';
   }
-  
+
 
 }
 
@@ -299,17 +299,19 @@ for($jj=0; $jj<7; $jj++){
    <?php
    include("../components/navbar_app.php");
    include("../components/sidebar_app.php");
+   include("../components/pengumuman.php");
+
  ?>
 
-     
+
      <div class="main-body">
       <h2>Penilaian Detail Program</h2>
       <div class="promo_card">
          <h1>Tajuk Program</h1>
          <span>Detail</span>
          <button>Muat Turun</button>
-        
-         
+
+
       </div>
 
       <?php
@@ -317,7 +319,7 @@ for($jj=0; $jj<7; $jj++){
         $akredasi_penuh = $laporan_all_people[1][6];
       ?>
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form"> 
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form">
         <div class="promo_card1">
           <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
           <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
@@ -336,7 +338,7 @@ for($jj=0; $jj<7; $jj++){
           <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[0][3];?></textarea>
           <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
                 <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
@@ -355,7 +357,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[1][3];?></textarea>
                 <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan  </h1>
                 <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
@@ -374,7 +376,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[2][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 4: Kakitangan Akademik</h1>
                 <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
@@ -393,7 +395,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[3][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 5: Sumber Pendidikan</h1>
                 <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
@@ -412,7 +414,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[4][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 6: Pengurusan Program</h1>
                 <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
@@ -431,7 +433,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[5][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
                 <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
@@ -462,7 +464,7 @@ for($jj=0; $jj<7; $jj++){
                   include('./area7.php');
                 ?>
               </div>
-        <div class="field">          
+        <div class="field">
           <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
         </div>
       </form>
@@ -472,7 +474,7 @@ for($jj=0; $jj<7; $jj++){
         $akredasi_penuh = $laporan_all_people[2][6];
       ?>
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form"> 
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=$typel"; ?>" method="post" autocomplete="off" class="sign-in-form">
         <div class="promo_card1">
           <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
           <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
@@ -491,7 +493,7 @@ for($jj=0; $jj<7; $jj++){
           <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[0][3];?></textarea>
           <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
                 <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
@@ -510,7 +512,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[1][3];?></textarea>
                 <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan  </h1>
                 <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
@@ -529,7 +531,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[2][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 4: Kakitangan Akademik</h1>
                 <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
@@ -548,7 +550,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[3][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 5: Sumber Pendidikan</h1>
                 <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
@@ -567,7 +569,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[4][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 6: Pengurusan Program</h1>
                 <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
@@ -586,7 +588,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[5][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
                 <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
@@ -617,12 +619,12 @@ for($jj=0; $jj<7; $jj++){
                   include('./area7.php');
                 ?>
               </div>
-        <div class="field">          
+        <div class="field">
           <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
         </div>
       </form>
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=0"; ?>" method="post" autocomplete="off" class="sign-in-form"> 
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]),"?id=$app_program_id&type=0"; ?>" method="post" autocomplete="off" class="sign-in-form">
         <div class="promo_card1">
           <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
           <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
@@ -641,7 +643,7 @@ for($jj=0; $jj<7; $jj++){
           <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[0][3];?></textarea>
           <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
                 <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
@@ -660,7 +662,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[1][3];?></textarea>
                 <br>
         </div>
-  
+
         <div class="promo_card1">
                 <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan  </h1>
                 <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
@@ -679,7 +681,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[2][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 4: Kakitangan Akademik</h1>
                 <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
@@ -698,7 +700,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[3][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 5: Sumber Pendidikan</h1>
                 <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
@@ -717,7 +719,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[4][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 6: Pengurusan Program</h1>
                 <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
@@ -736,7 +738,7 @@ for($jj=0; $jj<7; $jj++){
                 <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"><?php if(! isset($lampiran_1_bidang) )echo ""; else echo $lampiran_1_bidang[5][3];?></textarea>
                 <br>
         </div>
-        
+
         <div class="promo_card1">
                 <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
                 <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
@@ -767,7 +769,7 @@ for($jj=0; $jj<7; $jj++){
                   include('./area7.php');
                 ?>
               </div>
-        <div class="field">          
+        <div class="field">
           <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
         </div>
       </form>
@@ -777,13 +779,13 @@ for($jj=0; $jj<7; $jj++){
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>
@@ -802,7 +804,7 @@ for($jj=0; $jj<7; $jj++){
             content.style.maxHeight = null;
           } else {
             content.style.maxHeight = content.scrollHeight . "px";
-          } 
+          }
         });
       }
     </script>

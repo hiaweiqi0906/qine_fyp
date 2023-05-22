@@ -26,7 +26,7 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $appprogram_id);
-   
+
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_appprogram_id[0], array($appprogram_id));
    }
@@ -39,20 +39,21 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $appprogram_id);
-   
+
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_appprogram_id[1], array($appprogram_id));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
    echo 'Could not prepare statement!';
+
 }
 
 if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_PANEL_2 = '$id'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $appprogram_id);
-   
+
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_appprogram_id[2], array($appprogram_id));
    }
@@ -60,30 +61,31 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
    echo 'Could not prepare statement!';
 }
+echo count($list_of_appprogram_id[0])."_".count($list_of_appprogram_id[1])."_".count($list_of_appprogram_id[2])."_";
 
 $temp_arr = array(0,0,0);
-
+$current_app_id = array();
 
 for($xxxx=0; $xxxx<3; $xxxx++){
   for($jjj=0; $jjj<count($list_of_appprogram_id[$xxxx]); $jjj++){
     $current_app_id = $list_of_appprogram_id[$xxxx][0];
 
-  }
+
   if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM `laporan` WHERE `APPPROGRAM_ID` = '$current_app_id[0]' AND `TYPE` = $xxxx")) {
 
     $stmt->execute();
     mysqli_stmt_bind_result($stmt, $laporan1);
-    
+
     while (mysqli_stmt_fetch($stmt)) {
        $temp_arr[$xxxx]++;
     }
  } else {
     // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
     echo 'Could not prepare statement!';
- }
+ }  }
 }
 
-$con->close(); 
+$con->close();
 $stmt->close();
 ?>
 
@@ -108,9 +110,11 @@ $stmt->close();
 <?php
           include("../components/navbar_app.php");
           include("../components/sidebar_app.php");
+          include("../components/pengumuman.php");
+
         ?>
 
-     
+
      <div class="main-body">
       <h2>Dashboard</h2>
       <div class="cards">
@@ -118,12 +122,12 @@ $stmt->close();
 				<div class="card--data">
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Laporan Diterima</h5>
-						<h1><?php echo $temp_arr[0] + $temp_arr[1] + $temp_arr[2];?></h1>
+						<h1><?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]);?></h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
 				<div class="card--stats">
-					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
 					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
 					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
@@ -132,12 +136,12 @@ $stmt->close();
 				<div class="card--data">
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Laporan Selesai</h5>
-						<h1><?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]);?></h1>
+						<h1><?php echo $temp_arr[0] + $temp_arr[1] + $temp_arr[2];?></h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
 				<div class="card--stats">
-					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
 					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
 					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
@@ -146,12 +150,12 @@ $stmt->close();
 				<div class="card--data">
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Laporan Belum Selesai</h5>
-						<h1><?php echo $temp_arr[0] + $temp_arr[1] + $temp_arr[2] - count($list_of_appprogram_id[0]) - count($list_of_appprogram_id[1]) - count($list_of_appprogram_id[2]);?></h1>
+						<h1><?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]) - $temp_arr[0] + $temp_arr[1] + $temp_arr[2];?></h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
 				<div class="card--stats">
-					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
 					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
 					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
 				</div>
@@ -168,13 +172,13 @@ $stmt->close();
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>
