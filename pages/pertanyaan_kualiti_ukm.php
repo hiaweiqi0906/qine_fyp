@@ -9,6 +9,8 @@ $id = $_SESSION["id"];
 $errors = array();
 
 $list_of_pertanyaan = array();
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$today_date = date("Y-m-d");
 
 // $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,8 +18,6 @@ $list_of_pertanyaan = array();
 if (isset($_POST['submit'])) {
    $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
    $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
-   date_default_timezone_set("Asia/Kuala_Lumpur");
-   $today_date = date("Y-m-d");
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES 
     ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'lecturer', '$id')")

@@ -26,18 +26,17 @@ include('../components/kualitiukm_protected_route.php');
         ?>
 
      <div class="main-body">
-      <h2>Dashboard</h2>
-      <div class="promo_card">
-         <h1>Selamat Datang!</h1>
-         <span>Lorem ipsum dolor sit amet.</span>
-         <button>Learn More</button>
-      </div>
+	 <img src="../img/Selamat Datang.png" class="promo_card">
+	 
+	 <div class="title-size">
+		<h2>Dashboard</h2><br>
+	</div>
 
       <div class="cards">
 			<div class="card card-3">
 				<div class="card--data">
 					<div class="card--content">
-						<h5 class="card--title">Jumlah Laporan Selesai</h5>
+						<h5 class="card--title">Jumlah Program Diagihkan</h5>
 						<h1>15</h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
@@ -51,7 +50,21 @@ include('../components/kualitiukm_protected_route.php');
 			<div class="card card-4">
 				<div class="card--data">
 					<div class="card--content">
-						<h5 class="card--title">Jumlah Laporan Belum Selesai</h5>
+						<h5 class="card--title">Jumlah Program Belum Diagihkan</h5>
+						<h1>2</h1>
+					</div>
+					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
+				</div>
+				<div class="card--stats">
+					<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span> 
+					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
+					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
+				</div>
+			</div>
+			<div class="card card-4">
+				<div class="card--data">
+					<div class="card--content">
+						<h5 class="card--title">Jumlah Laporan Belum Diterima</h5>
 						<h1>2</h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->

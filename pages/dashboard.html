@@ -18,30 +18,21 @@
 
     <header class="header">
    
-        <section class="flex">
-     
-           <a href="#" class="logo">Educa.</a>
-     
-           <div class="icons">
-            <div id="noti-btn" class="fas fa-bell"></div>
-              <div id="menu-btn" class="fas fa-bars"></div>
-              <div id="search-btn" class="fas fa-search"></div>
-              <a href="../components/logout.php"><div id="user-btn" class="fas fa-user"></div></a>
-           </div>
-     
-           <div class="profile">
-           <img src="../img/lehqine.jpg" class="image" alt="">
-              <h3 class="name">Wong Leh Qine</h3>
-              <p class="role">Admin</p>
-              <a href="#" class="btn">Lihat Profil</a>
-              <div class="flex-btn">
-                 <a href="#" class="option-btn">Log Keluar</a>
-              </div>
-           </div>
-     
-        </section>
-     
-     </header>
+		<section class="flex">
+	 
+		<div class="logo" style="display: flex;align-items: center;cursor: pointer;">
+				   <img src="../img/pjkukm.png" alt="Logo" style="width: 450px;margin-right: 0.6rem;margin-top: -0.6rem;"/>
+				 </div>
+	 
+				 <div class="icons">
+					<div id="noti-btn" class="fas fa-bell"></div>
+					<div id="menu-btn" class="fas fa-bars" onclick="showOrHidePengumuman()"></div>
+					<a href="../components/logout.php"><div id="user-btn" class="fa fa-sign-out"></div></a>
+				 </div>
+	 
+		</section>
+	 
+	 </header>
 
      <div class="side-bar">
 
@@ -53,22 +44,19 @@
            <img src="../img/lehqine.jpg" class="image" alt="">
            <h3 class="name">Wong Leh Qine</h3>
            <p class="role">Admin</p>
-           <a href="#" class="btn">Lihat Profil</a>
         </div>
      
         <nav class="navbar">
-            <a href="./dashboard.html" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+            <a href="./dashboard.html" class="active"><span>Dashboard</span></a>
         </nav>
      
      </div>
 
      <div class="main-body">
-      <h2>Dashboard</h2>
-      <div class="promo_card">
-         <h1>Selamat Datang!</h1>
-         <span>Lorem ipsum dolor sit amet.</span>
-         <button>Learn More</button>
-      </div>
+		<img src="../img/Selamat Datang.png" class="promo_card">
+		<div class="title-size">
+			<h2>Dashboard</h2><br>
+		</div>
 
       <div class="overview">
 		<div class="title">
