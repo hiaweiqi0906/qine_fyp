@@ -12,16 +12,6 @@
          <a href="../components/logout.php"><div id="user-btn" class="fa fa-sign-out"></div></a>
       </div>
 
-      <div class="profile">
-         <img src="../img/lehqine.jpg" class="image" alt="">
-         <h3 class="name">Wong Leh Qine</h3>
-         <p class="role">Pensyarah</p>
-         <a href="#" class="btn">Lihat Profil</a>
-         <div class="flex-btn">
-            <a href="#" class="option-btn">Log Keluar</a>
-         </div>
-      </div>
-
    </section>
 
 </header>

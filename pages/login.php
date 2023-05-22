@@ -185,6 +185,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <input type="submit" name="submit" value="Masuk" class="sign-btn" />
 
+                <p class="text">
+                  <a href="./login_kualiti_ukm.php">Log Masuk Pusat <br> Jaminan Kualiti <br> (Kualiti-UKM)</a>
+                </p>
+
                 <p class="text" align="right">
                   <a href="./forgotpassword_page_1.php">Lupa Kata Laluan?</a>
                 </p>
@@ -197,7 +201,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <h2>Log Masuk</h2>
                 <a href="#" class="toggle">Kembali ke Sistem Pengurusan APP</a>
               </div>
-<input
+              <input
                     type="text"
                     name="types"
                     hidden

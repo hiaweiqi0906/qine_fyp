@@ -9,6 +9,8 @@ $errors = array();
 $id = $_SESSION["id"];
 
 $list_of_pertanyaan = array();
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$today_date = date("Y-m-d");
 
 // $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,8 +18,6 @@ $list_of_pertanyaan = array();
 if (isset($_POST['submit'])) {
    $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
    $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
-   date_default_timezone_set("Asia/Kuala_Lumpur");
-   $today_date = date("Y-m-d");
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES 
     ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'app', '$id')")
@@ -90,8 +90,7 @@ $stmt->close();
          </div>
          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
 
-         <table>
-               <thead>
+         <table class="table" style="width: 100%; ">
                   <tr>
                      <th>#</th>
                      <th>Tarikh</th>
@@ -99,14 +98,14 @@ $stmt->close();
                      <th>Ringkasan</th>
                      <th>Status</th>
                      <th>Tindakan</th>
-                  </tr><tbody>
-                  <td></td>
-                  <td></td>
-                  <td><input type="text" name="perkara" id="perkara" style="border: 1px black solid; width: 100px"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="border: 1px black solid; width: 100px"></td>   
-                  <td></td>
-                  <td></td>
-               </tbody>
+                  </tr><tr>
+                  <td>1</td>
+                  <td><?php echo $today_date;?></td>
+                  <td><input type="text" name="perkara" id="perkara" style="width: 100%"></td>
+                  <td><input type="text" name="ringkasan" id="ringkasan" style="width: 100%"></td>
+                  <td>-</td>
+                  <td>-</td>
+               </tr>
                <?php
                $arrlength = count($list_of_pertanyaan);
                
@@ -121,16 +120,17 @@ $stmt->close();
                ?>
                
 
-               <tbody>
+               <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td><input type="submit" name="submit" id="submit" value="Hantar"></td>
-               </tbody>
-               </thead>
+                  <td></td>
+               </tr>
             </table>
+            <input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
+
          </form>
       </div>
    </div>

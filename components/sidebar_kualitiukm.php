@@ -12,12 +12,12 @@
         </div>
      
         <nav class="navbar">
-           <a href="./dashboardkualitiukm.php" class="active"><i class="fas fa-home"></i><span style="font-weight:bolder;">Dashboard</span></a>
-           <a href="./senaraipermohonan.php"><i class="fas fa-user-circle"></i><span style="font-weight:bolder;">Senarai Permohonan</span></a>
-           <a href="./senaraiprogram.php"><i class="fas fa-list"></i><span style="font-weight:bolder;">Program</span></a>
-           <a href="./senarailaporan.php"><i class="fas fa-align-left"></i><span style="font-weight:bolder;">Laporan</span></a>
-           <a href="./pengumuman.php"><i class="fas fa-archive"></i><span style="font-weight:bolder;">Pengumuman</span></a>
-           <a href="./pertanyaan_kualiti_ukm.php"><i class="fas fa-align-left"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
+           <a href="./dashboardkualitiukm.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
+           <a href="./senaraipermohonan.php"><span style="font-weight:bolder;">Senarai Permohonan</span></a>
+           <a href="./senaraiprogram.php"><span style="font-weight:bolder;">Program</span></a>
+           <a href="./senarailaporan.php"><span style="font-weight:bolder;">Laporan</span></a>
+           <a href="./pengumuman.php"><span style="font-weight:bolder;">Pengumuman</span></a>
+           <a href="./pertanyaan_kualiti_ukm.php"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
      
      </div>

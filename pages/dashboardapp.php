@@ -112,7 +112,10 @@ $stmt->close();
 
      
      <div class="main-body">
-      <h2>Dashboard</h2>
+	 <img src="../img/Selamat Datang.png" class="promo_card">
+	 <div class="title-size">
+		<h2>Dashboard</h2><br>
+	</div>
       <div class="cards">
       <div class="card card-3">
 				<div class="card--data">

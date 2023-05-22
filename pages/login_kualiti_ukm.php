@@ -140,8 +140,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
               <div class="heading">
                 <h2>Log Masuk</h2>
-                <h6>Berminat menjadi Ahli Panel Penilai?</h6>
-                <a href="#" class="toggle">Permohonan Baharu UKM</a>
               </div>
               <input
                     type="text"
@@ -181,86 +179,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" name="submit" value="Masuk" class="sign-btn" />
 
                 <p class="text" align="right">
-                  <a href="./forgotpassword.php">Lupa Kata Laluan?</a>
+                  <a href="./forgotpassword_page_1.php">Lupa Kata Laluan?</a>
                 </p>
               </div>
-            </form>
-
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-up-form">
-
-              <div class="heading">
-                <h2>Log Masuk</h2>
-                <a href="#" class="toggle">Kembali ke Sistem Pengurusan Kualiti UKM</a>
-              </div>
-<input
-                    type="text"
-                    name="types"
-                    hidden
-                    id="types"
-                    class="input-field"
-   value="lecturer"
-                  />
-              <div class="actual-form">
-                <div class="input-wrap">
-                  <input
-                    type="text"
-                    minlength="4"
-                    name="email1"
-                    id="email1"
-                    class="input-field"
-                    autocomplete="off"
-                    required
-                  />
-                  <label>Emel</label>
-                </div>
-
-                <div class="input-wrap">
-                  <input
-                    type="password"
-                    minlength="4"
-                    name="password1"
-                    id="password1"
-                    class="input-field"
-                    autocomplete="off"
-                    required
-                  />
-                  <label>Kata Laluan</label>
-                </div>
-
-                <p class="text" align="right">
-                    <a href="/pages/forgotpassword.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
-                </p>
-
-                <input type="submit" value="Log Masuk" class="sign-btn" />
-
-                <hr>
-
-              </div>
-              <center><h6>Belum mendaftar?</h6></center>
-                <input type="submit" class="sign-btn" name="submit" value="Daftar Akaun Baharu" onclick = "window.location.href='./register.php';" required>
             </form>
           </div>
 
-          <div class="carousel">
+          <div class="carousel1">
             <div class="images-wrapper">
-              <img src="../img/login.jpg" class="image img-1 show" alt="" />
-              <img src="../img/download.png" style="height: 240px; width: 240px;
-              margin: auto;
-              display: block;" class="image img-2" alt="" />
-            </div>
-
-            <div class="text-slider">
-              <div class="text-wrap">
-                <div class="text-group">
-                  <h3 class="top-title">Sistem Pengurusan Ahli Panel Penilai (Kualiti UKM)</h3>
-                  <h3>Kriteria Permohonan sebagai Ahli Panel Penilai</h3>
-                </div>
-              </div>
-
-              <div class="bullets">
-                <span class="active" data-value="1"></span>
-                <span data-value="2"></span>
-              </div>
+              <img src="#" class="image-register img-1 show" alt="" />
             </div>
           </div>
         </div>
