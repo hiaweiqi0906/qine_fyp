@@ -96,14 +96,15 @@ $stmt->close();
                      <th>Ringkasan</th>
                      <th>Status</th>
                      <th>Tindakan</th>
-                  </tr><tr>
+                  </tr>
+                  <tr>
                   <td>1</td>
                   <td><?php echo $today_date;?></td>
                   <td><input type="text" name="perkara" id="perkara" style="width: 100%"></td>
                   <td><input type="text" name="ringkasan" id="ringkasan" style="width: 100%"></td>
                   <td>-</td>
                   <td>-</td>
-</tr>
+               </tr>
                <?php
                $arrlength = count($list_of_pertanyaan);
 
@@ -125,9 +126,9 @@ $stmt->close();
                   <td></td>
                   <td></td>
                   <td></td>
-            </tr>
-                         </table>
-<input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
+               </tr>
+            </table>
+            <input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
 
          </form>
       </div>
