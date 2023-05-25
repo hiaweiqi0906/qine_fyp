@@ -187,7 +187,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
           <div class="carousel1">
             <div class="images-wrapper">
-              <img src="#" class="image-register img-1 show" alt="" />
+              <img src="../img/login.png" class="image-kualitiukm img-1 show" alt="" />
             </div>
           </div>
         </div>

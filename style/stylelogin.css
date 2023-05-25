@@ -252,12 +252,8 @@ main.sign-up-mode .carousel {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #C7E9B0;
   border-radius: 2rem;
-  display: grid;
-  grid-template-rows: auto 1fr;
   overflow: hidden;
-  transition: 0.8s ease-in-out;
 }
 
 .images-wrapper {
@@ -281,7 +277,17 @@ main.sign-up-mode .carousel {
   opacity: 1;
   position: relative;
   transition: opacity 0.3s, transform 0.5s;
-  height: 137%;
+  height: 110%;
+}
+
+.image-kualitiukm {
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  opacity: 1;
+  position: relative;
+  transition: opacity 0.3s, transform 0.5s;
+  height: 150%;
 }
 
 .img-1 {
