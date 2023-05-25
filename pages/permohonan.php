@@ -62,7 +62,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan')")) {
 
             $stmt->execute();
-            echo 'You have successfully applied!';
         } else {
             // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
             echo 'Could not prepare statement!';
@@ -71,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if ($stmt = $con->prepare("UPDATE lecturer SET `FAKULTI` = '$fakulti', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'")) {
 
               $stmt->execute();
-              echo 'You have successfully updated!';
+              header("Location: maklumat.php");
           } else {
               // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
               echo 'Could not prepare statement!';

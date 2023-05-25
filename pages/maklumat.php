@@ -51,7 +51,6 @@ $id = $_SESSION["id"];
     </div>
 
     <div class="promo_card1">
-      <h1>Senarai </h1>
       <table class="table">
         <tr>
           <th>Bil.</th>
@@ -61,7 +60,7 @@ $id = $_SESSION["id"];
         </tr>
         <tr>
           <td>1</td>
-        
+
       <?php if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN` FROM `appapplication` WHERE LECTURER_ID = '$id' ")) {
 
         $stmt->execute();
@@ -72,7 +71,7 @@ $id = $_SESSION["id"];
           array_push($results, array($application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan));
         }
 
-        
+
         if (count($results) == 1) {
           echo "<td>".$results[0][1]."</td>"."<td>".$results[0][2]."</td>";
           if ($results[0][3] == "PROCESSING")
@@ -82,7 +81,7 @@ $id = $_SESSION["id"];
           else
           echo "<td>Permohonan anda telah ditolak. </td>";
         } else {
-          echo "<td>-</td><td>-</td><td>Tiada permohonan. </td>Processing";
+          echo "<td>-</td><td>-</td><td>Tiada permohonan. </td>";
         }
       } else {
         // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -90,7 +89,7 @@ $id = $_SESSION["id"];
       } ?>
       </tr>
       </table>
-     
+
     </div>
 
     <div class="field">

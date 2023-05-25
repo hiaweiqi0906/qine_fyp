@@ -22,27 +22,28 @@
 <?php
           include("../components/navbar_app.php");
           include("../components/sidebar_app.php");
+          include("../components/pengumuman.php");
 
         ?>
-     
+
      <section class="user-profile">
 
         <h1 class="heading">Maklumat Peribadi</h1>
-     
+
         <div class="info">
-     
+
            <div class="user">
               <img src="../img/lehqine.jpg" alt="">
               <h3>Wong Leh Qine</h3>
               <p>APP</p>
               <a href="#" class="inline-btn">KemasKini</a>
            </div>
-        
+
            <div class="box-container">
-            
+
            </div>
         </div>
-     
+
      </section>
 
 
@@ -51,13 +52,13 @@
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>

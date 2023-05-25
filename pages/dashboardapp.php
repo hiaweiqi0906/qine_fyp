@@ -61,7 +61,6 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
    echo 'Could not prepare statement!';
 }
-echo count($list_of_appprogram_id[0])."_".count($list_of_appprogram_id[1])."_".count($list_of_appprogram_id[2])."_";
 
 $temp_arr = array(0,0,0);
 $current_app_id = array();
@@ -165,9 +164,7 @@ $stmt->close();
 			</div>
 		</div>
 
-      <div class="promo_card1">
-         <h1>Senarai </h1>
-      </div>
+      
      </div>
 
     <footer>

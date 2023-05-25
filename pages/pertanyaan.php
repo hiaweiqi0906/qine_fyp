@@ -5,8 +5,8 @@ include('../components/app_protected_route.php');
 
 $username = "";
 $email = "";
-$errors = array();
 $id = $_SESSION["id"];
+$errors = array();
 
 $list_of_pertanyaan = array();
 date_default_timezone_set("Asia/Kuala_Lumpur");
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
    $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
    $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
    if (
-      $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES 
+      $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES
     ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'app', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
@@ -31,19 +31,19 @@ if (isset($_POST['submit'])) {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
       echo 'Could not prepare statement!';
    }
-   
+
 
 }
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN` FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app'")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
-   
+
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_pertanyaan, array($pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan));
-      
+
    }
    // echo $stmt->field_count;
 } else {
@@ -51,10 +51,10 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
    echo 'Could not prepare statement!';
 }
 
-
+$stmt->close();
    $con->close();
 
-$stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -77,20 +77,18 @@ $stmt->close();
 
 <body>
 
-<?php
+         <?php
           include("../components/navbar_app.php");
           include("../components/sidebar_app.php");
-
+          include("../components/pengumuman.php");
         ?>
-   
+
    <div class="main-body">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <div class="row">
-         </div>
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
+         <form style="padding-bottom: 30px;"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
 
-         <table class="table" style="width: 100%; ">
+            <table class="table" style="width: 100%; ">
                   <tr>
                      <th>#</th>
                      <th>Tarikh</th>
@@ -98,7 +96,8 @@ $stmt->close();
                      <th>Ringkasan</th>
                      <th>Status</th>
                      <th>Tindakan</th>
-                  </tr><tr>
+                  </tr>
+                  <tr>
                   <td>1</td>
                   <td><?php echo $today_date;?></td>
                   <td><input type="text" name="perkara" id="perkara" style="width: 100%"></td>
@@ -108,17 +107,18 @@ $stmt->close();
                </tr>
                <?php
                $arrlength = count($list_of_pertanyaan);
-               
+
                for($x = 0; $x < $arrlength; $x++) {
-                  echo '<tbody>';
+                  echo '<tr>';
                   echo '<td>',$x+1,'</td>';
-                  for($y = 1; $y < 6; $y++) {
-                  echo '<td>', $list_of_pertanyaan[$x][$y], '</td>';
-                }
-                echo '</tbody>';
+                  for($y = 1; $y < 5; $y++) {
+                     echo '<td>', $list_of_pertanyaan[$x][$y], '</td>';
+                  }
+                  echo '<td> <a href="./pertanyaan_app_detail.php?pertanyaan_id='.$list_of_pertanyaan[$x][0].'">Lihat</a></td>';
+                  echo '</tr>';
                }
                ?>
-               
+
 
                <tr>
                   <td></td>

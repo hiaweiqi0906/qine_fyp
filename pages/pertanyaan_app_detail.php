@@ -1,11 +1,12 @@
 <?php
 include("../php/db.php");
 // session_start();
-include('../components/lecturer_protected_route.php');
+include('../components/app_protected_route.php');
 
 $username = "";
 $email = "";
 $id = $_SESSION["id"];
+$pertanyaan_id = $_GET["pertanyaan_id"];
 $errors = array();
 
 $list_of_pertanyaan = array();
@@ -16,11 +17,11 @@ $today_date = date("Y-m-d");
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if (isset($_POST['submit'])) {
-   $perkara= mysqli_real_escape_string($con, $_POST['perkara']);
-   $ringkasan= mysqli_real_escape_string($con, $_POST['ringkasan']);
+   $perkara = mysqli_real_escape_string($con, $_POST['perkara']);
+   $ringkasan = mysqli_real_escape_string($con, $_POST['ringkasan']);
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES
-    ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'lecturer', '$id')")
+    ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'app', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -35,12 +36,12 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'lecturer'")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app' AND `PERTANYAAN_ID` = '$pertanyaan_id'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
 
-// }   /* fetch values */
+   // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_pertanyaan, array($pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan));
 
@@ -52,7 +53,7 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
 }
 
 $stmt->close();
-   $con->close();
+$con->close();
 
 
 ?>
@@ -77,60 +78,42 @@ $stmt->close();
 
 <body>
 
-         <?php
-          include("../components/navbar_lecturer.php");
-          include("../components/sidebar_lecturer.php");
-          include("../components/pengumuman.php");
-        ?>
+   <?php
+   include("../components/navbar_app.php");
+   include("../components/sidebar_app.php");
+   include("../components/pengumuman.php");
+   ?>
 
    <div class="main-body">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <form style="padding-bottom: 30px;"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
+         <form style="padding-bottom: 30px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+            method="post" autocomplete="off" class="sign-in-form">
 
+           <br>
+           <br>
             <table class="table" style="width: 100%; ">
-                  <tr>
-                     <th>#</th>
-                     <th>Tarikh</th>
-                     <th>Perkara</th>
-                     <th>Ringkasan</th>
-                     <th>Status</th>
-                     <th>Tindakan</th>
-                  </tr>
-                  <tr>
-                  <td>1</td>
-                  <td><?php echo $today_date;?></td>
-                  <td><input type="text" name="perkara" id="perkara" style="width: 100%"></td>
-                  <td><input type="text" name="ringkasan" id="ringkasan" style="width: 100%"></td>
-                  <td>-</td>
-                  <td>-</td>
-               </tr>
-               <?php
-               $arrlength = count($list_of_pertanyaan);
-
-               for($x = 0; $x < $arrlength; $x++) {
-                  echo '<tr>';
-                  echo '<td>',$x+1,'</td>';
-                  for($y = 1; $y < 5; $y++) {
-                     echo '<td>', $list_of_pertanyaan[$x][$y], '</td>';
-                  }
-                  echo '<td> <a href="./pertanyaan_lecturer_detail.php?pertanyaan_id='.$list_of_pertanyaan[$x][0].'">Lihat</a></td>';
-                  echo '</tr>';
-               }
-               ?>
-
-
                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td style="width: 33%;">Tarikh</td>
+                  <td><?php echo $list_of_pertanyaan[0][1]; ?></td>
+               </tr>
+               <tr>
+                  <td style="width: 33%;">Perkara</td>
+                  <td><?php echo $list_of_pertanyaan[0][2]; ?></td>
+               </tr>
+               <tr>
+                  <td style="width: 33%;">Ringkasan</td>
+                  <td><?php echo $list_of_pertanyaan[0][3]; ?></td>
+               </tr>
+               <tr>
+                  <td style="width: 33%;">Status</td>
+                  <td><?php echo $list_of_pertanyaan[0][4]; ?></td>
+               </tr>
+               <tr>
+                  <td style="width: 33%;">Pembalasan dari Kualiti-UKM</td>
+                  <td><?php echo $list_of_pertanyaan[0][5]; ?></td>
                </tr>
             </table>
-            <input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
-
          </form>
       </div>
    </div>
