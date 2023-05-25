@@ -2,6 +2,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.8.0", 
         "cloudinary/cloudinary_php": "^2.10",
-        "league/oauth2-google": "^4.0"
+        "league/oauth2-google": "^4.0",
+        "dompdf/dompdf": "^2.0"
     }
 }

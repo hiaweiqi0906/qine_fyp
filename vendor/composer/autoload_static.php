@@ -18,6 +18,11 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         array (
             'Teapot\\StatusCode\\' => 18,
         ),
+        'S' => 
+        array (
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -28,6 +33,7 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Masterminds\\' => 12,
         ),
         'L' => 
         array (
@@ -39,12 +45,28 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Teapot\\StatusCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/teapot/status-code/src',
+        ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -67,10 +89,14 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
         'League\\OAuth2\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/oauth2-google/src',
-            1 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            1 => __DIR__ . '/..' . '/league/oauth2-google/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -83,6 +109,14 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
     );
 
@@ -709,6 +743,7 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'Cloudinary\\Utils' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Utils/Utils.php',
         'Cloudinary\\Utils\\SignatureVerifier' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Utils/SignatureVerifier.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

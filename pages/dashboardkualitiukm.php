@@ -37,17 +37,20 @@ for($xxx=0; $xxx<count($list_of_app_program); $xxx++){
 		array_push($list_of_kukm_program, $list_of_app_program[$xxx][0]);
 	}
 }
-
+$count_collected = 0;
 $list_of_collected_kukm_program = array();
-$whole_arr_str = $list_of_kukm_program[0];
-for($yy=1; $yy<count($list_of_kukm_program)-1; $yy++)
-{
-	$whole_arr_str = $whole_arr_str .",".$list_of_kukm_program[$yy];
-}
-$whole_arr_str = $whole_arr_str .",".$list_of_kukm_program[count($list_of_kukm_program)-1];
+$whole_arr_str = "";
+if(isset( $list_of_kukm_program[0])){
+
+	$whole_arr_str = $list_of_kukm_program[0];
+	for($yy=1; $yy<count($list_of_kukm_program)-1; $yy++)
+	{
+		$whole_arr_str = $whole_arr_str .",".$list_of_kukm_program[$yy];
+	}
+	$whole_arr_str = $whole_arr_str .",".$list_of_kukm_program[count($list_of_kukm_program)-1];
 
 
-if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID` IN ($whole_arr_str)")) {
+	if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID` IN ($whole_arr_str)")) {
 
 	$stmt->execute();
 	mysqli_stmt_bind_result($stmt, $laporan_id);
@@ -55,9 +58,12 @@ if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID
 	while (mysqli_stmt_fetch($stmt)) {
 		array_push($list_of_collected_kukm_program, array($laporan_id));
 	}
+
+	$count_collected = count($list_of_collected_kukm_program);
 } else {
 	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
 	echo 'Could not prepare statement!';
+}
 }
 
 ?>
@@ -101,7 +107,7 @@ if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Program Diagihkan</h5>
 						<h1>
-							<?php echo count($list_of_program); ?>
+							<?php echo count($list_of_app_program); ?>
 						</h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
@@ -117,7 +123,7 @@ if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Program Belum Diagihkan</h5>
 						<h1>
-							<?php echo count($list_of_program); ?>
+							<?php echo count($list_of_program) - count($list_of_app_program); ?>
 						</h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
