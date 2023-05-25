@@ -153,10 +153,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="carousel1">
-          <div class="images-wrapper">
             <img src="../img/register.png" class="image-register img-1 show" alt="" />
-          </div>
-
         </div>
       </div>
     </div>

@@ -5,7 +5,12 @@
         <label for="gelaran">Gelaran: </label>
     </div>
     <div class="column-2" >
-            <input type="text" class="input-text" name="gelaran" id="gelaran">
+        <select class="input-text" name="gelaran" id="gelaran">
+            <option value="" disabled selected>Pilih</option>
+            <option value="Encik">Encik</option>
+            <option value="Puan">Puan</option>
+            <option value="Cik">Cik</option>
+        </select>
     </div>
     <div class="column-2">
         <label for="nama">Nama: </label>
@@ -21,7 +26,7 @@
         <label for="no-kad-pengenalan">Nombor Kad Pengenalan: </label>
     </div>
     <div class="column-4" >
-        <input type="text" class="input-text" name="no-kad-pengenalan" id="no-kad-pengenalan">
+        <input type="text" class="input-text" name="no-kad-pengenalan" id="no-kad-pengenalan" placeholder="XXXXXX-XX-XXXX" pattern="[0-9]{6}-[0-9]{2}-[0-9]{4}" required>
     </div>
     <div class="column-6"></div>
     </div>
@@ -55,7 +60,24 @@
         <label for="negeri">Negeri: </label>
     </div>
     <div class="column-4" >
-        <input type="text" class="input-text" name="negeri" id="negeri">
+        <select type="input-text" class="input-text" name="negeri" id="negeri">
+            <option value="" disabled selected>Pilih</option>
+            <option value="Johor">Johor</option>
+            <option value="Kedah">Kedah</option>
+            <option value="Kelantan">Kelantan</option>
+            <option value="Melaka">Melaka</option>
+            <option value="Negeri Sembilan">Negeri Sembilan</option>
+            <option value="Pahang">Pahang</option>
+            <option value="Perak">Perak</option>
+            <option value="Perlis">Perlis</option>
+            <option value="Selangor">Selangor</option>
+            <option value="Terengganu">Terengganu</option>
+            <option value="Sabah">Sabah</option>
+            <option value="Sarawak">Sarawak</option>
+            <option value="WP Kuala Lumpur">Wilayah Persekutuan Kuala Lumpur</option>
+            <option value="WP Labuan">Wilayah Persekutuan Labuan</option>
+            <option value="WP Putrajaya">Wilayah Persekutuan Putrajaya</option>
+        </select>
     </div>
 
     <div class="column-6"></div>
@@ -82,13 +104,13 @@
         <label for="no-tel-pejabat">No Tel. Pejabat: </label>
     </div>
     <div class="column-4" >
-        <input type="text" class="input-text" name="no-tel-pejabat" id="no-tel-pejabat">
+        <input type="tel" class="input-text" name="no-tel-pejabat" id="no-tel-pejabat" placeholder="02-345 6789" pattern="0[0-9]{1}-[0-9]{3} [0-9]{4}" required>
     </div>
     <div class="column-2">
         <label for="no-tel-bimbit">No Tel. Bimbit: </label>
     </div>
     <div class="column-4" >
-        <input type="text" class="input-text" name="no-tel-bimbit" id="no-tel-bimbit">
+        <input type="tel" class="input-text" name="no-tel-bimbit" id="no-tel-bimbit" placeholder="012-345 6789" pattern="0[0-9]{2}-[0-9]{3} [0-9]{4}" required>
     </div>
     </div>
     <br>
