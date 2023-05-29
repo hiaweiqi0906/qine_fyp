@@ -28,7 +28,7 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
    mysqli_stmt_bind_result($stmt, $appprogram_id);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_appprogram_id[0], array($appprogram_id));
+      array_push($list_of_appprogram_id[0], $appprogram_id);
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -41,7 +41,7 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
    mysqli_stmt_bind_result($stmt, $appprogram_id);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_appprogram_id[1], array($appprogram_id));
+      array_push($list_of_appprogram_id[1], $appprogram_id);
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -55,7 +55,7 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
    mysqli_stmt_bind_result($stmt, $appprogram_id);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_appprogram_id[2], array($appprogram_id));
+      array_push($list_of_appprogram_id[2], $appprogram_id);
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -65,12 +65,13 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
 $temp_arr = array(0,0,0);
 $current_app_id = array();
 
+
 for($xxxx=0; $xxxx<3; $xxxx++){
   for($jjj=0; $jjj<count($list_of_appprogram_id[$xxxx]); $jjj++){
-    $current_app_id = $list_of_appprogram_id[$xxxx][0];
+    $current_app_id = $list_of_appprogram_id[$xxxx][$jjj];
 
 
-  if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM `laporan` WHERE `APPPROGRAM_ID` = '$current_app_id[0]' AND `TYPE` = $xxxx")) {
+  if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM `laporan` WHERE `APPPROGRAM_ID` = '$current_app_id' AND `TYPE` = $xxxx")) {
 
     $stmt->execute();
     mysqli_stmt_bind_result($stmt, $laporan1);
@@ -152,7 +153,7 @@ $stmt->close();
 				<div class="card--data">
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Laporan Belum Selesai</h5>
-						<h1><?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]) - $temp_arr[0] + $temp_arr[1] + $temp_arr[2];?></h1>
+						<h1><?php echo count($list_of_appprogram_id[0]) + count($list_of_appprogram_id[1]) + count($list_of_appprogram_id[2]) - $temp_arr[0] - $temp_arr[1] - $temp_arr[2];?></h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 				</div>
@@ -164,7 +165,7 @@ $stmt->close();
 			</div>
 		</div>
 
-      
+
      </div>
 
     <footer>

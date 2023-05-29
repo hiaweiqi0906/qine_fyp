@@ -28,12 +28,6 @@ if (isset($_POST['submit'])) {
     $login_err = 'Please complete the registration form';
   }
 
-  if (!str_contains($email, '@ukm.edu.my')) {
-    $login_err = "Invalid Email.";
-
-  }
-
-
   if (($_POST['password_1']) != ($_POST['password_2'])) {
     // One or more values are empty.
     $login_err = "Password Mismatch.";

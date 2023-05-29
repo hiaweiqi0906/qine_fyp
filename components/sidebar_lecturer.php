@@ -27,7 +27,7 @@ if ($stmt = $con->prepare("SELECT `NAMA`, `URL_AVATAR` FROM `lecturer` WHERE LEC
         </div>
 
         <div class="profile">
-           <img src="<?php echo $info[0][1]; ?>" class="image" alt="">
+        <img src="<?php if($info[0][1] == "") echo 'https://img.freepik.com/free-icon/user_318-159711.jpg'; else echo $info[0][1]; ?>" class="image" alt="">
            <h3 class="name"><?php echo $info[0][0]; ?></h3>
            <p class="role">Pensyarah</p>
            <a href="./profil_lecturer.php" class="btn">Lihat Profil</a>

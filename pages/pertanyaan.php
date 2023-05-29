@@ -2,10 +2,16 @@
 include("../php/db.php");
 // session_start();
 include('../components/app_protected_route.php');
+if (!isset ($_GET['page']) ) {
+    $page = 1;
+} else {
+    $page = $_GET['page'];
+}
 
 $username = "";
 $email = "";
 $id = $_SESSION["id"];
+$results_per_page = 10;
 $errors = array();
 
 $list_of_pertanyaan = array();
@@ -43,7 +49,25 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_pertanyaan, array($pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan));
+   }
+   $number_of_result = count($list_of_pertanyaan);
+   // echo $stmt->field_count;
+} else {
+   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+   echo 'Could not prepare statement!';
+}
+$number_of_page = ceil ($number_of_result / $results_per_page);
+$page_first_result = ($page-1) * $results_per_page;
+$list_of_pertanyaan = array();
 
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app' LIMIT $page_first_result, $results_per_page")) {
+
+   $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
+
+// }   /* fetch values */
+   while (mysqli_stmt_fetch($stmt)) {
+      array_push($list_of_pertanyaan, array($pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan));
    }
    // echo $stmt->field_count;
 } else {
@@ -52,7 +76,7 @@ if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKAS
 }
 
 $stmt->close();
-   $con->close();
+$con->close();
 
 
 ?>
@@ -129,6 +153,12 @@ $stmt->close();
                   <td></td>
                </tr>
             </table>
+            <div style="text-align: center; width: 100%; font-size: 1.5rem;">
+
+               <?php for($page = 1; $page<= $number_of_page; $page++) {
+                  echo '<a href = "./pertanyaan.php?page=' . $page . '">' . $page . ' </a>';
+               }?>
+         </div>
             <input type="submit" name="submit" id="submit" style="background-color: #5d7851; margin: 120px 0 30px 0; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" value="Hantar">
 
          </form>

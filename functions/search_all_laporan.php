@@ -6,10 +6,9 @@ for($xx=0; $xx<3; $xx++){
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $laporan_id, $status, $tarikh_awal, $tarikh_akhir, $appprogram_id, $lampiran_1, $akredasi_penuh, $type);
-   
+
    while (mysqli_stmt_fetch($stmt)) {
       array_push($laporan_all_people, array($laporan_id, $status, $tarikh_awal, $tarikh_akhir, $appprogram_id, $lampiran_1, $akredasi_penuh, $type));
-        echo $laporan_all_people[$xx][6];
     }
 
    if($stmt -> num_rows == 0){

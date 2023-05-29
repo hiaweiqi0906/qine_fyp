@@ -2,10 +2,10 @@
 
 include("../php/db.php");
 // session_start();
-include('../components/app_protected_route.php');
+include('../components/kualitiukm_protected_route.php');
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
-include('../functions/check_other_access.php');
+// include('../functions/check_other_access.php');
 
 include('../functions/search_all_laporan.php');
 
@@ -300,9 +300,8 @@ for($jj=0; $jj<7; $jj++){
 
 
    <?php
-   include("../components/navbar_app.php");
-   include("../components/sidebar_app.php");
-   include("../components/pengumuman.php");
+   include("../components/navbar_kualitiukm.php");
+   include("../components/sidebar_kualitiukm.php");
  ?>
 
 
@@ -312,6 +311,7 @@ for($jj=0; $jj<7; $jj++){
          <h1>Tajuk Program</h1>
          <span>Detail</span>
          <button>Muat Turun</button>
+         <button onclick="window.print()">Cetak</button>
 
 
       </div>

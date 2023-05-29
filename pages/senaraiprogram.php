@@ -15,7 +15,7 @@ if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
-   
+
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       array_push($list_of_program, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
@@ -56,18 +56,18 @@ $stmt->close();
 
      <section class="teachers">
 
-      <h1 class="heading">Senarai Program yang Belum Diagihkan</h1>
-   
+      <h1 class="heading">Senarai Program</h1>
+
       <form action="" method="post" class="search-tutor">
          <input type="text" name="search_box" placeholder="cari program..." required maxlength="100">
          <button type="submit" class="fas fa-search" name="search_tutor"></button>
       </form>
-   
+
       <div class="box-container">
       <?php
       for($i=0; $i<count($list_of_program); $i++){
          $current_application_id = $list_of_program[$i][0];
-      
+
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
@@ -76,7 +76,7 @@ $stmt->close();
                   <span>Tarikh Terima: ",$list_of_program[$i][2],"</span>
                </div>
             </div>
-            
+
             <p>Tarikh: <span>",$list_of_program[$i][2],"</span></p>
             <p>Masa : <span>",$list_of_program[$i][7],"</span></p>
             <p>Status : <span>",$list_of_program[$i][5],"</span></p>
@@ -84,9 +84,9 @@ $stmt->close();
          </div>";
       }
       ?>
-   
+
       </div>
-   
+
    </section>
 
     <footer>
@@ -94,13 +94,13 @@ $stmt->close();
 		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
 		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
 		</ul>
-  
+
 		<ul class="footer-menu">
 		  <li><a href="">Disclaimer</a></li>
 		  <li><a href="">Privacy Policy</a></li>
 		  <li><a href="">Personal Data Protection</a></li>
 		</ul>
-  
+
 		<div class="footer-copyright">
 		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
 		</div>

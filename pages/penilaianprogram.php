@@ -166,7 +166,6 @@ while ($tracker < $max) {
    $tracker++;
 }
 
-
 $con->close();
 $stmt->close();
 
@@ -209,8 +208,9 @@ $j = 0;
          <?php
          for ($i = 0; $i < count($list_of_program_app); $i++, $j++) {
             if (in_array($i, $pos_belum_selesai)) {
+               $current_pid = $list_of_program_app[$i][0];
 
-            $current_application_id = $penilaian_info[$i][0];
+            $current_application_id = $penilaian_info[$j][0];
             echo "<div class=\"box\">
       <div class=\"tutor\">
          <img src=\"../img/program.jpg\" alt=\"\">
@@ -224,14 +224,15 @@ $j = 0;
       <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
       <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
-      <a href=\"./detailprogram.php?id=$current_application_id&type=0\" class=\"inline-btn\">Lihat</a>
+      <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
          }}
 
          for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
             if (in_array($i+count($list_of_program_app), $pos_belum_selesai)) {
+               $current_pid = $list_of_program_panel_1[$i][0];
 
-            $current_application_id = $penilaian_info[$i][0];
+            $current_application_id = $penilaian_info[$j][0];
             echo "<div class=\"box\">
       <div class=\"tutor\">
          <img src=\"../img/program.jpg\" alt=\"\">
@@ -245,13 +246,14 @@ $j = 0;
       <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
       <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
-      <a href=\"./detailprogram.php?id=$current_application_id&type=1\" class=\"inline-btn\">Lihat</a>
+      <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
          }}
 
          for ($i = 0; $i < count($list_of_program_panel_2); $i++, $j++) {
          if (in_array($i+count($list_of_program_app) + count($list_of_program_panel_1), $pos_belum_selesai)) {
-            $current_application_id = $penilaian_info[$i][0];
+            $current_application_id = $penilaian_info[$j][0];
+            $current_pid = $list_of_program_panel_2[$i][0];
             echo "<div class=\"box\">
       <div class=\"tutor\">
          <img src=\"../img/program.jpg\" alt=\"\">
@@ -265,7 +267,7 @@ $j = 0;
       <p>Tarikh: <span>", $list_of_program_panel_2[$i][2], "</span></p>
       <p>Masa : <span>", $list_of_program_panel_2[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program_panel_2[$i][5], "</span></p>
-      <a href=\"./detailprogram.php?id=$current_application_id&type=2\" class=\"inline-btn\">Lihat</a>
+      <a href=\"./detailprogram.php?id=$current_application_id&type=2&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
          }
       }
@@ -281,7 +283,8 @@ $j = 0;
       <?php
       for ($i = 0; $i < count($list_of_program_app); $i++, $j++) {
          if (in_array($i, $pos_sudah_selesai)) {
-            $current_application_id = $penilaian_info[$i][0];
+            $current_application_id = $penilaian_info[$j][0];
+            $current_pid = $list_of_program_app[$i][0];
             echo "<div class=\"box\">
                <div class=\"tutor\">
                   <img src=\"../img/program.jpg\" alt=\"\">
@@ -295,7 +298,7 @@ $j = 0;
                <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
                <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
                <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
-               <a href=\"./detailprogram.php?id=$current_application_id&type=0\" class=\"inline-btn\">Lihat</a>
+               <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div>";
          }
       }
@@ -303,7 +306,8 @@ $j = 0;
       for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
          if (in_array($i+count($list_of_program_app), $pos_sudah_selesai)) {
 
-         $current_application_id = $penilaian_info[$i][0];
+         $current_application_id = $penilaian_info[$j][0];
+         $current_pid = $list_of_program_panel_1[$i][0];
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
@@ -317,15 +321,16 @@ $j = 0;
             <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
             <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
-            <a href=\"./detailprogram.php?id=$current_application_id&type=1\" class=\"inline-btn\">Lihat</a>
+            <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
       }
    }
 
       for ($i = 0; $i < count($list_of_program_panel_2); $i++, $j++) {
          if (in_array($i+count($list_of_program_app) + count($list_of_program_panel_1), $pos_sudah_selesai)) {
+            $current_pid = $list_of_program_panel_2[$i][0];
 
-         $current_application_id = $penilaian_info[$i][0];
+         $current_application_id = $penilaian_info[$j][0];
          echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
@@ -339,7 +344,7 @@ $j = 0;
             <p>Tarikh: <span>", $list_of_program_panel_2[$i][2], "</span></p>
             <p>Masa : <span>", $list_of_program_panel_2[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_panel_2[$i][5], "</span></p>
-            <a href=\"./detailprogram.php?id=$current_application_id&type=2\" class=\"inline-btn\">Lihat</a>
+            <a href=\"./detailprogram.php?id=$current_application_id&type=2&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
       }}
       ?>

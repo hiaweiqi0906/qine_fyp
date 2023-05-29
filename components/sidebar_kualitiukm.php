@@ -1,16 +1,37 @@
+<?php
+require "../php/db.php";
+
+$info = array();
+
+$id = $_SESSION["id"];
+
+if ($stmt = $con->prepare("SELECT `NAMA`, `URL_AVATAR` FROM `kualitiukm` WHERE KUALITIUKM_ID = '$id'")) {
+
+    $stmt->execute();
+    mysqli_stmt_bind_result($stmt, $nama, $url_avatar);
+
+    while (mysqli_stmt_fetch($stmt)) {
+       array_push($info, array($nama, $url_avatar));
+    }
+ } else {
+    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+    echo 'Could not prepare statement!';
+ }
+
+?>
 <div class="side-bar">
 
         <div id="close-btn">
            <i class="fas fa-times"></i>
         </div>
-     
+
         <div class="profile">
-           <img src="../img/lehqine.jpg" class="image" alt="">
-           <h3 class="name">Wong Leh Qine</h3>
+        <img src="<?php if($info[0][1] == "") echo 'https://img.freepik.com/free-icon/user_318-159711.jpg'; else echo $info[0][1]; ?>" class="image" alt="">
+           <h3 class="name"><?php echo $info[0][0]; ?></h3>
            <p class="role">Kualiti-UKM</p>
-           <a href="#" class="btn">Lihat Profil</a>
+           <a href="./profil_kualitiukm.php" class="btn">Lihat Profil</a>
         </div>
-     
+
         <nav class="navbar">
            <a href="./dashboardkualitiukm.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
            <a href="./senaraipermohonan.php"><span style="font-weight:bolder;">Senarai Permohonan</span></a>
@@ -19,5 +40,5 @@
            <a href="./pengumuman.php"><span style="font-weight:bolder;">Pengumuman</span></a>
            <a href="./pertanyaan_kualiti_ukm.php"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
-     
+
      </div>

@@ -10,7 +10,12 @@
    --white:#fff;
    --border:.1rem solid rgba(0,0,0,.2);
 }
-
+@media print
+{
+    html {
+        overflow: visible !important;
+    }
+}
 *{
    font-family: 'Nunito', sans-serif;
    margin:0; padding:0;

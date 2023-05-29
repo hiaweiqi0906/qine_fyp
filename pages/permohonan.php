@@ -75,6 +75,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
               echo 'Could not prepare statement!';
           }
+
+          if (
+            $stmt = $con->prepare("INSERT INTO `lecturer_noti`(`LECTURER_ID`, `TEXT`, `TARIKH`, `MASA`) VALUES ('$id', 'ANDA SUDAH BUAT PERMOHONAN UNTUK MENJADI APP. ', '$today_date','$current_time')")
+          ) {
+            $stmt->execute();
+          } else {
+            // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+            echo 'Could not prepare statement!';
+          }
+
       }
       $stmt->close();
   } else {

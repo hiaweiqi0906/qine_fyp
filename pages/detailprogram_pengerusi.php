@@ -4,7 +4,8 @@ include("../php/db.php");
 // session_start();
 include('../components/app_protected_route.php');
 $app_program_id = $_GET["id"];
-$typel = $_GET["type"];
+$typel = $_GET["type"];$pid = $_GET["pid"];
+
 
 include('../functions/search_all_laporan.php');
 
@@ -309,7 +310,7 @@ for($jj=0; $jj<7; $jj++){
       <div class="promo_card">
          <h1>Tajuk Program</h1>
          <span>Detail</span>
-         <button>Muat Turun</button>
+         <a href="../functions/generate_program.php?pid=<?php echo $pid;?>">Muat Turun</a>
 
 
       </div>

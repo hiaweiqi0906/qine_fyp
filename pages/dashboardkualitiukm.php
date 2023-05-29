@@ -139,7 +139,7 @@ if(isset( $list_of_kukm_program[0])){
 					<div class="card--content">
 						<h5 class="card--title">Jumlah Laporan Belum Diterima</h5>
 						<h1>
-							<?php echo count($list_of_kukm_program)-count($list_of_collected_kukm_program); ?>
+							<?php echo count($list_of_kukm_program)*3-count($list_of_collected_kukm_program); ?>
 						</h1>
 					</div>
 					<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
