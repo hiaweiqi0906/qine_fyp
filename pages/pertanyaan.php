@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app'")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app' ORDER BY `TARIKH` DESC")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
@@ -60,7 +60,7 @@ $number_of_page = ceil ($number_of_result / $results_per_page);
 $page_first_result = ($page-1) * $results_per_page;
 $list_of_pertanyaan = array();
 
-if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app' LIMIT $page_first_result, $results_per_page")) {
+if ($stmt = $con->prepare("SELECT `PERTANYAAN_ID`, `TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`  FROM `pertanyaan` WHERE `ID` = '$id' AND `JENIS` = 'app'  ORDER BY `TARIKH` DESC LIMIT $page_first_result, $results_per_page")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $pertanyaan_id, $tarikh, $perkara, $ringkasan, $pertanyaan_status, $tindakan);
