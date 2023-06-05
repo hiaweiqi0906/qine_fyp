@@ -277,6 +277,7 @@ for($jj=0; $jj<7; $jj++){
   array_push($akredasi_penuh_bidang, explode(";", $akredasi_penuh_arr[$jj]));
 }
 
+
 ?>
 
 <!DOCTYPE html>

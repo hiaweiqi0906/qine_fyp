@@ -7,7 +7,7 @@ $all_laporan = array();
 $all_appprogram_id = array();
 $all_program = array();
 
-if ($stmt = $con->prepare("SELECT `LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE` FROM `laporan` WHERE 1 order by `APPPROGRAM_ID` ,`TYPE`")) {
+if ($stmt = $con->prepare("SELECT `LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE` FROM `laporan` WHERE  `MAKLUM_BALAS` IS NOT NULL order by `APPPROGRAM_ID` ,`TYPE`")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $laporan_id, $status, $tarikh_awal, $tarikh_akhir, $appprogram_id, $lampiran_1, $akredasi_penuh, $type);
@@ -78,7 +78,7 @@ if (isset($all_appprogram_id[0])) {
 
    <section class="teachers">
 
-      <h1 class="heading">Senarai Laporan yang Diterima</h1>
+      <h1 class="heading">Senarai Maklum Balas yang Diterima</h1>
 
       <!-- <form action="" method="post" class="search-tutor">
            <input type="text" name="search_box" placeholder="cari laporan..." required maxlength="100">
@@ -98,9 +98,10 @@ if (isset($all_appprogram_id[0])) {
                   <img src=\"../img/program.jpg\" alt=\"\">
                   <div>";
                if ($all_laporan[$ii][$jj][7] == 0)
-                  echo "<h3>Laporan Pengerusi</h3>";
+                  echo "<h3>Maklum Balas Pengerusi</h3>";
                else if ($all_laporan[$ii][$jj][7] == 1)
-                  echo "<h3>Laporan Ahli Panel 1</h3>";
+                  echo "<h3>Maklum Balas Ahli Panel 1</h3>";
+              
                echo "
                   </div>
                </div>

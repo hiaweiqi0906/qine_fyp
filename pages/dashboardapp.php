@@ -12,13 +12,11 @@ $id = $_SESSION["id"];
 
 $list_of_program_app = array();
 $list_of_program_panel_1 = array();
-$list_of_program_panel_2 = array();
 
 $list_of_appprogram_id = array(array(), array(), array());
 
 $report_of_program_app = 0;
 $report_of_program_panel_1 = 0;
-$report_of_program_panel_2 = 0;
 
 $penilaian_info = array();
 
@@ -49,18 +47,6 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_P
 
 }
 
-if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID` FROM appprogram WHERE APP_ID_PANEL_2 = '$id'")) {
-
-   $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $appprogram_id);
-
-   while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_appprogram_id[2], $appprogram_id);
-   }
-} else {
-   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-   echo 'Could not prepare statement!';
-}
 
 $temp_arr = array(0,0,0);
 $current_app_id = array();

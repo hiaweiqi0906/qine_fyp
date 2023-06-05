@@ -38,6 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $no_kad_pengenalan = $_POST["no-kad-pengenalan"];
  $alamat_tempat_bekerja = $_POST["alamat-tempat-bekerja"];
  $poskod = $_POST["poskod"];
+  $kategori = $_POST["kategori"];
  $daerah = $_POST["daerah"];
  $fakulti = $_POST["fakulti"];
  $negeri = $_POST["negeri"];
@@ -58,8 +59,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           // Username already exists
           echo 'We\'re still processing your application. ';
       } else {
-        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`) VALUES
-        ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan')")) {
+        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
+        ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")) {
 
             $stmt->execute();
         } else {

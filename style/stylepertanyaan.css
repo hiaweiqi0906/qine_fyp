@@ -1010,6 +1010,8 @@ div.sticky {
    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
+
+
 .teachers .search-tutor{
    margin-bottom: 2rem;
    border-radius: .5rem;
@@ -1044,6 +1046,18 @@ div.sticky {
    gap:1.5rem;
    justify-content: center;
    align-items: flex-start;
+}
+
+.admin .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(10rem, 0.167fr)) !important;
+   gap:1.5rem;
+   justify-content: left;
+   align-items: flex-start;
+}
+
+.admin{
+   padding: 0px;
 }
 
 .teachers .box-container .box{

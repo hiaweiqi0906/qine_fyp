@@ -11,7 +11,6 @@ $id = $_SESSION["id"];
 
 $list_of_program_app = array();
 $list_of_program_panel_1 = array();
-$list_of_program_panel_2 = array();
 
 $penilaian_info = array();
 
@@ -41,52 +40,26 @@ if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 o
    echo 'Could not prepare statement!';
 }
 
-if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 on t1.PROGRAM_ID = t2.PROGRAM_ID WHERE t2.APP_ID_PANEL_2 = '$id'")) {
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `TARIKH_MASA_KEMASKINI` FROM `appprogram` WHERE `APP_ID_PENGERUSI` = '$id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
+   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $tarikh_masa_kemaskini);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_program_panel_2, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      array_push($penilaian_info, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $tarikh_masa_kemaskini));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
    echo 'Could not prepare statement!';
 }
 
-if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2`, `TARIKH_MASA_KEMASKINI` FROM `appprogram` WHERE `APP_ID_PENGERUSI` = '$id'")) {
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `TARIKH_MASA_KEMASKINI` FROM `appprogram` WHERE `APP_ID_PANEL_1` = '$id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini);
+   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $tarikh_masa_kemaskini);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($penilaian_info, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini));
-   }
-} else {
-   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-   echo 'Could not prepare statement!';
-}
-
-if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2`, `TARIKH_MASA_KEMASKINI` FROM `appprogram` WHERE `APP_ID_PANEL_1` = '$id'")) {
-
-   $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini);
-
-   while (mysqli_stmt_fetch($stmt)) {
-      array_push($penilaian_info, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini));
-   }
-} else {
-   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-   echo 'Could not prepare statement!';
-}
-
-if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2`, `TARIKH_MASA_KEMASKINI` FROM `appprogram` WHERE `APP_ID_PANEL_2` = '$id'")) {
-
-   $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini);
-
-   while (mysqli_stmt_fetch($stmt)) {
-      array_push($penilaian_info, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $app_id_panel_2, $tarikh_masa_kemaskini));
+      array_push($penilaian_info, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualitiukm_id, $app_id_panel_1, $tarikh_masa_kemaskini));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -95,14 +68,14 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENG
 
 $done_report = array([], [], []);
 
-if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PENGERUSI` = '$id' AND t1.TYPE = '0'")) {
-// echo "here";
+if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID`, t1.`TARIKH_EFEKTIF` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PENGERUSI` = '$id' AND t1.TYPE = '0'")) {
+   // echo "here";
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id);
+   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_efektif);
 
    while (mysqli_stmt_fetch($stmt)) {
       // echo "here";
-      array_push($done_report[0], $app_program_id);
+      array_push($done_report[0], $app_program_id, $tarikh_efektif);
    }
 
 } else {
@@ -110,27 +83,13 @@ if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID` FROM `laporan` t1 LEFT JOIN
    echo 'Could not prepare statement!';
 }
 
-if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PANEL_1` = '$id' AND t1.TYPE = '1'")) {
+if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID`, t1.`TARIKH_EFEKTIF` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PANEL_1` = '$id' AND t1.TYPE = '1'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id);
+   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_efektif);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($done_report[1], $app_program_id);
-   }
-} else {
-   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-   echo 'Could not prepare statement!';
-}
-
-if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PANEL_2` = '$id' AND t1.TYPE = '2'")) {
-
-   $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id);
-
-   while (mysqli_stmt_fetch($stmt)) {
-      // echo"he";
-      array_push($done_report[2], $app_program_id);
+      array_push($done_report[1], $app_program_id, $tarikh_efektif);
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -210,13 +169,13 @@ $j = 0;
             if (in_array($i, $pos_belum_selesai)) {
                $current_pid = $list_of_program_app[$i][0];
 
-            $current_application_id = $penilaian_info[$j][0];
-            echo "<div class=\"box\">
+               $current_application_id = $penilaian_info[$j][0];
+               echo "<div class=\"box\">
       <div class=\"tutor\">
          <img src=\"../img/program.jpg\" alt=\"\">
          <div>
             <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
-            <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
+            <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
          </div>
       </div>
 
@@ -226,19 +185,20 @@ $j = 0;
       <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
       <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
-         }}
+            }
+         }
 
          for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
-            if (in_array($i+count($list_of_program_app), $pos_belum_selesai)) {
+            if (in_array($i + count($list_of_program_app), $pos_belum_selesai)) {
                $current_pid = $list_of_program_panel_1[$i][0];
 
-            $current_application_id = $penilaian_info[$j][0];
-            echo "<div class=\"box\">
+               $current_application_id = $penilaian_info[$j][0];
+               echo "<div class=\"box\">
       <div class=\"tutor\">
          <img src=\"../img/program.jpg\" alt=\"\">
          <div>
             <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
-            <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
+            <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
          </div>
       </div>
 
@@ -248,30 +208,11 @@ $j = 0;
       <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
       <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
-         }}
-
-         for ($i = 0; $i < count($list_of_program_panel_2); $i++, $j++) {
-         if (in_array($i+count($list_of_program_app) + count($list_of_program_panel_1), $pos_belum_selesai)) {
-            $current_application_id = $penilaian_info[$j][0];
-            $current_pid = $list_of_program_panel_2[$i][0];
-            echo "<div class=\"box\">
-      <div class=\"tutor\">
-         <img src=\"../img/program.jpg\" alt=\"\">
-         <div>
-            <h3>Nama Program: ", $list_of_program_panel_2[$i][1], "</h3>
-            <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
-         </div>
-      </div>
-      <p>Jawatan: <span>Ahli Panel 2</span></p>
-
-      <p>Tarikh: <span>", $list_of_program_panel_2[$i][2], "</span></p>
-      <p>Masa : <span>", $list_of_program_panel_2[$i][7], "</span></p>
-      <p>Status : <span>", $list_of_program_panel_2[$i][5], "</span></p>
-      <a href=\"./detailprogram.php?id=$current_application_id&type=2&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
-   </div>";
+            }
          }
-      }
-         $j=0;
+
+
+         $j = 0;
          ?>
 
       </div>
@@ -280,17 +221,21 @@ $j = 0;
       <h1 class="heading">Senarai Tugasan yang Sudah Selesai</h1>
 
       <div class="box-container">
-      <?php
-      for ($i = 0; $i < count($list_of_program_app); $i++, $j++) {
-         if (in_array($i, $pos_sudah_selesai)) {
-            $current_application_id = $penilaian_info[$j][0];
-            $current_pid = $list_of_program_app[$i][0];
-            echo "<div class=\"box\">
+         <?php
+         $today_date = date("Y-m-d");
+         // $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($today_date)));
+         // echo '-->' . strtotime($today_date) . '<---->' . strtotime($effectiveDate);
+         for ($i = 0; $i < count($list_of_program_app); $i++, $j++) {
+            if (in_array($i, $pos_sudah_selesai)) {
+               if (strtotime($today_date)  < strtotime(date('Y-m-d', strtotime("+6 months", strtotime($penilaian_info[$j][6]))))) {
+                  $current_application_id = $penilaian_info[$j][0];
+                  $current_pid = $list_of_program_app[$i][0];
+                  echo "<div class=\"box\">
                <div class=\"tutor\">
                   <img src=\"../img/program.jpg\" alt=\"\">
                   <div>
                      <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
-                     <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
+                     <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                   </div>
                </div>
 
@@ -300,20 +245,22 @@ $j = 0;
                <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
                <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div>";
+               }
+            }
          }
-      }
 
-      for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
-         if (in_array($i+count($list_of_program_app), $pos_sudah_selesai)) {
+         for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
+            if (in_array($i + count($list_of_program_app), $pos_sudah_selesai)) {
+               if (strtotime($today_date)  < strtotime(date('Y-m-d', strtotime("+6 months", strtotime($penilaian_info[$j][6]))))) {
 
-         $current_application_id = $penilaian_info[$j][0];
-         $current_pid = $list_of_program_panel_1[$i][0];
-         echo "<div class=\"box\">
+                  $current_application_id = $penilaian_info[$j][0];
+                  $current_pid = $list_of_program_panel_1[$i][0];
+                  echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
                <div>
                   <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
-                  <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
+                  <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                </div>
             </div>
 
@@ -323,33 +270,79 @@ $j = 0;
             <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
             <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
-      }
-   }
+               }
+            }
+         }
 
-      for ($i = 0; $i < count($list_of_program_panel_2); $i++, $j++) {
-         if (in_array($i+count($list_of_program_app) + count($list_of_program_panel_1), $pos_sudah_selesai)) {
-            $current_pid = $list_of_program_panel_2[$i][0];
 
-         $current_application_id = $penilaian_info[$j][0];
-         echo "<div class=\"box\">
+         ?>
+
+      </div>
+      <br>
+      <h1 class="heading">Senarai Tugasan yang Perlukan Tindak Balas</h1>
+
+      <div class="box-container">
+         <?php
+         $j=0;
+         $today_date = date("Y-m-d");
+         // $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($today_date)));
+         // echo '-->' . strtotime($today_date) . '<---->' . strtotime($effectiveDate);
+         for ($i = 0; $i < count($list_of_program_app); $i++, $j++) {
+            if (in_array($i, $pos_sudah_selesai)) {
+               if (strtotime($today_date) >= strtotime(date('Y-m-d', strtotime("+6 months", strtotime($penilaian_info[$j][6]))))) {
+
+
+                  $current_application_id = $penilaian_info[$j][0];
+                  $current_pid = $list_of_program_app[$i][0];
+                  echo "<div class=\"box\">
+               <div class=\"tutor\">
+                  <img src=\"../img/program.jpg\" alt=\"\">
+                  <div>
+                     <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
+                     <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
+                  </div>
+               </div>
+
+               <p>Jawatan: <span>Pengerusi</span></p>
+               <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
+               <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
+               <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
+               <a href=\"./detailprogram_maklum_balas.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
+            </div>";
+               }
+            }
+         }
+
+         for ($i = 0; $i < count($list_of_program_panel_1); $i++, $j++) {
+            if (in_array($i + count($list_of_program_app), $pos_sudah_selesai)) {
+               if (strtotime($today_date)  >= strtotime(date('Y-m-d', strtotime("+6 months", strtotime($penilaian_info[$j][6]))))) {
+
+
+                  $current_application_id = $penilaian_info[$j][0];
+                  $current_pid = $list_of_program_panel_1[$i][0];
+                  echo "<div class=\"box\">
             <div class=\"tutor\">
                <img src=\"../img/program.jpg\" alt=\"\">
                <div>
-                  <h3>Nama Program: ", $list_of_program_panel_2[$i][1], "</h3>
-                  <span>Tarikh Kemaskini: ", $penilaian_info[$j][7], "</span>
+                  <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
+                  <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                </div>
             </div>
-            <p>Jawatan: <span>Ahli Panel 2</span></p>
 
-            <p>Tarikh: <span>", $list_of_program_panel_2[$i][2], "</span></p>
-            <p>Masa : <span>", $list_of_program_panel_2[$i][7], "</span></p>
-            <p>Status : <span>", $list_of_program_panel_2[$i][5], "</span></p>
-            <a href=\"./detailprogram.php?id=$current_application_id&type=2&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
+            <p>Jawatan: <span>Ahli Panel 1</span></p>
+            <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
+            <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
+            <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
+            <a href=\"./detailprogram_maklum_balas.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
-      }}
-      ?>
+               }
+            }
+         }
 
 
+         ?>
+
+      </div>
 
 
    </section>

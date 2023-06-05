@@ -5,8 +5,7 @@
         <img src="<?php if (isset($user[0][7]))
             echo $user[0][7];
         else
-            echo "../img/profile.png" ?>" class="image" alt="" width="200" height="200" />
-            <input type="file" name="profil-img" id="profil-img">
+            echo "../img/profil.png" ?>" class="image" alt="" width="200" height="200" />
         </div>
         <div class="column-5"></div>
     </div>
@@ -25,28 +24,13 @@
 </div>
 
 <div class="row">
-    <div class="column-2">
-        <label for="kategori">Kategori: </label>
-    </div>
-    <div class="column-10">
-        <select class="input-text" name="kategori" id="kategori" readonly value="<?php if (isset($user[0][10]))
-            echo $user[0][10];
-        else
-            echo ""; ?>">
-            <option value="EKSA">EKSA</option>
-        </select>
-    </div>
-
-</div>
-
-<div class="row">
 
     <div class="column-2">
         <label for="no-kad-pengenalan">Nombor Kad Pengenalan: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" value="<?php if (isset($user[0][2]))
-            echo $user[0][2];
+        <input type="text" class="input-text" value="<?php if (isset($user[0][4]))
+            echo $user[0][4];
         else
             echo ""; ?>" name="no-kad-pengenalan" id="no-kad-pengenalan">
     </div>
@@ -64,29 +48,6 @@
     </div>
 </div>
 
-
-
-<div class="row">
-    <div class="column-2">
-        <label for="fakulti">Fakulti: </label>
-    </div>
-    <div class="column-4">
-        <input type="text" value="<?php if (isset($user[0][3]))
-            echo $user[0][3];
-        else
-            echo ""; ?>" class="input-text" name="fakulti" id="fakulti">
-    </div>
-
-    <div class="column-2">
-        <label for="bidang">Bidang: </label>
-    </div>
-    <div class="column-4">
-        <input type="text" value="<?php if (isset($user[0][9]))
-            echo $user[0][9];
-        else
-            echo ""; ?>" class="input-text" name="bidang" id="bidang">
-    </div>
-</div>
 
 <div class="row">
 

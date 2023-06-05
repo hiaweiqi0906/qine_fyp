@@ -82,6 +82,7 @@ if (isset($_POST['submit'])) {
   //  $poskod = $_POST["poskod"];
 //  $daerah = $_POST["daerah"];
   $fakulti = $_POST["fakulti"];
+  // $kategori = $_POST["kategori"];
   $bidang = $_POST["bidang"];
   //  $negeri = $_POST["negeri"];
 //  $no_tel_pejabat = $_POST["no-tel-pejabat"];
@@ -112,11 +113,11 @@ if (isset($_POST['submit'])) {
 
 
 
-if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG` FROM app WHERE APP_ID = '$id' ")) {
+if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG`, `KATEGORI` FROM app WHERE APP_ID = '$id' ")) {
   $stmt->execute();
-  mysqli_stmt_bind_result($stmt, $app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang);
+  mysqli_stmt_bind_result($stmt, $app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori);
   while (mysqli_stmt_fetch($stmt)) {
-    array_push($user, array($app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang));
+    array_push($user, array($app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori));
   }
 } else {
   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.

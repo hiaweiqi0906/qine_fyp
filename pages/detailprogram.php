@@ -256,10 +256,11 @@ if (isset($_POST['submit'])) {
   $current_time = date("H-i-s");
   $app_program_id = $_GET["id"];
   $typel = $_GET["type"];
+  $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($today_date)));
 
   if (
-    $stmt = $con->prepare("INSERT INTO laporan (`STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`) VALUES
-   ('PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel')")
+    $stmt = $con->prepare("INSERT INTO laporan (`STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `TARIKH_EFEKTIF`) VALUES
+   ('PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel', '$effectiveDate')")
   ) {
     $stmt->execute();
   } else {
@@ -277,12 +278,12 @@ if (isset($_POST['submit'])) {
   $necc_info = array();
 
   if (
-    $stmt = $con->prepare("SELECT APP_ID_PENGERUSI, APP_ID_PANEL_1, APP_ID_PANEL_2, KUALITIUKM_ID from appprogram WHERE APPPROGRAM_ID = '$app_program_id'")
+    $stmt = $con->prepare("SELECT APP_ID_PENGERUSI, APP_ID_PANEL_1, KUALITIUKM_ID from appprogram WHERE APPPROGRAM_ID = '$app_program_id'")
   ) {
     $stmt->execute();
-    mysqli_stmt_bind_result($stmt, $app_id_pengerusi, $app_id_panel_1, $app_id_panel_2, $kualitiukm_id);
+    mysqli_stmt_bind_result($stmt, $app_id_pengerusi, $app_id_panel_1, $kualitiukm_id);
     while (mysqli_stmt_fetch($stmt)) {
-      array_push($necc_info, array($app_id_pengerusi, $app_id_panel_1, $app_id_panel_2, $kualitiukm_id));
+      array_push($necc_info, array($app_id_pengerusi, $app_id_panel_1, $kualitiukm_id));
     }
   } else {
     echo 'Could not prepare statement!';
@@ -291,7 +292,6 @@ if (isset($_POST['submit'])) {
   $pengerusi_id = $necc_info[0][0];
   $kualitiukm_id = $necc_info[0][3];
   $panel1_id = $necc_info[0][1];
-  $panel2_id = $necc_info[0][2];
 
   if ($typel == 0) {
     if (
@@ -315,15 +315,6 @@ if (isset($_POST['submit'])) {
 
     if (
       $stmt = $con->prepare("INSERT INTO `app_noti` (`APP_ID`, `TEXT`, `TARIKH`, `MASA`) VALUES ('$panel1_id', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '$today_date','$current_time')")
-    ) {
-      $stmt->execute();
-    } else {
-      // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-      echo 'Could not prepare statement!';
-    }
-
-    if (
-      $stmt = $con->prepare("INSERT INTO `app_noti` (`APP_ID`, `TEXT`, `TARIKH`, `MASA`) VALUES ('$panel2_id', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '$today_date','$current_time')")
     ) {
       $stmt->execute();
     } else {
@@ -385,7 +376,8 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" media="all" href="../style/stylepertanyaan.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-radar.min.js"></script>
   <style>
     /* .collapsible {
       background-color: #777;
@@ -443,6 +435,50 @@ if (isset($_POST['submit'])) {
 
 
   </script>
+
+  <script>
+    function drawChart() {
+      document.getElementById("chart-container").innerHTML = "";
+      anychart.onDocumentReady(function () {
+        var score_1 = Number(document.getElementById("score_1").value);
+        var score_2 = Number(document.getElementById("score_2").value);
+        var score_3 = Number(document.getElementById("score_3").value);
+        var score_4 = Number(document.getElementById("score_4").value);
+        var score_5 = Number(document.getElementById("score_5").value);
+        var score_6 = Number(document.getElementById("score_6").value);
+        var score_7 = Number(document.getElementById("score_7").value);
+        // create a data set
+        var chartData = {
+          header: ['#', 'Program'],
+          rows: [
+            ['Area 1', score_1],
+            ['Area 2', score_2],
+            ['Area 3', score_3],
+            ['Area 4', score_4],
+            ['Area 5', score_5],
+            ['Area 6', score_6],
+            ['Area 7', score_7]
+          ]
+        };
+
+        // create a radar chart
+        var chart = anychart.radar();
+
+        // set the chart data
+        chart.data(chartData);
+
+        // set the chart title
+        chart.title("Achivements Based on Areas of Evaluation");
+
+        // set the container id
+        chart.container('chart-container');
+
+        // display the radar chart
+        chart.draw();
+
+      });
+    }
+  </script>
 </head>
 
 <body>
@@ -456,31 +492,36 @@ if (isset($_POST['submit'])) {
     ?>
 
 
-    <section class="courses">
-      <h2>Penilaian Detail Program</h2>
-      <div class="promo_card">
-        <h1 class="collapsible">Tajuk Program</h1>
-        <span>Detail</span>
-        <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun</a>
 
 
-      </div>
 
-      <div class="box-container">
+    <div class="page-2">
 
-        <?php
 
-        if ($typel == 0) {
-          for ($i = 1; $i < count($laporan_all_people); $i++) {
-            // if ($i == 0) {
-            //   $typee = "Pengerusi";
-            // } else
-            if ($i == 1) {
-              $typee = "Ahli Panel 1";
-            } else {
-              $typee = "Ahli Panel 2";
-            }
-            echo "<div class=\"box\">
+      <section class="courses">
+
+        <h2>Penilaian Detail Program</h2>
+        <div class="promo_card">
+          <h1 class="collapsible">Tajuk Program</h1>
+          <span>Detail</span>
+          <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun</a>
+
+
+        </div>
+
+        <div class="box-container">
+
+          <?php
+
+          if ($typel == 0) {
+            for ($i = 1; $i < count($laporan_all_people); $i++) {
+              // if ($i == 0) {
+              //   $typee = "Pengerusi";
+              // } else
+              if ($i == 1) {
+                $typee = "Ahli Panel 1";
+              }
+              echo "<div class=\"box\">
               <div class=\"tutor\">
                 <img src=\"../img/program.jpg\" alt=\"\">
                 <div>
@@ -490,187 +531,232 @@ if (isset($_POST['submit'])) {
 
               <p>Jawatan: <span>", $typee, "</span></p>
               <p>Status: <span>", $laporan_all_people[$i][1], "</span></p>";
-            if ($laporan_all_people[$i][1] != "NOT STARTED")
-              echo "<a href=\"./other_people_laporan.php?id=$app_program_id&type=$i\" class=\"inline-btn\">Lihat</a>";
-            echo "</div>";
+              if ($laporan_all_people[$i][1] != "NOT STARTED")
+                echo "<a href=\"./other_people_laporan.php?id=$app_program_id&type=$i\" class=\"inline-btn\">Lihat</a>";
+              echo "</div>";
+            }
           }
-        }
 
-        ?>
-      </div>
+          ?>
+        </div>
+        <div class="rating-1 promo_card1" style="display: block;">
+          <h1 class="" style="display: block;">Overall</h1>
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel&pid=$pid"; ?>"
-        method="post" autocomplete="off" class="sign-in-form">
-        <div class="promo_card1">
-          <h1 class="collapsible" style="display: block;">Bidang 1: Pembangunan & Penyampaian Program</h1>
-          <div>
-            <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+          <?php
+          include('./area_overall.php');
+          ?>
+          <div id="chart-container" style="width: 100%; height: 300px; ">
 
-
-            <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60"></textarea>
-            <br>
-
-            <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="1_3_penegasan" name="1_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
-
-            <h2><label for="1_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"></textarea>
-            <br>
           </div>
         </div>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 2: Penilaian Pembelajaran Pelajar</h1>
-          <div class="invi-at-first">
-            <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+        <div class="rating-1 promo_card1" style="display: block;">
+          <h1 class="" style="display: block;">Details</h1>
 
-            <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60"></textarea>
-            <br>
-
-            <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="2_3_penegasan" name="2_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
-
-            <h2><label for="2_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"></textarea>
-            <br>
-          </div>
+          <?php
+          include('./area_details.php');
+          ?>
         </div>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel&pid=$pid"; ?>"
+          method="post" autocomplete="off" class="sign-in-form">
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible" style="display: block;">Bidang 1: Pembangunan & Penyampaian Program</h1>
+            <div>
+              <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h1>
-          <div class="invi-at-first">
-            <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
 
-            <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="3_3_penegasan" name="3_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="1_3_penegasan" name="1_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="3_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="1_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
           </div>
-        </div>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 4: Kakitangan Akademik</h1>
-          <div class="invi-at-first">
-            <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 2: Penilaian Pembelajaran Pelajar</h1>
+            <div class="invi-at-first">
+              <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="4_3_penegasan" name="4_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="2_3_penegasan" name="2_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="4_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="2_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
           </div>
-        </div>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 5: Sumber Pendidikan</h1>
-          <div class="invi-at-first">
-            <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h1>
+            <div class="invi-at-first">
+              <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="5_3_penegasan" name="5_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="3_3_penegasan" name="3_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="5_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="3_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
           </div>
-        </div>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 6: Pengurusan Program</h1>
-          <div class="invi-at-first">
-            <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 4: Kakitangan Akademik</h1>
+            <div class="invi-at-first">
+              <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="6_3_penegasan" name="6_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="4_3_penegasan" name="4_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="6_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="4_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
           </div>
-        </div>
 
-        <div class="promo_card1">
-          <h1 class="collapsible">Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
-          <div class="invi-at-first">
-            <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
-            <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60"></textarea>
-            <br>
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 5: Sumber Pendidikan</h1>
+            <div class="invi-at-first">
+              <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
-            <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
-            <textarea id="7_3_penegasan" name="7_3_penegasan" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="5_3_penegasan" name="5_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
 
-            <h2><label for="7_4_syor">1.4 Syor (Recommendation):</label></h2>
-            <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60"></textarea>
-            <br>
+              <h2><label for="5_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
           </div>
-        </div>
-        <div class="promo_card1">
-          <h1 class="collapsible">Penilaian Program</h1>
-          <div class="invi-at-first">
 
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 6: Pengurusan Program</h1>
+            <div class="invi-at-first">
+              <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="6_3_penegasan" name="6_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="6_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
+          </div>
+
+          <div class="promo_card1 laporan-1">
+            <h1 class="collapsible">Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
+            <div class="invi-at-first">
+              <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
+              <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
+              <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+              <textarea id="7_3_penegasan" name="7_3_penegasan" rows="4" cols="60"></textarea>
+              <br>
+
+              <h2><label for="7_4_syor">1.4 Syor (Recommendation):</label></h2>
+              <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60"></textarea>
+              <br>
+            </div>
+          </div>
+          <div class="promo_card1 rating-1">
+            <h1 class="collapsible">Penilaian Program</h1>
+            <div class="invi-at-first">
+
+
+              <?php
+              include('./area1.php');
+              include('./area2.php');
+              include('./area3.php');
+              include('./area4.php');
+              include('./area5.php');
+              include('./area6.php');
+              include('./area7.php');
+              ?>
+            </div>
 
             <?php
-            include('./area1.php');
-            include('./area2.php');
-            include('./area3.php');
-            include('./area4.php');
-            include('./area5.php');
-            include('./area6.php');
-            include('./area7.php');
+            $flag = true;
+            if ($typel == 0) {
+              for ($i = 1; $i < count($laporan_all_people); $i++) {
+                // if ($i == 0) {
+                //   $typee = "Pengerusi";
+                // } else
+                if ($i == 1) {
+                  $typee = "Ahli Panel 1";
+                }
+
+                if ($laporan_all_people[$i][1] == "NOT STARTED"){
+                  $flag = false;
+                break;}
+              }
+
+            }
+if ($flag) {
+                echo '<div class="field">
+              <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
+            </div>';
+
+            echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+            class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
+              }
             ?>
+
           </div>
-          <div class="field">
-            <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
-          </div>
-        </div>
-      </form>
-      <button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
-        class="btn" id="submit" name="submit" value="Hantar">Cetak</button>
-    </section>
+        </form>
+
+      </section>
+    </div>
+
+
+
     <footer>
       <ul class="footer-icons">
         <li><a href="#">
@@ -726,23 +812,58 @@ if (isset($_POST['submit'])) {
           content.style.display = "none";
 
         }
-        coll[0].style.display = "block";
 
+        coll[0].style.display = "block";
       }
+
+      function printRating() {
+        var coll = document.getElementsByClassName("rating-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "block";
+        }
+
+        var coll = document.getElementsByClassName("laporan-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "none";
+        }
+      }
+
+      function printOnlyLaporan() {
+        var coll = document.getElementsByClassName("rating-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "none";
+        }
+
+        var coll = document.getElementsByClassName("laporan-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "block";
+        }
+      }
+      function allExist(){
+      var coll = document.getElementsByClassName("rating-1");
+      for (i = 0; i < coll.length; i++) {
+        coll[i].style.display = "block";
+      }
+
+      coll = document.getElementsByClassName("laporan-1");
+      for (i = 0; i < coll.length; i++) {
+        coll[i].style.display = "block";
+      }
+    }
 
       function printLaporan() {
         //     var printwin = window.open("");
         // printwin.document.write(document.getElementById("main-page").innerHTML);
-        allOpen();
+        // allOpen();
         // printwin.stop();
+        printOnlyLaporan();
         window.print();
-        allClose();
+        printRating();
+        window.print();
+        // allClose();
+        allExist();
       }
 
-      function printpart() {
-
-
-      }
     </script>
 
 

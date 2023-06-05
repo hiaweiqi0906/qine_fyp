@@ -6,7 +6,6 @@
             echo $user[0][7];
         else
             echo "../img/profile.png" ?>" class="image" alt="" width="200" height="200" />
-            <input type="file" name="profil-img" id="profil-img">
         </div>
         <div class="column-5"></div>
     </div>
@@ -20,21 +19,6 @@
             echo $user[0][1];
         else
             echo ""; ?>">
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="column-2">
-        <label for="kategori">Kategori: </label>
-    </div>
-    <div class="column-10">
-        <select class="input-text" name="kategori" id="kategori" readonly value="<?php if (isset($user[0][10]))
-            echo $user[0][10];
-        else
-            echo ""; ?>">
-            <option value="EKSA">EKSA</option>
-        </select>
     </div>
 
 </div>

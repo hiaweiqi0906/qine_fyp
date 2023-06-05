@@ -21,7 +21,19 @@
     </div>
 
     <div class="row">
-    
+    <div class="column-2">
+        <label for="kategori">Kategori: </label>
+    </div>
+    <div class="column-10">
+        <select class="input-text" name="kategori" id="kategori">
+            <option value="EKSA">EKSA</option>
+        </select>
+    </div>
+
+</div>
+
+    <div class="row">
+
     <div class="column-2">
         <label for="no-kad-pengenalan">Nombor Kad Pengenalan: </label>
     </div>
@@ -142,4 +154,3 @@
         <input type="text" class="input-text" name="penganugerahan" id="penganugerahan">
     </div>
  </div>
-      

@@ -1,22 +1,12 @@
 <h1>Maklumat Peribadi</h1>
-<div class="row">
-    <div class="column-5"></div>
-    <div class="column-2">
-        <img src="<?php if (isset($user[0][7]))
-            echo $user[0][7];
-        else
-            echo "../img/profile.png" ?>" class="image" alt="" width="200" height="200" />
-            <input type="file" name="profil-img" id="profil-img">
-        </div>
-        <div class="column-5"></div>
-    </div>
 
-    <div class="row">
-        <div class="column-2">
-            <label for="nama">Nama: </label>
-        </div>
-        <div class="column-10">
-            <input type="text" class="input-text" name="nama" id="nama" value="<?php if (isset($user[0][1]))
+
+<div class="row">
+    <div class="column-2">
+        <label for="nama">Nama: </label>
+    </div>
+    <div class="column-10">
+        <input type="text" class="input-text" name="nama" id="nama" value="<?php if (isset($user[0][1]))
             echo $user[0][1];
         else
             echo ""; ?>">
@@ -24,13 +14,37 @@
 
 </div>
 
+
+<div class="row">
+    <div class="column-2">
+        <label for="emel">Emel: </label>
+    </div>
+    <div class="column-10">
+        <input type="email" class="input-text" name="emel" id="emel" value="<?php if (isset($user[0][1]))
+            echo $user[0][1];
+        else
+            echo ""; ?>">
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="column-2">
+        <label for="password1">Password: </label>
+    </div>
+    <div class="column-4">
+        <input type="text" class="input-text" name="password1" id="password1">
+    </div>
+    <div class="column-6"></div>
+</div>
+
 <div class="row">
     <div class="column-2">
         <label for="kategori">Kategori: </label>
     </div>
     <div class="column-10">
-        <select class="input-text" name="kategori" id="kategori" readonly value="<?php if (isset($user[0][10]))
-            echo $user[0][10];
+        <select class="input-text" name="kategori" id="kategori" value="<?php if (isset($user[0][1]))
+            echo $user[0][1];
         else
             echo ""; ?>">
             <option value="EKSA">EKSA</option>
@@ -100,6 +114,9 @@
             echo ""; ?>" name="no-tel-bimbit" id="no-tel-bimbit">
     </div>
 </div>
+
+
+
 <br>
 <hr>
 <br>
