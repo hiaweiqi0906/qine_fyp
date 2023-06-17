@@ -113,7 +113,7 @@ $successEmail = true;
   </head>
   <body>
     <div id="navbar">
-      <img src="../img/pjkukm.png" alt="">
+      <img src="../img/logo.png" alt="">
       <a href="/index.php"></a>
     </div>
     <main>

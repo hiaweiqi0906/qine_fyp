@@ -8,7 +8,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Kriteria</title>
+   <title>Kriteria Permohonan</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -53,22 +53,9 @@
      </div>
 
 
-    <footer>
-		<ul class="footer-icons">
-		  <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-		  <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-		</ul>
-  
-		<ul class="footer-menu">
-		  <li><a href="">Disclaimer</a></li>
-		  <li><a href="">Privacy Policy</a></li>
-		  <li><a href="">Personal Data Protection</a></li>
-		</ul>
-  
-		<div class="footer-copyright">
-		  <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-		</div>
-	  </footer>
+     <?php
+          include("../components/footer.php");
+        ?>
 
 	  <script src="../js/script.js"></script>
 
