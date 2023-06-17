@@ -132,11 +132,12 @@ if (isset($_POST["submit"])) {
   <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
   <link rel="stylesheet" href="../style/stylelogin.css" />
   <link rel="stylesheet" href="../style/styleform.css" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 
 <body>
   <div id="navbar">
-    <img src="../img/pjkukm.png" alt="">
+    <img src="../img/logo.png" alt="">
   </div>
   <main>
     <div class="box">
@@ -149,6 +150,8 @@ if (isset($_POST["submit"])) {
           ?>
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
             class="sign-in-form">
+
+            <a href="./index.php"><ion-icon name="chevron-back-outline"></ion-icon>Balik</a>
 
             <div class="heading">
               <h2>Log Masuk</h2>
@@ -243,7 +246,7 @@ if (isset($_POST["submit"])) {
             <div class="text-wrap">
               <div class="text-group">
                 <h3 class="top-title">Sistem Pengurusan Ahli Panel Penilai (APP)</h3>
-                <h3>Kriteria Permohonan sebagai Ahli Panel Penilai</h3>
+                <h3>Manual Pengguna Sistem Pengurusan APP</h3>
               </div>
             </div>
 

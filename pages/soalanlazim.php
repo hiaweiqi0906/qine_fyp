@@ -65,28 +65,15 @@
             
             </div>
             <div class="faq-img">
-                <img src="../img/faq-img.jpg" alt="FAQs">
+                <img src="../img/faqimg.jpg" alt="FAQs">
             </div>
         </div>
     
     </section>
 
-    <footer>
-      <ul class="footer-icons">
-        <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-        <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-      </ul>
-
-      <ul class="footer-menu">
-        <li><a href="">Disclaimer</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Personal Data Protection</a></li>
-      </ul>
-
-      <div class="footer-copyright">
-        <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-      </div>
-    </footer>
+    <?php
+          include("../components/footer.php");
+        ?>
 
 
 
