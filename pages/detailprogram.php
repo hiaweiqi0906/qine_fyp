@@ -260,7 +260,7 @@ if (isset($_POST['submit'])) {
 
   if (
     $stmt = $con->prepare("INSERT INTO laporan (`STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `TARIKH_EFEKTIF`) VALUES
-   ('PREPARING', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel', '$effectiveDate')")
+   ('SUDAH HANTAR', '$today_date', '', '$app_program_id', '$lampiran_1', '$akredasi_penuh', '$typel', '$effectiveDate')")
   ) {
     $stmt->execute();
   } else {
@@ -300,7 +300,7 @@ if (isset($_POST['submit'])) {
       $stmt->execute();
       $stmt->store_result();
       // Store the result so we can check if the account exists in the database.
-      if ($stmt->num_rows == 3) {
+      if ($stmt->num_rows == 2) {
         if (
           $stmt = $con->prepare("UPDATE laporan SET TARIKH_AKHIR = '$today_date' WHERE APPPROGRAM_ID = '$app_program_id'")
         ) {
@@ -514,7 +514,7 @@ if (isset($_POST['submit'])) {
           <?php
 
           if ($typel == 0) {
-            for ($i = 1; $i < count($laporan_all_people); $i++) {
+            for ($i = 1; $i < count($laporan_all_people) - 1; $i++) {
               // if ($i == 0) {
               //   $typee = "Pengerusi";
               // } else
@@ -532,7 +532,7 @@ if (isset($_POST['submit'])) {
               <p>Jawatan: <span>", $typee, "</span></p>
               <p>Status: <span>", $laporan_all_people[$i][1], "</span></p>";
               if ($laporan_all_people[$i][1] != "NOT STARTED")
-                echo "<a href=\"./other_people_laporan.php?id=$app_program_id&type=$i\" class=\"inline-btn\">Lihat</a>";
+                echo "<a href=\"./other_people_laporan.php?id=$app_program_id&type=$i&pid=$pid\" class=\"inline-btn\">Lihat</a>";
               echo "</div>";
             }
           }
@@ -721,11 +721,79 @@ if (isset($_POST['submit'])) {
               include('./area7.php');
               ?>
             </div>
+            <div class="promo_card1 laporan-1">
+              <h1 class="">BAHAGIAN B : PERAKUAN TERHADAP PENILAIAN PROGRAMPENGAJIAN OLEH PANEL PENILAI </h1>
+              <h2 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
+              </h2>
+              <div class="invi-at-first">
+                <h2><input type="checkbox" id="opt1" name="opt1" value="opt1">
+                  <label for="vehicle3"> Dianugerahkan akreditasi program pengajian tanpa sebarang syarat.</label>
+                </h2><br>
+                <h2><input type="checkbox" id="opt2" name="opt2" value="opt2">
+                  <label for="vehicle3"> Dianugerahkan akreditasi dengan keperluan seperti yang dijelaskan di Bahagian
+                    B1.</label>
+                </h2><br>
+                <h2><input type="checkbox" id="opt3" name="opt3" value="opt3">
+                  <label for="vehicle3"> Dianugerahkan akreditasi dengan syarat seperti yang dijelaskan di Bahagian
+                    B2.</label>
+                </h2><br>
+                <h2><input type="checkbox" id="opt4" name="opt4" value="opt4">
+                  <label for="vehicle3"> Tidak layak untuk dianugerahkan akreditasi. Rujuk penafian seperti di Bahagian
+                    B3</label>
+                </h2><br><br>
+                <h2><label for="b1">BAHAGIAN B1: KEPERLUAN TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI
+                    (lengkapkan sekiranya berkaitan):
+                  </label></h2>
+                <textarea id="b1" name="b1" rows="4" cols="60"></textarea>
+                <br>
 
+                <h2><label for="b2">BAHAGIAN B2: SYARAT TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI:</label></h2>
+                <textarea id="b2" name="b2" rows="4" cols="60"></textarea>
+                <br>
+
+                <h2><label for="b3">BAHAGIAN B3: PENAFIAN PENGANUGERAHAN AKREDITASI OLEH PANEL PENILAI
+                    (lengkapkan sekiranya berkaitan):</label></h2>
+                <textarea id="b3" name="b3" rows="4" cols="60"></textarea>
+                <br>
+
+                <h2><label for="b4">BAHAGIAN B4: TEMPOH PERAKUAN AKREDITASI:</label></h2>
+                <h2><input type="checkbox" id="b4" name="b4" value="yes">
+                  <label for="b4"> Program ini AKAN dapat akredasi.</label>
+                </h2><br>
+                <h2><input type="checkbox" id="b4" name="b4" value="yes">
+                  <label for="b4"> Program ini TIDAK AKAN dapat akredasi.</label>
+                </h2><br> <br>
+              </div>
+            </div>
+            <div class="promo_card1 laporan-1">
+              <h1 class="">BAHAGIAN C : PENGESAHAN DAN TANDATANGAN PANEL PENILAI </h1>
+              <h2 class="">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
+              </h2>
+              <table>
+                <tr>
+                  <td colspan="2">
+
+                    Disediakan Oleh:
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nama, Jawatan & Alamat</td>
+                  <td>Tandatangan</td>
+                </tr>
+                <tr>
+                  <td>PENGERUSI</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>AHLI PANEL 1</td>
+                  <td></td>
+                </tr>
+              </table>
+              </div>
             <?php
             $flag = true;
             if ($typel == 0) {
-              for ($i = 1; $i < count($laporan_all_people); $i++) {
+              for ($i = 1; $i < count($laporan_all_people) - 1; $i++) {
                 // if ($i == 0) {
                 //   $typee = "Pengerusi";
                 // } else
@@ -733,20 +801,21 @@ if (isset($_POST['submit'])) {
                   $typee = "Ahli Panel 1";
                 }
 
-                if ($laporan_all_people[$i][1] == "NOT STARTED"){
+                if ($laporan_all_people[$i][1] == "NOT STARTED") {
                   $flag = false;
-                break;}
+                  break;
+                }
               }
 
             }
-if ($flag) {
-                echo '<div class="field">
+            if ($flag) {
+              echo '<div class="field">
               <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
             </div>';
 
-            echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
-            class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
-              }
+          }
+            //   echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+            // class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
             ?>
 
           </div>
@@ -839,17 +908,17 @@ if ($flag) {
           coll[i].style.display = "block";
         }
       }
-      function allExist(){
-      var coll = document.getElementsByClassName("rating-1");
-      for (i = 0; i < coll.length; i++) {
-        coll[i].style.display = "block";
-      }
+      function allExist() {
+        var coll = document.getElementsByClassName("rating-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "block";
+        }
 
-      coll = document.getElementsByClassName("laporan-1");
-      for (i = 0; i < coll.length; i++) {
-        coll[i].style.display = "block";
+        coll = document.getElementsByClassName("laporan-1");
+        for (i = 0; i < coll.length; i++) {
+          coll[i].style.display = "block";
+        }
       }
-    }
 
       function printLaporan() {
         //     var printwin = window.open("");

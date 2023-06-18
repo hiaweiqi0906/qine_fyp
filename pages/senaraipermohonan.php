@@ -14,19 +14,23 @@ $list_of_application = array();
 // $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID` FROM `appapplication` WHERE `STATUS` = 'PROCESSING'")) {
+if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, lecturer.`LECTURER_ID`, `KATEGORI`, `NAMA`, appapplication.UNIVERSITI FROM `appapplication` LEFT JOIN `lecturer` ON appapplication.LECTURER_ID = lecturer.LECTURER_ID WHERE `STATUS` = 'PROCESSING'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id);
+   mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kategori, $nama, $universiti);
 
 // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_application, array($application_id, $tarikh, $masa, $status, $lecturer_id));
+      array_push($list_of_application, array($application_id, $tarikh, $masa, $status, $lecturer_id, $kategori, $nama, $universiti));
    }
    // echo $stmt->field_count;
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
    echo 'Could not prepare statement!';
+}
+
+for($hh=0; $hh<count($list_of_application); $hh++){
+   $list_of_application[$hh][5] = explode(";", $list_of_application[$hh][5]);
 }
 
 
@@ -61,7 +65,7 @@ $stmt->close();
      <section class="teachers">
 
       <h1 class="heading">Senarai Permohonan</h1>
- 
+
 
       <div class="box-container">
 
@@ -80,10 +84,24 @@ $stmt->close();
 
             <p>Tarikh: <span>",$list_of_application[$i][1],"</span></p>
             <p>Masa : <span>",$list_of_application[$i][2],"</span></p>
-            <p>Status : <span>",$list_of_application[$i][3],"</span></p>
-            <a href=\"../functions/application_action.php?action=ACCEPT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TERIMA</a>
-            <a href=\"../functions/application_action.php?action=REJECT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TOLAK</a>
-         </div>";
+            <p>Nama : <span>",$list_of_application[$i][6],"</span></p>
+            <p>Universiti : <span>",$list_of_application[$i][7],"</span></p>
+            <p>Status : <span>",$list_of_application[$i][3],"</span></p>";
+            for($jjj=0; $jjj<count($list_of_application[$i][5]); $jjj++){
+
+               $current_kategori = $list_of_application[$i][5][$jjj];
+               if($current_kategori !=""){
+
+
+               echo"<p>Kategori: ".$list_of_application[$i][5][$jjj]."</p>
+               ";}
+            }
+         echo"               <a href=\"../functions/application_action.php?action=ACCEPT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TERIMA</a>
+
+<br>
+         <a href=\"../functions/application_action.php?action=REJECT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TOLAK</a>
+            </div>";
+
       }
       ?>
 

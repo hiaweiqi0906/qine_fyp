@@ -14,13 +14,13 @@ $list_of_program_panel_1 = array();
 
 $penilaian_info = array();
 
-if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 on t1.PROGRAM_ID = t2.PROGRAM_ID WHERE t2.APP_ID_PENGERUSI = '$id'")) {
+if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 on t1.PROGRAM_ID = t2.PROGRAM_ID WHERE t2.APP_ID_PENGERUSI  = '$id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
+   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa, $uploadedby);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_program_app, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      array_push($list_of_program_app, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa, $uploadedby));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -30,10 +30,10 @@ if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 o
 if ($stmt = $con->prepare("SELECT t1.* FROM program t1 left join appprogram t2 on t1.PROGRAM_ID = t2.PROGRAM_ID WHERE t2.APP_ID_PANEL_1 = '$id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
+   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa, $uploadedby);
 
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_program_panel_1, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      array_push($list_of_program_panel_1, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa, $uploadedby));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -243,7 +243,7 @@ $j = 0;
                <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
                <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
                <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
-               <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
+               <a href=\"./other_people_laporan.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div>";
                }
             }
@@ -268,7 +268,7 @@ $j = 0;
             <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
             <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
-            <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
+            <a href=\"./other_people_laporan.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
                }
             }

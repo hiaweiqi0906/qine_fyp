@@ -32,8 +32,6 @@ if($typel == 1){
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
       echo 'Could not prepare statement!';
    }
-}else{
-   header("Location: index.php");
 }
 
 if(isset($report)){

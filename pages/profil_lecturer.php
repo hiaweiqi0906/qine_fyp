@@ -82,6 +82,7 @@ if(isset($_POST['submit'])){
  $fakulti = $_POST["fakulti"];
  $bidang = $_POST["bidang"];
  $negeri = $_POST["negeri"];
+ $universiti = $_POST["universiti"];
  $no_tel_pejabat = $_POST["no-tel-pejabat"];
  $no_tel_bimbit = $_POST["no-tel-bimbit"];
 
@@ -90,9 +91,9 @@ if(isset($_POST['submit'])){
   $now_time = date("h:i:sa");
 
   if(file_exists($_FILES['profil-img']['tmp_name']) || is_uploaded_file($_FILES['profil-img']['tmp_name'])){
-    $stmt1 = "UPDATE lecturer SET `FAKULTI` = '$fakulti', `BIDANG` = '$bidang', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `URL_AVATAR` = '$url_avatar',  `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'";
+    $stmt1 = "UPDATE lecturer SET `UNIVERSITI` = '$universiti', `FAKULTI` = '$fakulti', `BIDANG` = '$bidang', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `URL_AVATAR` = '$url_avatar',  `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'";
   }else {
-    $stmt1 = "UPDATE lecturer SET `FAKULTI` = '$fakulti', `BIDANG` = '$bidang', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'";
+    $stmt1 = "UPDATE lecturer SET `UNIVERSITI` = '$universiti', `FAKULTI` = '$fakulti', `BIDANG` = '$bidang', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'";
   }
         if ($stmt = $con->prepare($stmt1)) {
 
@@ -109,11 +110,11 @@ if(isset($_POST['submit'])){
     }
 
 
-    if ($stmt = $con->prepare("SELECT `LECTURER_ID`, `KATEGORI_PERMOHONAN`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG`, `GELARAN`, `POSKOD`, `DAERAH`, `NEGERI`, `NO_TELEFON_PEJABAT` FROM lecturer WHERE LECTURER_ID = '$id' ")) {
+    if ($stmt = $con->prepare("SELECT `LECTURER_ID`, `KATEGORI_PERMOHONAN`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG`, `GELARAN`, `POSKOD`, `DAERAH`, `NEGERI`, `NO_TELEFON_PEJABAT`, `UNIVERSITI` FROM lecturer WHERE LECTURER_ID = '$id' ")) {
       $stmt->execute();
-      mysqli_stmt_bind_result($stmt, $lecturer_id, $kategori_permohonan, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $gelaran, $poskod, $daerah, $negeri, $no_telefon_pejabat);
+      mysqli_stmt_bind_result($stmt, $lecturer_id, $kategori_permohonan, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $gelaran, $poskod, $daerah, $negeri, $no_telefon_pejabat, $universiti);
       while (mysqli_stmt_fetch($stmt)) {
-        array_push($user, array($lecturer_id, $kategori_permohonan, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $gelaran, $poskod, $daerah, $negeri, $no_telefon_pejabat));
+        array_push($user, array($lecturer_id, $kategori_permohonan, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $gelaran, $poskod, $daerah, $negeri, $no_telefon_pejabat, $universiti));
       }
     }
     else {

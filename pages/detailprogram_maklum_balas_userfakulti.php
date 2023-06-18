@@ -2,15 +2,14 @@
 
 include("../php/db.php");
 // session_start();
-include('../components/app_protected_route.php');
+include('../components/userfakulti_protected_route.php');
 
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
 $pid = $_GET["pid"];
 $str_url = '../functions/check_access.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid;
-include('../functions/check_access.php');
+include('../functions/check_other_access_userfakulti.php');
 include('../functions/search_all_laporan.php');
-// include('../functions/search_all_maklum_balas.php');
 // echo count($laporan_all_people);
 
 $all_empty = true;
@@ -25,7 +24,7 @@ for ($yyy = 0; $yyy < 3; $yyy++) {
   }
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])  || isset($_POST['submitBtn'])) {
   $lampiran_1 = "";
   $l1_1_ulasan = $_POST['1_1_mb1'];
   $l1_2_pujian = $_POST['1_2_mb2'];
@@ -91,14 +90,12 @@ if (isset($_POST['submit'])) {
   $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($today_date)));
 
   if (
-    $stmt = $con->prepare("UPDATE laporan SET `MAKLUM_BALAS` = '$lampiran_1', `SENTTOUSERFAKULTI` = 'TT' WHERE APPPROGRAM_ID = '$app_program_id' AND `TYPE` = '$typel' ")
+    $stmt = $con->prepare("UPDATE laporan SET `MAKLUM_BALAS` = '$lampiran_1' WHERE APPPROGRAM_ID = '$app_program_id' AND `TYPE` = '$typel' ")
   ) {
     $stmt->execute();
   } else {
     echo 'Could not prepare statement!';
   }
-
-
 
   // if (
   //   $stmt = $con->prepare("UPDATE appprogram SET TARIKH_MASA_KEMASKINI = '$today_date' WHERE APPPROGRAM_ID = '$app_program_id' LIMIT 1")
@@ -192,6 +189,16 @@ if (isset($_POST['submit'])) {
 
 }
 
+if (isset($_POST['submit'])){
+  if (
+    $stmt = $con->prepare("UPDATE laporan SET `SENTTOUSERFAKULTI` = 'FF' WHERE APPPROGRAM_ID = '$app_program_id' AND `TYPE` = '$typel' ")
+  ) {
+    $stmt->execute();
+  } else {
+    echo 'Could not prepare statement!';
+  }
+}
+
 $lampiran_1 = $laporan_all_people[$typel][5];
 $lampiran_1_arr = explode("<", $lampiran_1);
 $lampiran_1_bidang = array();
@@ -200,15 +207,13 @@ for ($jj = 0; $jj < 7; $jj++) {
 }
 
 $mb = "";
-$stuf = "";
 if (
-  $stmt = $con->prepare("SELECT MAKLUM_BALAS, SENTTOUSERFAKULTI from laporan WHERE APPPROGRAM_ID = '$app_program_id'")
+  $stmt = $con->prepare("SELECT MAKLUM_BALAS from laporan WHERE APPPROGRAM_ID = '$app_program_id'")
 ) {
   $stmt->execute();
-  mysqli_stmt_bind_result($stmt, $maklum_balas, $stuuf);
+  mysqli_stmt_bind_result($stmt, $maklum_balas);
   while (mysqli_stmt_fetch($stmt)) {
     $mb = $maklum_balas;
-    $stuf = $stuuf;
   }
 } else {
   echo 'Could not prepare statement!';
@@ -223,6 +228,7 @@ $mb_bidang = array();
 for ($jj = 0; $jj < 7; $jj++) {
   array_push($mb_bidang, explode("~", $mb_arr[$jj]));
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -401,21 +407,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="1_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="1_2_mb2" name="1_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[0][1] . '</textarea>
+            <textarea id="1_2_mb2" name="1_2_mb2" rows="4" cols="60" >' . $mb_bidang[0][1] . '</textarea>
             <br>
 
             <h2><label for="1_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="1_3_mb3" name="1_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[0][2] . '</textarea>
+            <textarea id="1_3_mb3" name="1_3_mb3" rows="4" cols="60" >' . $mb_bidang[0][2] . '</textarea>
             <br>
 
             <h2><label for="1_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="1_4_mb4" name="1_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[0][3] . '</textarea>
+            <textarea id="1_4_mb4" name="1_4_mb4" rows="4" cols="60" >' . $mb_bidang[0][3] . '</textarea>
             <br>
             <h2><label for="1_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="1_5_mb5" name="1_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[0][4] . '</textarea>
+            <textarea id="1_5_mb5" name="1_5_mb5" rows="4" cols="60" >' . $mb_bidang[0][4] . '</textarea>
             <br>
             <h2><label for="1_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="1_6_mb6" name="1_6_mb6" rows="4" cols="60">' . $mb_bidang[0][5] . '</textarea>
+            <textarea id="1_6_mb6" name="1_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[0][5] . '</textarea>
             <br>
           </div>
 ';
@@ -433,21 +439,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="2_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="2_2_mb2" name="2_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[1][1] . '</textarea>
+            <textarea id="2_2_mb2" name="2_2_mb2" rows="4" cols="60" >' . $mb_bidang[1][1] . '</textarea>
             <br>
 
             <h2><label for="2_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="2_3_mb3" name="2_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[1][2] . '</textarea>
+            <textarea id="2_3_mb3" name="2_3_mb3" rows="4" cols="60" >' . $mb_bidang[1][2] . '</textarea>
             <br>
 
             <h2><label for="2_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="2_4_mb4" name="2_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[1][3] . '</textarea>
+            <textarea id="2_4_mb4" name="2_4_mb4" rows="4" cols="60" >' . $mb_bidang[1][3] . '</textarea>
             <br>
             <h2><label for="2_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="2_5_mb5" name="2_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[1][4] . '</textarea>
+            <textarea id="2_5_mb5" name="2_5_mb5" rows="4" cols="60" >' . $mb_bidang[1][4] . '</textarea>
             <br>
             <h2><label for="2_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="2_6_mb6" name="2_6_mb6" rows="4" cols="60">' . $mb_bidang[1][5] . '</textarea>
+            <textarea id="2_6_mb6" name="2_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[1][5] . '</textarea>
             <br>
           </div>
 ';
@@ -465,21 +471,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="3_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="3_2_mb2" name="3_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[2][1] . '</textarea>
+            <textarea id="3_2_mb2" name="3_2_mb2" rows="4" cols="60" >' . $mb_bidang[2][1] . '</textarea>
             <br>
 
             <h2><label for="3_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="3_3_mb3" name="3_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[2][2] . '</textarea>
+            <textarea id="3_3_mb3" name="3_3_mb3" rows="4" cols="60" >' . $mb_bidang[2][2] . '</textarea>
             <br>
 
             <h2><label for="3_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="3_4_mb4" name="3_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[2][3] . '</textarea>
+            <textarea id="3_4_mb4" name="3_4_mb4" rows="4" cols="60" >' . $mb_bidang[2][3] . '</textarea>
             <br>
             <h2><label for="3_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="3_5_mb5" name="3_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[2][4] . '</textarea>
+            <textarea id="3_5_mb5" name="3_5_mb5" rows="4" cols="60" >' . $mb_bidang[2][4] . '</textarea>
             <br>
             <h2><label for="3_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="3_6_mb6" name="3_6_mb6" rows="4" cols="60">' . $mb_bidang[2][5] . '</textarea>
+            <textarea id="3_6_mb6" name="3_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[2][5] . '</textarea>
             <br>
           </div>
 
@@ -495,21 +501,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="4_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="4_2_mb2" name="4_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[3][1] . '</textarea>
+            <textarea id="4_2_mb2" name="4_2_mb2" rows="4" cols="60" >' . $mb_bidang[3][1] . '</textarea>
             <br>
 
             <h2><label for="4_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="4_3_mb3" name="4_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[3][2] . '</textarea>
+            <textarea id="4_3_mb3" name="4_3_mb3" rows="4" cols="60" >' . $mb_bidang[3][2] . '</textarea>
             <br>
 
             <h2><label for="4_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="4_4_mb4" name="4_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[3][3] . '</textarea>
+            <textarea id="4_4_mb4" name="4_4_mb4" rows="4" cols="60" >' . $mb_bidang[3][3] . '</textarea>
             <br>
             <h2><label for="4_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="4_5_mb5" name="4_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[3][4] . '</textarea>
+            <textarea id="4_5_mb5" name="4_5_mb5" rows="4" cols="60" >' . $mb_bidang[3][4] . '</textarea>
             <br>
             <h2><label for="4_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="4_6_mb6" name="4_6_mb6" rows="4" cols="60">' . $mb_bidang[3][5] . '</textarea>
+            <textarea id="4_6_mb6" name="4_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[3][5] . '</textarea>
             <br>
           </div>
 ';
@@ -526,21 +532,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="5_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="5_2_mb2" name="5_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[4][1] . '</textarea>
+            <textarea id="5_2_mb2" name="5_2_mb2" rows="4" cols="60" >' . $mb_bidang[4][1] . '</textarea>
             <br>
 
             <h2><label for="5_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="5_3_mb3" name="5_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[4][2] . '</textarea>
+            <textarea id="5_3_mb3" name="5_3_mb3" rows="4" cols="60" >' . $mb_bidang[4][2] . '</textarea>
             <br>
 
             <h2><label for="5_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="5_4_mb4" name="5_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[4][3] . '</textarea>
+            <textarea id="5_4_mb4" name="5_4_mb4" rows="4" cols="60" >' . $mb_bidang[4][3] . '</textarea>
             <br>
             <h2><label for="5_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="5_5_mb5" name="5_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[4][4] . '</textarea>
+            <textarea id="5_5_mb5" name="5_5_mb5" rows="4" cols="60" >' . $mb_bidang[4][4] . '</textarea>
             <br>
             <h2><label for="5_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="5_6_mb6" name="5_6_mb6" rows="4" cols="60">' . $mb_bidang[4][5] . '</textarea>
+            <textarea id="5_6_mb6" name="5_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[4][5] . '</textarea>
             <br>
           </div>
 
@@ -556,21 +562,21 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="6_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="6_2_mb2" name="6_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[5][1] . '</textarea>
+            <textarea id="6_2_mb2" name="6_2_mb2" rows="4" cols="60" >' . $mb_bidang[5][1] . '</textarea>
             <br>
 
             <h2><label for="6_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="6_3_mb3" name="6_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[5][2] . '</textarea>
+            <textarea id="6_3_mb3" name="6_3_mb3" rows="4" cols="60" >' . $mb_bidang[5][2] . '</textarea>
             <br>
 
             <h2><label for="6_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="6_4_mb4" name="6_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[5][3] . '</textarea>
+            <textarea id="6_4_mb4" name="6_4_mb4" rows="4" cols="60" >' . $mb_bidang[5][3] . '</textarea>
             <br>
             <h2><label for="6_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="6_5_mb5" name="6_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[5][4] . '</textarea>
+            <textarea id="6_5_mb5" name="6_5_mb5" rows="4" cols="60" >' . $mb_bidang[5][4] . '</textarea>
             <br>
             <h2><label for="6_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="6_6_mb6" name="6_6_mb6" rows="4" cols="60">' . $mb_bidang[5][5] . '</textarea>
+            <textarea id="6_6_mb6" name="6_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[5][5] . '</textarea>
             <br>
           </div>
 ';
@@ -588,35 +594,36 @@ for ($jj = 0; $jj < 7; $jj++) {
             <br>
 
             <h2><label for="7_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-            <textarea id="7_2_mb2" name="7_2_mb2" rows="4" cols="60" readonly>' . $mb_bidang[6][1] . '</textarea>
+            <textarea id="7_2_mb2" name="7_2_mb2" rows="4" cols="60" >' . $mb_bidang[6][1] . '</textarea>
             <br>
 
             <h2><label for="7_3_mb3">1.3 Pelaksana:</label></h2>
-            <textarea id="7_3_mb3" name="7_3_mb3" rows="4" cols="60" readonly>' . $mb_bidang[6][2] . '</textarea>
+            <textarea id="7_3_mb3" name="7_3_mb3" rows="4" cols="60" >' . $mb_bidang[6][2] . '</textarea>
             <br>
 
             <h2><label for="7_4_mb4">1.4 Penghasilan:</label></h2>
-            <textarea id="7_4_mb4" name="7_4_mb4" rows="4" cols="60" readonly>' . $mb_bidang[6][3] . '</textarea>
+            <textarea id="7_4_mb4" name="7_4_mb4" rows="4" cols="60" >' . $mb_bidang[6][3] . '</textarea>
             <br>
             <h2><label for="7_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-            <textarea id="7_5_mb5" name="7_5_mb5" rows="4" cols="60" readonly>' . $mb_bidang[6][4] . '</textarea>
+            <textarea id="7_5_mb5" name="7_5_mb5" rows="4" cols="60" >' . $mb_bidang[6][4] . '</textarea>
             <br>
             <h2><label for="7_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-            <textarea id="7_6_mb6" name="7_6_mb6" rows="4" cols="60">' . $mb_bidang[6][5] . '</textarea>
+            <textarea id="7_6_mb6" name="7_6_mb6" rows="4" cols="60" readonly>' . $mb_bidang[6][5] . '</textarea>
             <br>
           </div>
           ';
-          if ($stuf == "F") {
-            echo '<div class="field">
-            <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
-          </div>';
-          }
 
           ?>
 
 
+<div class="field">
+            <input type="submit" class="btn" id="submitBtn" name="submitBtn" value="Simpan" required>
+          </div>
 
 
+            <div class="field">
+            <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
+          </div>
 
 
     </div>

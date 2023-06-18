@@ -22,15 +22,15 @@ $current_time = date("H-i-s");
 
 // $stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `APP_ID_PANEL_2` FROM `appprogram` WHERE 1")
 // $stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM `program` WHERE `PROGRAM_ID`='$program_id'")
-if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, FROM `appprogram` WHERE `PROGRAM_ID`='$program_id'")) {
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `KATEGORI` FROM `appprogram` WHERE `PROGRAM_ID`='$program_id'")) {
 
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualiti_ukm_id, $app_id_panel_1);
+   mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualiti_ukm_id, $app_id_panel_1, $kat);
 
    // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
       $assigned = true;
-      array_push($assigned_program_details, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualiti_ukm_id, $app_id_panel_1));
+      array_push($assigned_program_details, array($app_program_id, $tarikh_terima, $app_id_pengerusi, $program_id, $kualiti_ukm_id, $app_id_panel_1, $kat));
    }
 } else {
    // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -53,11 +53,18 @@ if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `
 
 $appr_people = array();
 $program_bidang = $program_details[0][4];
-if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA` FROM `app` WHERE `BIDANG`='$program_bidang'")) {
+if ($stmt = $con->prepare("SELECT xxx.APP_ID, xxx.NAMA, xxx.UNIVERSITI, xxx.KATEGORI, COUNT(xxx.APP_ID) AS FREQ FROM
+
+(SELECT a.APP_ID, a.NAMA, a.UNIVERSITI, a.KATEGORI, ap.APPPROGRAM_ID FROM `app` a JOIN appprogram ap ON a.APP_ID = ap.APP_ID_PENGERUSI WHERE a.`BIDANG`='$program_bidang'
+UNION
+SELECT a.APP_ID,a.NAMA, a.UNIVERSITI, a.KATEGORI, ap.APPPROGRAM_ID as cnt FROM `app` a JOIN appprogram ap ON a.APP_ID = ap.APP_ID_PANEL_1 WHERE a.`BIDANG`='$program_bidang'
+ ) xxx
+
+GROUP BY xxx.APP_ID ")) {
    $stmt->execute();
-   mysqli_stmt_bind_result($stmt, $app_id, $nama);
+   mysqli_stmt_bind_result($stmt, $app_id, $nama, $uni, $kat, $bilangan);
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($appr_people, array($app_id, $nama));
+      array_push($appr_people, array($app_id, $nama, $uni, $kat, $bilangan));
    }
 } else {
    echo 'Could not prepare statement!';
@@ -73,7 +80,29 @@ if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA` FROM `app` WHERE 1")) {
 } else {
    echo 'Could not prepare statement!';
 }
+// $list_of_app = array();
+$list_of_app_iso = array();
+$list_of_app_eksa = array();
+$list_of_app_isms = array();
+$list_of_app_mqa = array();
+for($uu=0; $uu<count($appr_people); $uu++){
+   if(str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4]<5){
+      array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1]));
+   }
 
+   if(str_contains($appr_people[$uu][3], 'ISO') && $appr_people[$uu][4]<5){
+      array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1]));
+   }
+
+   if(str_contains($appr_people[$uu][3], 'ISMS') && $appr_people[$uu][4]<5){
+      array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1]));
+   }
+
+   if(str_contains($appr_people[$uu][3], 'MQA') && $appr_people[$uu][4]<5){
+      array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1]));
+   }
+   // array_push($list_of_app, array($appr_people[$uu][0], $appr_people[$uu][1]));
+}
 
 if ($assigned) {
    for ($x = 0; $x < count($list_of_app); $x++) {
@@ -88,11 +117,7 @@ if ($assigned) {
       }
    }
 
-   for ($x = 0; $x < count($list_of_app); $x++) {
-      if ($list_of_app[$x][0] == $assigned_program_details[0][6]) {
-         array_push($assigned_app, array($list_of_app[$x][0], $list_of_app[$x][1]));
-      }
-   }
+
 
 
 }
@@ -100,10 +125,24 @@ if ($assigned) {
 if (isset($_POST['submit'])) {
    $pengerusi = $_POST["pengerusi"];
    $panel_1 = $_POST["panel_1"];
+   $kat = $_POST["kat"];
    $program_id = $program_details[0][0];
    if (
-      $stmt = $con->prepare("INSERT INTO `appprogram`(`TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`)
-                                             VALUES ('$today_date','$pengerusi','$program_id','$id','$panel_1')")
+      $stmt = $con->prepare("INSERT INTO `appprogram`(`TARIKH_TERIMA`, `APP_ID_PENGERUSI`, `PROGRAM_ID`, `KUALITIUKM_ID`, `APP_ID_PANEL_1`, `KATEGORI`)
+                                             VALUES ('$today_date','$pengerusi','$program_id','$id','$panel_1', '$kat')")
+   ) {
+      // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
+      // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      // $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+      // $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+      $stmt->execute();
+   } else {
+      // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+      echo 'Could not prepare statement!';
+   }
+
+   if (
+      $stmt = $con->prepare("UPDATE `program`SET `STATUS` = 'ASSIGNED' WHERE PROGRAM_ID = '$program_id'")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -183,7 +222,7 @@ $stmt->close();
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
    <script type="text/javascript">
-      var apps = <?php echo json_encode($list_of_app); ?>;
+      var apps = <?php echo json_encode($appr_people); ?>;
    </script>
 </head>
 
@@ -196,12 +235,10 @@ $stmt->close();
 
    <section class="teachers">
 
-      <h1 class="heading">Senarai Program yang Belum Diagihkan</h1>
-
-
+      <h1 class="heading">Program Informasi</h1>
 
       <div class="box-container">
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$id"; ?>?id=$current_application_id"
+         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$program_id"; ?>"
             method="post" autocomplete="off" class="sign-in-form">
 
             <?php
@@ -219,38 +256,173 @@ $stmt->close();
             <p>Informasi: <a href=\"../functions/generate_program.php?pid=" . $program_details[$i][0] . "\"><span>Muat Turun</span></a></p>
             <p>Tarikh: <span>", $program_details[$i][2], "</span></p>
             <p>Masa : <span>", $program_details[$i][7], "</span></p>
-            <p>Status : <span>", $program_details[$i][5], "</span></p>
-            <p>People Suggestions : <span>";
-               for ($oo = 0; $oo < count($appr_people); $oo++) {
-                  echo "" . $appr_people[$oo][1] . ", ";
-               }
-               echo "</span></p><p><label for=\"pengerusi\">Pengerusi:</label></p>
+            <p>Status : <span>", $program_details[$i][5], "</span></p>";
+            echo "<p><label for=\"kat\">Kategori:</label></p>";
+if(!$assigned)
+         {echo '
+         <select name="kat" id="kat" onchange="update_app()">
+               <option value="ISO" selected>ISO</option>
+               <option value="EKSA" >EKSA</option>
+               <option value="ISMS" >ISMS</option>
+               <option value="MQA" >MQA</option>
+         </select>';}
+         else {
+            echo '
+         <select name="kat" id="kat">
+               <option value="" selected>'.$assigned_program_details[0][6].'</option>
+         </select>';
+         }
 
-            <select name=\"pengerusi\" id=\"pengerusi\">
+         echo "<div id=\"div-iso\" style=\"display: block;\">";
+         if(!$assigned){
+            echo "<p>People Suggestions : <span>";
+         for ($oo = 0; $oo < count($list_of_app_iso); $oo++) {
+                  echo "" . $list_of_app_iso[$oo][1] . ", ";
+               }
+               echo "</span></p>";
+            }
+
+               echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+
+            <select name=\"pengerusi1\" id=\"pengerusi1\"  onchange=\"update_pengerusi_1()\">
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
-               }
-               for ($y = 0; $y < count($list_of_app); $y++) {
-                  echo "<option value='", $list_of_app[$y][0], "'>", $list_of_app[$y][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_iso); $y++) {
+                     echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
+                  }
                }
 
                echo "</select>
 
             <p><label for=\"panel_1\">Ahli Panel 1:</label></p>
 
-            <select name=\"panel_1\" id=\"panel_1\">
+            <select name=\"panel_11\" id=\"panel_11\" onchange=\"update_panel_1()\">
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_iso); $y++) {
+                     echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
+                  }
                }
-               for ($y = 0; $y < count($list_of_app); $y++) {
-                  echo "<option value='", $list_of_app[$y][0], "'>", $list_of_app[$y][1], "</option>";
+
+               echo "</select></div>
+            ";
+
+            echo "<div id=\"div-eksa\" style=\"display: none;\">";
+            if(!$assigned){
+               echo "<p>People Suggestions : <span>";
+            for ($oo = 0; $oo < count($list_of_app_eksa); $oo++) {
+                     echo "" . $list_of_app_eksa[$oo][1] . ", ";
+                  }
+                  echo "</span></p>";
+               }
+
+                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+
+            <select name=\"pengerusi2\" id=\"pengerusi2\" onchange=\"update_pengerusi_2()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_eksa); $y++) {
+                     echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
+                  }
                }
 
                echo "</select>
 
+            <p><label for=\"panel_1\">Ahli Panel 1:</label></p>
 
+            <select name=\"panel_12\" id=\"panel_12\" onchange=\"update_panel_2()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_eksa); $y++) {
+                     echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
+                  }
+               }
+
+               echo "</select></div>
+            ";
+
+            echo "<div id=\"div-isms\" style=\"display: none;\">";
+            if(!$assigned){
+               echo "<p>People Suggestions : <span>";
+            for ($oo = 0; $oo < count($list_of_app_isms); $oo++) {
+                     echo "" . $list_of_app_isms[$oo][1] . ", ";
+                  }
+                  echo "</span></p>";
+               }
+
+                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+
+            <select name=\"pengerusi3\" id=\"pengerusi3\" onchange=\"update_pengerusi_3()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_isms); $y++) {
+                     echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
+                  }
+               }
+
+               echo "</select>
+
+            <p><label for=\"panel_13\">Ahli Panel 1:</label></p>
+
+            <select name=\"panel_13\" id=\"panel_13\"onchange=\"update_panel_3()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_isms); $y++) {
+                     echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
+                  }
+               }
+
+               echo "</select></div>
+            ";
+
+            echo "<div id=\"div-mqa\" style=\"display: none;\">";
+            if(!$assigned){
+               echo "<p>People Suggestions : <span>";
+            for ($oo = 0; $oo < count($list_of_app_mqa); $oo++) {
+                     echo "" . $list_of_app_mqa[$oo][1] . ", ";
+                  }
+                  echo "</span></p>";
+               }
+
+                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+
+            <select name=\"pengerusi4\" id=\"pengerusi4\" onchange=\"update_pengerusi_4()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_mqa); $y++) {
+                     echo "<option value='", $list_of_app_mqa[$y][0], "'>", $list_of_app_mqa[$y][1], "</option>";
+                  }
+               }
+
+               echo "</select>
+
+            <p><label for=\"panel_14\">Ahli Panel 1:</label></p>
+
+            <select name=\"panel_14\" id=\"panel_14\" onchange=\"update_panel_4()\">
+            ";
+               if ($assigned) {
+                  echo "<option value='". $assigned_app[1][0]. "' selected>". $assigned_app[1][1]. "</option>";
+               }else{
+                  for ($y = 0; $y < count($list_of_app_mqa); $y++) {
+                     echo "<option value='". $list_of_app_mqa[$y][0]. "'>". $list_of_app_mqa[$y][1]. "</option>";
+                  }
+               }
+
+               echo "</select></div>
             ";
 
 
@@ -263,12 +435,61 @@ $stmt->close();
 
             }
             ?>
+
+            <input type="text" name="pengerusi" id="pengerusi" hidden>
+            <input type="text" name="panel_1" id="panel_1" hidden>
          </form>
 
       </div>
 
    </section>
 
+   <script>
+      <?php
+
+for($pp=1; $pp<=4;$pp++){
+
+   echo '
+   function update_pengerusi_'.$pp.'(){
+      document.getElementById("pengerusi").value = document.getElementById("pengerusi'.$pp.'").value;
+   }
+   function update_panel_'.$pp.'(){
+      document.getElementById("panel_1").value = document.getElementById("panel_1'.$pp.'").value;
+   }
+   ';
+}
+      ?>
+      function update_app(){
+      var kat = document.getElementById("kat").value;
+      if(kat == "ISO"){
+         document.getElementById("div-iso").style.display = "block";
+         document.getElementById("div-eksa").style.display = "none";
+         document.getElementById("div-isms").style.display = "none";
+         document.getElementById("div-mqa").style.display = "none";
+      }
+
+      if(kat == "EKSA"){
+         document.getElementById("div-eksa").style.display = "block";
+         document.getElementById("div-iso").style.display = "none";
+         document.getElementById("div-isms").style.display = "none";
+         document.getElementById("div-mqa").style.display = "none";
+      }
+
+      if(kat == "ISMS"){
+         document.getElementById("div-isms").style.display = "block";
+         document.getElementById("div-iso").style.display = "none";
+         document.getElementById("div-eksa").style.display = "none";
+         document.getElementById("div-mqa").style.display = "none";
+      }
+
+      if(kat == "MQA"){
+         document.getElementById("div-mqa").style.display = "block";
+         document.getElementById("div-iso").style.display = "none";
+         document.getElementById("div-isms").style.display = "none";
+         document.getElementById("div-eksa").style.display = "none";
+      }
+   }
+      </script>
    <footer>
       <ul class="footer-icons">
          <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>

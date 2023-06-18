@@ -35,10 +35,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
  $gelaran = $_POST["gelaran"];
  $nama = $_POST["nama"];
+ $universiti = $_POST["universiti"];
  $no_kad_pengenalan = $_POST["no-kad-pengenalan"];
  $alamat_tempat_bekerja = $_POST["alamat-tempat-bekerja"];
  $poskod = $_POST["poskod"];
-  $kategori = $_POST["kategori"];
+ $kategori = (isset($_POST["kategori1"])? $_POST["kategori1"]: "") .";". (isset($_POST["kategori2"])? $_POST["kategori2"]: "") .";". (isset($_POST["kategori3"])? $_POST["kategori3"]: "") .";". (isset($_POST["kategori4"])? $_POST["kategori4"]: "");
  $daerah = $_POST["daerah"];
  $fakulti = $_POST["fakulti"];
  $negeri = $_POST["negeri"];
@@ -59,8 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           // Username already exists
           echo 'We\'re still processing your application. ';
       } else {
-        if ($stmt = $con->prepare("INSERT INTO appapplication (`TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
-        ('$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")) {
+        if ($stmt = $con->prepare("INSERT INTO appapplication (`UNIVERSITI`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
+        ('$universiti', '$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")) {
 
             $stmt->execute();
         } else {
@@ -68,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo 'Could not prepare statement!';
         }
 
-        if ($stmt = $con->prepare("UPDATE lecturer SET `FAKULTI` = '$fakulti', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'")) {
+        if ($stmt = $con->prepare("UPDATE lecturer SET `UNIVERSITI` = '$universiti', `FAKULTI` = '$fakulti', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'")) {
 
               $stmt->execute();
               header("Location: maklumat.php");

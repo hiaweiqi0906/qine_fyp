@@ -2,10 +2,9 @@
 
 include("../php/db.php");
 // session_start();
-include('../components/kualitiukm_protected_route.php');
+include('../components/userfakulti_protected_route.php');
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
-$pid = $_GET["pid"];
 // include('../functions/check_other_access.php');
 
 include('../functions/search_all_laporan.php');
@@ -266,16 +265,16 @@ if (($laporan_all_people[$typel][1] == 'NOT STARTED')) {
   header('Location: penilaianprogram.php');
 }
 $lampiran_1 = $laporan_all_people[$typel][5];
-$lampiran_1_mb = $laporan_all_people[$typel][8];
+$akredasi_penuh = $laporan_all_people[$typel][6];
 
 $lampiran_1_arr = explode("<", $lampiran_1);
-$lampiran_1_mb_arr = explode("<", $lampiran_1_mb);
+$akredasi_penuh_arr = explode("|", $akredasi_penuh);
 
 $lampiran_1_bidang = array();
-$lampiran_1_mb_bidang = array();
+$akredasi_penuh_bidang = array();
 for ($jj = 0; $jj < 7; $jj++) {
   array_push($lampiran_1_bidang, explode("~", $lampiran_1_arr[$jj]));
-  array_push($lampiran_1_mb_bidang, explode("~", $lampiran_1_mb_arr[$jj]));
+  array_push($akredasi_penuh_bidang, explode(";", $akredasi_penuh_arr[$jj]));
 }
 
 ?>
@@ -299,6 +298,49 @@ for ($jj = 0; $jj < 7; $jj++) {
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-radar.min.js"></script>
+  <script>
+
+    // document.getElementById("chart-container").innerHTML = "";
+    anychart.onDocumentReady(function () {
+      var score_1 = Number(document.getElementById("score_1").value);
+      var score_2 = Number(document.getElementById("score_2").value);
+      var score_3 = Number(document.getElementById("score_3").value);
+      var score_4 = Number(document.getElementById("score_4").value);
+      var score_5 = Number(document.getElementById("score_5").value);
+      var score_6 = Number(document.getElementById("score_6").value);
+      var score_7 = Number(document.getElementById("score_7").value);
+      // create a data set
+      var chartData = {
+        header: ['#', 'Program'],
+        rows: [
+          ['Area 1', score_1],
+          ['Area 2', score_2],
+          ['Area 3', score_3],
+          ['Area 4', score_4],
+          ['Area 5', score_5],
+          ['Area 6', score_6],
+          ['Area 7', score_7]
+        ]
+      };
+
+      // create a radar chart
+      var chart = anychart.radar();
+
+      // set the chart data
+      chart.data(chartData);
+
+      // set the chart title
+      chart.title("Achivements Based on Areas of Evaluation");
+
+      // set the container id
+      chart.container('chart-container');
+
+      // display the radar chart
+      chart.draw();
+
+    });
+
+  </script>
   <style>
     /* .collapsible {
       background-color: #777;
@@ -324,8 +366,8 @@ for ($jj = 0; $jj < 7; $jj++) {
 
 
   <?php
-  include("../components/navbar_kualitiukm.php");
-  include("../components/sidebar_kualitiukm.php");
+  include("../components/navbar_userfakulti.php");
+  include("../components/sidebar_userfakulti.php");
   ?>
 
 
@@ -335,240 +377,186 @@ for ($jj = 0; $jj < 7; $jj++) {
       <h1 class="collapsible">Tajuk Program</h1>
       <span>Detail</span>
       <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun</a>
+    </div>
 
+    <div class="rating-1 promo_card1" style="display: block;">
+      <h1 class="" style="display: block;">Overall</h1>
 
+      <?php
+      include('./area_overall.php');
+      ?>
+      <div id="chart-container" style="width: 100%; height: 300px; ">
+
+      </div>
+    </div>
+
+    <div class="rating-1 promo_card1" style="display: block;">
+      <h1 class="" style="display: block;">Details</h1>
+
+      <?php
+      include('./area_details.php');
+      ?>
     </div>
 
 
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel"; ?>" method="post"
+      autocomplete="off" class="sign-in-form">
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
+        <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][0]; ?></textarea>
+        <br>
 
+        <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][1]; ?></textarea>
+        <br>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel"; ?>"
-      method="post" autocomplete="off" class="sign-in-form">
-      <?php
-// echo $lampiran_1_bidang[0][3];
-if ($lampiran_1_bidang[0][3] != "") {
-  $hidden = "style=\"display: block\"";
-}
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
-  <h2><label for="1_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="1_1_mb1" name="1_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][0].'</textarea>
-  <br>
+        <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="1_3_penegasan" name="1_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[0][2]; ?></textarea>
+        <br>
 
-  <h2><label for="1_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="1_2_mb2" name="1_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][1].'</textarea>
-  <br>
+        <h2><label for="1_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][3]; ?></textarea>
+        <br>
+      </div>
 
-  <h2><label for="1_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="1_3_mb3" name="1_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][2].'</textarea>
-  <br>
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
+        <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][0]; ?></textarea>
+        <br>
 
-  <h2><label for="1_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="1_4_mb4" name="1_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][3].'</textarea>
-  <br>
-  <h2><label for="1_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="1_5_mb5" name="1_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][4].'</textarea>
-  <br>
-  <h2><label for="1_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="1_6_mb6" name="1_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[0][5].'</textarea>
-  <br>
-</div>
-';
+        <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][1]; ?></textarea>
+        <br>
 
-$hidden = "style=\"display: none\"";
+        <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="2_3_penegasan" name="2_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[1][2]; ?></textarea>
+        <br>
 
+        <h2><label for="2_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][3]; ?></textarea>
+        <br>
+      </div>
 
-if ($lampiran_1_bidang[1][3] != "") {
-  $hidden = "style=\"display: block\"";
-}
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
-  <h2><label for="2_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="2_1_mb1" name="2_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][0].'</textarea>
-  <br>
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h1>
+        <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][0]; ?></textarea>
+        <br>
 
-  <h2><label for="2_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="2_2_mb2" name="2_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][1].'</textarea>
-  <br>
+        <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][1]; ?></textarea>
+        <br>
 
-  <h2><label for="2_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="2_3_mb3" name="2_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][2].'</textarea>
-  <br>
+        <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="3_3_penegasan" name="3_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[2][2]; ?></textarea>
+        <br>
 
-  <h2><label for="2_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="2_4_mb4" name="2_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][3].'</textarea>
-  <br>
-  <h2><label for="2_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="2_5_mb5" name="2_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][4].'</textarea>
-  <br>
-  <h2><label for="2_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="2_6_mb6" name="2_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[1][5].'</textarea>
-  <br>
-</div>
-';
+        <h2><label for="3_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][3]; ?></textarea>
+        <br>
+      </div>
 
-$hidden = "style=\"display: none\"";
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 4: Kakitangan Akademik</h1>
+        <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][0]; ?></textarea>
+        <br>
 
+        <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][1]; ?></textarea>
+        <br>
 
-if ($lampiran_1_bidang[2][3] != "") {
-  $hidden = "style=\"display: block\"";
-}
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan</h1>
-  <h2><label for="3_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="3_1_mb1" name="3_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][0].'</textarea>
-  <br>
+        <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="4_3_penegasan" name="4_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[3][2]; ?></textarea>
+        <br>
 
-  <h2><label for="3_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="3_2_mb2" name="3_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][1].'</textarea>
-  <br>
+        <h2><label for="4_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][3]; ?></textarea>
+        <br>
+      </div>
 
-  <h2><label for="3_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="3_3_mb3" name="3_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][2].'</textarea>
-  <br>
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 5: Sumber Pendidikan</h1>
+        <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][0]; ?></textarea>
+        <br>
 
-  <h2><label for="3_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="3_4_mb4" name="3_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][3].'</textarea>
-  <br>
-  <h2><label for="3_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="3_5_mb5" name="3_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][4].'</textarea>
-  <br>
-  <h2><label for="3_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="3_6_mb6" name="3_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[2][5].'</textarea>
-  <br>
-</div>
+        <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][1]; ?></textarea>
+        <br>
 
-';
+        <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="5_3_penegasan" name="5_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[4][2]; ?></textarea>
+        <br>
 
+        <h2><label for="5_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][3]; ?></textarea>
+        <br>
+      </div>
 
-if ($lampiran_1_bidang[3][3] != "")
-  $hidden = "style=\"display: block\"";
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 4: Kakitangan Akademik</h1>
-  <h2><label for="4_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="4_1_mb1" name="4_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][0].'</textarea>
-  <br>
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 6: Pengurusan Program</h1>
+        <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][0]; ?></textarea>
+        <br>
 
-  <h2><label for="4_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="4_2_mb2" name="4_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][1].'</textarea>
-  <br>
+        <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][1]; ?></textarea>
+        <br>
 
-  <h2><label for="4_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="4_3_mb3" name="4_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][2].'</textarea>
-  <br>
+        <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="6_3_penegasan" name="6_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[5][2]; ?></textarea>
+        <br>
 
-  <h2><label for="4_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="4_4_mb4" name="4_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][3].'</textarea>
-  <br>
-  <h2><label for="4_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="4_5_mb5" name="4_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][4].'</textarea>
-  <br>
-  <h2><label for="4_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="4_6_mb6" name="4_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[3][5].'</textarea>
-  <br>
-</div>
-';
+        <h2><label for="6_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][3]; ?></textarea>
+        <br>
+      </div>
 
-$hidden = "style=\"display: none\"";
+      <div class="promo_card1 laporan-1">
+        <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
+        <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
+        <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][0]; ?></textarea>
+        <br>
 
+        <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
+        <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][1]; ?></textarea>
+        <br>
 
-if ($lampiran_1_bidang[4][3] != "")
-  $hidden = "style=\"display: block\"";
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 5: Sumber Pendidikan</h1>
-  <h2><label for="5_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="5_1_mb1" name="5_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][0].'</textarea>
-  <br>
+        <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
+        <textarea id="7_3_penegasan" name="7_3_penegasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[6][2]; ?></textarea>
+        <br>
 
-  <h2><label for="5_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="5_2_mb2" name="5_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][1].'</textarea>
-  <br>
-
-  <h2><label for="5_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="5_3_mb3" name="5_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][2].'</textarea>
-  <br>
-
-  <h2><label for="5_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="5_4_mb4" name="5_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][3].'</textarea>
-  <br>
-  <h2><label for="5_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="5_5_mb5" name="5_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][4].'</textarea>
-  <br>
-  <h2><label for="5_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="5_6_mb6" name="5_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[4][5].'</textarea>
-  <br>
-</div>
-
-';
-
-
-if ($lampiran_1_bidang[5][3] != "")
-  $hidden = "style=\"display: block\"";
-echo ' <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 6: Pengurusan Program</h1>
-  <h2><label for="6_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="6_1_mb1" name="6_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][0].'</textarea>
-  <br>
-
-  <h2><label for="6_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="6_2_mb2" name="6_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][1].'</textarea>
-  <br>
-
-  <h2><label for="6_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="6_3_mb3" name="6_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][2].'</textarea>
-  <br>
-
-  <h2><label for="6_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="6_4_mb4" name="6_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][3].'</textarea>
-  <br>
-  <h2><label for="6_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="6_5_mb5" name="6_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][4].'</textarea>
-  <br>
-  <h2><label for="6_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="6_6_mb6" name="6_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[5][5].'</textarea>
-  <br>
-</div>
-';
-
-$hidden = "style=\"display: none\"";
-
-
-if ($lampiran_1_bidang[6][3] != "")
-  $hidden = "style=\"display: block\"";
-echo '
-  <div class="promo_card1" ' . $hidden . '>
-  <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program</h1>
-  <h2><label for="7_1_mb1">1.1 Penemuan Panel Penilai:</label></h2>
-  <textarea id="7_1_mb1" name="7_1_mb1" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][0].'</textarea>
-  <br>
-
-  <h2><label for="7_2_mb2">1.2 Tindakan Penambahbaikan:</label></h2>
-  <textarea id="7_2_mb2" name="7_2_mb2" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][1].'</textarea>
-  <br>
-
-  <h2><label for="7_3_mb3">1.3 Pelaksana:</label></h2>
-  <textarea id="7_3_mb3" name="7_3_mb3" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][2].'</textarea>
-  <br>
-
-  <h2><label for="7_4_mb4">1.4 Penghasilan:</label></h2>
-  <textarea id="7_4_mb4" name="7_4_mb4" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][3].'</textarea>
-  <br>
-  <h2><label for="7_5_mb5">1.5 Jangka Masa Pelaksanaan Penambahbaikan:</label></h2>
-  <textarea id="7_5_mb5" name="7_5_mb5" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][4].'</textarea>
-  <br>
-  <h2><label for="7_6_mb6">1.6 Ulasan Panel Penilai:</label></h2>
-  <textarea id="7_6_mb6" name="7_6_mb6" rows="4" cols="60" readonly> '.$lampiran_1_mb_bidang[6][5].'</textarea>
-  <br>
-</div>
-';
-      ?>
-
-    </form>
-    <?php
-    echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+        <h2><label for="7_4_syor">1.4 Syor (Recommendation):</label></h2>
+        <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][3]; ?></textarea>
+        <br>
+      </div>
+      <div class="promo_card1 rating-1">
+        <h1>Penilaian Program</h1>
+        <?php
+        include('./area1.php');
+        include('./area2.php');
+        include('./area3.php');
+        include('./area4.php');
+        include('./area5.php');
+        include('./area6.php');
+        include('./area7.php');
+        ?>
+      </div>
+      </form><?php
+      echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
             class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
 
-    ?>
+      ?>
 
   </div>
   <footer>
@@ -644,7 +632,7 @@ echo '
       coll[0].style.display = "block";
     }
 
-    function allExist() {
+    function allExist(){
       var coll = document.getElementsByClassName("rating-1");
       for (i = 0; i < coll.length; i++) {
         coll[i].style.display = "block";
@@ -687,8 +675,9 @@ echo '
       // printwin.stop();
       printOnlyLaporan();
       window.print();
-
-
+      printRating();
+      window.print();
+      // allClose();
       allExist();
     }
 

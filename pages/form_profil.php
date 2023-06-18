@@ -24,7 +24,7 @@
     </div>
 
     <div class="row">
-    
+
     <div class="column-2">
         <label for="no-kad-pengenalan">Nombor Kad Pengenalan: </label>
     </div>
@@ -32,6 +32,15 @@
         <input type="text" class="input-text" value="<?php if(isset($user[0][3])) echo $user[0][3]; else echo"";?>" name="no-kad-pengenalan" id="no-kad-pengenalan">
     </div>
     <div class="column-6"></div>
+    </div>
+
+    <div class="row">
+    <div class="column-2">
+        <label for="universiti">Universiti: </label>
+    </div>
+    <div class="column-10" >
+        <input type="text" class="input-text" value="<?php if(isset($user[0][16])) echo $user[0][16]; else echo"";?>" name="universiti" id="universiti">
+    </div>
     </div>
 
     <div class="row">
@@ -104,4 +113,3 @@
     <br>
 
 
-      
