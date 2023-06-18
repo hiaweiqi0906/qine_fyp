@@ -8,9 +8,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halaman Utama</title>
+    <title>Sistem Pengurusan Ahli Panel Penilai (APP)</title>
     <link rel="stylesheet" href="../style/stylehome.css" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="img js-fullheight" style="background-image: url(img/background.jpg);">
     <main>
@@ -19,6 +20,38 @@
         <?php
           include("../components/navbar_index.php");
         ?>
+
+        <div class="small-wrapper">
+          <h3>Sistem Pengurusan Ahli Panel Penilai (APP)</h3>
+        </div>
+
+        <div class="slideshow-container fade">
+          
+        <!-- Full images with numbers and message Info -->
+        <div class="Containers">
+          <img src="../img/kualitiukm1.png" style="width:100%; height: 400px; object-fit: cover;">
+        </div>
+      
+        <div class="Containers">
+          <img src="../img/kualitiukm2.jpg" style="width:100%; height: 400px; object-fit: cover;">
+        </div>
+      
+        <div class="Containers">
+          <img src="../img/kualitiukm3.jpg" style="width:100%; height: 400px; object-fit: cover;">
+        </div>
+      
+        <!-- Back and forward buttons -->
+        <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+    
+      <!-- The circles/dots -->
+      <div style="text-align:center">
+      <span class="dots" onclick="currentSlide(1)"></span>
+      <span class="dots" onclick="currentSlide(2)"></span>
+      <span class="dots" onclick="currentSlide(3)"></span>
+    </div>
 
         <div class="showcase-area">
           <div class="container">
@@ -42,22 +75,12 @@
         </div>
       </div>
 
-      <footer>
-      <ul class="footer-icons">
-        <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-        <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-      </ul>
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-      <ul class="footer-menu">
-        <li><a href="">Disclaimer</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Personal Data Protection</a></li>
-      </ul>
-
-      <div class="footer-copyright">
-        <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-      </div>
-    </footer>
+      <?php
+          include("../components/footer.php");
+        ?>
     </main>
 
     <!-- JavaScript Files -->

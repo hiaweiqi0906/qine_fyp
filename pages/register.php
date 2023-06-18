@@ -104,6 +104,8 @@ if (isset($_POST['submit'])) {
 
             <div class="heading">
               <h2>Daftar Menjadi Pengguna</h2>
+              <h6>Sudah Ada Akaun?</h6>
+              <a href="./login.php">Log Masuk</a> <br>
             </div>
             <input type="text" name="types" hidden id="types" class="input-field" value="app" />
 
