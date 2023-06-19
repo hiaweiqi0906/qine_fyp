@@ -28,6 +28,34 @@
    font-size: 1.25rem;
 }
 
+span.dot {
+	height: 150px;
+	width: 150px;
+	background-color: black;
+	border-radius: 50%;
+	display: inline-block;
+ }
+
+ .chart-row:after {
+   content: "";
+   display: table;
+   clear: both;
+ }
+
+ .chart-col {
+   float: left;
+   padding: 10px;
+   height: 500px; /* Should be removed. Only for demonstration */
+ }
+
+ .chart-left {
+   width: 70%;
+ }
+
+ .chart-right {
+   width: 30%;
+ }
+
 *::selection{
    background-color: var(--main-color);
    color:#fff;

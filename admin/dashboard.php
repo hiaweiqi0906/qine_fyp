@@ -122,6 +122,59 @@ $stmt->close();
 	<link rel="stylesheet" href="../style/stylepertanyaan.css">
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-pie.min.js"></script>
+	<script>
+		anychart.onDocumentReady(function () {
+
+			// create data
+			var data = [
+				{ x: "A", value: 637166 },
+				{ x: "B", value: 721630 },
+				{ x: "C", value: 148662 },
+				{ x: "D", value: 78662 },
+				{ x: "E", value: 90000 }
+			];
+
+			// create a chart and set the data
+			var chart = anychart.pie(data);
+
+			chart.title("Peratusan Laporan yang Diterima dan Belum Diterima berdasarkan Jumlah Laporan");
+
+			// set the container id
+			chart.container("pieChartContainer");
+
+			// initiate drawing the chart
+			chart.draw();
+		});
+	</script>
+
+	<script>
+		anychart.onDocumentReady(function () {
+
+			// create data
+			var data = [
+				{ x: "A", value: 637166 },
+				{ x: "B", value: 721630 },
+				{ x: "C", value: 148662 },
+				{ x: "D", value: 78662 },
+				{ x: "E", value: 90000 }
+			];
+
+			// create a chart and set the data
+			var chart = anychart.pie(data);
+
+			chart.title("Peratusan Laporan yang Diterima dan Belum Diterima berdasarkan Jumlah Laporan");
+
+			// set the container id
+			chart.container("chartContainer");
+
+			// initiate drawing the chart
+			chart.draw();
+		});
+	</script>
+
 </head>
 
 <body>
@@ -143,14 +196,37 @@ $stmt->close();
 		<div class="overview">
 			<div class="title">
 				<h2 class="section--title">Overview</h2>
-
+			</div>
+			<div class="chart-row">
+				<div id="pieChartContainer" style="height: 500px; width: 500px;" class="chart-col chart-left">
+				</div>
+				<div class="chart-col chart-right">
+					<h2 class="section--title">Jumlah Laporan yang Diterima</h2>
+					<span class="dot"></span>
+					<h2 class="section--title">Jumlah Laporan yang Belum Diterima</h2>
+					<span class="dot"></span>
+				</div>
+			</div>
+			<div class="chart-row">
+				<div id="chartContainer" style="height: 500px; width: 500px;" class="chart-col chart-left">
+				</div>
+				<div class="chart-col chart-right">
+					<h2 class="section--title">Jumlah APP</h2>
+					<span class="dot"></span>
+					<h2 class="section--title">Jumlah Pensyarah</h2>
+					<span class="dot"></span>
+					<h2 class="section--title">Jumlah Kualiti UKM</h2>
+					<span class="dot"></span>
+				</div>
 			</div>
 			<div class="cards">
 				<div class="card card-1">
 					<div class="card--data">
 						<div class="card--content">
 							<h5 class="card--title">Jumlah Pensyarah</h5>
-							<h1><?php echo $count_lecturer;?></h1>
+							<h1>
+								<?php echo $count_lecturer; ?>
+							</h1>
 						</div>
 						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 					</div>
@@ -164,7 +240,9 @@ $stmt->close();
 					<div class="card--data">
 						<div class="card--content">
 							<h5 class="card--title">Jumlah APP</h5>
-							<h1><?php echo $count_app;?></h1>
+							<h1>
+								<?php echo $count_app; ?>
+							</h1>
 						</div>
 						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 					</div>
@@ -178,7 +256,9 @@ $stmt->close();
 					<div class="card--data">
 						<div class="card--content">
 							<h5 class="card--title">Jumlah Kualiti-UKM</h5>
-							<h1><?php echo $count_kukm;?></h1>
+							<h1>
+								<?php echo $count_kukm; ?>
+							</h1>
 						</div>
 						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
 					</div>
@@ -199,38 +279,42 @@ $stmt->close();
 						<option value="free">Free</option>
 						<option value="scheduled">Schedule</option>
 					</select>
-					<button class="add"  onclick="window.location.href='./form_add_app.php';">Add APP</button>
+					<button class="add" onclick="window.location.href='./form_add_app.php';">Add APP</button>
 					<?php
-					if($count_app > 6)
-				echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_app.php\';" style="background: gray;">Lihat Semua</button>';
-?>
+					if ($count_app > 6)
+						echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_app.php\';" style="background: gray;">Lihat Semua</button>';
+					?>
 				</div>
 			</div>
 			<section class=" teachers admin">
 
 
-		<?php
-			echo "<div class=\"box-container\" style=\"padding: none;\">";
-			for ($jj = 0; $jj < count($list_of_program_app); $jj++) {
+				<?php
+				echo "<div class=\"box-container\" style=\"padding: none;\">";
+				for ($jj = 0; $jj < count($list_of_program_app); $jj++) {
 
-				echo "<a href=\"./app_detail.php?aid=".$list_of_program_app[$jj][0]."\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
+					echo "<a href=\"./app_detail.php?aid=" . $list_of_program_app[$jj][0] . "\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
                <div class=\"tutor\">
-                  <img class=\"img--box\" style=\"margin: 15px;\" src=\""; if($list_of_program_app[$jj][2]=="" || !isset($list_of_program_app[$jj][2])) echo "../img/profile.png"; else echo $list_of_program_app[$jj][2];
-						echo"\" alt=\"\">
+                  <img class=\"img--box\" style=\"margin: 15px;\" src=\"";
+					if ($list_of_program_app[$jj][2] == "" || !isset($list_of_program_app[$jj][2]))
+						echo "../img/profile.png";
+					else
+						echo $list_of_program_app[$jj][2];
+					echo "\" alt=\"\">
 
                </div>
                <p class=\"scheduled\" style=\"font-size: 1.25rem;\">" . $list_of_program_app[$jj][1] . "</p>";
 
-               // <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_program_app[$jj][0] . "&type=" . $list_of_program_app[0][0] . "\" class=\"inline-btn\">Lihat</a>
-            echo "</div></a> ";
+					// <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_program_app[$jj][0] . "&type=" . $list_of_program_app[0][0] . "\" class=\"inline-btn\">Lihat</a>
+					echo "</div></a> ";
 
 
-				// echo "</div>";
-			}
+					// echo "</div>";
+				}
 
-			?>
+				?>
 
-		</section>
+			</section>
 
 		</div>
 
@@ -241,36 +325,40 @@ $stmt->close();
 
 					<button class="add" onclick="window.location.href='./form_add_kukm.php';">Add Kualiti-UKM</button>
 					<?php
-					if($count_kukm > 6)
-				echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_kukm.php\';" style="background: gray;">Lihat Semua</button>';
-?>
+					if ($count_kukm > 6)
+						echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_kukm.php\';" style="background: gray;">Lihat Semua</button>';
+					?>
 				</div>
 			</div>
 			<section class=" teachers admin">
 
 
-		<?php
-			echo "<div class=\"box-container\" style=\"padding: none;\">";
-			for ($jj = 0; $jj < count($list_of_kualiti_ukm); $jj++) {
+				<?php
+				echo "<div class=\"box-container\" style=\"padding: none;\">";
+				for ($jj = 0; $jj < count($list_of_kualiti_ukm); $jj++) {
 
-				echo "<a href=\"./kukm_detail.php?kid=".$list_of_kualiti_ukm[$jj][0]."\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
+					echo "<a href=\"./kukm_detail.php?kid=" . $list_of_kualiti_ukm[$jj][0] . "\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
                <div class=\"tutor\">
-                  <img class=\"img--box\" style=\"margin: 15px;\" src=\""; if($list_of_kualiti_ukm[$jj][2]=="" || !isset($list_of_kualiti_ukm[$jj][2])) echo "../img/profile.png"; else echo $list_of_kualiti_ukm[$jj][2];
-						echo"\" alt=\"\">
+                  <img class=\"img--box\" style=\"margin: 15px;\" src=\"";
+					if ($list_of_kualiti_ukm[$jj][2] == "" || !isset($list_of_kualiti_ukm[$jj][2]))
+						echo "../img/profile.png";
+					else
+						echo $list_of_kualiti_ukm[$jj][2];
+					echo "\" alt=\"\">
 
                </div>
                <p class=\"scheduled\" style=\"font-size: 1.25rem;\">" . $list_of_kualiti_ukm[$jj][1] . "</p>";
 
-               // <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_kualiti_ukm[$jj][0] . "&type=" . $list_of_kualiti_ukm[0][0] . "\" class=\"inline-btn\">Lihat</a>
-            echo "</div></a> ";
+					// <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_kualiti_ukm[$jj][0] . "&type=" . $list_of_kualiti_ukm[0][0] . "\" class=\"inline-btn\">Lihat</a>
+					echo "</div></a> ";
 
 
-				// echo "</div>";
-			}
+					// echo "</div>";
+				}
 
-			?>
+				?>
 
-		</section>
+			</section>
 
 		</div>
 
@@ -279,36 +367,40 @@ $stmt->close();
 				<h2 class="section--title">Lecturer</h2>
 				<div class="app--right--btns">
 					<?php
-					if($count_lecturer > 6)
-				echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_lecturers.php\';" style="background: gray;">Lihat Semua</button>';
-?>
+					if ($count_lecturer > 6)
+						echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_lecturers.php\';" style="background: gray;">Lihat Semua</button>';
+					?>
 				</div>
 			</div>
 			<section class=" teachers admin">
 
 
-		<?php
-			echo "<div class=\"box-container\" style=\"padding: none;\">";
-			for ($jj = 0; $jj < count($list_of_lecturers); $jj++) {
+				<?php
+				echo "<div class=\"box-container\" style=\"padding: none;\">";
+				for ($jj = 0; $jj < count($list_of_lecturers); $jj++) {
 
-				echo "<a href=\"./lecturer_detail.php?lid=".$list_of_lecturers[$jj][0]."\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
+					echo "<a href=\"./lecturer_detail.php?lid=" . $list_of_lecturers[$jj][0] . "\"><div class=\" app--card box\" style=\"padding: 1rem; height: 15rem; border-radius: 10px; background: none;\">
                <div class=\"tutor\">
-                  <img class=\"img--box\" style=\"margin: 15px;\" src=\""; if($list_of_lecturers[$jj][2]=="" || !isset($list_of_lecturers[$jj][2])) echo "../img/profile.png"; else echo $list_of_lecturers[$jj][2];
-						echo"\" alt=\"\">
+                  <img class=\"img--box\" style=\"margin: 15px;\" src=\"";
+					if ($list_of_lecturers[$jj][2] == "" || !isset($list_of_lecturers[$jj][2]))
+						echo "../img/profile.png";
+					else
+						echo $list_of_lecturers[$jj][2];
+					echo "\" alt=\"\">
 
                </div>
                <p class=\"scheduled\" style=\"font-size: 1.25rem;\">" . $list_of_lecturers[$jj][1] . "</p>";
 
-               // <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_lecturers[$jj][0] . "&type=" . $list_of_lecturers[0][0] . "\" class=\"inline-btn\">Lihat</a>
-            echo "</div></a> ";
+					// <a href=\"./other_people_laporan_kualitiukm.php?id=" . $list_of_lecturers[$jj][0] . "&type=" . $list_of_lecturers[0][0] . "\" class=\"inline-btn\">Lihat</a>
+					echo "</div></a> ";
 
 
-				// echo "</div>";
-			}
+					// echo "</div>";
+				}
 
-			?>
+				?>
 
-		</section>
+			</section>
 
 		</div>
 	</div>

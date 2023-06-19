@@ -376,7 +376,6 @@ for ($jj = 0; $jj < 7; $jj++) {
       include('./area_overall.php');
       ?>
       <div id="chart-container" style="width: 100%; height: 300px; ">
-
       </div>
     </div>
 
@@ -541,9 +540,11 @@ for ($jj = 0; $jj < 7; $jj++) {
       ?>
     </div>
     <div class="field">
-    <iframe src="<?php echo '../pages/print_detailprogram.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
+      <iframe
+        src="<?php echo '../pages/print_detailprogram.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
         style="display:none;" name="frame"></iframe>
-        <iframe src="<?php echo '../pages/print_detailprogram_rating.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
+      <iframe
+        src="<?php echo '../pages/print_detailprogram_rating.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
         style="display:block; opacity: 0;" name="frame2"></iframe>
 
       <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
@@ -587,7 +588,7 @@ for ($jj = 0; $jj < 7; $jj++) {
       });
     }
 
-    function printboth(){
+    function printboth() {
       frames['frame'].print();
       frames['frame2'].print();
 
