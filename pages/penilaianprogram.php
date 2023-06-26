@@ -69,12 +69,12 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENG
 $done_report = array([], [], []);
 
 if ($stmt = $con->prepare("SELECT t1.`APPPROGRAM_ID`, t1.`TARIKH_EFEKTIF` FROM `laporan` t1 LEFT JOIN appprogram t2 on t1.APPPROGRAM_ID = t2.APPPROGRAM_ID WHERE t2.`APP_ID_PENGERUSI` = '$id' AND t1.TYPE = '0'")) {
-   // echo "here";
+   //
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $app_program_id, $tarikh_efektif);
 
    while (mysqli_stmt_fetch($stmt)) {
-      // echo "here";
+      //
       array_push($done_report[0], $app_program_id, $tarikh_efektif);
    }
 
@@ -171,8 +171,15 @@ $j = 0;
 
                $current_application_id = $penilaian_info[$j][0];
                echo "<div class=\"box\">
-      <div class=\"tutor\">
-         <img src=\"../img/program.jpg\" alt=\"\">
+      <div class=\"tutor\">";
+      if(isset($list_of_program_app[$i][3])){
+         echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+      }else {
+                  echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+      }
+      echo "
          <div>
             <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
             <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
@@ -194,8 +201,15 @@ $j = 0;
 
                $current_application_id = $penilaian_info[$j][0];
                echo "<div class=\"box\">
-      <div class=\"tutor\">
-         <img src=\"../img/program.jpg\" alt=\"\">
+      <div class=\"tutor\">";
+      if(isset($list_of_program_app[$i][3])){
+         echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+      }else {
+                  echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+      }
+      echo "
          <div>
             <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
             <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
@@ -232,8 +246,15 @@ $j = 0;
                   $current_pid = $list_of_program_app[$i][0];
                   echo "<div class=\"box\">
                <div class=\"tutor\">
-                  <img src=\"../img/program.jpg\" alt=\"\">
-                  <div>
+               ";
+               if(isset($list_of_program_app[$i][3])){
+                  echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+               }else {
+                           echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+               }
+               echo "                  <div>
                      <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
                      <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                   </div>
@@ -257,8 +278,15 @@ $j = 0;
                   $current_pid = $list_of_program_panel_1[$i][0];
                   echo "<div class=\"box\">
             <div class=\"tutor\">
-               <img src=\"../img/program.jpg\" alt=\"\">
-               <div>
+            ";
+            if(isset($list_of_program_app[$i][3])){
+               echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+            }else {
+                        echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+            }
+            echo "               <div>
                   <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
                   <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                </div>
@@ -296,8 +324,15 @@ $j = 0;
                   $current_pid = $list_of_program_app[$i][0];
                   echo "<div class=\"box\">
                <div class=\"tutor\">
-                  <img src=\"../img/program.jpg\" alt=\"\">
-                  <div>
+               ";
+               if(isset($list_of_program_app[$i][3])){
+                  echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+               }else {
+                           echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+               }
+               echo "                  <div>
                      <h3>Nama Program: ", $list_of_program_app[$i][1], "</h3>
                      <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                   </div>
@@ -322,8 +357,15 @@ $j = 0;
                   $current_pid = $list_of_program_panel_1[$i][0];
                   echo "<div class=\"box\">
             <div class=\"tutor\">
-               <img src=\"../img/program.jpg\" alt=\"\">
-               <div>
+            ";
+            if(isset($list_of_program_app[$i][3])){
+               echo "<img src=\"".$list_of_program_app[$i][3]."\" alt=\"\">";
+
+            }else {
+                        echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+            }
+            echo "               <div>
                   <h3>Nama Program: ", $list_of_program_panel_1[$i][1], "</h3>
                   <span>Tarikh Kemaskini: ", $penilaian_info[$j][6], "</span>
                </div>

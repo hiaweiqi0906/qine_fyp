@@ -13,9 +13,9 @@ $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
 $user = array();
 
+$pid = $_GET["pid"];
+
 $id = $_SESSION["id"];
-
-
 
 if (isset($_POST['submit'])) {
 
@@ -103,6 +103,17 @@ if (isset($_POST['submit'])) {
 
 }
 
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM program WHERE PROGRAM_ID = '$pid' ")) {
+  $stmt->execute();
+  mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
+  while (mysqli_stmt_fetch($stmt)) {
+    array_push($user, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+  }
+} else {
+  // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+  echo 'Could not prepare statement!';
+}
+
 $con->close();
 
 ?>
@@ -139,8 +150,6 @@ $con->close();
       enctype="multipart/form-data" class="sign-in-form">
       <?php
       include("./form_profil_program.php");
-      ?>
-      <?php
       if(!isset($user[0][0])) echo '<input type="submit" name="submit" value="Upload" class="sign-btn" />';
       ?>
 

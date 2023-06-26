@@ -37,8 +37,6 @@ if ($stmt = $con->prepare("SELECT `NAMA`, `URL_AVATAR` FROM `userfakulti` WHERE 
            <a href="./senaraiprogram.php"><span style="font-weight:bolder;">Program</span></a>
            <a href="./senarailaporan_userfakulti.php"><span style="font-weight:bolder;">Laporan</span></a>
            <a href="./senaraimaklumbalas_userfakulti.php"><span style="font-weight:bolder;">Maklum Balas</span></a>
-           <a href="./pengumuman.php"><span style="font-weight:bolder;">Pengumuman</span></a>
-           <a href="./pertanyaan_kualiti_ukm.php"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
 
      </div>

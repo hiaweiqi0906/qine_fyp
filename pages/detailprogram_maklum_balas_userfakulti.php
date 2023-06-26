@@ -364,8 +364,8 @@ for ($jj = 0; $jj < 7; $jj++) {
   <div id="main-page">
 
     <?php
-    include("../components/navbar_app.php");
-    include("../components/sidebar_app.php");
+    include("../components/navbar_userfakulti.php");
+    include("../components/sidebar_userfakulti.php");
     include("../components/pengumuman.php");
 
     ?>

@@ -70,8 +70,15 @@ $stmt->close();
 
          echo "<div class=\"box\">
             <div class=\"tutor\">
-               <img src=\"../img/program.jpg\" alt=\"\">
-               <div>
+            ";
+            if(isset($list_of_program[$i][3])){
+               echo "<img src=\"".$list_of_program[$i][3]."\" alt=\"\">";
+
+            }else {
+                        echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+            }
+            echo "               <div>
                   <h3>Nama Program: ",$list_of_program[$i][1],"</h3>
                   <span>Tarikh Terima: ",$list_of_program[$i][2],"</span>
                </div>

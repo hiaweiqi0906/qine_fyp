@@ -97,6 +97,7 @@
             <option value="Pahang">Pahang</option>
             <option value="Perak">Perak</option>
             <option value="Perlis">Perlis</option>
+            <option value="Pulau Pinang">Pulau Pinang</option>
             <option value="Selangor">Selangor</option>
             <option value="Terengganu">Terengganu</option>
             <option value="Sabah">Sabah</option>

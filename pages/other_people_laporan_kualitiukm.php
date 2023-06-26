@@ -555,11 +555,20 @@ for ($jj = 0; $jj < 7; $jj++) {
         include('./area7.php');
         ?>
       </div>
-      </form><?php
-      echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
-            class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
+      </form><div class="field">
+      <iframe
+        src="<?php echo '../pages/print_detailprogram.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
+        style="display:none;" name="frame"></iframe>
+      <iframe
+        src="<?php echo '../pages/print_detailprogram_rating.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
+        style="display:block; opacity: 0;" name="frame2"></iframe>
 
-      ?>
+      <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
+      <?php
+      echo '<button onclick="printboth()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+             class="btn" id="submit" name="submit" value="Hantar">Cetak</button>'
+      ; ?>
+    </div>
 
   </div>
   <footer>
@@ -581,6 +590,12 @@ for ($jj = 0; $jj < 7; $jj++) {
 
   <script src="../js/script.js"></script>
   <script>
+
+function printboth() {
+      frames['frame'].print();
+      frames['frame2'].print();
+
+    }
     var coll = document.getElementsByClassName("collapsible");
     var i;
 

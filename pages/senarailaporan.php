@@ -6,6 +6,7 @@ include('../components/kualitiukm_protected_route.php');
 $all_laporan = array();
 $all_appprogram_id = array();
 $all_program = array();
+$all_program_url = array();
 
 if ($stmt = $con->prepare("SELECT `LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `SENTTOUSERFAKULTI` FROM `laporan` WHERE TYPE='0' order by `APPPROGRAM_ID` ,`TYPE`")) {
 
@@ -33,13 +34,14 @@ if (isset($all_appprogram_id[0])) {
       $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[$yy];
    }
    $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[count($all_appprogram_id) - 1];
-   if ($stmt = $con->prepare("SELECT t2.`NAMA` FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
+   if ($stmt = $con->prepare("SELECT t2.`NAMA`, t2.`URL_DRIVE` FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
 
       $stmt->execute();
-      mysqli_stmt_bind_result($stmt, $nama);
+      mysqli_stmt_bind_result($stmt, $nama, $url);
 
       while (mysqli_stmt_fetch($stmt)) {
          array_push($all_program, $nama);
+         array_push($all_program_url, $url);
       }
    } else {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -95,8 +97,15 @@ if (isset($all_appprogram_id[0])) {
             for ($jj = 0; $jj < count($all_laporan[$ii]); $jj++) {
                echo "<div class=\"box\">
                <div class=\"tutor\">
-                  <img src=\"../img/program.jpg\" alt=\"\">
-                  <div>";
+               ";
+               if (isset($all_program_url[$ii])) {
+                  echo "<img src=\"" . $all_program_url[$ii] . "\" alt=\"\">";
+
+               } else {
+                  echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+               }
+               echo "                  <div>";
                if ($all_laporan[$ii][$jj][7] == 0)
                   echo "<h3>Laporan Pengerusi</h3>";
                else if ($all_laporan[$ii][$jj][7] == 1)
@@ -128,8 +137,8 @@ if (isset($all_appprogram_id[0])) {
    </section>
 
    <?php
-          include("../components/footer.php");
-        ?>
+   include("../components/footer.php");
+   ?>
 
    <script src="../js/script.js"></script>
 

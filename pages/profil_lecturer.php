@@ -98,7 +98,6 @@ if(isset($_POST['submit'])){
         if ($stmt = $con->prepare($stmt1)) {
 
               $stmt->execute();
-              echo 'You have successfully updated!';
           } else {
               // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
               echo 'Could not prepare statement!';

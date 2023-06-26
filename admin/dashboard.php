@@ -62,7 +62,7 @@ if ($stmt = $con->prepare("SELECT `KUALITIUKM_ID`, `NAMA`, `URL_AVATAR` FROM kua
 
 $penilaian_info = array();
 
-if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `URL_AVATAR` FROM app WHERE 1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
+if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `URL_AVATAR` FROM app WHERE NOT APP_ID=1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
 
 	$stmt->execute();
 	mysqli_stmt_bind_result($stmt, $app_id, $nama, $url_avatar);
@@ -75,7 +75,7 @@ if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `URL_AVATAR` FROM app WHERE 
 	echo 'Could not prepare statement!';
 }
 
-if ($stmt = $con->prepare("SELECT `LECTURER_ID`, `NAMA`, `URL_AVATAR` FROM lecturer WHERE 1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
+if ($stmt = $con->prepare("SELECT `LECTURER_ID`, `NAMA`, `URL_AVATAR` FROM lecturer WHERE NOT LECTURER_ID = 1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
 
 	$stmt->execute();
 	mysqli_stmt_bind_result($stmt, $lecturer_id, $nama, $url_avatar);
@@ -101,6 +101,67 @@ if ($stmt = $con->prepare("SELECT `KUALITIUKM_ID`, `NAMA`, `URL_AVATAR` FROM kua
 	echo 'Could not prepare statement!';
 }
 
+
+$list_of_program = array();
+$list_of_app_program = array();
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID` FROM program WHERE 1")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $program_id);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		array_push($list_of_program, $program_id);
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `KUALITIUKM_ID` FROM appprogram WHERE 1")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $appprogram_id, $kualitiukm_id);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		array_push($list_of_app_program, array($appprogram_id, $kualitiukm_id));
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+$list_of_kukm_program = array();
+for ($xxx = 0; $xxx < count($list_of_app_program); $xxx++) {
+	if ($list_of_app_program[$xxx][1] == $id) {
+		array_push($list_of_kukm_program, $list_of_app_program[$xxx][0]);
+	}
+}
+$count_collected = 0;
+$list_of_collected_kukm_program = array();
+$whole_arr_str = "";
+if (isset($list_of_kukm_program[0])) {
+
+	$whole_arr_str = $list_of_kukm_program[0];
+	for ($yy = 1; $yy < count($list_of_kukm_program) - 1; $yy++) {
+		$whole_arr_str = $whole_arr_str . "," . $list_of_kukm_program[$yy];
+	}
+	$whole_arr_str = $whole_arr_str . "," . $list_of_kukm_program[count($list_of_kukm_program) - 1];
+
+
+	if ($stmt = $con->prepare("SELECT `LAPORAN_ID` FROM laporan WHERE `APPPROGRAM_ID` IN ($whole_arr_str)")) {
+
+		$stmt->execute();
+		mysqli_stmt_bind_result($stmt, $laporan_id);
+
+		while (mysqli_stmt_fetch($stmt)) {
+			array_push($list_of_collected_kukm_program, array($laporan_id));
+		}
+
+		$count_collected = count($list_of_collected_kukm_program);
+	} else {
+		// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+		echo 'Could not prepare statement!';
+	}
+}
 
 $con->close();
 $stmt->close();
@@ -130,11 +191,8 @@ $stmt->close();
 
 			// create data
 			var data = [
-				{ x: "A", value: 637166 },
-				{ x: "B", value: 721630 },
-				{ x: "C", value: 148662 },
-				{ x: "D", value: 78662 },
-				{ x: "E", value: 90000 }
+				{ x: "Laporan SUDAH Diterima", value: <?php echo count($list_of_collected_kukm_program); ?> },
+				{ x: "Laporan BELUM Diterima", value: <?php echo count($list_of_kukm_program) * 2 - count($list_of_collected_kukm_program); ?> }
 			];
 
 			// create a chart and set the data
@@ -149,23 +207,23 @@ $stmt->close();
 			chart.draw();
 		});
 	</script>
-
+	<style>
+		.dot {}
+	</style>
 	<script>
 		anychart.onDocumentReady(function () {
 
 			// create data
 			var data = [
-				{ x: "A", value: 637166 },
-				{ x: "B", value: 721630 },
-				{ x: "C", value: 148662 },
-				{ x: "D", value: 78662 },
-				{ x: "E", value: 90000 }
+				{ x: "APP", value: <?php echo $count_app; ?> },
+				{ x: "LECTURER", value: <?php echo $count_lecturer; ?> },
+				{ x: "Kualiti UKM", value: <?php echo $count_kukm; ?> }
 			];
 
 			// create a chart and set the data
 			var chart = anychart.pie(data);
 
-			chart.title("Peratusan Laporan yang Diterima dan Belum Diterima berdasarkan Jumlah Laporan");
+			chart.title("Peratusan APP, Pensyarah, dan Kualiti-UKM");
 
 			// set the container id
 			chart.container("chartContainer");
@@ -202,9 +260,11 @@ $stmt->close();
 				</div>
 				<div class="chart-col chart-right">
 					<h2 class="section--title">Jumlah Laporan yang Diterima</h2>
-					<span class="dot"></span>
+					<span class="dot"><?php echo count($list_of_collected_kukm_program); ?></span>
 					<h2 class="section--title">Jumlah Laporan yang Belum Diterima</h2>
-					<span class="dot"></span>
+					<span class="dot">
+						<?php echo count($list_of_kukm_program) * 2 - count($list_of_collected_kukm_program); ?>
+					</span>
 				</div>
 			</div>
 			<div class="chart-row">
@@ -212,63 +272,21 @@ $stmt->close();
 				</div>
 				<div class="chart-col chart-right">
 					<h2 class="section--title">Jumlah APP</h2>
-					<span class="dot"></span>
+					<span class="dot">
+						<?php echo $count_app; ?>
+					</span>
 					<h2 class="section--title">Jumlah Pensyarah</h2>
-					<span class="dot"></span>
+					<span class="dot">
+						<?php echo $count_lecturer; ?>
+					</span>
 					<h2 class="section--title">Jumlah Kualiti UKM</h2>
-					<span class="dot"></span>
+					<span class="dot">
+						<?php echo $count_kukm; ?>
+					</span>
 				</div>
 			</div>
-			<div class="cards">
-				<div class="card card-1">
-					<div class="card--data">
-						<div class="card--content">
-							<h5 class="card--title">Jumlah Pensyarah</h5>
-							<h1>
-								<?php echo $count_lecturer; ?>
-							</h1>
-						</div>
-						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
-					</div>
-					<div class="card--stats">
-						<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
-					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
-					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
-					</div>
+			<div class="cards" style="margin-top: 100px;">
 				</div>
-				<div class="card card-2">
-					<div class="card--data">
-						<div class="card--content">
-							<h5 class="card--title">Jumlah APP</h5>
-							<h1>
-								<?php echo $count_app; ?>
-							</h1>
-						</div>
-						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
-					</div>
-					<div class="card--stats">
-						<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
-					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
-					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
-					</div>
-				</div>
-				<div class="card card-3">
-					<div class="card--data">
-						<div class="card--content">
-							<h5 class="card--title">Jumlah Kualiti-UKM</h5>
-							<h1>
-								<?php echo $count_kukm; ?>
-							</h1>
-						</div>
-						<!-- <i class="ri-user-2-line card--icon--lg"></i> -->
-					</div>
-					<div class="card--stats">
-						<!--<span><i class="ri-bar-chart-fill card--icon stat--icon">65%</i></span>
-					<span><i class="ri-arrow-up-fill card--icon up--icon">10</i></span>
-					<span><i class="ri-arrow-down-s-fill card--icon down--icon">2</i></span>-->
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="app">
 			<div class="title">

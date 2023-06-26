@@ -53,18 +53,47 @@ if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `
 
 $appr_people = array();
 $program_bidang = $program_details[0][4];
-if ($stmt = $con->prepare("SELECT xxx.APP_ID, xxx.NAMA, xxx.UNIVERSITI, xxx.KATEGORI, COUNT(xxx.APP_ID) AS FREQ FROM
+if (
+   $stmt = $con->prepare("SELECT xxx.APP_ID, xxx.NAMA, xxx.UNIVERSITI, xxx.KATEGORI, COUNT(xxx.APP_ID) AS FREQ FROM
 
 (SELECT a.APP_ID, a.NAMA, a.UNIVERSITI, a.KATEGORI, ap.APPPROGRAM_ID FROM `app` a JOIN appprogram ap ON a.APP_ID = ap.APP_ID_PENGERUSI WHERE a.`BIDANG`='$program_bidang'
 UNION
 SELECT a.APP_ID,a.NAMA, a.UNIVERSITI, a.KATEGORI, ap.APPPROGRAM_ID as cnt FROM `app` a JOIN appprogram ap ON a.APP_ID = ap.APP_ID_PANEL_1 WHERE a.`BIDANG`='$program_bidang'
  ) xxx
 
-GROUP BY xxx.APP_ID ")) {
+GROUP BY xxx.APP_ID ")
+) {
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $app_id, $nama, $uni, $kat, $bilangan);
    while (mysqli_stmt_fetch($stmt)) {
       array_push($appr_people, array($app_id, $nama, $uni, $kat, $bilangan));
+   }
+} else {
+   echo 'Could not prepare statement!';
+}
+
+$bb = 0;
+if (
+   $stmt = $con->prepare("SELECT xxx.APP_ID, xxx.NAMA, xxx.UNIVERSITI, xxx.KATEGORI FROM
+
+app xxx")
+) {
+   $stmt->execute();
+   mysqli_stmt_bind_result($stmt, $app_id, $nama, $uni, $kat);
+   $a_p = $appr_people;
+   $b_f = true;
+   while (mysqli_stmt_fetch($stmt)) {
+      for ($jjjj = 0; $jjjj < count($a_p); $jjjj++) {
+         if ($a_p[$jjjj][0] == $app_id) {
+            $b_f = false;
+            break;
+         }
+      }
+      if ($b_f) {
+         echo "here";
+         array_push($appr_people, array($app_id, $nama, $uni, $kat, $bb));
+      }$b_f = true;
+
    }
 } else {
    echo 'Could not prepare statement!';
@@ -85,20 +114,21 @@ $list_of_app_iso = array();
 $list_of_app_eksa = array();
 $list_of_app_isms = array();
 $list_of_app_mqa = array();
-for($uu=0; $uu<count($appr_people); $uu++){
-   if(str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4]<5){
+echo "sdf".count($appr_people);
+for ($uu = 0; $uu < count($appr_people); $uu++) {
+   if (str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4] < 5) {
       array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1]));
    }
 
-   if(str_contains($appr_people[$uu][3], 'ISO') && $appr_people[$uu][4]<5){
+   if (str_contains($appr_people[$uu][3], 'ISO') && $appr_people[$uu][4] < 5) {
       array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1]));
    }
 
-   if(str_contains($appr_people[$uu][3], 'ISMS') && $appr_people[$uu][4]<5){
+   if (str_contains($appr_people[$uu][3], 'ISMS') && $appr_people[$uu][4] < 5) {
       array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1]));
    }
 
-   if(str_contains($appr_people[$uu][3], 'MQA') && $appr_people[$uu][4]<5){
+   if (str_contains($appr_people[$uu][3], 'MQA') && $appr_people[$uu][4] < 5) {
       array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1]));
    }
    // array_push($list_of_app, array($appr_people[$uu][0], $appr_people[$uu][1]));
@@ -238,8 +268,8 @@ $stmt->close();
       <h1 class="heading">Program Informasi</h1>
 
       <div class="box-container">
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$program_id"; ?>"
-            method="post" autocomplete="off" class="sign-in-form">
+         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$program_id"; ?>" method="post"
+            autocomplete="off" class="sign-in-form">
 
             <?php
             for ($i = 0; $i < count($program_details); $i++) {
@@ -247,8 +277,15 @@ $stmt->close();
 
                echo "<div class=\"box\">
             <div class=\"tutor\">
-               <img src=\"../img/program.jpg\" alt=\"\">
-               <div>
+            ";
+               if (isset($program_details[$i][3])) {
+                  echo "<img src=\"" . $program_details[$i][3] . "\" alt=\"\">";
+
+               } else {
+                  echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+               }
+               echo "               <div>
                   <h3>Nama Program: ", $program_details[$i][1], "</h3>
                   <span>Tarikh Terima: ", $program_details[$i][2], "</span>
                </div>
@@ -257,30 +294,30 @@ $stmt->close();
             <p>Tarikh: <span>", $program_details[$i][2], "</span></p>
             <p>Masa : <span>", $program_details[$i][7], "</span></p>
             <p>Status : <span>", $program_details[$i][5], "</span></p>";
-            echo "<p><label for=\"kat\">Kategori:</label></p>";
-if(!$assigned)
-         {echo '
+               echo "<p><label for=\"kat\">Kategori:</label></p>";
+               if (!$assigned) {
+                  echo '
          <select name="kat" id="kat" onchange="update_app()">
                <option value="ISO" selected>ISO</option>
                <option value="EKSA" >EKSA</option>
                <option value="ISMS" >ISMS</option>
                <option value="MQA" >MQA</option>
-         </select>';}
-         else {
-            echo '
-         <select name="kat" id="kat">
-               <option value="" selected>'.$assigned_program_details[0][6].'</option>
          </select>';
-         }
-
-         echo "<div id=\"div-iso\" style=\"display: block;\">";
-         if(!$assigned){
-            echo "<p>People Suggestions : <span>";
-         for ($oo = 0; $oo < count($list_of_app_iso); $oo++) {
-                  echo "" . $list_of_app_iso[$oo][1] . ", ";
+               } else {
+                  echo '
+         <select name="kat" id="kat">
+               <option value="" selected>' . $assigned_program_details[0][6] . '</option>
+         </select>';
                }
-               echo "</span></p>";
-            }
+
+               echo "<div id=\"div-iso\" style=\"display: block;\">";
+               if (!$assigned) {
+                  echo "<p>People Suggestions : <span>";
+                  for ($oo = 0; $oo < count($list_of_app_iso); $oo++) {
+                     echo "" . $list_of_app_iso[$oo][1] . ", ";
+                  }
+                  echo "</span></p>";
+               }
 
                echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
 
@@ -288,7 +325,7 @@ if(!$assigned)
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_iso); $y++) {
                      echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
                   }
@@ -302,7 +339,7 @@ if(!$assigned)
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_iso); $y++) {
                      echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
                   }
@@ -311,22 +348,22 @@ if(!$assigned)
                echo "</select></div>
             ";
 
-            echo "<div id=\"div-eksa\" style=\"display: none;\">";
-            if(!$assigned){
-               echo "<p>People Suggestions : <span>";
-            for ($oo = 0; $oo < count($list_of_app_eksa); $oo++) {
+               echo "<div id=\"div-eksa\" style=\"display: none;\">";
+               if (!$assigned) {
+                  echo "<p>People Suggestions : <span>";
+                  for ($oo = 0; $oo < count($list_of_app_eksa); $oo++) {
                      echo "" . $list_of_app_eksa[$oo][1] . ", ";
                   }
                   echo "</span></p>";
                }
 
-                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+               echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
 
             <select name=\"pengerusi2\" id=\"pengerusi2\" onchange=\"update_pengerusi_2()\">
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_eksa); $y++) {
                      echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
                   }
@@ -340,7 +377,7 @@ if(!$assigned)
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_eksa); $y++) {
                      echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
                   }
@@ -349,22 +386,22 @@ if(!$assigned)
                echo "</select></div>
             ";
 
-            echo "<div id=\"div-isms\" style=\"display: none;\">";
-            if(!$assigned){
-               echo "<p>People Suggestions : <span>";
-            for ($oo = 0; $oo < count($list_of_app_isms); $oo++) {
+               echo "<div id=\"div-isms\" style=\"display: none;\">";
+               if (!$assigned) {
+                  echo "<p>People Suggestions : <span>";
+                  for ($oo = 0; $oo < count($list_of_app_isms); $oo++) {
                      echo "" . $list_of_app_isms[$oo][1] . ", ";
                   }
                   echo "</span></p>";
                }
 
-                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+               echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
 
             <select name=\"pengerusi3\" id=\"pengerusi3\" onchange=\"update_pengerusi_3()\">
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_isms); $y++) {
                      echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
                   }
@@ -378,7 +415,7 @@ if(!$assigned)
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_isms); $y++) {
                      echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
                   }
@@ -387,22 +424,22 @@ if(!$assigned)
                echo "</select></div>
             ";
 
-            echo "<div id=\"div-mqa\" style=\"display: none;\">";
-            if(!$assigned){
-               echo "<p>People Suggestions : <span>";
-            for ($oo = 0; $oo < count($list_of_app_mqa); $oo++) {
+               echo "<div id=\"div-mqa\" style=\"display: none;\">";
+               if (!$assigned) {
+                  echo "<p>People Suggestions : <span>";
+                  for ($oo = 0; $oo < count($list_of_app_mqa); $oo++) {
                      echo "" . $list_of_app_mqa[$oo][1] . ", ";
                   }
                   echo "</span></p>";
                }
 
-                  echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
+               echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
 
             <select name=\"pengerusi4\" id=\"pengerusi4\" onchange=\"update_pengerusi_4()\">
             ";
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
-               }else{
+               } else {
                   for ($y = 0; $y < count($list_of_app_mqa); $y++) {
                      echo "<option value='", $list_of_app_mqa[$y][0], "'>", $list_of_app_mqa[$y][1], "</option>";
                   }
@@ -415,10 +452,10 @@ if(!$assigned)
             <select name=\"panel_14\" id=\"panel_14\" onchange=\"update_panel_4()\">
             ";
                if ($assigned) {
-                  echo "<option value='". $assigned_app[1][0]. "' selected>". $assigned_app[1][1]. "</option>";
-               }else{
+                  echo "<option value='" . $assigned_app[1][0] . "' selected>" . $assigned_app[1][1] . "</option>";
+               } else {
                   for ($y = 0; $y < count($list_of_app_mqa); $y++) {
-                     echo "<option value='". $list_of_app_mqa[$y][0]. "'>". $list_of_app_mqa[$y][1]. "</option>";
+                     echo "<option value='" . $list_of_app_mqa[$y][0] . "'>" . $list_of_app_mqa[$y][1] . "</option>";
                   }
                }
 
@@ -447,49 +484,50 @@ if(!$assigned)
    <script>
       <?php
 
-for($pp=1; $pp<=4;$pp++){
+      for ($pp = 1; $pp <= 4; $pp++) {
 
-   echo '
-   function update_pengerusi_'.$pp.'(){
-      document.getElementById("pengerusi").value = document.getElementById("pengerusi'.$pp.'").value;
+         echo '
+   function update_pengerusi_' . $pp . '(){
+      document.getElementById("pengerusi").value = document.getElementById("pengerusi' . $pp . '").value;
    }
-   function update_panel_'.$pp.'(){
-      document.getElementById("panel_1").value = document.getElementById("panel_1'.$pp.'").value;
+   function update_panel_' . $pp . '(){
+      document.getElementById("panel_1").value = document.getElementById("panel_1' . $pp . '").value;
+      console.log(document.getElementById("panel_1").value);
    }
    ';
-}
+      }
       ?>
-      function update_app(){
-      var kat = document.getElementById("kat").value;
-      if(kat == "ISO"){
-         document.getElementById("div-iso").style.display = "block";
-         document.getElementById("div-eksa").style.display = "none";
-         document.getElementById("div-isms").style.display = "none";
-         document.getElementById("div-mqa").style.display = "none";
-      }
+      function update_app() {
+         var kat = document.getElementById("kat").value;
+         if (kat == "ISO") {
+            document.getElementById("div-iso").style.display = "block";
+            document.getElementById("div-eksa").style.display = "none";
+            document.getElementById("div-isms").style.display = "none";
+            document.getElementById("div-mqa").style.display = "none";
+         }
 
-      if(kat == "EKSA"){
-         document.getElementById("div-eksa").style.display = "block";
-         document.getElementById("div-iso").style.display = "none";
-         document.getElementById("div-isms").style.display = "none";
-         document.getElementById("div-mqa").style.display = "none";
-      }
+         if (kat == "EKSA") {
+            document.getElementById("div-eksa").style.display = "block";
+            document.getElementById("div-iso").style.display = "none";
+            document.getElementById("div-isms").style.display = "none";
+            document.getElementById("div-mqa").style.display = "none";
+         }
 
-      if(kat == "ISMS"){
-         document.getElementById("div-isms").style.display = "block";
-         document.getElementById("div-iso").style.display = "none";
-         document.getElementById("div-eksa").style.display = "none";
-         document.getElementById("div-mqa").style.display = "none";
-      }
+         if (kat == "ISMS") {
+            document.getElementById("div-isms").style.display = "block";
+            document.getElementById("div-iso").style.display = "none";
+            document.getElementById("div-eksa").style.display = "none";
+            document.getElementById("div-mqa").style.display = "none";
+         }
 
-      if(kat == "MQA"){
-         document.getElementById("div-mqa").style.display = "block";
-         document.getElementById("div-iso").style.display = "none";
-         document.getElementById("div-isms").style.display = "none";
-         document.getElementById("div-eksa").style.display = "none";
+         if (kat == "MQA") {
+            document.getElementById("div-mqa").style.display = "block";
+            document.getElementById("div-iso").style.display = "none";
+            document.getElementById("div-isms").style.display = "none";
+            document.getElementById("div-eksa").style.display = "none";
+         }
       }
-   }
-      </script>
+   </script>
    <footer>
       <ul class="footer-icons">
          <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>

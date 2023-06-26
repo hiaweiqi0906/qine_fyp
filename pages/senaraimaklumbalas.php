@@ -7,6 +7,7 @@ $all_laporan = array();
 $all_appprogram_id = array();
 $all_program = array();
 $all_program_id = array();
+$all_program_url = array();
 
 if ($stmt = $con->prepare("SELECT `LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `SENTTOUSERFAKULTI` FROM `laporan` WHERE `MAKLUM_BALAS` IS NOT NULL AND SENTTOUSERFAKULTI = 'FF' OR SENTTOUSERFAKULTI = 'TT' order by `APPPROGRAM_ID` ,`TYPE`")) {
 
@@ -34,14 +35,16 @@ if (isset($all_appprogram_id[0])) {
       $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[$yy];
    }
    $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[count($all_appprogram_id) - 1];
-   if ($stmt = $con->prepare("SELECT t2.`NAMA`, t2.PROGRAM_ID FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
+   if ($stmt = $con->prepare("SELECT t2.`NAMA`, t2.PROGRAM_ID, t2.URL_DRIVE FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
 
       $stmt->execute();
-      mysqli_stmt_bind_result($stmt, $nama, $pid);
+      mysqli_stmt_bind_result($stmt, $nama, $pid, $url);
 
       while (mysqli_stmt_fetch($stmt)) {
          array_push($all_program, $nama);
          array_push($all_program_id, $pid);
+         array_push($all_program_url, $url);
+
       }
    } else {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -97,8 +100,14 @@ if (isset($all_appprogram_id[0])) {
             for ($jj = 0; $jj < count($all_laporan[$ii]); $jj++) {
                echo "<div class=\"box\">
                <div class=\"tutor\">
-                  <img src=\"../img/program.jpg\" alt=\"\">
-                  <div>";
+               ";
+               if (isset($all_program_url[$ii])) {
+                  echo "<img src=\"" . $all_program_url[$ii] . "\" alt=\"\">";
+
+               } else {
+                  echo "<img src=\"../img/program.jpg\" alt=\"\">";
+               }
+               echo "                  <div>";
                if ($all_laporan[$ii][$jj][7] == 0)
                   echo "<h3>Maklum Balas Pengerusi</h3>";
                else if ($all_laporan[$ii][$jj][7] == 1)
@@ -110,13 +119,13 @@ if (isset($all_appprogram_id[0])) {
                <p>Status: <span>" . $all_laporan[$ii][$jj][1] . "</span></p>
                <p>Tarikh Awal : <span>" . $all_laporan[$ii][$jj][2] . "</span></p>
                <p>Tarikh Akhir : <span>" . $all_laporan[$ii][$jj][3] . "</span></p>
-               <a href=\"./other_people_laporan_kualitiukm_maklum_balas.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=".$all_program_id[$ii]."\" class=\"inline-btn\">Lihat</a>";
-            if($all_laporan[$ii][$jj][8] == 'TT'){
-               echo "               <a href=\"../functions/send_to_userfakulti.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=".$all_program_id[$ii]."\" class=\"inline-btn\">Hantar ke User Fakulti</a>";
-            }else{
-               echo "               <a href=\"../functions/send_to_app.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=".$all_program_id[$ii]."\" class=\"inline-btn\">Hantar ke APP</a>";
+               <a href=\"./other_people_laporan_kualitiukm_maklum_balas.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=" . $all_program_id[$ii] . "\" class=\"inline-btn\">Lihat</a>";
+               if ($all_laporan[$ii][$jj][8] == 'TT') {
+                  echo "               <a href=\"../functions/send_to_userfakulti.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=" . $all_program_id[$ii] . "\" class=\"inline-btn\">Hantar ke User Fakulti</a>";
+               } else {
+                  echo "               <a href=\"../functions/send_to_app.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=" . $all_program_id[$ii] . "\" class=\"inline-btn\">Hantar ke APP</a>";
 
-            }
+               }
 
                echo "</div> ";
             }
@@ -133,8 +142,8 @@ if (isset($all_appprogram_id[0])) {
    </section>
 
    <?php
-          include("../components/footer.php");
-        ?>
+   include("../components/footer.php");
+   ?>
 
    <script src="../js/script.js"></script>
 

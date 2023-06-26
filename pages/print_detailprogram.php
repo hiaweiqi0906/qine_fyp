@@ -82,7 +82,18 @@ if ($stmt = $con->prepare("SELECT `NAMA` FROM `app` WHERE `APP_ID` = '$p1'")) {
   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
   echo 'Could not prepare statement!';
 }
+$lampiran_1 = $laporan_all_people[$typel][5];
+$akredasi_penuh = $laporan_all_people[$typel][6];
 
+$lampiran_1_arr = explode("<", $lampiran_1);
+$akredasi_penuh_arr = explode("|", $akredasi_penuh);
+
+$lampiran_1_bidang = array();
+$akredasi_penuh_bidang = array();
+for ($jj = 0; $jj < 7; $jj++) {
+  array_push($lampiran_1_bidang, explode("~", $lampiran_1_arr[$jj]));
+  array_push($akredasi_penuh_bidang, explode(";", $akredasi_penuh_arr[$jj]));
+}
 
 if (isset($_POST['submit'])) {
   $lampiran_1 = "";
@@ -653,28 +664,28 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="1_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="1_1_ulasan" name="1_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="1_1_ulasan" name="1_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[0][0]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="1_2_pujian" name="1_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="1_2_pujian" name="1_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[0][1]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="1_3_penegasan" name="1_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="1_3_penegasan" name="1_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[0][2]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="1_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="1_4_syor" name="1_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="1_4_syor" name="1_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[0][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -693,28 +704,28 @@ if (isset($_POST['submit'])) {
                 <td>
                   <div class="invi-at-first">
                     <h3><label for="2_1_ulasan">1.1 Ulasan:</label></h3>
-                    <textarea id="2_1_ulasan" name="2_1_ulasan" rows="8" cols="160"></textarea>
+                    <textarea id="2_1_ulasan" name="2_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[1][0]; ?></textarea>
                     <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="2_2_pujian" name="2_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="2_2_pujian" name="2_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[1][1]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="2_3_penegasan" name="2_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="2_3_penegasan" name="2_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[1][2]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="2_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="2_4_syor" name="2_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="2_4_syor" name="2_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[1][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -740,14 +751,14 @@ if (isset($_POST['submit'])) {
                 <td>
 
                   <h3><label for="3_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="3_1_ulasan" name="3_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="3_1_ulasan" name="3_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[2][0]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="3_2_pujian" name="3_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="3_2_pujian" name="3_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[2][1]; ?></textarea>
                   <br>
 
                 </td>
@@ -755,7 +766,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="3_3_penegasan" name="3_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="3_3_penegasan" name="3_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[2][2]; ?></textarea>
                   <br>
 
                 </td>
@@ -763,7 +774,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="3_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="3_4_syor" name="3_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="3_4_syor" name="3_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[2][3]; ?></textarea>
                   <br>
 
                 </td>
@@ -783,7 +794,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="4_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="4_1_ulasan" name="4_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="4_1_ulasan" name="4_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[3][0]; ?></textarea>
                   <br>
 
                 </td>
@@ -791,7 +802,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="4_2_pujian" name="4_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="4_2_pujian" name="4_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[3][1]; ?></textarea>
                   <br>
 
                 </td>
@@ -799,7 +810,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="4_3_penegasan" name="4_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="4_3_penegasan" name="4_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[3][2]; ?></textarea>
                   <br>
 
                 </td>
@@ -807,7 +818,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="4_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="4_4_syor" name="4_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="4_4_syor" name="4_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[3][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -827,14 +838,14 @@ if (isset($_POST['submit'])) {
                 <td>
 
                   <h3><label for="5_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="5_1_ulasan" name="5_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="5_1_ulasan" name="5_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[4][0]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="5_2_pujian" name="5_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="5_2_pujian" name="5_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[4][1]; ?></textarea>
                   <br>
 
                 </td>
@@ -842,7 +853,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="5_3_penegasan" name="5_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="5_3_penegasan" name="5_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[4][2]; ?></textarea>
                   <br>
 
                 </td>
@@ -850,7 +861,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="5_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="5_4_syor" name="5_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="5_4_syor" name="5_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[4][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -869,14 +880,14 @@ if (isset($_POST['submit'])) {
                 <td>
 
                   <h3><label for="6_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="6_1_ulasan" name="6_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="6_1_ulasan" name="6_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[5][0]; ?></textarea>
                   <br>
                 </td>
               </tr>
               <tr>
                 <td>
                   <h3><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="6_2_pujian" name="6_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="6_2_pujian" name="6_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[5][1]; ?></textarea>
                   <br>
 
 
@@ -886,7 +897,7 @@ if (isset($_POST['submit'])) {
                 <td>
 
                   <h3><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="6_3_penegasan" name="6_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="6_3_penegasan" name="6_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[5][2]; ?></textarea>
                   <br>
 
                 </td>
@@ -895,7 +906,7 @@ if (isset($_POST['submit'])) {
                 <td>
 
                   <h3><label for="6_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="6_4_syor" name="6_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="6_4_syor" name="6_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[5][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -915,7 +926,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="7_1_ulasan">1.1 Ulasan:</label></h3>
-                  <textarea id="7_1_ulasan" name="7_1_ulasan" rows="8" cols="160"></textarea>
+                  <textarea id="7_1_ulasan" name="7_1_ulasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[6][0]; ?></textarea>
                   <br>
 
                 </td>
@@ -923,7 +934,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h3>
-                  <textarea id="7_2_pujian" name="7_2_pujian" rows="8" cols="160"></textarea>
+                  <textarea id="7_2_pujian" name="7_2_pujian" rows="8" cols="160"><?php echo $lampiran_1_bidang[6][1]; ?></textarea>
                   <br>
 
                 </td>
@@ -931,7 +942,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
                   <h3><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h3>
-                  <textarea id="7_3_penegasan" name="7_3_penegasan" rows="8" cols="160"></textarea>
+                  <textarea id="7_3_penegasan" name="7_3_penegasan" rows="8" cols="160"><?php echo $lampiran_1_bidang[6][2]; ?></textarea>
                   <br>
 
                 </td>
@@ -943,7 +954,7 @@ if (isset($_POST['submit'])) {
 
 
                   <h3><label for="7_4_syor">1.4 Syor (Recommendation):</label></h3>
-                  <textarea id="7_4_syor" name="7_4_syor" rows="8" cols="160"></textarea>
+                  <textarea id="7_4_syor" name="7_4_syor" rows="8" cols="160"><?php echo $lampiran_1_bidang[6][3]; ?></textarea>
                   <br>
                 </td>
               </tr>
@@ -957,7 +968,7 @@ if (isset($_POST['submit'])) {
             <h3 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
             </h3>
             <div class="invi-at-first">
-              <h3><input type="checkbox" id="opt1" name="opt1" value="opt1">
+              <h3><input type="checkbox" id="opt1" name="opt1" value="opt1" checked>
                 <label for="vehicle3"> Dianugerahkan akreditasi program pengajian tanpa sebarang syarat.</label>
               </h3><br>
               <h3><input type="checkbox" id="opt2" name="opt2" value="opt2">
@@ -975,23 +986,23 @@ if (isset($_POST['submit'])) {
               <h3><label for="b1">BAHAGIAN B1: KEPERLUAN TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI
                   (lengkapkan sekiranya berkaitan):
                 </label></h3>
-              <textarea id="b1" name="b1" rows="8" cols="160"></textarea>
+              <textarea id="b1" name="b1" rows="8" cols="160">Rujuk kepada komen mengikut bidang.</textarea>
               <br>
 
               <h3><label for="b2">BAHAGIAN B2: SYARAT TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI:</label></h3>
-              <textarea id="b2" name="b2" rows="8" cols="160"></textarea>
+              <textarea id="b2" name="b2" rows="8" cols="160">Rujuk kepada komen mengikut bidang.</textarea>
               <br>
 
               <h3><label for="b3">BAHAGIAN B3: PENAFIAN PENGANUGERAHAN AKREDITASI OLEH PANEL PENILAI
                   (lengkapkan sekiranya berkaitan):</label></h3>
-              <textarea id="b3" name="b3" rows="8" cols="160"></textarea>
+              <textarea id="b3" name="b3" rows="8" cols="160">Tiada</textarea>
               <br>
 
               <h3><label for="b4">BAHAGIAN B4: TEMPOH PERAKUAN AKREDITASI:</label></h3>
-              <h3><input type="checkbox" id="b4" name="b4" value="yes">
+              <h3><input type="checkbox" id="b4" name="b4" value="yes" checked>
                 <label for="b4"> Program ini AKAN dapat akredasi.</label>
               </h3><br>
-              <h3><input type="checkbox" id="b4" name="b4" value="yes">
+              <h3><input type="checkbox" id="b4" name="b4" value="no">
                 <label for="b4"> Program ini TIDAK AKAN dapat akredasi.</label>
               </h3><br> <br>
             </div>

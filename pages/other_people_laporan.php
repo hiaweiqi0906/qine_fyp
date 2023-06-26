@@ -263,7 +263,6 @@ if (isset($_POST['submit'])) {
 
 }
 if (($laporan_all_people[$typel][1] == 'NOT STARTED')) {
-  echo ("here");
   // header('Location: penilaianprogram.php');
 }
 $lampiran_1 = $laporan_all_people[$typel][5];

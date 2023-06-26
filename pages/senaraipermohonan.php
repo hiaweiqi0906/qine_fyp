@@ -75,11 +75,8 @@ $stmt->close();
 
          echo "<div class=\"box\">
             <div class=\"tutor\">
-               <img src=\"../img/program.jpg\" alt=\"\">
-               <div>
-                  <h3>Nama Program</h3>
-                  <span>Tarikh Terima</span>
-               </div>
+               <img src=\"../img/profile.png\" alt=\"\">
+
             </div>
 
             <p>Tarikh: <span>",$list_of_application[$i][1],"</span></p>

@@ -129,7 +129,6 @@ if (isset($_POST["change_password"])) {
   if($password1 == $user[0][8]){
     if ($stmt = $con->prepare("UPDATE app SET `PASSWORD` = '$password2'  WHERE `APP_ID` = '$id'")) {
       $stmt->execute();
-      echo 'You have successfully updated!';
 
     } else {
       // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.

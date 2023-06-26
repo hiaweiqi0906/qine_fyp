@@ -2,8 +2,8 @@
 <div class="row">
     <div class="column-5"></div>
     <div class="column-2">
-        <img src="<?php if (isset($user[0][7]))
-            echo $user[0][7];
+        <img src="<?php if (isset($user[0][3]))
+            echo $user[0][3];
         else
             echo "../img/lehqine.jpg" ?>" class="image" alt="" width="200" height="200" />
             <input type="file" name="profil-img" id="profil-img">
@@ -30,8 +30,8 @@
         <label for="tarikh">Tarikh: </label>
     </div>
     <div class="column-10">
-        <input type="date" class="input-text" value="<?php if (isset($user[0][4]))
-            echo $user[0][4];
+        <input type="date" class="input-text" value="<?php if (isset($user[0][2]))
+            echo $user[0][2];
         else
             echo ""; ?>" name="tarikh" id="tarikh">
     </div>
@@ -39,11 +39,11 @@
 
 <div class="row">
     <div class="column-2">
-        <label for="bidang">bidang: </label>
+        <label for="bidang">Bidang: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" value="<?php if (isset($user[0][5]))
-            echo $user[0][5];
+        <input type="text" class="input-text" value="<?php if (isset($user[0][4]))
+            echo $user[0][4];
         else
             echo ""; ?>" name="bidang" id="bidang">
     </div>
@@ -53,7 +53,7 @@
 <div class="row">
 
     <div class="column-2">
-        <label for="description">description: </label>
+        <label for="description">Description: </label>
     </div>
     <div class="column-10">
         <input type="text" class="input-text" value="<?php if (isset($user[0][6]))
@@ -66,11 +66,11 @@
 <div class="row">
 
     <div class="column-2">
-        <label for="masa">masa: </label>
+        <label for="masa">Masa: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" value="<?php if (isset($user[0][6]))
-            echo $user[0][6];
+        <input type="text" class="input-text" value="<?php if (isset($user[0][7]))
+            echo $user[0][7];
         else
             echo ""; ?>" name="masa" id="masa">
     </div>

@@ -578,6 +578,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="1_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="1_4_syor" name="1_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area1.php');
+              ?>
             </div>
           </div>
 
@@ -599,6 +602,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="2_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="2_4_syor" name="2_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area2.php');
+              ?>
             </div>
           </div>
 
@@ -620,6 +626,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="3_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="3_4_syor" name="3_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area3.php');
+              ?>
             </div>
           </div>
 
@@ -641,6 +650,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="4_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="4_4_syor" name="4_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area4.php');
+              ?>
             </div>
           </div>
 
@@ -662,6 +674,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="5_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="5_4_syor" name="5_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area5.php');
+              ?>
             </div>
           </div>
 
@@ -683,6 +698,9 @@ if (isset($_POST['submit'])) {
               <h2><label for="6_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="6_4_syor" name="6_4_syor" rows="4" cols="60"></textarea>
               <br>
+              <?php
+              include('./area6.php');
+              ?>
             </div>
           </div>
 
@@ -704,24 +722,13 @@ if (isset($_POST['submit'])) {
               <h2><label for="7_4_syor">1.4 Syor (Recommendation):</label></h2>
               <textarea id="7_4_syor" name="7_4_syor" rows="4" cols="60"></textarea>
               <br>
-            </div>
-          </div>
-          <div class="promo_card1 rating-1">
-            <h1 class="collapsible">Penilaian Program</h1>
-            <div class="invi-at-first">
-
-
               <?php
-              include('./area1.php');
-              include('./area2.php');
-              include('./area3.php');
-              include('./area4.php');
-              include('./area5.php');
-              include('./area6.php');
               include('./area7.php');
               ?>
             </div>
-            <div class="promo_card1 laporan-1">
+          </div>
+
+            <div class="promo_card1 laporan-1" style="display: none">
               <h1 class="">BAHAGIAN B : PERAKUAN TERHADAP PENILAIAN PROGRAMPENGAJIAN OLEH PANEL PENILAI </h1>
               <h2 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
               </h2>
@@ -765,7 +772,7 @@ if (isset($_POST['submit'])) {
                 </h2><br> <br>
               </div>
             </div>
-            <div class="promo_card1 laporan-1">
+            <div class="promo_card1 laporan-1" style="display: none">
               <h1 class="">BAHAGIAN C : PENGESAHAN DAN TANDATANGAN PANEL PENILAI </h1>
               <h2 class="">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
               </h2>
@@ -789,7 +796,7 @@ if (isset($_POST['submit'])) {
                   <td></td>
                 </tr>
               </table>
-              </div>
+            </div>
             <?php
             $flag = true;
             if ($typel == 0) {
@@ -813,14 +820,13 @@ if (isset($_POST['submit'])) {
               <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required>
             </div>';
 
-          }
+            }
             //   echo '<button onclick="printLaporan()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
             // class="btn" id="submit" name="submit" value="Hantar">Cetak</button>';
             ?>
 
           </div>
         </form>
-
       </section>
     </div>
 

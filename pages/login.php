@@ -187,6 +187,15 @@ if (isset($_POST["submit"])) {
                   </p>
                 </div>
               </div>
+              <div class="row">
+                <div class="column-6">
+                  <p class="text">
+                    <a href="./login_userfakulti.php">Log Masuk User Fakulti</a>
+                  </p>
+
+                </div>
+
+              </div>
 
 
 
