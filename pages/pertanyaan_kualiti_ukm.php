@@ -110,7 +110,7 @@ $stmt->close();
           include("../components/sidebar_kualitiukm.php");
         ?>
 
-   <div class="main-body">
+   <div class="main-body title-font">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
          <div class="row">

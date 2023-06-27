@@ -173,7 +173,7 @@ $con->close();
       <?php
       include("./form_profil_app.php");
       ?>
-      <input type="submit" name="submit" value="Update" class="sign-btn" />
+      <input type="submit" name="submit" value="Kemaskini" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>
 
     </form>
 
@@ -182,7 +182,7 @@ $con->close();
       <?php
       include("./form_profil_password.php");
       ?>
-      <input type="submit" name="change_password" value="Change Password" class="sign-btn" />
+      <input type="submit" name="change_password" value="Kemaskini Kata Laluan" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>
 
     </form>
   </div>

@@ -97,7 +97,7 @@ if(isset( $list_of_kukm_program[0])){
 	<div class="main-body">
 		<img src="../img/Selamat Datang.png" class="promo_card">
 
-		<div class="title-size">
+		<div class="title-font">
 			<h2>Dashboard</h2><br>
 		</div>
 

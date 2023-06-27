@@ -24,16 +24,28 @@
    text-decoration: none;
 }
 
-.title-size{
-   font-size: 1.25rem;
+.size1 {
+   font-size: 1.9rem;
 }
 
 span.dot {
-	height: 150px;
-	width: 150px;
-	background-color: black;
+	height: 12.5rem;
+	width: 12.5rem;
+	background-color: #bacf9f;
 	border-radius: 50%;
-	display: inline-block;
+	display: block;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 3.125rem;
+   font-size: 5rem;
+ }
+
+ .data-color {
+   color: #5d7851;
+ }
+
+ .data-margin {
+   margin-top: 1.6rem;
  }
 
  .chart-row:after {
@@ -54,6 +66,11 @@ span.dot {
 
  .chart-right {
    width: 30%;
+   text-align: center;
+ }
+
+ .title-font {
+   font-size: 2.5rem;
  }
 
 *::selection{
@@ -1405,7 +1422,7 @@ div.sticky {
 }
 
 .section--title{
-   font-weight: 400;
+   font-size: 1.6rem;
 }
 
 .dropdown{
@@ -1477,7 +1494,7 @@ div.sticky {
    padding: 5px 10px;
    outline: none;
    border: none;
-   background-color: #5073fb;
+   background-color: #5d7851;
    color: #fff;
    border-radius: 5px;
    cursor: pointer;

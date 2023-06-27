@@ -247,22 +247,22 @@ $stmt->close();
 
 	<div class="main-body">
 		<img src="../img/Selamat Datang.png" class="promo_card">
-		<div class="title-size">
+		<div class="title-font">
 			<h2>Dashboard</h2><br>
 		</div>
 
 		<div class="overview">
 			<div class="title">
-				<h2 class="section--title">Overview</h2>
+				<h2 class="size1">Overview</h2>
 			</div>
 			<div class="chart-row">
 				<div id="pieChartContainer" style="height: 500px; width: 500px;" class="chart-col chart-left">
 				</div>
 				<div class="chart-col chart-right">
 					<h2 class="section--title">Jumlah Laporan yang Diterima</h2>
-					<span class="dot"><?php echo count($list_of_collected_kukm_program); ?></span>
-					<h2 class="section--title">Jumlah Laporan yang Belum Diterima</h2>
-					<span class="dot">
+					<span class="dot data-color"><?php echo count($list_of_collected_kukm_program); ?></span>
+					<h2 class="section--title data-margin">Jumlah Laporan yang Belum Diterima</h2>
+					<span class="dot data-color">
 						<?php echo count($list_of_kukm_program) * 2 - count($list_of_collected_kukm_program); ?>
 					</span>
 				</div>
@@ -272,15 +272,15 @@ $stmt->close();
 				</div>
 				<div class="chart-col chart-right">
 					<h2 class="section--title">Jumlah APP</h2>
-					<span class="dot">
+					<span class="dot data-color">
 						<?php echo $count_app; ?>
 					</span>
-					<h2 class="section--title">Jumlah Pensyarah</h2>
-					<span class="dot">
+					<h2 class="section--title data-margin">Jumlah Pensyarah</h2>
+					<span class="dot data-color">
 						<?php echo $count_lecturer; ?>
 					</span>
-					<h2 class="section--title">Jumlah Kualiti UKM</h2>
-					<span class="dot">
+					<h2 class="section--title data-margin">Jumlah Kualiti UKM</h2>
+					<span class="dot data-color">
 						<?php echo $count_kukm; ?>
 					</span>
 				</div>

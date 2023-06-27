@@ -84,7 +84,7 @@ $stmt->close();
 
    ?>
 
-   <div class="main-body">
+   <div class="main-body title-font">
       <h2>Pengumuman</h2>
       <div class="pertanyaan-list">
          <div class="row">
@@ -96,7 +96,7 @@ $stmt->close();
             echo "<div class=\"pengumuman\"> <p class=\"pengumuman-text\">Tarikh: ", $today_date, "</p>
 
  <p class=\"pengumuman-content\"><textarea type=\"text\" rows=\"6\" name=\"pengumuman\" id=\"pengumuman\" style=\"margin-top: 10px; border: 1px black solid; width: 100%;\"></textarea></p>
- <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Hantar\">
+ <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Hantar\" style=\"background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;\">
 
  </div><hr>";?>
 
@@ -106,7 +106,7 @@ $stmt->close();
 
     <p class=\"pengumuman-content\">", $list_of_pengumuman[$i][2], "</p>
     <input type=\"text\" name=\"p_id\" id=\"p_id\" value=\"".$list_of_pengumuman[$i][0]."\" hidden readonly/>
-    <input type=\"submit\" name=\"hapus\" id=\"hapus\" value=\"Hapus\">
+    <input type=\"submit\" name=\"hapus\" id=\"hapus\" value=\"Hapus\" style=\"background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;\">
 
     </div><hr>";
             }

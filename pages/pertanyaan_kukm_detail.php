@@ -82,14 +82,11 @@ $con->close();
           include("../components/sidebar_kualitiukm.php");
    ?>
 
-   <div class="main-body">
+   <div class="main-body title-font">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <form style="padding-bottom: 30px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?pertanyaan_id=".$pertanyaan_id; ?>"
+         <form style="padding-bottom: 20px; padding-top: 20px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?pertanyaan_id=".$pertanyaan_id; ?>"
             method="post" autocomplete="off" class="sign-in-form">
-
-           <br>
-           <br>
             <table class="table" style="width: 100%; ">
                <tr>
                   <td style="width: 33%;">Tarikh</td>

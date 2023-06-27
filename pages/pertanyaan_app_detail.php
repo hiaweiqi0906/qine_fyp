@@ -84,14 +84,11 @@ $con->close();
    include("../components/pengumuman.php");
    ?>
 
-   <div class="main-body">
+   <div class="main-body title-font">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <form style="padding-bottom: 30px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+         <form style="padding-bottom: 20px; padding-top: 20px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
             method="post" autocomplete="off" class="sign-in-form">
-
-           <br>
-           <br>
             <table class="table" style="width: 100%; ">
                <tr>
                   <td style="width: 33%;">Tarikh</td>

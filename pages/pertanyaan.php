@@ -107,7 +107,7 @@ $con->close();
           include("../components/pengumuman.php");
         ?>
 
-   <div class="main-body">
+   <div class="main-body title-font">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
          <form style="padding-bottom: 30px;"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
