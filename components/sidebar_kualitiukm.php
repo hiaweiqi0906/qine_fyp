@@ -29,17 +29,17 @@ if ($stmt = $con->prepare("SELECT `NAMA`, `URL_AVATAR` FROM `kualitiukm` WHERE K
         <img src="<?php if($info[0][1] == "") echo 'https://img.freepik.com/free-icon/user_318-159711.jpg'; else echo $info[0][1]; ?>" class="image" alt="">
            <h3 class="name"><?php echo $info[0][0]; ?></h3>
            <p class="role">Kualiti-UKM</p>
-           <a href="./profil_kualitiukm.php" class="btn">Lihat Profil</a>
+           <a href="../pages/profil_kualitiukm.php" class="btn">Lihat Profil</a>
         </div>
 
         <nav class="navbar">
-           <a href="./dashboardkualitiukm.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
-           <a href="./senaraipermohonan.php"><span style="font-weight:bolder;">Senarai Permohonan</span></a>
-           <a href="./senaraiprogram.php"><span style="font-weight:bolder;">Program</span></a>
-           <a href="./senarailaporan.php"><span style="font-weight:bolder;">Laporan</span></a>
-           <a href="./senaraimaklumbalas.php"><span style="font-weight:bolder;">Maklum Balas</span></a>
-           <a href="./pengumuman.php"><span style="font-weight:bolder;">Pengumuman</span></a>
-           <a href="./pertanyaan_kualiti_ukm.php"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
+           <a href="../pages/dashboard.php" class="active"><span style="font-weight:bolder;">Dashboard</span></a>
+           <a href="../pages/senaraipermohonan.php"><span style="font-weight:bolder;">Senarai Permohonan</span></a>
+           <a href="../pages/senaraiprogram.php"><span style="font-weight:bolder;">Program</span></a>
+           <a href="../pages/senarailaporan.php"><span style="font-weight:bolder;">Laporan</span></a>
+           <a href="../pages/senaraimaklumbalas.php"><span style="font-weight:bolder;">Maklum Balas</span></a>
+           <a href="../pages/pengumuman.php"><span style="font-weight:bolder;">Pengumuman</span></a>
+           <a href="../pages/pertanyaan_kualiti_ukm.php"></i><span style="font-weight:bolder;">Pertanyaan</span></a>
         </nav>
 
      </div>

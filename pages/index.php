@@ -72,7 +72,6 @@ include('../components/unprotected_route.php');
     </div>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <?php
     include("../components/footer.php");

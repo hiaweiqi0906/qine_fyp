@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             // Redirect user to welcome page
                             if($types==="kualitiukm"){
-                              header("location: dashboardkualitiukm.php");
+                              header("location: dashboard.php");
                             }
                             alert("login success");
 
@@ -141,7 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <a href="./index.php"><ion-icon name="chevron-back-outline"></ion-icon>Balik</a>
             <div class="heading">
-                <h2>Log Masuk</h2>
+                <h2>Log Masuk Kualiti-UKM</h2>
               </div>
               <input
                     type="text"

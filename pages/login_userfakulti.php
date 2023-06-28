@@ -122,11 +122,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistem Pengurusan Ahli Panel Penilai (USER FAKULTI)</title>
   <link rel="stylesheet" href="../style/stylelogin.css" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 
 <body>
   <div id="navbar">
-    <img src="../img/pjkukm.png" alt="">
+    <img src="../img/logo.png" alt="">
     <a href="/index.php"></a>
   </div>
   <main>
@@ -140,9 +141,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           ?>
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
             class="sign-in-form">
+            <a href="./index.php"><ion-icon name="chevron-back-outline"></ion-icon>Balik</a>
 
             <div class="heading">
-              <h2>Log Masuk</h2>
+              <h2>Log Masuk User Fakulti</h2>
             </div>
             <input type="text" name="types" hidden id="types" class="input-field" value="userfakulti" />
             <div class="actual-form">

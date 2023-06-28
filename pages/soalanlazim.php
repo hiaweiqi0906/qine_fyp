@@ -27,12 +27,12 @@
     	<div class="faq-heading">
             <h3>Soalan Lazim</h3>
         </div>
-    
+
         <!-- Container -->
         <div class="faq-content">
             <!-- faq -->
             <div class="faq-box-container">
-    
+
                 <div class="faq-box">
                     <div class="faq-box-question active">
                             <h4>Apa maksud &#8220;APP&#8221; yang dilantik?</h4>
@@ -42,7 +42,7 @@
                         <p>Ahli Panel Penilai (APP) adalah pakar dalam bidang berkaitan yang mempunyai latar belakang yang berbeza. </p>
                     </div>
                 </div>
-    
+
                 <div class="faq-box">
                     <div class="faq-box-question">
                             <h4>Bagaimana proses pelantikan APP?</h4>
@@ -52,7 +52,7 @@
                         <p>Permohonan untuk dilantik sebagai APP boleh diterima daripada Bahagian Akreditasi/ PPT/ Industri/ Badan Profesional/ perseorangan melalui surat atau emel dengan menggunakan borang Permohonan APP.</p>
                     </div>
                 </div>
-    
+
                 <div class="faq-box">
                     <div class="faq-box-question">
                             <h4>Apa tugas dan tanggungjawab APP?</h4>
@@ -62,13 +62,13 @@
                         <p>1. Meneliti dokumen-dokumen, laporan-laporan, rekod yang dikemukakan dan memberi ulasan mengikut kaedah penilaian yang ditetapkan.<br>2. Menilai dan mengulas standard dan kualiti program yang dinilai.</p>
                     </div>
                 </div>
-            
+
             </div>
             <div class="faq-img">
                 <img src="../img/faqimg.jpg" alt="FAQs">
             </div>
         </div>
-    
+
     </section>
 
     <?php
@@ -96,6 +96,6 @@ for (i = 0; i < faq.length; i++) {
 }
     </script>
 
-    
+
 </body>
 </html>

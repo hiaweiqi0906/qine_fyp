@@ -58,10 +58,7 @@ $stmt->close();
 
       <h1 class="heading">Senarai Program</h1>
 
-      <form action="" method="post" class="search-tutor">
-         <input type="text" name="search_box" placeholder="cari program..." required maxlength="100">
-         <button type="submit" class="fas fa-search" name="search_tutor"></button>
-      </form>
+      
 
       <div class="box-container">
       <?php

@@ -1,4 +1,4 @@
-<footer>
+<footer style="">
       <ul class="footer-icons">
         <li><a href="tel:60389215077"><ion-icon name="call-outline"></ion-icon></a></li>
         <li><a href="https://www.facebook.com/pjkukm/"><ion-icon name="logo-facebook"></ion-icon></a></li>
@@ -9,8 +9,7 @@
         <li><a href="https://www.ukm.my/ukmq/">Tentang Kualiti-UKM</a></li>|
         <li><a href="./disclaimer.php">Penafian</a></li>|
         <li><a href="./security.php">Dasar Keselamatan</a></li>|
-        <li><a href="./privacy.php">Dasar Privasi</a></li>|
-        <li><a href="">Personal Data Protection</a></li>
+        <li><a href="./privacy.php">Dasar Privasi</a></li>
       </ul>
 
       <div class="footer-copyright">

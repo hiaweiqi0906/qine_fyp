@@ -1,4 +1,4 @@
-<h1 style="font-size:2.5rem;">Maklumat Peribadi</h1>
+<h1 style="font-size:2.5rem;">Maklumat Program</h1>
 <div class="row">
     <div class="column-5"></div>
     <div class="column-2">

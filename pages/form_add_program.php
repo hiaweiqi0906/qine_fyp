@@ -141,28 +141,15 @@ $con->close();
       include("./form_profil_program.php");
       ?>
       <?php
-      if(!isset($user[0][0])) echo '<input type="submit" name="submit" value="Upload" class="sign-btn" />';
+      if(!isset($user[0][0])) echo '<input type="submit" name="submit" value="Upload" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>';
       ?>
 
     </form>
   </div>
 
-  <footer>
-    <ul class="footer-icons">
-      <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-      <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-    </ul>
-
-    <ul class="footer-menu">
-      <li><a href="">Disclaimer</a></li>
-      <li><a href="">Privacy Policy</a></li>
-      <li><a href="">Personal Data Protection</a></li>
-    </ul>
-
-    <div class="footer-copyright">
-      <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-    </div>
-  </footer>
+  <?php
+   include("../components/footer.php");
+   ?>
 
   <script src="../js/script.js"></script>
 

@@ -126,8 +126,7 @@
         <input type="text" value="<?php if (isset($user[0][10]))
             echo $user[0][10];
         else
-            echo ""; ?>" class="input-text"
-            name="fakulti" id="fakulti">
+            echo ""; ?>" class="input-text" name="fakulti" id="fakulti">
     </div>
 </div>
 
@@ -157,22 +156,176 @@
         <label for="kelayakan-akademik">Kelayakan Akademik: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" name="kelayakan-akademik" id="kelayakan-akademik">
+        <input type="text" style="display: none;" class="input-text" name="kelayakan-akademik" id="kelayakan-akademik">
+        <button id="myBtn" type="button" style="background-color: #5d7851; width: 30%; height: 3rem; color: white; border-radius: 5px; margin-left: auto;display: block; font-size: 1.5rem;">Tambah Kelayakan</button>
     </div>
+</div>
+<div class="row">
+    <table id="table-kelayakan-akademik" class="table table-striped table-bordered" style="width:100%">
+        <tr>
+            <td>Tahap</td>
+            <td>Nama Kelayakan</td>
+            <td>Institusi Penanugerah</td>
+            <td>Tahun Penganugerah</td>
+            <td>Tindakan</td>
+        </tr>
+
+    </table>
 </div>
 <div class="row">
     <div class="column-2">
         <label for="pengalaman">Pengalaman: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" name="pengalaman" id="pengalaman">
+        <input type="text" style="display: none;"  class="input-text" name="pengalaman" id="pengalaman">
+        <button id="myBtn2" type="button" style="background-color: #5d7851; width: 30%; height: 3rem; color: white; border-radius: 5px; margin-left: auto;display: block; font-size: 1.5rem;">Tambah Pengalaman</button>
     </div>
+
+</div>
+<div class="row">
+    <table id="table-pengalaman" class="table table-striped table-bordered" style="width:100%">
+        <tr>
+            <td>Jawatan & Pengalaman</td>
+            <td>Tahun Berkhidmat</td>
+            <td>Hingga</td>
+            <td>Nama Fakulti /Institusi /Organisasi</td>
+            <td>Tindakan</td>
+        </tr>
+
+    </table>
 </div>
 <div class="row">
     <div class="column-2">
         <label for="penganugerahan">Penganugerahan: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" name="penganugerahan" id="penganugerahan">
+        <input type="text" style="display: none;"  class="input-text" name="penganugerahan" id="penganugerahan">
+        <button id="myBtn3" type="button" style="background-color: #5d7851; width: 30%; height: 3rem; color: white; border-radius: 5px; margin-left: auto;display: block; font-size: 1.5rem;">Tambah Penganugerahan</button>
     </div>
+</div>
+<table id="table-penganugerahan" class="table table-striped table-bordered" style="width:100%">
+        <tr>
+            <td>Penganugerahan</td>
+            <td>Tindakan</td>
+        </tr>
+
+    </table>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Isikan Maklumat tersebut</p>
+        <div class="row">
+            <div class="column-4">
+                <label for="tahap">Tahap: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="tahap" id="tahap">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-4">
+                <label for="nama-kelayakan">Nama Kelayakan: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="nama-kelayakan" id="nama-kelayakan">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-4">
+                <label for="institusi-penanugerah">Institusi Penanugerah: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="institusi-penanugerah" id="institusi-penanugerah">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-4">
+                <label for="tahun-penganugerah">Tahun Penganugerah: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="tahun-penganugerah" id="tahun-penganugerah">
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="button" id="btn-tambah" onclick="myFunction()">Tambah</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Isikan Maklumat tersebut</p>
+        <div class="row">
+            <div class="column-4">
+                <label for="jawatan">Jawatan & Pengalaman: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="jawatan" id="jawatan">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-2">
+                <label for="tahun-berkhidmat">Tahun Berkhidmat: </label>
+            </div>
+            <div class="column-4">
+                <input type="text" class="input-text" name="tahun-berkhidmat" id="tahun-berkhidmat">
+            </div>
+
+            <div class="column-2">
+                <label for="tahun-berkhidmat-hingga">Hingga: </label>
+            </div>
+            <div class="column-4">
+                <input type="text" class="input-text" name="tahun-berkhidmat-hingga" id="tahun-berkhidmat-hingga">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-4">
+                <label for="nama-fakulti">Nama Fakulti /Institusi /Organisasi: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="nama-fakulti" id="nama-fakulti">
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="button" id="btn-tambah" onclick="myFunction2()">Tambah</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="myModal3" class="modal">
+
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Isikan Maklumat tersebut</p>
+        <div class="row">
+            <div class="column-4">
+                <label for="penganugerahan-1">Penganugerahan: </label>
+            </div>
+            <div class="column-8">
+                <input type="text" class="input-text" name="penganugerahan-1" id="penganugerahan-1">
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="button" id="btn-tambah" onclick="myFunction3()">Tambah</button>
+        </div>
+    </div>
+
 </div>

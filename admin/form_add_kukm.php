@@ -2,7 +2,7 @@
 
 // Initialize the session
 // session_start();
-include('../components/admin_protected_route.php');
+include('../components/kualitiukm_protected_route.php');
 
 // Include config file
 require_once "../php/db.php";
@@ -77,8 +77,8 @@ $con->close();
 <body>
 
   <?php
-  include("../components/navbar_admin.php");
-  include("../components/sidebar_admin.php");
+  include("../components/navbar_kualitiukm.php");
+  include("../components/sidebar_kualitiukm.php");
   include("../components/pengumuman.php");
   ?>
 

@@ -10,7 +10,7 @@ $id = $_SESSION["id"];
        $number_of_result = mysqli_num_rows($result);
    ?>
    <div class="logo" style="display: flex;align-items: center;cursor: pointer;">
-              <img src="../img/pjkukm.png" alt="Logo" style="width: 450px;margin-right: 0.6rem;margin-top: -0.6rem;"/>
+              <img src="../img/logo.png" alt="Logo" style="width: 450px;margin-right: 0.6rem;margin-top: -0.6rem;"/>
             </div>
 
             <?php

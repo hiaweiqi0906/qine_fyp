@@ -1,6 +1,6 @@
 <?php
- include("../php/db.php");
- include('../components/lecturer_protected_route.php');
+include("../php/db.php");
+include('../components/lecturer_protected_route.php');
 
 // $id = $_SESSION["id"];
 
@@ -8,73 +8,75 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard Pensyarah</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Pensyarah</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="../style/stylepertanyaan.css">
-   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+  <!-- custom css file link  -->
+  <link rel="stylesheet" href="../style/stylepertanyaan.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-    <?php
-          include("../components/navbar_lecturer.php");
-          include("../components/sidebar_lecturer.php");
-          include("../components/pengumuman.php");
+  <?php
+  include("../components/navbar_lecturer.php");
+  include("../components/sidebar_lecturer.php");
+  include("../components/pengumuman.php");
 
-        ?>
+  ?>
 
-     <div class="main-body">
+  <div class="main-body">
 
-      <img src="../img/Selamat Datang.png" class="promo_card">
+    <img src="../img/Selamat Datang.png" class="promo_card">
 
-      <div class="title-font">
+    <div class="title-font">
       <h2>Dashboard</h2><br>
-      </div>
-
-      <div class="slideshow-container fade">
-
-      <!-- Full images with numbers and message Info -->
-      <div class="Containers">
-        <img src="../img/app1.jpeg" style="width:100%; height: 400px; object-fit: cover;">
-      </div>
-
-      <div class="Containers">
-        <img src="../img/app2.jpeg" style="width:100%; height: 400px; object-fit: cover;">
-      </div>
-
-      <div class="Containers">
-        <img src="../img/app3.jpg" style="width:100%; height: 400px; object-fit: cover;">
-      </div>
-
-      <!-- Back and forward buttons -->
-      <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="forward" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <br>
+    <div class="promo_card1">
+			<h1>Permohonan Sebagai Ahli Panel Penilai</h1>
 
-    <!-- The circles/dots -->
-    <div style="text-align:center">
-    <span class="dots" onclick="currentSlide(1)"></span>
-    <span class="dots" onclick="currentSlide(2)"></span>
-    <span class="dots" onclick="currentSlide(3)"></span>
+			<span>POLISI PRIVASI</span>
+			<p>Terima kasih kerana berminat menjadi Ahli Panel Penilai (APP) Universiti Kebangsaan Malaysia (UKM). Untuk makluman, UKM amat prihatin terhadap
+                kerahsiaan data peribadi pemohon yang dikemukakan melalui laman sesawang ini. UKM akan bersifat telus dalam mengendalikan dan memproses data
+                pemohon yang sangat penting pada UKM.</p> <br>
+
+            <p>Data peribadi yang dikemukakan ketika pemohon mengisi borang permohonan hanya akan digunakan bagi proses permohonan sebagai APP. Sekiranya dipersetujui
+                lantikan, data tersebut akan digunakan sebagai pendaftaran sebagai APP dalam sistem kami yang akan digunakan untuk tujuan penilaian akreditasi. Maklumat
+                yang mungkin diperlukan adalah termasuk nama, emel, alamat, nombor telefon dan profil yang berkaitan dengan pemohonan. Maklumat gred yang dikemukakan
+                akan digunakan bagi penetapan gred.</p> <br>
+
+            <p>Pemohon adalah diingatkan bahawa proses ini bukanlah satu bentuk pelantikan sebaliknya ia merupakan satu pertimbangan lanjut dan saringan awal sahaja.
+                Status permohonan yang dikemukakan akan dimaklumkan melalui emel.</p> <br>
+
+            <span>PERLINDUNGAN DATA</span>
+            <p>UKM melaksanakan pengumpulan, penyimpanan dan pemprosesan data dengan mengambil langkah-langkah keselamatan yang tepat untuk melindungi terhadap akses,
+                perubahan, pendedahan atau pemusnahan maklumat peribadi pemohon dan data yang tersimpan di laman sesawang ini. Pemohon yang mengemukakan maklumat peribadi
+                adalah tertakluk kepada Akta Perlindungan Data Periibadi 2010.</p> <br>
+
+            <span>DEKLARASI PERMOHONAN</span>
+            <p>Segala data yang dikemukakan oleh pemohon perlu bersifat benar. Sekiranya terdapat maklumat palsu atau tidak benar, UKM berhak untuk membatalkan permohonan
+                dengan serta-merta.</p> <br>
+		</div>
+
+        <div class="field">
+            <input type="submit" class="btn" name="submit" value="Seterusnya" onclick = "window.location.href='./polisi.php';" required>
+        </div>
   </div>
 
+  <?php
+  include("../components/footer.php");
+  ?>
 
-     </div>
-
-     <?php
-          include("../components/footer.php");
-        ?>
-
-     <script src="../js/script.js"></script>
+  <script src="../js/script.js"></script>
 
 </body>
+
 </html>

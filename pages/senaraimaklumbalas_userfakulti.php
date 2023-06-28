@@ -125,7 +125,7 @@ if (isset($all_appprogram_id[0])) {
                <a href=\"./detailprogram_maklum_balas_userfakulti.php?id=" . $all_appprogram_id[$ii] . "&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div> "; // id=$current_application_id&type=1&pid=$current_pid
                }
-            
+
             for ($ji = 0; $ji < 3 - count($all_laporan[$ii]); $ji++) {
                echo "<div></div>";
             }
@@ -138,22 +138,9 @@ if (isset($all_appprogram_id[0])) {
 
    </section>
 
-   <footer>
-      <ul class="footer-icons">
-         <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-         <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-      </ul>
-
-      <ul class="footer-menu">
-         <li><a href="">Disclaimer</a></li>
-         <li><a href="">Privacy Policy</a></li>
-         <li><a href="">Personal Data Protection</a></li>
-      </ul>
-
-      <div class="footer-copyright">
-         <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-      </div>
-   </footer>
+   <?php
+   include("../components/footer.php");
+   ?>
 
    <script src="../js/script.js"></script>
 

@@ -2,7 +2,7 @@
 // session_start();
 include("../php/db.php");
 
-include('../components/admin_protected_route.php');
+include('../components/kualitiukm_protected_route.php');
 // include('../functions/search_all_laporan.php');
 
 $username = "";
@@ -60,8 +60,8 @@ $stmt->close();
 
 
 	<?php
-	include("../components/navbar_admin.php");
-	include("../components/sidebar_admin.php");
+	include("../components/navbar_kualitiukm.php");
+	include("../components/sidebar_kualitiukm.php");
 
 	?>
 
@@ -111,22 +111,9 @@ $stmt->close();
 		</div>
 	</div>
 
-	<footer>
-		<ul class="footer-icons">
-			<li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-			<li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-		</ul>
-
-		<ul class="footer-menu">
-			<li><a href="">Disclaimer</a></li>
-			<li><a href="">Privacy Policy</a></li>
-			<li><a href="">Personal Data Protection</a></li>
-		</ul>
-
-		<div class="footer-copyright">
-			<p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-		</div>
-	</footer>
+	<?php
+   include("../components/footer.php");
+   ?>
 
 	<script src="../js/script.js"></script>
 

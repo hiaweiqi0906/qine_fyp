@@ -87,38 +87,50 @@ $con->close();
    <div class="main-body title-font">
       <h2>Pertanyaan</h2>
       <div class="pertanyaan-list">
-         <form style="padding-bottom: 20px; padding-top: 20px;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-            method="post" autocomplete="off" class="sign-in-form">
+         <form style="padding-bottom: 20px; padding-top: 20px;"
+            action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
+            class="sign-in-form">
             <table class="table" style="width: 100%; ">
                <tr>
                   <td style="width: 33%;">Tarikh</td>
-                  <td><?php echo $list_of_pertanyaan[0][1]; ?></td>
+                  <td>
+                     <?php echo $list_of_pertanyaan[0][1]; ?>
+                  </td>
                </tr>
                <tr>
                   <td style="width: 33%;">Perkara</td>
-                  <td><?php echo $list_of_pertanyaan[0][2]; ?></td>
+                  <td>
+                     <?php echo $list_of_pertanyaan[0][2]; ?>
+                  </td>
                </tr>
                <tr>
                   <td style="width: 33%;">Ringkasan</td>
-                  <td><?php echo $list_of_pertanyaan[0][3]; ?></td>
+                  <td>
+                     <?php echo $list_of_pertanyaan[0][3]; ?>
+                  </td>
                </tr>
                <tr>
                   <td style="width: 33%;">Status</td>
-                  <td><?php echo $list_of_pertanyaan[0][4]; ?></td>
+                  <td>
+                     <?php echo $list_of_pertanyaan[0][4]; ?>
+                  </td>
                </tr>
                <tr>
                   <td style="width: 33%;">Pembalasan dari Kualiti-UKM</td>
-                  <td><?php echo $list_of_pertanyaan[0][5]; ?></td>
+                  <td>
+                     <?php echo $list_of_pertanyaan[0][5]; ?>
+                  </td>
                </tr>
             </table>
          </form>
       </div>
+      <div style="height: 7rem;"></div>
    </div>
 
 
    <?php
-          include("../components/footer.php");
-        ?>
+   include("../components/footer.php");
+   ?>
 
    <script src="../js/script.js"></script>
 
