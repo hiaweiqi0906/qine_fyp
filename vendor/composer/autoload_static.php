@@ -11,9 +11,14 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
+        ),
         'T' => 
         array (
             'Teapot\\StatusCode\\' => 18,
@@ -25,14 +30,17 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Matrix\\' => 7,
             'Masterminds\\' => 12,
         ),
         'L' => 
@@ -53,9 +61,21 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         array (
             'Dompdf\\' => 7,
         ),
+        'C' => 
+        array (
+            'Complex\\' => 8,
+        ),
+        'B' => 
+        array (
+            'Box\\Spout\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
         'Teapot\\StatusCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/teapot/status-code/src',
@@ -67,6 +87,10 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'Sabberworm\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -81,6 +105,10 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
@@ -88,6 +116,10 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Matrix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
         'Masterminds\\' => 
         array (
@@ -117,6 +149,24 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
+        'Complex\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'Box\\Spout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/box/spout/src/Spout',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
         ),
     );
 
@@ -751,6 +801,7 @@ class ComposerStaticInitf7647f107116925e9606aec40321b152
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf7647f107116925e9606aec40321b152::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf7647f107116925e9606aec40321b152::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf7647f107116925e9606aec40321b152::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitf7647f107116925e9606aec40321b152::$classMap;
 
         }, null, ClassLoader::class);

@@ -297,7 +297,7 @@
             <td colspan="2">
 
 
-            <input type="text" id="score_1" name="score_1" autocomplete="off" onchange="calcOverall1()" required
+            <input type="text" readonly id="score_1" name="score_1" autocomplete="off" onchange="calcOverall1()" required
                 value="<?php if (isset($akredasi_penuh_bidang)) {
                     echo $akredasi_penuh_bidang[0][0];
                 } else

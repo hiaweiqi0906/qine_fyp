@@ -2,6 +2,9 @@
 $appid = $_GET['id'];
 $action = $_GET['action'];
 $lecturerid = $_GET['lecturer_id'];
+date_default_timezone_set("Asia/Kuala_Lumpur");
+$today_date = date("Y-m-d");
+$current_time = date("H-i-s");
 
 $result = array();
 $nama = $emel = $password = $nokp = $fakulti = $alamat = $notelefon = $bidang = $urlAvatar = "";
@@ -110,6 +113,15 @@ if ($action == 'ACCEPT') {
       echo 'Could not prepare statement!';
    }
 } else {
+   if (
+      $stmt = $con->prepare("UPDATE `appapplication`SET COUNT_KALI = COUNT_KALI + 1 WHERE `LECTURER_ID` = '$lecturerid'")
+    ) {
+      $stmt->execute();
+    } else {
+      // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+      echo 'Could not prepare statement!';
+    }
+
    if (
       $stmt = $con->prepare("INSERT INTO `lecturer_noti`(`LECTURER_ID`, `TEXT`, `TARIKH`, `MASA`) VALUES ('$lecturerid', 'PERMOHONAN ANDA UNTUK MENJADI APP SUDAH DITOLAK. ', '$today_date','$current_time')")
    ) {

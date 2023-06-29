@@ -10,15 +10,19 @@ $id = $_SESSION["id"];
 
 
 $list_of_program = array();
+$list_of_program_belum_assigned = array();
 
 if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM `program` WHERE 1")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
 
-// }   /* fetch values */
+   // }   /* fetch values */
    while (mysqli_stmt_fetch($stmt)) {
-      array_push($list_of_program, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      if ($status == "ASSIGNED")
+         array_push($list_of_program, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
+      else
+         array_push($list_of_program_belum_assigned, array($program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa));
    }
    // echo $stmt->field_count;
 } else {
@@ -33,6 +37,7 @@ $stmt->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,57 +52,90 @@ $stmt->close();
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<?php
-          include("../components/navbar_kualitiukm.php");
-          include("../components/sidebar_kualitiukm.php");
-        ?>
+   <?php
+   include("../components/navbar_kualitiukm.php");
+   include("../components/sidebar_kualitiukm.php");
+   ?>
 
-     <section class="teachers">
+   <section class="teachers">
 
-      <h1 class="heading">Senarai Program</h1>
+   <h1 class="heading">Senarai Program Sudah Diasing</h1>
 
-      
+<div class="box-container">
+   <?php
+   for ($i = 0; $i < count($list_of_program); $i++) {
+      $current_application_id = $list_of_program[$i][0];
+
+      echo "<div class=\"box\">
+      <div class=\"tutor\">
+      ";
+      if (isset($list_of_program[$i][3])) {
+         echo "<img src=\"" . $list_of_program[$i][3] . "\" alt=\"\">";
+
+      } else {
+         echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
+      }
+      echo "               <div>
+            <h3>Nama Program: ", $list_of_program[$i][1], "</h3>
+            <span>Tarikh Terima: ", $list_of_program[$i][2], "</span>
+         </div>
+      </div>
+
+      <p>Tarikh: <span>", $list_of_program[$i][2], "</span></p>
+      <p>Masa : <span>", $list_of_program[$i][7], "</span></p>
+      <p>Status : <span>", $list_of_program[$i][5], "</span></p>
+      <a href=\"./program_information.php?id=$current_application_id\" class=\"inline-btn\">Lihat</a>
+   </div>";
+   }
+   ?>
+
+</div>
+<br>
+<h1 class="heading">Senarai Program Belum Diasing</h1>
 
       <div class="box-container">
-      <?php
-      for($i=0; $i<count($list_of_program); $i++){
-         $current_application_id = $list_of_program[$i][0];
+         <?php
+         for ($i = 0; $i < count($list_of_program_belum_assigned); $i++) {
+            $current_application_id = $list_of_program_belum_assigned[$i][0];
 
-         echo "<div class=\"box\">
+            echo "<div class=\"box\">
             <div class=\"tutor\">
             ";
-            if(isset($list_of_program[$i][3])){
-               echo "<img src=\"".$list_of_program[$i][3]."\" alt=\"\">";
+            if (isset($list_of_program_belum_assigned[$i][3])) {
+               echo "<img src=\"" . $list_of_program_belum_assigned[$i][3] . "\" alt=\"\">";
 
-            }else {
-                        echo "<img src=\"../img/program.jpg\" alt=\"\">";
+            } else {
+               echo "<img src=\"../img/program.jpg\" alt=\"\">";
 
             }
             echo "               <div>
-                  <h3>Nama Program: ",$list_of_program[$i][1],"</h3>
-                  <span>Tarikh Terima: ",$list_of_program[$i][2],"</span>
+                  <h3>Nama Program: ", $list_of_program_belum_assigned[$i][1], "</h3>
+                  <span>Tarikh Terima: ", $list_of_program_belum_assigned[$i][2], "</span>
                </div>
             </div>
 
-            <p>Tarikh: <span>",$list_of_program[$i][2],"</span></p>
-            <p>Masa : <span>",$list_of_program[$i][7],"</span></p>
-            <p>Status : <span>",$list_of_program[$i][5],"</span></p>
+            <p>Tarikh: <span>", $list_of_program_belum_assigned[$i][2], "</span></p>
+            <p>Masa : <span>", $list_of_program_belum_assigned[$i][7], "</span></p>
+            <p>Status : <span>", $list_of_program_belum_assigned[$i][5], "</span></p>
             <a href=\"./program_information.php?id=$current_application_id\" class=\"inline-btn\">Lihat</a>
          </div>";
-      }
-      ?>
+         }
+         ?>
 
       </div>
 
    </section>
 
    <?php
-          include("../components/footer.php");
-        ?>
+   include("../components/footer.php");
+   ?>
 
-     <script src="../js/script.js"></script>
+   <script src="../js/script.js"></script>
 
 </body>
+
 </html>

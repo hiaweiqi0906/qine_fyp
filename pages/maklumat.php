@@ -61,33 +61,38 @@ $id = $_SESSION["id"];
         <tr>
           <td>1</td>
 
-      <?php if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN` FROM `appapplication` WHERE LECTURER_ID = '$id' ")) {
+          <?php if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, COUNT_KALI FROM `appapplication` WHERE LECTURER_ID = '$id' ")) {
 
-        $stmt->execute();
-        mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan);
+            $stmt->execute();
+            mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan, $count_kali);
 
-        // }   /* fetch values */
-        while (mysqli_stmt_fetch($stmt)) {
-          array_push($results, array($application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan));
-        }
+            // }   /* fetch values */
+            while (mysqli_stmt_fetch($stmt)) {
+              array_push($results, array($application_id, $tarikh, $masa, $status, $lecturer_id, $kelayakan_akademik, $pengalaman, $penganugerahan, $count_kali));
+            }
 
 
-        if (count($results) == 1) {
-          echo "<td>".$results[0][1]."</td>"."<td>".$results[0][2]."</td>";
-          if ($results[0][3] == "PROCESSING")
-            echo "<td>Permohonan anda sedang diproseskan. </td>";
-          else if ($results[0][3] == "ACCEPT")
-          echo "<td>Permohonan anda telah diterima. </td>";
-          else
-          echo "<td>Permohonan anda telah ditolak. </td>";
-        } else {
-          echo "<td>-</td><td>-</td><td>Tiada permohonan. </td>";
-        }
-      } else {
-        // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-        echo 'Could not prepare statement!';
-      } ?>
-      </tr>
+            if (count($results) == 1) {
+              echo "<td>" . $results[0][1] . "</td>" . "<td>" . $results[0][2] . "</td>";
+              if ($results[0][3] == "PROCESSING")
+                echo "<td>Permohonan anda sedang diproseskan. </td>";
+              else if ($results[0][3] == "ACCEPT")
+                echo "<td>Permohonan anda telah diterima. </td>";
+              else {
+                if ($results[0][8] < 2)
+                  echo "<td>Permohonan anda telah ditolak. Buat permohonan sekali lagi. </td>";
+                else
+                  echo "<td>Permohonan anda telah ditolak. </td>";
+
+              }
+            } else {
+              echo "<td>-</td><td>-</td><td>Tiada permohonan. </td>";
+            }
+          } else {
+            // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+            echo 'Could not prepare statement!';
+          } ?>
+        </tr>
       </table>
 
     </div>
@@ -95,8 +100,8 @@ $id = $_SESSION["id"];
   </div>
 
   <?php
-          include("../components/footer.php");
-        ?>
+  include("../components/footer.php");
+  ?>
 
   <script src="../js/script.js"></script>
 

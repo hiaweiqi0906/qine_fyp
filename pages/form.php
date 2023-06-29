@@ -88,23 +88,11 @@
     </div>
     <div class="column-4">
         <select type="input-text" class="input-text" name="negeri" id="negeri">
-            <option value="" disabled selected>Pilih</option>
-            <option value="Johor">Johor</option>
-            <option value="Kedah">Kedah</option>
-            <option value="Kelantan">Kelantan</option>
-            <option value="Melaka">Melaka</option>
-            <option value="Negeri Sembilan">Negeri Sembilan</option>
-            <option value="Pahang">Pahang</option>
-            <option value="Perak">Perak</option>
-            <option value="Perlis">Perlis</option>
-            <option value="Pulau Pinang">Pulau Pinang</option>
-            <option value="Selangor">Selangor</option>
-            <option value="Terengganu">Terengganu</option>
-            <option value="Sabah">Sabah</option>
-            <option value="Sarawak">Sarawak</option>
-            <option value="WP Kuala Lumpur">Wilayah Persekutuan Kuala Lumpur</option>
-            <option value="WP Labuan">Wilayah Persekutuan Labuan</option>
-            <option value="WP Putrajaya">Wilayah Persekutuan Putrajaya</option>
+        <option value="" disabled selected>Pilih</option>
+
+            <?php
+include('../components/negeri_options.php');
+            ?>
         </select>
     </div>
 
@@ -126,7 +114,7 @@
         <input type="text" value="<?php if (isset($user[0][10]))
             echo $user[0][10];
         else
-            echo ""; ?>" class="input-text" name="fakulti" id="fakulti">
+            echo ""; ?>" class="input-text" name="bidang" id="bidang">
     </div>
 </div>
 
@@ -254,7 +242,7 @@
         </div>
 
         <div class="row">
-            <button type="button" id="btn-tambah" onclick="myFunction()">Tambah</button>
+            <button type="button" id="btn-tambah" onclick="myFunction()" style="background-color: #5d7851; width: 30%; height: 40px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;">Tambah</button>
         </div>
     </div>
 
@@ -301,7 +289,7 @@
         </div>
 
         <div class="row">
-            <button type="button" id="btn-tambah" onclick="myFunction2()">Tambah</button>
+            <button type="button" id="btn-tambah" onclick="myFunction2()"  style="background-color: #5d7851; width: 30%; height: 40px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;">Tambah</button>
         </div>
     </div>
 
@@ -324,7 +312,7 @@
         </div>
 
         <div class="row">
-            <button type="button" id="btn-tambah" onclick="myFunction3()">Tambah</button>
+            <button type="button" id="btn-tambah" onclick="myFunction3()"  style="background-color: #5d7851; width: 30%; height: 40px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;">Tambah</button>
         </div>
     </div>
 

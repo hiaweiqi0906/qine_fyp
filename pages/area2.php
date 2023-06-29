@@ -208,7 +208,7 @@
             <td colspan="4">
             <h3 style="font-weight: bold;">Overall Score</h3></td>
             <td colspan="2">
-            <input type="text" id="score_2" name="score_2" autocomplete="off" onchange="calcOverall2()" required
+            <input type="text" readonly id="score_2" name="score_2" autocomplete="off" onchange="calcOverall2()" required
                 value="<?php if (isset($akredasi_penuh_bidang)) {
                     echo $akredasi_penuh_bidang[1][0];
                 } else

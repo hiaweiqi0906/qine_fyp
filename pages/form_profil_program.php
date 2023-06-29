@@ -5,7 +5,7 @@
         <img src="<?php if (isset($user[0][3]))
             echo $user[0][3];
         else
-            echo "../img/lehqine.jpg" ?>" class="image" alt="" width="200" height="200" />
+            echo "../img/program.jpg" ?>" class="image" alt="" width="200" height="200" />
             <input type="file" name="profil-img" id="profil-img">
         </div>
         <div class="column-5"></div>

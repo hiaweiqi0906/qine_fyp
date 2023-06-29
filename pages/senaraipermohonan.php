@@ -55,6 +55,143 @@ $stmt->close();
    <link rel="stylesheet" href="../style/stylepertanyaan.css">
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+   <style>
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 5000;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+     */
+    @media print {
+      html {
+        padding: 10px;
+        overflow: visible !important;
+      }
+    }
+
+    .bahagian {
+      margin-top: 60px;
+    }
+
+
+
+    .collapsible {
+      /* display:none; */
+    }
+
+    textarea,
+    input {
+      border: none;
+    }
+
+    textarea:focus,
+    input:focus,
+    input {
+      outline: none;
+
+    }
+
+
+    .content {
+      padding: 0 18px;
+      display: block;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .div-center {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .invi-at-first {
+      display: block;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    table,
+    td,
+    th {
+      border: 1px solid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px;
+    }
+
+    h3 {
+      margin: 10px;
+    }
+
+    h3.collapsible {
+      margin-top: 30px;
+    }
+
+    .inner-div{
+      width: 50%;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: var(--light-bg);
+      ;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -75,12 +212,11 @@ $stmt->close();
          for ($i = 0; $i < count($list_of_application); $i++) {
             $current_application_id = $list_of_application[$i][0];
             echo "<div class=\"box\">";
-            // include('./form_senarai_permohonan.php');
+
             echo "<div class=\"tutor\">
                <img src=\"../img/profile.png\" alt=\"\">
 
             </div>
-
             <p>Tarikh: <span>", $list_of_application[$i][1], "</span></p>
             <p>Masa : <span>", $list_of_application[$i][2], "</span></p>
             <p>Nama : <span>", $list_of_application[$i][6], "</span></p>
@@ -96,8 +232,10 @@ $stmt->close();
                ";
                }
             }
-            echo "               <a href=\"../functions/application_action.php?action=ACCEPT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TERIMA</a>
+            echo "               <a href=\"./permohonan_details.php?id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">LIHAT</a>
 
+<br>";
+            echo "               <a href=\"../functions/application_action.php?action=ACCEPT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TERIMA</a>
 <br>
          <a href=\"../functions/application_action.php?action=REJECT&id=$current_application_id&lecturer_id=$lecturer_id\" class=\"inline-btn\">TOLAK</a>
             </div>";

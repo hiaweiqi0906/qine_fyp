@@ -8,7 +8,7 @@
                 <td>Programme Development And Delivery</td>
                 <td></td>
                 <td></td>
-                <td><input type="text" id="_score_1" name="score_1" autocomplete="off" onchange="calcOverall1()" required
+                <td><input type="text" readonly id="_score_1" name="score_1" autocomplete="off" onchange="calcOverall1()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[0][0];
                         } else
@@ -21,7 +21,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_2" name="score_2" autocomplete="off" onchange="calcOverall2()" required
+                    <input type="text" readonly id="_score_2" name="score_2" autocomplete="off" onchange="calcOverall2()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[1][0];
                         } else
@@ -35,7 +35,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_3" name="score_3" autocomplete="off" onchange="calcOverall3()" required
+                    <input type="text" readonly id="_score_3" name="score_3" autocomplete="off" onchange="calcOverall3()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[2][0];
                         } else
@@ -49,7 +49,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_4" name="score_4" autocomplete="off" onchange="calcOverall4()" required
+                    <input type="text" readonly id="_score_4" name="score_4" autocomplete="off" onchange="calcOverall4()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[3][0];
                         } else
@@ -63,7 +63,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_5" name="score_5" autocomplete="off" onchange="calcOverall5()" required
+                    <input type="text" readonly id="_score_5" name="score_5" autocomplete="off" onchange="calcOverall5()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[4][0];
                         } else
@@ -77,7 +77,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_6" name="score_6" autocomplete="off" onchange="calcOverall6()" required
+                    <input type="text" readonly id="_score_6" name="score_6" autocomplete="off" onchange="calcOverall6()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[5][0];
                         } else
@@ -91,7 +91,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="text" id="_score_7" name="score_7" autocomplete="off" onchange="calcOverall7()" required
+                    <input type="text" readonly id="_score_7" name="score_7" autocomplete="off" onchange="calcOverall7()" required
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[6][0];
                         } else

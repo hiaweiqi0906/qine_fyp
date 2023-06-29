@@ -33,7 +33,7 @@
         <div class="info">
 
            <div class="user">
-              <img src="../img/lehqine.jpg" alt="">
+              <img src="../img/profile.png" alt="">
               <h3>Wong Leh Qine</h3>
               <p>APP</p>
               <a href="#" class="inline-btn">KemasKini</a>

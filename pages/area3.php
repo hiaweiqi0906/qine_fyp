@@ -335,7 +335,7 @@
             <td colspan="4">
             <h3 style="font-weight: bold;">Overall Score</h3></td>
             <td colspan="2">
-            <input type="text" id="score_3" name="score_3" autocomplete="off" onchange="calcOverall3()" required value="<?php if (isset($akredasi_penuh_bidang)) {
+            <input type="text" readonly id="score_3" name="score_3" autocomplete="off" onchange="calcOverall3()" required value="<?php if (isset($akredasi_penuh_bidang)) {
                 echo $akredasi_penuh_bidang[2][0];
             } else
                 echo "0"; ?>"> </td></tbody></thead>

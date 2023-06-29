@@ -12,7 +12,7 @@ $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
 
 $id = $_SESSION["id"];
-if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' ")) {
+if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' AND (COUNT_KALI = 2 OR STATUS = 'ACCEPT')")) {
   // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
   // $stmt->bind_param('s', $_POST['username']);
   $stmt->execute();
@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $negeri = $_POST["negeri"];
   $no_tel_pejabat = $_POST["no-tel-pejabat"];
   $no_tel_bimbit = $_POST["no-tel-bimbit"];
+  $bidang = $_POST["bidang"];
 
   date_default_timezone_set("Asia/Kuala_Lumpur");
   $today_date = date("Y-m-d");
@@ -55,22 +56,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $stmt->store_result();
     // Store the result so we can check if the account exists in the database.
-    if ($stmt->num_rows > 0) {
+    if ($stmt->num_rows > 1) {
       // Username already exists
-      echo 'We\'re still processing your application. ';
+      echo 'Permohonan sudah ditolak 2 kali. ';
     } else {
-      if (
-        $stmt = $con->prepare("INSERT INTO appapplication (`UNIVERSITI`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
+      if ($stmt->num_rows == 0) {
+        if (
+          $stmt = $con->prepare("INSERT INTO appapplication (`UNIVERSITI`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
         ('$universiti', '$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")
-      ) {
+        ) {
 
-        $stmt->execute();
-      } else {
-        // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
-        echo 'Could not prepare statement!';
+          $stmt->execute();
+        } else {
+          // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+          echo 'Could not prepare statement!';
+        }
+      }else if ($stmt->num_rows == 1){
+        if (
+          $stmt = $con->prepare("UPDATE appapplication SET `UNIVERSITI` = '$universiti', `TARIKH` = '$today_date', `MASA` = '$now_time', COUNT_KALI = 2, `STATUS` = 'PROCESSING', `LECTURER_ID` = '$id', `KELAYAKAN_AKADEMIK` = '$kelayakan_akademik', `PENGALAMAN` = '$pengalaman', `PENGANUGERAHAN` = '$penganugerahan', `KATEGORI` = '$kategori' WHERE LECTURER_ID = '$id' ")
+        ) {
+
+          $stmt->execute();
+        } else {
+          // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+          echo 'Could not prepare statement!';
+        }
       }
 
-      if ($stmt = $con->prepare("UPDATE lecturer SET `UNIVERSITI` = '$universiti', `FAKULTI` = '$fakulti', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'")) {
+
+      if ($stmt = $con->prepare("UPDATE lecturer SET BIDANG = '$bidang', `UNIVERSITI` = '$universiti',KELAYAKAN_AKADEMIK = '$kelayakan_akademik', PENGALAMAN = '$pengalaman', PENGANUGERAHAN = '$penganugerahan', `FAKULTI` = '$fakulti', `NO_KP` = '$no_kad_pengenalan', `GELARAN` = '$gelaran', `NAMA` = '$nama', `ALAMAT` = '$alamat_tempat_bekerja', `POSKOD` = '$poskod', `DAERAH` = '$daerah', `NEGERI` = '$negeri', `NO_TELEFON` = '$no_tel_bimbit', `NO_TELEFON_PEJABAT` = '$no_tel_pejabat' WHERE `LECTURER_ID` = '$id'")) {
 
         $stmt->execute();
         header("Location: maklumat.php");
@@ -267,7 +281,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       include("./form.php");
       ?>
 
-
       <input type="submit" name="submit" value="Pohon" class="btn" />
     </form>
   </div>
@@ -411,13 +424,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       var newStr = "";
       console.log(myArray);
-      for(var i=1; i<myArray.length; i++){
+      for (var i = 1; i < myArray.length; i++) {
         newStr = newStr.concat("^", myArray[i]);
         console.log(newStr);
       }
       // if(myArray.length>0)
       //   newStr = newStr.concat(myArray[myArray.length-1]);
-      document.getElementById("kelayakan-akademik").value =newStr;
+      document.getElementById("kelayakan-akademik").value = newStr;
       row.parentNode.removeChild(row);
     }
 
@@ -432,13 +445,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       var newStr = "";
       console.log(myArray);
-      for(var i=1; i<myArray.length; i++){
+      for (var i = 1; i < myArray.length; i++) {
         newStr = newStr.concat("^", myArray[i]);
         console.log(newStr);
       }
       // if(myArray.length>0)
       //   newStr = newStr.concat(myArray[myArray.length-1]);
-      document.getElementById("pengalaman").value =newStr;
+      document.getElementById("pengalaman").value = newStr;
       row.parentNode.removeChild(row);
     }
 
@@ -453,13 +466,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       var newStr = "";
       console.log(myArray);
-      for(var i=1; i<myArray.length; i++){
+      for (var i = 1; i < myArray.length; i++) {
         newStr = newStr.concat("^", myArray[i]);
         console.log(newStr);
       }
       // if(myArray.length>0)
       //   newStr = newStr.concat(myArray[myArray.length-1]);
-      document.getElementById("penganugerahan").value =newStr;
+      document.getElementById("penganugerahan").value = newStr;
       row.parentNode.removeChild(row);
     }
   </script>
