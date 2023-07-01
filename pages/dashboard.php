@@ -157,6 +157,36 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `KUALITIUKM_ID` FROM appprogr
 	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
 	echo 'Could not prepare statement!';
 }
+
+$list_of_program = array();
+$list_of_assigned_program = array();
+
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID` FROM program WHERE 1")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $program_id);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		array_push($list_of_program, array($program_id));
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID` FROM appprogram WHERE 1")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $program_id);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		array_push($list_of_assigned_program, array($program_id));
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+
 $list_of_kukm_program = array();
 for ($xxx = 0; $xxx < count($list_of_app_program); $xxx++) {
 	if ($list_of_app_program[$xxx][1] == $id) {
@@ -287,14 +317,25 @@ $stmt->close();
 			<div class="chart-row">
 				<div id="pieChartContainer" style="height: 400px; width: 400px;" class="chart-col chart-left">
 				</div>
-				<div class="chart-col chart-right" style="height: 450px;">
-					<h2 class="section--title">Jumlah Laporan yang Diterima</h2>
+				<div class="chart-col chart-right" style="width: 10%;height: 500px;">
+					<h2 class="section--title">Laporan Diterima</h2>
 					<span class="dot data-color"><?php echo count($list_of_collected_kukm_program); ?></span>
-					<h2 class="section--title data-margin">Jumlah Laporan yang Belum Diterima</h2>
+					<h2 class="section--title data-margin">Laporan Belum Diterima</h2>
 					<span class="dot data-color">
 						<?php echo count($list_of_kukm_program) * 2 - count($list_of_collected_kukm_program); ?>
 					</span>
 				</div>
+				<div class="chart-col chart-right" style="width: 10%; margin-left: 15rem;height: 450px;">
+					<h2 class="section--title">Jumlah Program</h2>
+					<span class="dot data-color">
+						<?php echo count($list_of_program); ?>
+					</span>
+					<h2 class="section--title data-margin">Program Diasing</h2><br>
+					<span class="dot data-color">
+						<?php echo count($list_of_assigned_program); ?>
+					</span>
+				</div>
+
 			</div>
 			<div class="chart-row">
 				<div id="chartContainer" style="height: 400px; width: 400px;" class="chart-col chart-left">
