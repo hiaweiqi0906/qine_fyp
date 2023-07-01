@@ -179,7 +179,7 @@ $con->close();
           ?>
           <?php
           if (!isset($user[0][0]))
-            echo '<input type="submit" name="submit" value="Upload" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>';
+            echo '<input type="submit" name="submit" value="Muat Naik" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>';
           ?>
 
         </form>
@@ -192,7 +192,7 @@ $con->close();
           ?>
           <?php
           if (!isset($user[0][0]))
-            echo '<input type="submit" name="submit-file" value="Upload Fail" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>';
+            echo '<input type="submit" name="submit-file" value="Muat Naik Fail" class="sign-btn" style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;"/>';
           ?>
 
         </form>

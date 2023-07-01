@@ -3,7 +3,7 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
 
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 1</td>
                 <td>Programme Development And Delivery</td>
                 <td></td>
@@ -15,7 +15,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>1.1</td>
                 <td>Statement of Educational Objectives of Academic Programme and Learning Outcomes</td>
                 <td></td>
@@ -28,7 +28,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>1.2</td>
                 <td>Programme Development: Process, Content, Structure and Teaching-Learning Methods</td>
                 <td></td>
@@ -40,7 +40,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>1.3</td>
                 <td>Programme Delivery</td>
                 <td></td>
@@ -52,7 +52,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 2</td>
                 <td>Programme Development And Delivery</td>
                 <td></td>
@@ -65,7 +65,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>2.1</td>
                 <td>Relationship Between Assessment and Learning Outcomes</td>
                 <td></td>
@@ -77,7 +77,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>2.2</td>
                 <td>Assessment Methods</td>
                 <td></td>
@@ -89,7 +89,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>2.3</td>
                 <td>Management of Student Assessment</td>
                 <td></td>
@@ -101,7 +101,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 3</td>
                 <td>Student Selection and Support Services</td>
                 <td></td>
@@ -114,7 +114,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>3.1</td>
                 <td>Student Selection</td>
                 <td></td>
@@ -125,7 +125,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>3.2</td>
                 <td>Articulation and Transfer</td>
                 <td></td>
@@ -136,7 +136,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>3.3</td>
                 <td>Student Support Services</td>
                 <td></td>
@@ -147,7 +147,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>3.4</td>
                 <td>Student Representation and Participation</td>
                 <td></td>
@@ -158,7 +158,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>3.5</td>
                 <td>Alumni</td>
                 <td></td>
@@ -169,7 +169,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 4</td>
                 <td>Academic Staff</td>
                 <td></td>
@@ -182,7 +182,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>4.1</td>
                 <td>Recruitment and Management</td>
                 <td></td>
@@ -194,7 +194,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>4.2</td>
                 <td>Service and Development</td>
                 <td></td>
@@ -206,7 +206,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 5</td>
                 <td>Educational Resources</td>
                 <td></td>
@@ -219,7 +219,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>5.1</td>
                 <td>Physical Facilities</td>
                 <td></td>
@@ -230,7 +230,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>5.2</td>
                 <td>Research and Development</td>
                 <td></td>
@@ -241,7 +241,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>5.3</td>
                 <td>Financial Resources</td>
                 <td></td>
@@ -252,7 +252,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 6</td>
                 <td>Programme Management</td>
                 <td></td>
@@ -265,7 +265,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>6.1</td>
                 <td>Programme Management</td>
                 <td></td>
@@ -277,7 +277,7 @@
                             echo "0"; ?>">
                         </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>6.2</td>
                 <td>Programme Leadership</td>
                 <td></td>
@@ -289,7 +289,7 @@
                             echo "0"; ?>">
                         </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>6.3</td>
                 <td>Administrative Staff</td>
                 <td></td>
@@ -301,7 +301,7 @@
                             echo "0"; ?>">
                         </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>6.4</td>
                 <td>Academic Records</td>
                 <td></td>
@@ -313,7 +313,7 @@
                             echo "0"; ?>">
                         </td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>Area 7</td>
                 <td>Programme Monitoring, Review and Continual Quality Improvement</td>
                 <td></td>
@@ -326,7 +326,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink; font-weight: bold;">
+            <tbody style="background-color: #ccc; font-weight: bold;">
                 <td>7.1</td>
                 <td>Mechanism for Programme Monitoring, Review and Continual Quality Improve</td>
                 <td></td>
@@ -370,6 +370,8 @@
 
         score_1 = score_1_1 + score_1_1_1 + score_1_1_2 + score_1_1_3 + score_1_1_4 + score_1_1_5 + score_1_2 + score_1_2_1 + score_1_2_2 + score_1_2_3 + score_1_2_4 + score_1_2_5 + score_1_2_6 + score_1_3 + score_1_3_1 + score_1_3_2 + score_1_3_3 + score_1_3_4 + score_1_3_5 + score_1_3_6;
         score_1 /= 20;
+        score_1 = (Math.round(score_1 * 100) / 100).toFixed(2);
+
         document.getElementById("score_1").value = score_1;
     }
 </script>

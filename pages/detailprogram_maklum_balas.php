@@ -259,7 +259,7 @@ for ($jj = 0; $jj < 7; $jj++) {
      */
 
     .table th {
-      background-color: pink;
+      background-color: #ccc;
       font-size: 1rem;
       color: black !important;
     }

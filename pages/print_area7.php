@@ -2,7 +2,7 @@
     <script>
 
     </script>
-    <h3 class="collapsible">Area 7 - Programme Monitoring, Review and Continual Quality Improvement</h3>
+    <h2 class="collapsible">Area 7 - Programme Monitoring, Review and Continual Quality Improvement</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -185,6 +185,9 @@
 
         overall_score = score_7_1 + score_7_1_1 + score_7_1_2 + score_7_1_3 + score_7_1_4 + score_7_1_5 + score_7_1_6 + score_7_1_7 + score_7_1_8 + score_7_1_9;
         overall_score =overall_score / 10;
+
+        overall_score = (Math.round(overall_score * 100) / 100).toFixed(2);
+
         document.getElementById("score_7").value =overall_score;
         document.getElementById("_score_7").value =overall_score;
         document.getElementById("__score_7").value =overall_score;

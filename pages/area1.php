@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 1 - Programme Development And Delivery</h3>
+    <h2 class="collapsible">Area 1 - Programme Development And Delivery</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -11,7 +11,7 @@
                     <th>Score (1-5)</th>
                     <th>Holistic Evaluation</th>
                 </tr>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>1.1</td>
                 <td>Statement of Educational Objectives of Academic Programme and Learning Outcomes</td>
                 <td></td>
@@ -25,7 +25,7 @@
                             echo "0"; ?>">
                 </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.1.1</td>
                 <td>The programme must be consistent with, and supportive of, the vision, mission and goals of the HEP.
                 </td>
@@ -39,7 +39,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.1.2</td>
                 <td>The programme must be considered only after a needs assessment has indicated that there is a need
                     for the programme to be offered.</td>
@@ -53,7 +53,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.1.3</td>
                 <td>The department must state its programme educational objectives, learning outcomes, teaching and
                     learning strategies, and assessment, and ensure constructive alignment between them.</td>
@@ -67,7 +67,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.1.4</td>
                 <td>The programme learning outcomes must correspond to an MQF level descriptors and the MQF learning
                     outcomes domains:</td>
@@ -81,7 +81,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.1.5</td>
                 <td>Considering the stated learning outcomes, the programme must indicate the career and further studies
                     options available to the students on completion of the programme.</td>
@@ -95,7 +95,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>1.2</td>
                 <td>Programme Development: Process, Content, Structure and Teaching-Learning Methods</td>
                 <td></td>
@@ -108,7 +108,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.1</td>
                 <td>The department must have sufficient autonomy to design the curriculum and to utilise the allocated
                     resources necessary for its implementation. (Where applicable, the above provision must also cover
@@ -124,7 +124,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.2</td>
                 <td>The department must have an appropriate process to develop the curriculum leading to the approval by
                     the highest academic authority in the HEP.</td>
@@ -138,7 +138,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.3</td>
                 <td>The department must consult the stakeholders in the development of the curriculum including
                     educational experts as appropriate.</td>
@@ -152,7 +152,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.4</td>
                 <td>The curriculum must fulfil the requirements of the discipline of study, taking into account the
                     appropriate programme standards, professional and industry requirements as well as good practices in
@@ -167,7 +167,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.5</td>
                 <td>There must be an appropriate teaching and learning methods relevant to the programme educational
                     objectives and learning outcomes.</td>
@@ -181,7 +181,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.2.6</td>
                 <td>There must be co-curricular activities to enrich student experience, and to foster personal
                     development and responsibility. (This standard may not be applicable to Open and Distance Learning
@@ -196,7 +196,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>1.3</td>
                 <td>Programme Delivery</td>
                 <td></td>
@@ -209,7 +209,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.1</td>
                 <td>The department must take responsibility to ensure the effective delivery of programme learning
                     outcomes.</td>
@@ -223,7 +223,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.2</td>
                 <td>Students must be provided with, and briefed on, current information about (among others) the
                     objectives, structure, outline, schedule, credit value, learning outcomes, and methods of assessment
@@ -238,7 +238,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.3</td>
                 <td>The programme must have an appropriate full-time coordinator and a team of academic staff (e.g., a
                     programme committee) with adequate authority for the effective delivery of the programme.</td>
@@ -252,7 +252,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.4</td>
                 <td>The department must provide students with a conducive learning environment.</td>
                 <td>F/P</td>
@@ -265,7 +265,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.5</td>
                 <td>The department must encourage innovations in teaching, learning and assessment.</td>
                 <td>F/P</td>
@@ -278,7 +278,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>1.3.6</td>
                 <td>The department must obtain feedback from stakeholders to improve the delivery of the programme
                     outcomes.</td>
@@ -334,6 +334,8 @@
 
         score_1 = score_1_1 + score_1_1_1 + score_1_1_2 + score_1_1_3 + score_1_1_4 + score_1_1_5 + score_1_2 + score_1_2_1 + score_1_2_2 + score_1_2_3 + score_1_2_4 + score_1_2_5 + score_1_2_6 + score_1_3 + score_1_3_1 + score_1_3_2 + score_1_3_3 + score_1_3_4 + score_1_3_5 + score_1_3_6;
         score_1 /= 20;
+        score_1 = (Math.round(score_1 * 100) / 100).toFixed(2);
+
         document.getElementById("score_1").value =score_1;
         document.getElementById("_score_1").value =score_1;
         document.getElementById("__score_1").value =score_1;

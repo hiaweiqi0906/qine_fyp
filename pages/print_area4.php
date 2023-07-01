@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 4 - Academic Staff</h3>
+    <h2 class="collapsible">Area 4 - Academic Staff</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -283,8 +283,10 @@
         var score_4_2_6 = Number(document.getElementById("score_4_2_6").value);
         var score_4_2_7 = Number(document.getElementById("score_4_2_7").value);
 
-        score_4 = score_4_1 + score_4_1_2 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8 + score_4_2 + score_4_2_2 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7;
+        score_4 = score_4_1 + score_4_1_2 + score_4_2_1 + score_4_1_1 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8 + score_4_2 + score_4_2_2 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7;
         score_4 /= 17;
+        score_4 = (Math.round(score_4 * 100) / 100).toFixed(2);
+
         document.getElementById("score_4").value = score_4;
         document.getElementById("_score_4").value = score_4;
         document.getElementById("__score_4").value = score_4;

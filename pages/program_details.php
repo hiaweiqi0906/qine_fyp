@@ -150,7 +150,7 @@ $con->close();
       enctype="multipart/form-data" class="sign-in-form">
       <?php
       include("./form_profil_program.php");
-      if(!isset($user[0][0])) echo '<input type="submit" name="submit" value="Upload" class="sign-btn" />';
+      if(!isset($user[0][0])) echo '<input type="submit" name="submit" value="Muat Naik" class="sign-btn" />';
       ?>
 
     </form>

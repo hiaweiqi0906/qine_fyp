@@ -90,7 +90,6 @@ app xxx")
          }
       }
       if ($b_f) {
-         echo "here";
          array_push($appr_people, array($app_id, $nama, $uni, $kat, $bb));
       }$b_f = true;
 
@@ -114,7 +113,6 @@ $list_of_app_iso = array();
 $list_of_app_eksa = array();
 $list_of_app_isms = array();
 $list_of_app_mqa = array();
-echo "sdf".count($appr_people);
 for ($uu = 0; $uu < count($appr_people); $uu++) {
    if (str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4] < 5) {
       array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1]));
@@ -292,7 +290,7 @@ $stmt->close();
             </div>
             <p>Informasi: <a href=\"../functions/generate_program.php?pid=" . $program_details[$i][0] . "\"><span>Muat Turun</span></a></p>
             <p>Tarikh: <span>", $program_details[$i][2], "</span></p>
-            <p>Link Fail-fail Program : <span>", $program_details[$i][7], "</span></p>
+            <p>Masa : <span>", $program_details[$i][7], "</span></p>
             <p>Status : <span>", $program_details[$i][5], "</span></p>";
                echo "<p><label for=\"kat\">Kategori:</label></p>";
                if (!$assigned) {
@@ -313,7 +311,8 @@ $stmt->close();
                echo "<div id=\"div-iso\" style=\"display: block;\">";
                if (!$assigned) {
                   echo "<p>People Suggestions : <span>";
-                  for ($oo = 0; $oo < count($list_of_app_iso); $oo++) {
+                  $ll =count($list_of_app_iso) > 6? 6 : count($list_of_app_iso);
+                  for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_iso[$oo][1] . ", ";
                   }
                   echo "</span></p>";

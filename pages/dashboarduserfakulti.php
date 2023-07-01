@@ -163,7 +163,7 @@ $stmt->close();
 				<div class="card card-2">
 					<div class="card--data">
 						<div class="card--content">
-							<h5 class="card--title">Jumlah Belum</h5>
+							<h5 class="card--title">Jumlah Laporan Program Belum Maklum Balas</h5>
 							<h1>
 								<?php echo $count_collected_belum_maklum_balas; ?>
 							</h1>
@@ -199,7 +199,7 @@ $stmt->close();
 				<h2 class="section--title">Program</h2>
 				<div class="app--right--btns">
 
-					<button class="add" onclick="window.location.href='./form_add_program.php';">Add Program</button>
+					<button class="add" onclick="window.location.href='./form_add_program.php';">Tambah Program</button>
 					<?php
 					if ($count_app > 6)
 						echo '<button class="add"  onclick="window.location.href=\'./dashboard_all_program.php\';" style="background: gray;">Lihat Semua</button>';

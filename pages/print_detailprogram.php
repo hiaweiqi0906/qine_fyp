@@ -658,7 +658,7 @@ if (isset($_POST['submit'])) {
             <table>
               <tr>
                 <td>
-                  <h3 class="collapsible" style="display: block;">Bidang 1: Pembangunan & Penyampaian Program</h3>
+                  <h2 class="collapsible" style="display: block;">Bidang 1: Pembangunan & Penyampaian Program</h3>
                 </td>
               </tr>
               <tr>
@@ -696,7 +696,7 @@ if (isset($_POST['submit'])) {
             <table>
               <tr>
                 <td>
-                  <h3 class="collapsible">Bidang 2: Penilaian Pembelajaran Pelajar</h3>
+                  <h2 class="collapsible">Bidang 2: Penilaian Pembelajaran Pelajar</h3>
 
                 </td>
               </tr>
@@ -743,7 +743,7 @@ if (isset($_POST['submit'])) {
             <table>
               <tr>
                 <td>
-                  <h3 class="collapsible">Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h3>
+                  <h2 class="collapsible">Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h3>
 
                 </td>
               </tr>
@@ -788,7 +788,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
 
-                  <h3 class="collapsible">Bidang 4: Kakitangan Akademik</h3>
+                  <h2 class="collapsible">Bidang 4: Kakitangan Akademik</h3>
                 </td>
               </tr>
               <tr>
@@ -830,7 +830,7 @@ if (isset($_POST['submit'])) {
             <table>
               <tr>
                 <td>
-                  <h3 class="collapsible">Bidang 5: Sumber Pendidikan</h3>
+                  <h2 class="collapsible">Bidang 5: Sumber Pendidikan</h3>
 
                 </td>
               </tr>
@@ -873,7 +873,7 @@ if (isset($_POST['submit'])) {
               <tr>
                 <td>
 
-                  <h3 class="collapsible">Bidang 6: Pengurusan Program</h3>
+                  <h2 class="collapsible">Bidang 6: Pengurusan Program</h3>
                 </td>
               </tr>
               <tr>
@@ -918,7 +918,7 @@ if (isset($_POST['submit'])) {
             <table>
               <tr>
                 <td>
-                  <h3 class="collapsible">Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program
+                  <h2 class="collapsible">Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program
                   </h3>
 
                 </td>
@@ -965,7 +965,7 @@ if (isset($_POST['submit'])) {
 
           <div class="promo_card1 laporan-1">
             <h3 class="bahagian">BAHAGIAN B : PERAKUAN TERHADAP PENILAIAN PROGRAMPENGAJIAN OLEH PANEL PENILAI </h3>
-            <h3 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
+            <h2 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
             </h3>
             <div class="invi-at-first">
               <h3><input type="checkbox" id="opt1" name="opt1" value="opt1" checked>

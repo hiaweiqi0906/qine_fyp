@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 4 - Academic Staff</h3>
+    <h2 class="collapsible">Area 4 - Academic Staff</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -11,7 +11,7 @@
                     <th>Score (1-5)</th>
                     <th>Holistic Evaluation</th>
                 </tr>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>4.1</td>
                 <td>Recruitment and Management</td>
                 <td></td>
@@ -24,7 +24,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.1</td>
                 <td>The department must have a clearly defined plan for its academic manpower needs consistent with
                     institutional policies and programme requirements.</td>
@@ -38,7 +38,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.2</td>
                 <td>The department must have a clear and documented academic staff recruitment policy where the criteria
                     for selection are based primarily on academic merit and/or relevant experience.</td>
@@ -52,7 +52,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.3</td>
                 <td>The staff–student ratio for the programme must be appropriate to the teaching-learning methods and
                     comply with the programme standards for the discipline.</td>
@@ -66,7 +66,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.4</td>
                 <td>The department must have adequate and qualified academic staff responsible for implementing the
                     programme.</td>
@@ -80,7 +80,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.5</td>
                 <td>The policy of the department must reflect an equitable distribution of responsibilities among the
                     academic staff.</td>
@@ -94,7 +94,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.6</td>
                 <td>The recruitment policy for a particular programme must seek diversity among the academic staff in
                     terms of experience, approaches and backgrounds.</td>
@@ -108,7 +108,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.7</td>
                 <td>Policies and procedures for recognition through promotion, salary increment or other remuneration
                     must be clear, transparent and based on merit.</td>
@@ -122,7 +122,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.1.8</td>
                 <td>The department must have national and international linkages to provide for the involvement of
                     experienced academics, professionals and practitioners in order to enhance teaching and learning in
@@ -137,7 +137,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>4.2</td>
                 <td>Service and Development</td>
                 <td></td>
@@ -150,7 +150,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.1</td>
                 <td>The department must have policies addressing matters related to service, development and appraisal
                     of the academic staff.</td>
@@ -164,7 +164,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.2</td>
                 <td>The department must provide opportunities for academic staff to focus on their respective areas of
                     expertise.</td>
@@ -178,7 +178,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.3</td>
                 <td>The HEP must have clear policies on conflict of interest and professional conduct, including
                     procedures for handling disciplinary cases among academic staff.</td>
@@ -192,7 +192,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.4</td>
                 <td>The HEP must have mechanisms and processes for periodic student evaluation of the academic staff for
                     quality improvement.</td>
@@ -206,7 +206,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.5</td>
                 <td>The department must have a development programme for new academic staff and continuous professional
                     enhancement for existing staff.</td>
@@ -220,7 +220,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.6</td>
                 <td>The HEP must provide opportunities for academic staff to participate in professional, academic and
                     other relevant activities, at national and international levels to obtain professional
@@ -235,7 +235,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>4.2.7</td>
                 <td>The department must encourage and facilitate its academic staff to play an active role in community
                     and industry engagement activities.</td>
@@ -283,8 +283,9 @@
         var score_4_2_6 = Number(document.getElementById("score_4_2_6").value);
         var score_4_2_7 = Number(document.getElementById("score_4_2_7").value);
 
-        score_4 = score_4_1 + score_4_1_2 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8 + score_4_2 + score_4_2_2 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7;
+        score_4 = score_4_1 + score_4_1_2 + score_4_1_1 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8 + score_4_2 + score_4_2_2 + score_4_2_1 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7;
         score_4 /= 17;
+        score_4 = (Math.round(score_4 * 100) / 100).toFixed(2);
         document.getElementById("score_4").value = score_4;
         document.getElementById("_score_4").value = score_4;
         document.getElementById("__score_4").value = score_4;

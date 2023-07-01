@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 2 - Assessment Of Student Learning</h3>
+    <h2 class="collapsible">Area 2 - Assessment Of Student Learning</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -11,7 +11,7 @@
                     <th>Score (1-5)</th>
                     <th>Holistic Evaluation</th>
                 </tr>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>2.1</td>
                 <td>Relationship Between Assessment and Learning Outcomes</td>
                 <td></td>
@@ -24,7 +24,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.1.1</td>
                 <td>Assessment principles, methods and practices must be aligned to the learning outcomes of the
                     programme, consistent with the levels defined in the MQF</td>
@@ -38,7 +38,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.1.2</td>
                 <td>The alignment between assessment and the learning outcomes in the programme must be systematically
                     and regularly reviewed to ensure its effectiveness.</td>
@@ -52,7 +52,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>2.2</td>
                 <td>Assessment Methods</td>
                 <td></td>
@@ -65,7 +65,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.2.1</td>
                 <td>There must be a variety of methods and tools that are appropriate for the assessment of learning
                     outcomes and competencies.</td>
@@ -79,7 +79,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.2.2</td>
                 <td>There must be mechanisms to ensure, and to periodically review, the validity, reliability,
                     integrity, currency and fairness of the assessment methods.</td>
@@ -93,7 +93,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.2.3</td>
                 <td>The frequency, methods, and criteria of student assessment — including the grading system and appeal
                     policies — must be documented and communicated to students on the commencement of the programme.
@@ -108,7 +108,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.2.4</td>
                 <td>Changes to student assessment methods must follow established procedures and regulations and be
                     communicated to students prior to their implementation.</td>
@@ -122,7 +122,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>2.3</td>
                 <td>Management of Student Assessment</td>
                 <td></td>
@@ -135,7 +135,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.3.1</td>
                 <td>The department and its academic staff must have adequate level of autonomy in the management of
                     student assessment. (This standard may not be applicable to certain programme arrangements.)</td>
@@ -149,7 +149,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.3.2</td>
                 <td>There must be mechanisms to ensure the security of assessment documents and records.</td>
                 <td>F</td>
@@ -162,7 +162,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.3.3</td>
                 <td>The assessment results must be communicated to students before the commencement of a new semester to
                     facilitate progression decision.</td>
@@ -176,7 +176,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.3.4</td>
                 <td>The department must have appropriate guidelines and mechanisms for students to appeal their course
                     results.</td>
@@ -190,7 +190,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>2.3.5</td>
                 <td>The department must periodically review the management of student assessment and act on the findings
                     of the review. (For MQF level 6 and above, the review must involve external examiners.)</td>
@@ -237,7 +237,9 @@
         var score_2_3_5 = Number(document.getElementById("score_2_3_5").value);
 
         score_2 = score_2_1 + score_2_1_1 + score_2_1_2 + score_2_2 + score_2_2_1 + score_2_2_2 + score_2_2_3 + score_2_2_4 + score_2_3 + score_2_3_1 + score_2_3_2 + score_2_3_3 + score_2_3_4 + score_2_3_5;
-        score_2 /= 15
+        score_2 /= 14;
+        score_2 = (Math.round(score_2 * 100) / 100).toFixed(2);
+
         document.getElementById("score_2").value = score_2;
         document.getElementById("_score_2").value = score_2;
         document.getElementById("__score_2").value = score_2;

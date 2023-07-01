@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 5 - Educational Resources</h3>
+    <h2 class="collapsible">Area 5 - Educational Resources</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -210,6 +210,8 @@
 
         score_5 = score_5_1 + score_5_1_1 + score_5_1_2 + score_5_1_3 + score_5_1_4 + score_5_2 + score_5_2_1 + score_5_2_2 + score_5_2_3 + score_5_3 + + score_5_3_1 + score_5_3_2 + score_5_3_3;
         score_5 /= 13;
+        score_5 = (Math.round(score_5 * 100) / 100).toFixed(2);
+
         document.getElementById("score_5").value = score_5;
         document.getElementById("_score_5").value = score_5;
         document.getElementById("__score_5").value = score_5;

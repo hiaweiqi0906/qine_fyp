@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 1 - Programme Development And Delivery</h3>
+    <h2 class="collapsible">Area 1 - Programme Development And Delivery</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -334,6 +334,8 @@
 
         score_1 = score_1_1 + score_1_1_1 + score_1_1_2 + score_1_1_3 + score_1_1_4 + score_1_1_5 + score_1_2 + score_1_2_1 + score_1_2_2 + score_1_2_3 + score_1_2_4 + score_1_2_5 + score_1_2_6 + score_1_3 + score_1_3_1 + score_1_3_2 + score_1_3_3 + score_1_3_4 + score_1_3_5 + score_1_3_6;
         score_1 /= 20;
+        score_1 = (Math.round(score_1 * 100) / 100).toFixed(2);
+
         document.getElementById("score_1").value =score_1;
         document.getElementById("_score_1").value =score_1;
         document.getElementById("__score_1").value =score_1;

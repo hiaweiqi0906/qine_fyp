@@ -280,7 +280,6 @@ $stmt->close();
 		<div class="title-font">
 			<h2>Dashboard</h2><br>
 		</div>
-
 		<div class="overview">
 			<div class="title">
 				<h2 class="size1">Overview</h2>
@@ -335,7 +334,7 @@ $stmt->close();
 						<option value="free">Free</option>
 						<option value="scheduled">Schedule</option>
 					</select>
-					<button class="add" onclick="window.location.href='../admin/form_add_app.php';">Add APP</button>
+					<button class="add" onclick="window.location.href='../admin/form_add_app.php';">Tambah APP</button>
 					<?php
 					if ($count_app > 6)
 						echo '<button class="add"  onclick="window.location.href=\'../admin/dashboard_all_app.php\';" style="background: gray;">Lihat Semua</button>';
@@ -373,13 +372,12 @@ $stmt->close();
 			</section>
 
 		</div>
-
 		<div class="app">
 			<div class="title">
 				<h2 class="section--title">Kualiti-UKM</h2>
 				<div class="app--right--btns">
 
-					<button class="add" onclick="window.location.href='../admin/form_add_kukm.php';">Add Kualiti-UKM</button>
+					<button class="add" onclick="window.location.href='../admin/form_add_kukm.php';">Tambah Kualiti-UKM</button>
 					<?php
 					if ($count_kukm > 6)
 						echo '<button class="add"  onclick="window.location.href=\'../admin/dashboard_all_kukm.php\';" style="background: gray;">Lihat Semua</button>';
@@ -415,9 +413,7 @@ $stmt->close();
 				?>
 
 			</section>
-
 		</div>
-
 		<div class="app">
 			<div class="title">
 				<h2 class="section--title">Lecturer</h2>

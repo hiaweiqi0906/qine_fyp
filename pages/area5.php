@@ -1,5 +1,5 @@
 <div>
-    <h3 class="collapsible">Area 5 - Educational Resources</h3>
+    <h2 class="collapsible">Area 5 - Educational Resources</h3>
     <div class="invi-at-first">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -11,7 +11,7 @@
                     <th>Score (1-5)</th>
                     <th>Holistic Evaluation</th>
                 </tr>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>5.1</td>
                 <td>Physical Facilities</td>
                 <td></td>
@@ -23,7 +23,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.1.1</td>
                 <td>The programme must have sufficient and appropriate physical facilities and educational resources to
                     ensure its effective delivery, including facilities for practical-based programmes and for those
@@ -37,7 +37,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.1.2</td>
                 <td>The physical facilities must comply with the relevant laws and regulations.</td>
                 <td>F</td>
@@ -49,7 +49,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.1.3</td>
                 <td>The library or resource centre must have adequate and up-to-date reference materials and qualified
                     staff that meet the needs of the programme and research amongst academic staff and students.</td>
@@ -62,7 +62,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.1.4</td>
                 <td>The educational resources, services and facilities must be maintained and periodically reviewed to
                     improve the quality and appropriateness.</td>
@@ -75,7 +75,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>5.2</td>
                 <td>Research and Development</td>
                 <td></td>
@@ -87,7 +87,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.2.1</td>
                 <td>The department must have a research policy with adequate facilities and resources to sustain them.
                 </td>
@@ -100,7 +100,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.2.2</td>
                 <td>The interaction between research and learning must be reflected in the curriculum, influence current
                     teaching, and encourage and prepare students for engagement in research, scholarship and
@@ -114,7 +114,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.2.3</td>
                 <td>The department must periodically review its research resources and facilities and take appropriate
                     action to enhance its research capabilities and to promote a conducive research environment.</td>
@@ -127,7 +127,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: paleturquoise; font-weight: bold;">
+            <tbody style="background-color: #b7b7b7; font-weight: bold;">
                 <td>5.3</td>
                 <td>Financial Resources</td>
                 <td></td>
@@ -139,7 +139,7 @@
                         } else
                             echo "0"; ?>">  </td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.3.1</td>
                 <td>The HEP must demonstrate financial viability and sustainability for the programme.</td>
                 <td>F</td>
@@ -151,7 +151,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.3.2</td>
                 <td>The department must have clear procedures to ensure that its financial resources are sufficient and
                     managed efficiently.</td>
@@ -164,7 +164,7 @@
                             echo "0"; ?>">  </td>
                 <td></td>
             </tbody>
-            <tbody style="background-color: pink;">
+            <tbody style="background-color: #ccc;">
                 <td>5.3.3</td>
                 <td>The HEP must have a clear line of responsibility and authority for budgeting and resource allocation
                     that takes into account the specific needs of the department.</td>
@@ -210,6 +210,8 @@
 
         score_5 = score_5_1 + score_5_1_1 + score_5_1_2 + score_5_1_3 + score_5_1_4 + score_5_2 + score_5_2_1 + score_5_2_2 + score_5_2_3 + score_5_3 + + score_5_3_1 + score_5_3_2 + score_5_3_3;
         score_5 /= 13;
+        score_5 = (Math.round(score_5 * 100) / 100).toFixed(2);
+
         document.getElementById("score_5").value = score_5;
         document.getElementById("_score_5").value = score_5;
         document.getElementById("__score_5").value = score_5;

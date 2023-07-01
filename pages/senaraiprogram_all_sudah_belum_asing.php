@@ -61,62 +61,21 @@ $stmt->close();
    ?>
 
    <section class="teachers">
-      <div class="title">
 
-         <h1 class="heading">Senarai Program Sudah Diasing</h1>
-         <div class="app--right--btns">
-
-            <?php
-            if ($gg > 2)
-               echo '<button class="add"  onclick="window.location.href=\'./senaraiprogram_all_sudah_asing.php\';" style="background: gray;">Lihat Semua</button>';
-            ?>
-         </div>
-      </div>
-      <div class="box-container">
-         <?php
-         for ($i = 0; $i < ($gg); $i++) {
-            $current_application_id = $list_of_program[$i][0];
-
-            echo "<div class=\"box\">
-      <div class=\"tutor\">
-      ";
-            if (isset($list_of_program[$i][3])) {
-               echo "<img src=\"" . $list_of_program[$i][3] . "\" alt=\"\">";
-
-            } else {
-               echo "<img src=\"../img/program.jpg\" alt=\"\">";
-
-            }
-            echo "               <div>
-            <h3>Nama Program: ", $list_of_program[$i][1], "</h3>
-            <span>Tarikh Terima: ", $list_of_program[$i][2], "</span>
-         </div>
-      </div>
-
-      <p>Tarikh: <span>", $list_of_program[$i][2], "</span></p>
-      <p>Masa : <span>", $list_of_program[$i][7], "</span></p>
-      <p>Status : <span>", $list_of_program[$i][5], "</span></p>
-      <a href=\"./program_information.php?id=$current_application_id\" class=\"inline-btn\">Lihat</a>
-   </div>";
-         }
-         ?>
-
-      </div>
-      <br>
       <div class="title">
       <h1 class="heading">Senarai Program Belum Diasing</h1>
          <div class="app--right--btns">
 
             <?php
             if ($uu > 6)
-               echo '<button class="add"  onclick="window.location.href=\'./senaraiprogram_all_sudah_belum_asing.php\';" style="background: gray;">Lihat Semua</button>';
+               echo '<button class="add"  onclick="window.location.href=\'../admin/dashboard_all_app.php\';" style="background: gray;">Lihat Semua</button>';
             ?>
          </div>
       </div>
       <div class="box-container">
          <?php
 
-         for ($i = 0; $i < ($uu); $i++) {
+         for ($i = 0; $i < count($list_of_program_belum_assigned); $i++) {
             $current_application_id = $list_of_program_belum_assigned[$i][0];
 
             echo "<div class=\"box\">
@@ -124,14 +83,17 @@ $stmt->close();
             ";
             if (isset($list_of_program_belum_assigned[$i][3])) {
                echo "<img src=\"" . $list_of_program_belum_assigned[$i][3] . "\" alt=\"\">";
+
             } else {
                echo "<img src=\"../img/program.jpg\" alt=\"\">";
+
             }
             echo "               <div>
                   <h3>Nama Program: ", $list_of_program_belum_assigned[$i][1], "</h3>
                   <span>Tarikh Terima: ", $list_of_program_belum_assigned[$i][2], "</span>
                </div>
             </div>
+
             <p>Tarikh: <span>", $list_of_program_belum_assigned[$i][2], "</span></p>
             <p>Masa : <span>", $list_of_program_belum_assigned[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_belum_assigned[$i][5], "</span></p>
