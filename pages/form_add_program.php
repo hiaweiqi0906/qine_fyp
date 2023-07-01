@@ -33,12 +33,12 @@ if (isset($_POST['submit-file'])) {
       if ($row[0] == '')
         continue;
       else
-        $val = $val . ",('" . $row[0] . "', '" . $row[1] . "', '" . $row[2] . "', '" . $row[3] . "', '" . $row[4] . "', '" . $id . "') ";
+        $val = $val . ",('" . $row[0] . "', '" . $row[1] . "', '" . $row[2] . "', '" . $row[3] . "', '" . $row[4] . "', '" . $row[5] . "', '" . $id . "') ";
     }
 
     $val = substr($val, 1);
     if (
-      $stmt = $con->prepare("INSERT INTO `program`(`NAMA`, `URL_DRIVE`, `TARIKH`, `BIDANG`, `DESCRIPTION`, `UPLOADEDBY`) VALUES $val;")
+      $stmt = $con->prepare("INSERT INTO `program`(`NAMA`, `URL_DRIVE`, `TARIKH`, `BIDANG`, `DESCRIPTION`, URL_FILE_DRIVE, `UPLOADEDBY`) VALUES $val;")
     ) {
       $stmt->execute();
     header("location: dashboarduserfakulti.php");
@@ -121,7 +121,7 @@ if (isset($_POST['submit-file'])) {
   date_default_timezone_set("Asia/Kuala_Lumpur");
   $today_date = date("Y-m-d");
   $now_time = date("h:i:sa");
-  $stmt1 = "INSERT INTO program (`NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA`, `UPLOADEDBY`) VALUES('$nama', '$tarikh', '$url_drive', '$bidang', '$status', '$description', '$masa', '$id')";
+  $stmt1 = "INSERT INTO program (`NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `URL_FILE_DRIVE`, `UPLOADEDBY`) VALUES('$nama', '$tarikh', '$url_drive', '$bidang', '$status', '$description', '$masa', '$id')";
 
   if ($stmt = $con->prepare($stmt1)) {
 

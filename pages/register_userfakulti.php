@@ -110,7 +110,7 @@ header('Location: login_userfakulti.php');        }
               <div class="input-wrap">
                 <input type="text" minlength="4" name="username" id="username" class="input-field" autocomplete="off"
                   required />
-                <label>Nama Pengguna</label>
+                <label>Fakulti</label>
               </div>
 
               <div class="input-wrap">

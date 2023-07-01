@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
   date_default_timezone_set("Asia/Kuala_Lumpur");
   $today_date = date("Y-m-d");
   $now_time = date("h:i:sa");
-    $stmt1 = "INSERT INTO program (`NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA`, `UPLOADEDBY`) VALUES('$nama', '$tarikh', '$url_drive', '$bidang', '$status', '$description', '$masa', '$id')";
+    $stmt1 = "INSERT INTO program (`NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `URL_FILE_DRIVE`, `UPLOADEDBY`) VALUES('$nama', '$tarikh', '$url_drive', '$bidang', '$status', '$description', '$masa', '$id')";
 
   if ($stmt = $con->prepare($stmt1)) {
 
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
 
 }
 
-if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM program WHERE PROGRAM_ID = '$pid' ")) {
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `URL_FILE_DRIVE` FROM program WHERE PROGRAM_ID = '$pid' ")) {
   $stmt->execute();
   mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
   while (mysqli_stmt_fetch($stmt)) {

@@ -5,8 +5,10 @@ include("../php/db.php");
 include('../components/unprotected_route.php');
 
 function send_password_reset($get_name, $get_email,$token){
-    
+
 }
+
+$type = $_GET["type"];
 
 if(isset($_POST['submit-password'])){
     $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -20,7 +22,7 @@ if(isset($_POST['submit-password'])){
         $get_name = $row["nama"];
         $get_email = $row["emel"];
 
-        $update_token = "UPDATE app SET VERIFY_TOKEN = '$token' WHERE emel = '$get_email' LIMIT 1";
+        $update_token = "UPDATE $type SET VERIFY_TOKEN = '$token' WHERE emel = '$get_email' LIMIT 1";
         $update_token_run = mysqli_query($con, $update_token);
 
         if($update_token_run){
@@ -62,13 +64,13 @@ if(isset($_POST['submit-password'])){
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-          <?php 
+          <?php
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
+        }
         ?>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form"> 
-            
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" class="sign-in-form">
+
               <div class="heading">
                 <h2>Lupa Kata Laluan?</h2>
               </div>
@@ -123,7 +125,7 @@ if(isset($_POST['submit-password'])){
                   <label>Sah Kata Laluan</label>
                 </div>
 
-                <div class="field">          
+                <div class="field">
                     <input type="submit" class="sign-btn" name="submit-password" value="Hantar" required>
                 </div>
               </div>

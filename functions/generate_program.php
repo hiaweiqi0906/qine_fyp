@@ -6,7 +6,7 @@ $programinfo = array();
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 use Dompdf\Options;
-if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `MASA`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$programid'")) {
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `URL_FILE_DRIVE`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$programid'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $program_id, $tarikh, $masa, $nama, $url_drive, $bidang,$status,$description);
@@ -32,7 +32,7 @@ $dompdf->loadHtml('
    <tr><td style="width: 33%; border: 1px solid black;">Gambar Program: </td><td style="width: 66%; border: 1px solid black;"><img style="display: block; margin: 10px auto; margin-left: auto; margin-right: auto; width:200px; height: 200px;" src="'.$programinfo[0][4].'"></td></tr>
    <tr><td style="width: 33%; border: 1px solid black;">Nama Program: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][3].'</td></tr>
    <tr><td style="width: 33%; border: 1px solid black;">Tarikh: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][1].'</td></tr>
-   <tr><td style="width: 33%; border: 1px solid black;">Masa: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][2].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Link Fail-fail Proram: </td><td style="width: 66%; border: 1px solid black;"><a href="'.$programinfo[0][2].'">'.$programinfo[0][2].'</a></td></tr>
    <tr><td style="width: 33%; border: 1px solid black;">Bidang: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][5].'</td></tr>
    <tr><td style="width: 33%; border: 1px solid black;">Informasi Seterusnya: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][7].'</td></tr>
 </table>

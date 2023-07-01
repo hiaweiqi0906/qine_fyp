@@ -13,6 +13,7 @@ use PHPMailer\PHPMailer\Exception;
 // ini_set("SMTP","ssl://smtp.gmail.com");
 // ini_set("smtp_port","587");
 $error = "";
+$type = $_GET["type"];
 
 if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
   $email = $_POST["email"];
@@ -54,8 +55,8 @@ VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');"
     $output = '<p>Dear user,</p>';
     $output .= '<p>Please click on the following link to reset your password.</p>';
     $output .= '<p>-------------------------------------------------------------</p>';
-    $output .= '<p><a href="http://www.localhost:8088/qine%20fyp/pages/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">
-http://www.localhost:8088/qine%20fyp/pages/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+    $output .= '<p><a href="http://www.localhost:8088/qine%20fyp/pages/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset&type=' . $type . '" target="_blank">
+http://www.localhost:8088/qine%20fyp/pages/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset&type=' . $type . '</a></p>';
     $output .= '<p>-------------------------------------------------------------</p>';
     $output .= '<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
@@ -130,7 +131,7 @@ your account and change your security password as someone may have guessed it.</
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
           }
           ?>
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]).'?type='.$type; ?>" method="post" autocomplete="off"
             class="sign-in-form">
 
             <div class="heading">

@@ -42,10 +42,12 @@
         <label for="bidang">Bidang: </label>
     </div>
     <div class="column-10">
-        <input type="text" class="input-text" value="<?php if (isset($user[0][4]))
-            echo $user[0][4];
-        else
-            echo ""; ?>" name="bidang" id="bidang">
+    <select name="bidang" id="bidang">
+            <?php if (isset($user[0][4]))
+                echo "<option selected>" . $user[0][4] . "</option>";
+            include('../components/bidang_options.php');
+            ?>
+        </select>
     </div>
 </div>
 
@@ -66,7 +68,7 @@
 <div class="row">
 
     <div class="column-2">
-        <label for="masa">Masa: </label>
+        <label for="masa">URL File Drive Link: </label>
     </div>
     <div class="column-10">
         <input type="text" class="input-text" value="<?php if (isset($user[0][7]))

@@ -22,7 +22,7 @@ for ($yyy = 0; $yyy < 3; $yyy++) {
 
 $programinfo = array();
 $pengerusi = $panel1 = "";
-if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `MASA`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$pid'")) {
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `URL_FILE_DRIVE`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$pid'")) {
 
   $stmt->execute();
   mysqli_stmt_bind_result($stmt, $program_id, $tarikh, $masa, $nama, $url_drive, $bidang, $status, $description);

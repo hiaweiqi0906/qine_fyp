@@ -22,6 +22,9 @@ if (isset($_POST['submit'])) {
     // Could not get the data that should have been sent.
     $login_err = 'Please complete the registration form';
   }
+  if (!str_contains($_POST['email'], '@ukm.edu.my')) {
+    $login_err = 'Please enter UKM email';
+}
   // Make sure the submitted registration values are not empty.
   if (empty($_POST['username']) || empty($_POST['password_1']) || empty($_POST['password_2']) || empty($_POST['email'])) {
     // One or more values are empty.
@@ -35,7 +38,7 @@ if (isset($_POST['submit'])) {
     // echo ('Password Mismatch');
   }
 
-  if ($stmt = $con->prepare("SELECT APP_ID, NAMA, EMEL, PASSWORD FROM app WHERE EMEL = '$email' AND PASSWORD = '$password_1'")) {
+  if ($stmt = $con->prepare("SELECT LECTURER_ID, NAMA, EMEL, PASSWORD FROM lecturer WHERE EMEL = '$email' AND PASSWORD = '$password_1'")) {
     // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
     // $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();

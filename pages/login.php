@@ -183,7 +183,7 @@ if (isset($_POST["submit"])) {
                 <div class="column-6">
 
                   <p class="text" align="right">
-                    <a href="./forgotpassword_page_1.php">Lupa Kata Laluan?</a>
+                    <a href="./forgotpassword_page_1.php?type=app">Lupa Kata Laluan?</a>
                   </p>
                 </div>
               </div>
@@ -224,7 +224,7 @@ if (isset($_POST["submit"])) {
               </div>
 
               <p class="text" align="right">
-                <a href="./forgotpassword_page_1.php" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
+                <a href="./forgotpassword_page_1.php?type=lecturer" data-toggle="modal">Lupa Kata Laluan?</a><br><br>
               </p>
 
               <input type="submit" value="Log Masuk" name="submit" class="sign-btn" />

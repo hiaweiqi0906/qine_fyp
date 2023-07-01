@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="column-2">
-            <label for="nama">Nama: </label>
+            <label for="nama">Nama Fakulti: </label>
         </div>
         <div class="column-10">
             <input type="text" class="input-text" name="nama" id="nama" value="<?php if (isset($user[0][1]))

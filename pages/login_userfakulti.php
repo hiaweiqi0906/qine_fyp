@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="column-6">
 
                   <p class="text" align="right">
-                    <a href="./forgotpassword_page_1.php">Lupa Kata Laluan?</a>
+                    <a href="./forgotpassword_page_1.php?type=userfakulti">Lupa Kata Laluan?</a>
                   </p>
                 </div>
               </div>

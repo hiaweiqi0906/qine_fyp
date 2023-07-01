@@ -13,12 +13,14 @@ $id = $_SESSION["id"];
 $list_of_lecturers = array();
 $list_of_program_app = array();
 $list_of_kualiti_ukm = array();
+$list_of_uf = array();
 
 $list_of_appprogram_id = array(array(), array(), array());
 
 $count_app = 0;
 $count_kukm = 0;
 $count_lecturer = 0;
+$count_uf = 0;
 
 
 if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `URL_AVATAR` FROM app WHERE 1 ORDER BY CREATED_DATE DESC")) {
@@ -60,6 +62,19 @@ if ($stmt = $con->prepare("SELECT `KUALITIUKM_ID`, `NAMA`, `URL_AVATAR` FROM kua
 	echo 'Could not prepare statement!';
 }
 
+if ($stmt = $con->prepare("SELECT `USERFAKULTI_ID`, `NAMA`, `URL_AVATAR` FROM userfakulti WHERE 1 ORDER BY CREATED_DATE DESC")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $userfakulti_id, $nama, $url_avatar);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		$count_uf++;
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+
 $penilaian_info = array();
 
 if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `URL_AVATAR` FROM app WHERE NOT APP_ID=1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
@@ -95,6 +110,19 @@ if ($stmt = $con->prepare("SELECT `KUALITIUKM_ID`, `NAMA`, `URL_AVATAR` FROM kua
 
 	while (mysqli_stmt_fetch($stmt)) {
 		array_push($list_of_kualiti_ukm, array($kualitiukm_id, $nama, $url_avatar));
+	}
+} else {
+	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `USERFAKULTI_ID`, `NAMA`, `URL_AVATAR` FROM userfakulti WHERE 1 ORDER BY CREATED_DATE DESC LIMIT 6")) {
+
+	$stmt->execute();
+	mysqli_stmt_bind_result($stmt, $userfakulti_id, $nama, $url_avatar);
+
+	while (mysqli_stmt_fetch($stmt)) {
+		array_push($list_of_uf, array($userfakulti_id, $nama, $url_avatar));
 	}
 } else {
 	// Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
@@ -197,7 +225,7 @@ $stmt->close();
 
 			// create a chart and set the data
 			var chart = anychart.pie(data);
-
+			chart.background().fill("#eee");
 			chart.title("Peratusan Laporan yang Diterima dan Belum Diterima berdasarkan Jumlah Laporan");
 
 			// set the container id
@@ -217,11 +245,13 @@ $stmt->close();
 			var data = [
 				{ x: "APP", value: <?php echo $count_app; ?> },
 				{ x: "LECTURER", value: <?php echo $count_lecturer; ?> },
-				{ x: "Kualiti UKM", value: <?php echo $count_kukm; ?> }
+				{ x: "KUALITI UKM", value: <?php echo $count_kukm; ?> },
+				{ x: "FAKULTI", value: <?php echo $count_uf; ?> }
 			];
 
 			// create a chart and set the data
 			var chart = anychart.pie(data);
+			chart.background().fill("#eee");
 
 			chart.title("Peratusan APP, Pensyarah, dan Kualiti-UKM");
 
@@ -256,9 +286,9 @@ $stmt->close();
 				<h2 class="size1">Overview</h2>
 			</div>
 			<div class="chart-row">
-				<div id="pieChartContainer" style="height: 500px; width: 500px;" class="chart-col chart-left">
+				<div id="pieChartContainer" style="height: 400px; width: 400px;" class="chart-col chart-left">
 				</div>
-				<div class="chart-col chart-right">
+				<div class="chart-col chart-right" style="height: 450px;">
 					<h2 class="section--title">Jumlah Laporan yang Diterima</h2>
 					<span class="dot data-color"><?php echo count($list_of_collected_kukm_program); ?></span>
 					<h2 class="section--title data-margin">Jumlah Laporan yang Belum Diterima</h2>
@@ -268,24 +298,32 @@ $stmt->close();
 				</div>
 			</div>
 			<div class="chart-row">
-				<div id="chartContainer" style="height: 500px; width: 500px;" class="chart-col chart-left">
+				<div id="chartContainer" style="height: 400px; width: 400px;" class="chart-col chart-left">
 				</div>
-				<div class="chart-col chart-right">
+				<div class="chart-col chart-right" style="width: 10%;height: 450px;">
 					<h2 class="section--title">Jumlah APP</h2>
-					<span class="dot data-color">
+					<br>
+					<br><span class="dot data-color">
 						<?php echo $count_app; ?>
 					</span>
+
 					<h2 class="section--title data-margin">Jumlah Pensyarah</h2>
 					<span class="dot data-color">
 						<?php echo $count_lecturer; ?>
 					</span>
-					<h2 class="section--title data-margin">Jumlah Kualiti UKM</h2>
+				</div>
+				<div class="chart-col chart-right" style="width: 10%; margin-left: 15rem;height: 450px;">
+					<h2 class="section--title">Jumlah Kualiti UKM</h2>
 					<span class="dot data-color">
 						<?php echo $count_kukm; ?>
 					</span>
+					<h2 class="section--title data-margin">Jumlah Fakulti</h2>
+					<span class="dot data-color">
+						<?php echo $count_uf; ?>
+					</span>
 				</div>
 			</div>
-			<div class="cards" style="margin-top: 100px;">
+			<div class="cards" style="margin-top: 20px;">
 				</div>
 		</div>
 		<div class="app">

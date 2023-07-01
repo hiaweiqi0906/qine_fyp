@@ -37,7 +37,7 @@ if ($stmt = $con->prepare("SELECT `APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENG
    echo 'Could not prepare statement!';
 }
 
-if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `MASA` FROM `program` WHERE `PROGRAM_ID`='$program_id'")) {
+if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `NAMA`, `TARIKH`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION`, `URL_FILE_DRIVE` FROM `program` WHERE `PROGRAM_ID`='$program_id'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $program_id, $nama, $tarikh, $url_drive, $bidang, $status, $description, $masa);
@@ -292,7 +292,7 @@ $stmt->close();
             </div>
             <p>Informasi: <a href=\"../functions/generate_program.php?pid=" . $program_details[$i][0] . "\"><span>Muat Turun</span></a></p>
             <p>Tarikh: <span>", $program_details[$i][2], "</span></p>
-            <p>Masa : <span>", $program_details[$i][7], "</span></p>
+            <p>Link Fail-fail Program : <span>", $program_details[$i][7], "</span></p>
             <p>Status : <span>", $program_details[$i][5], "</span></p>";
                echo "<p><label for=\"kat\">Kategori:</label></p>";
                if (!$assigned) {
