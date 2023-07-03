@@ -12,7 +12,7 @@ $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
 
 $id = $_SESSION["id"];
-if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' AND (COUNT_KALI = 2 OR STATUS = 'ACCEPT')")) {
+if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' AND (COUNT_KALI = 2 OR STATUS = 'ACCEPT' OR STATUS = 'PROCESSING')")) {
   // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
   // $stmt->bind_param('s', $_POST['username']);
   $stmt->execute();
