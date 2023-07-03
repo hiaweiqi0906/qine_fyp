@@ -115,19 +115,19 @@ $list_of_app_isms = array();
 $list_of_app_mqa = array();
 for ($uu = 0; $uu < count($appr_people); $uu++) {
    if (str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1]));
+      array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
    }
 
    if (str_contains($appr_people[$uu][3], 'ISO') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1]));
+      array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
    }
 
    if (str_contains($appr_people[$uu][3], 'ISMS') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1]));
+      array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
    }
 
    if (str_contains($appr_people[$uu][3], 'MQA') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1]));
+      array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
    }
    // array_push($list_of_app, array($appr_people[$uu][0], $appr_people[$uu][1]));
 }
@@ -252,6 +252,19 @@ $stmt->close();
    <script type="text/javascript">
       var apps = <?php echo json_encode($appr_people); ?>;
    </script>
+   <style>
+      table,
+    td,
+    th {
+      border: 1px solid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px;
+    }
+   </style>
 </head>
 
 <body>
@@ -316,7 +329,13 @@ $stmt->close();
                      echo "" . $list_of_app_iso[$oo][1] . ", ";
                   }
                   echo "</span></p>";
+                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $ll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_iso[$oo][1] . "</td><td>" . $list_of_app_iso[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
                }
+
 
                echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
 
@@ -350,10 +369,16 @@ $stmt->close();
                echo "<div id=\"div-eksa\" style=\"display: none;\">";
                if (!$assigned) {
                   echo "<p>People Suggestions : <span>";
-                  for ($oo = 0; $oo < count($list_of_app_eksa); $oo++) {
+                  $ll =count($list_of_app_eksa) > 6? 6 : count($list_of_app_eksa);
+                  for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_eksa[$oo][1] . ", ";
                   }
                   echo "</span></p>";
+                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $ll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_eksa[$oo][1] . "</td><td>" . $list_of_app_eksa[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
                }
 
                echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
@@ -388,10 +413,16 @@ $stmt->close();
                echo "<div id=\"div-isms\" style=\"display: none;\">";
                if (!$assigned) {
                   echo "<p>People Suggestions : <span>";
-                  for ($oo = 0; $oo < count($list_of_app_isms); $oo++) {
+                  $ll =count($list_of_app_isms) > 6? 6 : count($list_of_app_isms);
+                  for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_isms[$oo][1] . ", ";
                   }
                   echo "</span></p>";
+                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $ll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_isms[$oo][1] . "</td><td>" . $list_of_app_isms[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
                }
 
                echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
@@ -426,10 +457,16 @@ $stmt->close();
                echo "<div id=\"div-mqa\" style=\"display: none;\">";
                if (!$assigned) {
                   echo "<p>People Suggestions : <span>";
-                  for ($oo = 0; $oo < count($list_of_app_mqa); $oo++) {
+                  $ll =count($list_of_app_mqa) > 6? 6 : count($list_of_app_mqa);
+                  for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_mqa[$oo][1] . ", ";
                   }
                   echo "</span></p>";
+                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $ll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_mqa[$oo][1] . "</td><td>" . $list_of_app_mqa[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
                }
 
                echo "<p><label for=\"pengerusi\">Pengerusi:</label></p>
