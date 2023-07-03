@@ -8,6 +8,7 @@ $all_appprogram_id = array();
 $id = $_SESSION["id"];
 $all_program = array();
 $all_program_url = array();
+$all_program_id = array();
 
 // if ($stmt = $con->prepare("SELECT `LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `SENTTOUSERFAKULTI` FROM `laporan` WHERE TYPE='0' AND `SENTTOUSERFAKULTI` = 'T' order by `APPPROGRAM_ID` ,`TYPE`")) {
 
@@ -146,13 +147,14 @@ if (isset($all_appprogram_id[0])) {
       $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[$yy];
    }
    $whole_arr_str = $whole_arr_str . "," . $all_appprogram_id[count($all_appprogram_id) - 1];
-   if ($stmt = $con->prepare("SELECT t2.`NAMA`, t2.`URL_DRIVE` FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
+   if ($stmt = $con->prepare("SELECT t2.`NAMA`, t2.`URL_DRIVE`, t1.PROGRAM_ID FROM `appprogram` t1 LEFT JOIN `program` t2 ON t1.`PROGRAM_ID` = t2.`PROGRAM_ID` WHERE t1.`APPPROGRAM_ID` IN ($whole_arr_str)")) {
 
       $stmt->execute();
-      mysqli_stmt_bind_result($stmt, $nama, $url);
+      mysqli_stmt_bind_result($stmt, $nama, $url, $idd);
 
       while (mysqli_stmt_fetch($stmt)) {
          array_push($all_program, $nama);
+         array_push($all_program_id, $idd);
          array_push($all_program_url, $url);
       }
    } else {
@@ -230,10 +232,10 @@ if (isset($all_appprogram_id[0])) {
                <p>Status: <span>" . $all_laporan[$ii][$jj][1] . "</span></p>
                <p>Tarikh Awal : <span>" . $all_laporan[$ii][$jj][2] . "</span></p>
                <p>Tarikh Akhir : <span>" . $all_laporan[$ii][$jj][3] . "</span></p>
-               <a href=\"./other_people_laporan_userfakulti.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "\" class=\"inline-btn\">Lihat</a>
+               <a href=\"./other_people_laporan_userfakulti.php?id=" . $all_appprogram_id[$ii] . "&type=" . $all_laporan[$ii][$jj][7] . "&pid=$all_program_id[$ii]\" class=\"inline-btn\">Lihat</a>
 ";
                if ($all_laporan[$ii][$jj][8] == "F")
-                  echo "<a href=\"../functions/sendtouserfakulti.php?id=" . $all_appprogram_id[$ii] . "&lid=" . $all_laporan[$ii][$jj][0] . "\" class=\"inline-btn\">Hantar</a>";
+                  echo "<a href=\"../functions/sendtouserfakulti.php?id=" . $all_appprogram_id[$ii] . "&lid=" . $all_laporan[$ii][$jj][0] . "&pid=$all_program_id[$ii]\" class=\"inline-btn\">Hantar</a>";
                else
                   echo "Sudah Hantar";
                echo "</div> ";

@@ -5,6 +5,8 @@ include("../php/db.php");
 include('../components/kualitiukm_protected_route.php');
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
+$pid = $_GET["pid"];
+
 // include('../functions/check_other_access.php');
 
 include('../functions/search_all_laporan.php');
@@ -266,15 +268,63 @@ if (($laporan_all_people[$typel][1] == 'NOT STARTED')) {
 }
 $lampiran_1 = $laporan_all_people[$typel][5];
 $akredasi_penuh = $laporan_all_people[$typel][6];
+$bahagian_lain = $laporan_all_people[$typel][9];
 
 $lampiran_1_arr = explode("<", $lampiran_1);
 $akredasi_penuh_arr = explode("|", $akredasi_penuh);
+$bahagian_lain_arr = explode(";", $bahagian_lain);
 
 $lampiran_1_bidang = array();
 $akredasi_penuh_bidang = array();
 for ($jj = 0; $jj < 7; $jj++) {
   array_push($lampiran_1_bidang, explode("~", $lampiran_1_arr[$jj]));
   array_push($akredasi_penuh_bidang, explode(";", $akredasi_penuh_arr[$jj]));
+}
+
+if ($stmt = $con->prepare("SELECT `APP_ID_PENGERUSI`, `APP_ID_PANEL_1` FROM `appprogram` WHERE `APPPROGRAM_ID` = '$app_program_id'")) {
+
+  $stmt->execute();
+  mysqli_stmt_bind_result($stmt, $p0, $p1);
+
+  // }   /* fetch values */
+  while (mysqli_stmt_fetch($stmt)) {
+    $pengerusi = $p0;
+    $panel1 = $p1;
+  }
+  // echo $stmt->field_count;
+} else {
+  // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+  echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `NAMA` FROM `app` WHERE `APP_ID` = '$p0'")) {
+
+  $stmt->execute();
+  mysqli_stmt_bind_result($stmt, $p0);
+
+  // }   /* fetch values */
+  while (mysqli_stmt_fetch($stmt)) {
+    $pengerusi = $p0;
+  }
+  // echo $stmt->field_count;
+} else {
+  // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+  echo 'Could not prepare statement!';
+}
+
+if ($stmt = $con->prepare("SELECT `NAMA` FROM `app` WHERE `APP_ID` = '$p1'")) {
+
+  $stmt->execute();
+  mysqli_stmt_bind_result($stmt, $p1);
+
+  // }   /* fetch values */
+  while (mysqli_stmt_fetch($stmt)) {
+    $panel1 = $p1;
+  }
+  // echo $stmt->field_count;
+} else {
+  // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+  echo 'Could not prepare statement!';
 }
 
 ?>
@@ -359,6 +409,18 @@ for ($jj = 0; $jj < 7; $jj++) {
         overflow: visible !important;
       }
     }
+
+    table,
+    td,
+    th {
+      border: 1px solid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px;
+    }
   </style>
 </head>
 
@@ -402,16 +464,18 @@ for ($jj = 0; $jj < 7; $jj++) {
     </div>
 
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel"; ?>" method="post"
-      autocomplete="off" class="sign-in-form">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]), "?id=$app_program_id&type=$typel"; ?>"
+      method="post" autocomplete="off" class="sign-in-form">
       <div class="promo_card1 laporan-1">
         <h1>Bidang 1: Pembangunan & Penyampaian Program</h1>
         <h2><label for="1_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][0]; ?></textarea>
+        <textarea id="1_1_ulasan" name="1_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[0][0]; ?></textarea>
         <br>
 
         <h2><label for="1_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="1_2_pujian" name="1_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[0][1]; ?></textarea>
+        <textarea id="1_2_pujian" name="1_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[0][1]; ?></textarea>
         <br>
 
         <h2><label for="1_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -427,11 +491,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 2: Penilaian Pembelajaran Pelajar</h1>
         <h2><label for="2_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][0]; ?></textarea>
+        <textarea id="2_1_ulasan" name="2_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[1][0]; ?></textarea>
         <br>
 
         <h2><label for="2_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="2_2_pujian" name="2_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[1][1]; ?></textarea>
+        <textarea id="2_2_pujian" name="2_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[1][1]; ?></textarea>
         <br>
 
         <h2><label for="2_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -447,11 +513,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 3: Pemilihan Pelajar dan Perkhidmatan Sokongan </h1>
         <h2><label for="3_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][0]; ?></textarea>
+        <textarea id="3_1_ulasan" name="3_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[2][0]; ?></textarea>
         <br>
 
         <h2><label for="3_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="3_2_pujian" name="3_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[2][1]; ?></textarea>
+        <textarea id="3_2_pujian" name="3_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[2][1]; ?></textarea>
         <br>
 
         <h2><label for="3_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -467,11 +535,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 4: Kakitangan Akademik</h1>
         <h2><label for="4_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][0]; ?></textarea>
+        <textarea id="4_1_ulasan" name="4_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[3][0]; ?></textarea>
         <br>
 
         <h2><label for="4_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="4_2_pujian" name="4_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[3][1]; ?></textarea>
+        <textarea id="4_2_pujian" name="4_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[3][1]; ?></textarea>
         <br>
 
         <h2><label for="4_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -487,11 +557,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 5: Sumber Pendidikan</h1>
         <h2><label for="5_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][0]; ?></textarea>
+        <textarea id="5_1_ulasan" name="5_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[4][0]; ?></textarea>
         <br>
 
         <h2><label for="5_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="5_2_pujian" name="5_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[4][1]; ?></textarea>
+        <textarea id="5_2_pujian" name="5_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[4][1]; ?></textarea>
         <br>
 
         <h2><label for="5_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -507,11 +579,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 6: Pengurusan Program</h1>
         <h2><label for="6_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][0]; ?></textarea>
+        <textarea id="6_1_ulasan" name="6_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[5][0]; ?></textarea>
         <br>
 
         <h2><label for="6_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="6_2_pujian" name="6_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[5][1]; ?></textarea>
+        <textarea id="6_2_pujian" name="6_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[5][1]; ?></textarea>
         <br>
 
         <h2><label for="6_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -527,11 +601,13 @@ for ($jj = 0; $jj < 7; $jj++) {
       <div class="promo_card1 laporan-1">
         <h1>Bidang 7: Pemantauan, Semakan dan Penambahbaikan Kualiti Berterusan Program </h1>
         <h2><label for="7_1_ulasan">1.1 Ulasan:</label></h2>
-        <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][0]; ?></textarea>
+        <textarea id="7_1_ulasan" name="7_1_ulasan" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[6][0]; ?></textarea>
         <br>
 
         <h2><label for="7_2_pujian">1.2 Pujian (Commendation):</label></h2>
-        <textarea id="7_2_pujian" name="7_2_pujian" rows="4" cols="60"><?php echo $lampiran_1_bidang[6][1]; ?></textarea>
+        <textarea id="7_2_pujian" name="7_2_pujian" rows="4"
+          cols="60"><?php echo $lampiran_1_bidang[6][1]; ?></textarea>
         <br>
 
         <h2><label for="7_3_penegasan">1.3 Penegasan (Affirmation):</label></h2>
@@ -555,19 +631,117 @@ for ($jj = 0; $jj < 7; $jj++) {
         include('./area7.php');
         ?>
       </div>
-      </form><div class="field">
+      <div class="promo_card1 laporan-1" style="display: block">
+        <h1 class="">BAHAGIAN B : PERAKUAN TERHADAP PENILAIAN PROGRAMPENGAJIAN OLEH PANEL PENILAI </h1>
+        <h2 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
+        </h2>
+        <div class="invi-at-first">
+          <h2><input type="checkbox" id="b_1" name="b_1" value="1" onclick="ensureChooseOne(1)" <?php if ($bahagian_lain_arr[0] == 1) {
+            echo "checked";
+          } ?>>
+            <label for="vehicle3"> Dianugerahkan akreditasi program pengajian tanpa sebarang syarat.</label>
+          </h2><br>
+          <h2><input type="checkbox" id="b_2" name="b_2" value="2" onclick="ensureChooseOne(2)" <?php if ($bahagian_lain_arr[0] == 2) {
+            echo "checked";
+          } ?>>
+            <label for="vehicle3"> Dianugerahkan akreditasi dengan keperluan seperti yang dijelaskan di Bahagian
+              B1.</label>
+          </h2><br>
+          <h2><input type="checkbox" id="b_3" name="b_3" value="3" onclick="ensureChooseOne(3)" <?php if ($bahagian_lain_arr[0] == 3) {
+            echo "checked";
+          } ?>>
+            <label for="vehicle3"> Dianugerahkan akreditasi dengan syarat seperti yang dijelaskan di Bahagian
+              B2.</label>
+          </h2><br>
+          <h2><input type="checkbox" id="b_4" name="b_4" value="4" onclick="ensureChooseOne(4)" <?php if ($bahagian_lain_arr[0] == 4) {
+            echo "checked";
+          } ?>>
+            <label for="vehicle3"> Tidak layak untuk dianugerahkan akreditasi. Rujuk penafian seperti di Bahagian
+              B3</label>
+          </h2><br><br>
+          <h2><label for="b1">BAHAGIAN B1: KEPERLUAN TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI
+              (lengkapkan sekiranya berkaitan):
+            </label></h2>
+          <textarea id="b1" name="b1" rows="4" cols="60"><?php echo $bahagian_lain_arr[1]; ?></textarea>
+          <br>
+
+          <h2><label for="b2">BAHAGIAN B2: SYARAT TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI:</label></h2>
+          <textarea id="b2" name="b2" rows="4" cols="60"><?php echo $bahagian_lain_arr[2]; ?></textarea>
+          <br>
+
+          <h2><label for="b3">BAHAGIAN B3: PENAFIAN PENGANUGERAHAN AKREDITASI OLEH PANEL PENILAI
+              (lengkapkan sekiranya berkaitan):</label></h2>
+          <textarea id="b3" name="b3" rows="4" cols="60"><?php echo $bahagian_lain_arr[3]; ?></textarea>
+          <br>
+
+          <h2><label for="b4">BAHAGIAN B4: TEMPOH PERAKUAN AKREDITASI:</label></h2>
+          <h2><input type="checkbox" id="b4_1" name="b4_1" value="1" onclick="ensureChooseOneB4(1)" <?php if ($bahagian_lain_arr[4] == 1) {
+            echo "checked";
+          } ?>>
+            <label for="b4"> Program ini AKAN dapat akredasi.</label>
+          </h2><br>
+          <h2><input type="checkbox" id="b4_2" name="b4_2" value="0" onclick="ensureChooseOneB4(2)" <?php if ($bahagian_lain_arr[4] == 2) {
+            echo "checked";
+          } ?>>
+            <label for="b4"> Program ini TIDAK AKAN dapat akredasi.</label>
+          </h2><br> <br>
+          <input type="text" name="b_a" id="b_a" hidden>
+          <input type="text" name="b4_a" id="b4_a" hidden>
+        </div>
+      </div>
+      <div class="promo_card1 laporan-1" style="display: block">
+        <h1 class="">BAHAGIAN C : PENGESAHAN DAN TANDATANGAN PANEL PENILAI </h1>
+        <h2 class="">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
+        </h2>
+        <table>
+          <tr>
+            <td colspan="2">
+
+              Disediakan Oleh:
+            </td>
+          </tr>
+          <tr>
+            <td>Nama, Jawatan & Alamat</td>
+            <td>Tandatangan</td>
+          </tr>
+          <tr>
+            <td>PENGERUSI:
+              <?php echo $p0; ?>
+            </td>
+            <td>
+              <?php
+              echo '<img width="150" height="150" src="' . $laporan_all_people[0][10] . '">';
+              ?>
+            </td>
+          </tr>
+          <tr>
+            <td>AHLI PANEL 1:
+              <?php echo $p1; ?>
+            </td>
+            <td>
+              <?php
+              echo '<img width="150" height="150" src="' . $laporan_all_people[0][11] . '">';
+              ?>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </form>
+    <?php
+      echo '<button onclick="frames[\'frame\'].print();frames[\'frame2\'].print();" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+             class="btn" id="submit" name="submit" value="Hantar">Cetak</button>'
+      ; ?>
+    <div class="field">
       <iframe
         src="<?php echo '../pages/print_detailprogram.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
-        style="display:none;" name="frame"></iframe>
+        style="display:block;opacity: 0;" name="frame"></iframe>
       <iframe
         src="<?php echo '../pages/print_detailprogram_rating.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid; ?>"
         style="display:block; opacity: 0;" name="frame2"></iframe>
 
       <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
-      <?php
-      echo '<button onclick="printboth()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
-             class="btn" id="submit" name="submit" value="Hantar">Cetak</button>'
-      ; ?>
+
     </div>
 
   </div>
@@ -591,7 +765,7 @@ for ($jj = 0; $jj < 7; $jj++) {
   <script src="../js/script.js"></script>
   <script>
 
-function printboth() {
+    function printboth() {
       frames['frame'].print();
       frames['frame2'].print();
 
@@ -650,7 +824,7 @@ function printboth() {
       coll[0].style.display = "block";
     }
 
-    function allExist(){
+    function allExist() {
       var coll = document.getElementsByClassName("rating-1");
       for (i = 0; i < coll.length; i++) {
         coll[i].style.display = "block";

@@ -562,7 +562,7 @@ for ($jj = 0; $jj < 7; $jj++) {
 
       <!-- <input type="submit" class="btn" id="submit" name="submit" value="Hantar" required> -->
       <?php
-      echo '<button onclick="printboth()" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
+      echo '<button  onclick="frames[\'frame\'].print();frames[\'frame2\'].print();" style="margin: 10px 0 0 0px;padding: 10px 30px; background-color: #5d7851;"
              class="btn" id="submit" name="submit" value="Hantar">Cetak</button>'
       ; ?>
     </div>

@@ -2,13 +2,13 @@
 
 include("../php/db.php");
 // session_start();
-include('../components/app_protected_route.php');
+// include('../components/app_protected_route.php');
 
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
 $pid = $_GET["pid"];
-$str_url = '../functions/check_access.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid;
-include('../functions/check_access.php');
+// $str_url = '../functions/check_access.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid;
+// include('../functions/check_access.php');
 include('../functions/search_all_laporan.php');
 
 $all_empty = true;

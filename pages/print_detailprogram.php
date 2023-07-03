@@ -2,13 +2,13 @@
 
 include("../php/db.php");
 // session_start();
-include('../components/app_protected_route.php');
+// include('../components/app_protected_route.php');
 
 $app_program_id = $_GET["id"];
 $typel = $_GET["type"];
 $pid = $_GET["pid"];
-$str_url = '../functions/check_access.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid;
-include('../functions/check_access.php');
+// $str_url = '../functions/check_access.php?id=' . $app_program_id . '&type=' . $typel . '&pid=' . $pid;
+// include('../functions/check_access.php');
 include('../functions/search_all_laporan.php');
 
 $all_empty = true;
@@ -84,9 +84,12 @@ if ($stmt = $con->prepare("SELECT `NAMA` FROM `app` WHERE `APP_ID` = '$p1'")) {
 }
 $lampiran_1 = $laporan_all_people[$typel][5];
 $akredasi_penuh = $laporan_all_people[$typel][6];
+$bahagian_lain = $laporan_all_people[$typel][9];
+
 
 $lampiran_1_arr = explode("<", $lampiran_1);
 $akredasi_penuh_arr = explode("|", $akredasi_penuh);
+$bahagian_lain_arr = explode(";", $bahagian_lain);
 
 $lampiran_1_bidang = array();
 $akredasi_penuh_bidang = array();
@@ -968,41 +971,41 @@ if (isset($_POST['submit'])) {
             <h2 class="collapsible">JAWATANKUASA PANEL PENILAIAN PROGRAM memperakukan bahawa program pengajian ini:
             </h3>
             <div class="invi-at-first">
-              <h3><input type="checkbox" id="opt1" name="opt1" value="opt1" checked>
+              <h3><input type="checkbox" id="opt1" name="opt1" value="opt1" <?php if($bahagian_lain_arr[0]==0){echo "checked";} ?>>
                 <label for="vehicle3"> Dianugerahkan akreditasi program pengajian tanpa sebarang syarat.</label>
               </h3><br>
-              <h3><input type="checkbox" id="opt2" name="opt2" value="opt2">
+              <h3><input type="checkbox" id="opt2" name="opt2" value="opt2" <?php if($bahagian_lain_arr[0]==1){echo "checked";} ?>>
                 <label for="vehicle3"> Dianugerahkan akreditasi dengan keperluan seperti yang dijelaskan di Bahagian
                   B1.</label>
               </h3><br>
-              <h3><input type="checkbox" id="opt3" name="opt3" value="opt3">
+              <h3><input type="checkbox" id="opt3" name="opt3" value="opt3" <?php if($bahagian_lain_arr[0]==2){echo "checked";} ?>>
                 <label for="vehicle3"> Dianugerahkan akreditasi dengan syarat seperti yang dijelaskan di Bahagian
                   B2.</label>
               </h3><br>
-              <h3><input type="checkbox" id="opt4" name="opt4" value="opt4">
+              <h3><input type="checkbox" id="opt4" name="opt4" value="opt4" <?php if($bahagian_lain_arr[0]==3){echo "checked";} ?>>
                 <label for="vehicle3"> Tidak layak untuk dianugerahkan akreditasi. Rujuk penafian seperti di Bahagian
                   B3</label>
               </h3><br><br>
               <h3><label for="b1">BAHAGIAN B1: KEPERLUAN TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI
                   (lengkapkan sekiranya berkaitan):
                 </label></h3>
-              <textarea id="b1" name="b1" rows="8" cols="160">Rujuk kepada komen mengikut bidang.</textarea>
+              <textarea id="b1" name="b1" rows="8" cols="160"><?php echo $bahagian_lain_arr[1]; ?></textarea>
               <br>
 
               <h3><label for="b2">BAHAGIAN B2: SYARAT TERHADAP PENILAIAN PROGRAM OLEH PANEL PENILAI:</label></h3>
-              <textarea id="b2" name="b2" rows="8" cols="160">Rujuk kepada komen mengikut bidang.</textarea>
+              <textarea id="b2" name="b2" rows="8" cols="160"><?php echo $bahagian_lain_arr[2]; ?></textarea>
               <br>
 
               <h3><label for="b3">BAHAGIAN B3: PENAFIAN PENGANUGERAHAN AKREDITASI OLEH PANEL PENILAI
                   (lengkapkan sekiranya berkaitan):</label></h3>
-              <textarea id="b3" name="b3" rows="8" cols="160">Tiada</textarea>
+              <textarea id="b3" name="b3" rows="8" cols="160"><?php echo $bahagian_lain_arr[3]; ?></textarea>
               <br>
 
               <h3><label for="b4">BAHAGIAN B4: TEMPOH PERAKUAN AKREDITASI:</label></h3>
-              <h3><input type="checkbox" id="b4" name="b4" value="yes" checked>
+              <h3><input type="checkbox" id="b4" name="b4" value="yes"  <?php if($bahagian_lain_arr[4]==1){echo "checked";} ?>>
                 <label for="b4"> Program ini AKAN dapat akredasi.</label>
               </h3><br>
-              <h3><input type="checkbox" id="b4" name="b4" value="no">
+              <h3><input type="checkbox" id="b4" name="b4" value="no" <?php if($bahagian_lain_arr[4]==2){echo "checked";} ?>>
                 <label for="b4"> Program ini TIDAK AKAN dapat akredasi.</label>
               </h3><br> <br>
             </div>
@@ -1024,11 +1027,14 @@ if (isset($_POST['submit'])) {
               </tr>
               <tr>
                 <td>PENGERUSI: <?php echo $p0; ?></td>
-                <td></td>
-              </tr>
+                <?php
+                    echo '<img width="150" height="150" src="'.$laporan_all_people[0][10].'">';
+                  ?>              </tr>
               <tr>
                 <td>AHLI PANEL 1: <?php echo $p1; ?></td>
-                <td></td>
+                <?php
+                    echo '<img width="150" height="150" src="'.$laporan_all_people[0][11].'">';
+                   ?>
               </tr>
             </table>
           </div>

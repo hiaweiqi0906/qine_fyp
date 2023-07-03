@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2023 at 04:39 PM
+-- Generation Time: Jul 03, 2023 at 05:39 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,7 +78,6 @@ INSERT INTO `app` (`APP_ID`, `NAMA`, `KATEGORI`, `PASSWORD`, `EMEL`, `NO_KP`, `F
 (7, 'zxcv', 'EKSA', '111111', 'zxcvzv@ad', '111111111111', '111', '1111', '1111111111', '111', NULL, 0, NULL, '2023-02-20 21:14:03', NULL),
 (8, 'Hia', 'EKSA', '111111', 'kef@ukm.edu.my', '010101-01-0101', 'asd', 'oiahsd', '012-098 9098', 'CS', 'https://res.cloudinary.com/papero/image/upload/v1683649392/kplqlojgkv4rm4ypygwm.jpg', 15, ' ', '2023-02-22 00:58:16', NULL),
 (9, 'Hia', 'EKSA', '111111', 'kef@ukm.edu.my', '010101-01-0101', 'asd', 'oiahsd', '012-098 9098', 'CS', 'https://res.cloudinary.com/papero/image/upload/v1683649392/kplqlojgkv4rm4ypygwm.jpg', 15, ' ', '2023-02-22 01:03:18', NULL),
-(12, 'bla', 'EKSA', '111111', 'hiaweiqi@g1mail.com', '111111-11-1111', 'psdnfonsf', 'sjdjf', '012-345 6798', '', '', 14, ' ', '2023-02-27 00:28:27', NULL),
 (13, 'bla', 'ISO', '111111', 'hiaweiqi@g1mail.com', '111111-11-1111', 'psdnfonsf', 'sjdjf', '012-345 6798', '', '', 14, ' ', '2023-02-27 00:29:36', NULL),
 (14, 'hia', 'ISO;;;MQA', '111111', 'hiaweiqi@gmail.com', '111111-11-1111', 'Hotel, Restoran & Katering', 'sf', '011-111 1111', 'Jualan Borong & Runcit', 'https://res.cloudinary.com/papero/image/upload/v1683818020/zjgqg9fliqjyf6cg8cuk.jpg', 17, ' ', '2023-03-03 00:03:19', NULL);
 
@@ -139,7 +138,7 @@ INSERT INTO `appprogram` (`APPPROGRAM_ID`, `TARIKH_TERIMA`, `APP_ID_PENGERUSI`, 
 (16, '2023-06-16', 1, 2, 1, 2, NULL, '2023-06-17', 'ISO'),
 (17, '2023-06-16', 1, 3, 1, 2, NULL, '2023-06-17', 'ISO'),
 (18, '2023-06-17', 2, 4, 1, 1, NULL, '2023-06-17', 'MQA'),
-(19, '2023-07-01', 14, 5, 1, 13, NULL, NULL, 'ISO');
+(19, '2023-07-01', 14, 5, 1, 13, NULL, '2023-07-03', 'ISO');
 
 -- --------------------------------------------------------
 
@@ -239,7 +238,12 @@ INSERT INTO `app_noti` (`NOTI_ID`, `APP_ID`, `TEXT`, `TARIKH`, `MASA`, `READ_NOT
 (80, '1', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-06-18', '19-14-03', 'F'),
 (81, '1', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-06-18', '19-14-51', 'F'),
 (82, '14', 'ANDA TELAH DIBAHAGIKAN SATU PROGRAM UNTUK MEMBUAT LAPORAN.\n JAWATAN: PENGERUSI', '2023-07-01', '21-40-06', 'F'),
-(83, '13', 'ANDA TELAH DIBAHAGIKAN SATU PROGRAM UNTUK MEMBUAT LAPORAN.\n JAWATAN: AHLI PANEL 1', '2023-07-01', '21-40-06', 'F');
+(83, '13', 'ANDA TELAH DIBAHAGIKAN SATU PROGRAM UNTUK MEMBUAT LAPORAN.\n JAWATAN: AHLI PANEL 1', '2023-07-01', '21-40-06', 'F'),
+(84, '14', 'AHLI PANEL SUDAH BUAT LAPORAN. ', '2023-07-03', '22-40-33', 'F'),
+(85, '13', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '22-48-37', 'F'),
+(86, '13', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-03-10', 'F'),
+(87, '13', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-08-21', 'F'),
+(88, '13', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-35-39', 'F');
 
 -- --------------------------------------------------------
 
@@ -396,7 +400,12 @@ INSERT INTO `kualitiukm_noti` (`NOTI_ID`, `KUALITIUKM_ID`, `TEXT`, `TARIKH`, `MA
 (56, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-06-17', '22-02-43', 'F'),
 (57, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-06-18', '19-14-03', 'F'),
 (58, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-06-18', '19-14-51', 'F'),
-(59, '1', 'ANDA TELAH AGIH PROGRAM!', '2023-07-01', '21-40-06', 'F');
+(59, '1', 'ANDA TELAH AGIH PROGRAM!', '2023-07-01', '21-40-06', 'F'),
+(60, '', 'AHLI PANEL SUDAH BUAT LAPORAN. ', '2023-07-03', '22-40-33', 'F'),
+(61, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '22-48-37', 'F'),
+(62, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-03-10', 'F'),
+(63, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-08-21', 'F'),
+(64, '', 'PENGERUSI SUDAH HANTAR LAPORAN. ', '2023-07-03', '23-35-39', 'F');
 
 -- --------------------------------------------------------
 
@@ -416,21 +425,25 @@ CREATE TABLE `laporan` (
   `TARIKH_EFEKTIF` varchar(50) DEFAULT NULL,
   `MAKLUM_BALAS` text DEFAULT NULL,
   `SENTTOUSERFAKULTI` varchar(5) DEFAULT 'F',
-  `BAHAGIAN_LAIN` text NOT NULL
+  `BAHAGIAN_LAIN` text NOT NULL,
+  `TANDATANGAN_0` varchar(1000) DEFAULT NULL,
+  `TANDATANGAN_1` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `laporan`
 --
 
-INSERT INTO `laporan` (`LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `TARIKH_EFEKTIF`, `MAKLUM_BALAS`, `SENTTOUSERFAKULTI`, `BAHAGIAN_LAIN`) VALUES
-(125, 'PREPARING', '2023-06-11', '2023-06-13', 5, '123~123~123~123<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 1, '2023-12-11', NULL, 'T', ''),
-(126, 'PREPARING', '2023-06-11', '2023-06-13', 5, 'iiiii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2022-12-11', 'ii~asfdfffffffffasd~asdffffffffff~asdfffffffffffffff~asdfffffffff~123adsfasasdf<ii~asdf~asdf~asdf~asdf~123asdfasdf<ii~asdf~asdf~adsf~asdf~123asdfasdf<ii~aas~aas~asas~aas~123asdfadsf<ii~as~sdfasdf~sdfadsf~sdfaasdf~123<ii~sdf~sdf~sdf~sdf~123<ii~sdf~sdf~sdf~sdf~123', 'TT', ''),
-(129, 'SUDAH HANTAR', '2023-06-17', '', 16, 'oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;05;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 1, '2023-12-17', NULL, 'F', ''),
-(130, 'SUDAH HANTAR', '2023-06-17', '', 17, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0', 1, '2023-12-17', NULL, 'F', ''),
-(131, 'SUDAH HANTAR', '2023-06-17', '', 18, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '0;0;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0', 0, '2023-12-17', NULL, 'F', ''),
-(132, 'SUDAH HANTAR', '2023-06-18', '', 5, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2023-12-18', NULL, 'F', ''),
-(133, 'SUDAH HANTAR', '2023-06-18', '', 5, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2023-12-18', NULL, 'F', '');
+INSERT INTO `laporan` (`LAPORAN_ID`, `STATUS`, `TARIKH_AWAL`, `TARIKH_AKHIR`, `APPPROGRAM_ID`, `LAMPIRAN_1`, `AKREDASI_PENUH`, `TYPE`, `TARIKH_EFEKTIF`, `MAKLUM_BALAS`, `SENTTOUSERFAKULTI`, `BAHAGIAN_LAIN`, `TANDATANGAN_0`, `TANDATANGAN_1`) VALUES
+(125, 'PREPARING', '2023-06-11', '2023-06-13', 5, '123~123~123~123<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 1, '2023-12-11', NULL, 'T', '', NULL, NULL),
+(126, 'PREPARING', '2023-06-11', '2023-06-13', 5, 'iiiii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii<ii~ii~ii~ii', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2022-12-11', 'ii~asfdfffffffffasd~asdffffffffff~asdfffffffffffffff~asdfffffffff~123adsfasasdf<ii~asdf~asdf~asdf~asdf~123asdfasdf<ii~asdf~asdf~adsf~asdf~123asdfasdf<ii~aas~aas~asas~aas~123asdfadsf<ii~as~sdfasdf~sdfadsf~sdfaasdf~123<ii~sdf~sdf~sdf~sdf~123<ii~sdf~sdf~sdf~sdf~123', 'TT', '', NULL, NULL),
+(129, 'SUDAH HANTAR', '2023-06-17', '', 16, 'oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo<oo~oo~oo~oo', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;05;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 1, '2023-12-17', NULL, 'F', '', NULL, NULL),
+(130, 'SUDAH HANTAR', '2023-06-17', '', 17, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0', 1, '2023-12-17', NULL, 'F', '', NULL, NULL),
+(131, 'SUDAH HANTAR', '2023-06-17', '', 18, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '0;0;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0', 0, '2023-12-17', NULL, 'F', '', NULL, NULL),
+(132, 'SUDAH HANTAR', '2023-06-18', '', 5, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2023-12-18', NULL, 'F', '', NULL, NULL),
+(133, 'SUDAH HANTAR', '2023-06-18', '', 5, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.666666666666667;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|4.411764705882353;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;05;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5;5;5;5;5;5;5;5;5;5;5', 0, '2023-12-18', NULL, 'F', '', NULL, NULL),
+(134, 'SUDAH HANTAR', '', '2023-07-03', 19, 'qwe~ui~ui~ui<oo~oo~oo~oo<5~5~5~5<oo~oo~oo~oo<5~5~5~5<5~5~5~5<5~5~5~5', '5.00;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5;5|5.00;5;5;5;5;5;5;5;5;5;5', 1, '', NULL, 'F', '2;asdf;asdf;asdf;', NULL, ''),
+(138, 'SUDAH HANTAR', '', '2023-07-03', 19, '~~~<~~~<~~~<~~~<~~~<~~~<~~~', '0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0|0;0;0;0;0;0;0;0;0;0;0', 0, '', NULL, 'F', '4;af;asd;adsf;1', 'https://res.cloudinary.com/papero/image/upload/v1688398539/a5jm4ncxwdruijk1d3zy.png', '');
 
 -- --------------------------------------------------------
 
@@ -1233,7 +1246,7 @@ ALTER TABLE `appprogram`
 -- AUTO_INCREMENT for table `app_noti`
 --
 ALTER TABLE `app_noti`
-  MODIFY `NOTI_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `NOTI_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `biodata`
@@ -1257,13 +1270,13 @@ ALTER TABLE `kualitiukm`
 -- AUTO_INCREMENT for table `kualitiukm_noti`
 --
 ALTER TABLE `kualitiukm_noti`
-  MODIFY `NOTI_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `NOTI_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `LAPORAN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `LAPORAN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `lecturer`

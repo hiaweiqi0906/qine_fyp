@@ -67,7 +67,7 @@ $stmt->close();
          <div class="app--right--btns">
 
             <?php
-            if ($gg > 2)
+            if ($gg == 6)
                echo '<button class="add"  onclick="window.location.href=\'./senaraiprogram_all_sudah_asing.php\';" style="background: gray;">Lihat Semua</button>';
             ?>
          </div>
@@ -108,7 +108,7 @@ $stmt->close();
          <div class="app--right--btns">
 
             <?php
-            if ($uu > 6)
+            if ($uu == 6)
                echo '<button class="add"  onclick="window.location.href=\'./senaraiprogram_all_sudah_belum_asing.php\';" style="background: gray;">Lihat Semua</button>';
             ?>
          </div>
