@@ -91,7 +91,7 @@ $stmt->close();
       </div>
 
       <p>Tarikh: <span>", $list_of_program[$i][2], "</span></p>
-      <p>Masa : <span>", $list_of_program[$i][7], "</span></p>
+      <p>URL Fail Program : <span>", $list_of_program[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program[$i][5], "</span></p>
       <a href=\"./program_information.php?id=$current_application_id\" class=\"inline-btn\">Lihat</a>
    </div>";

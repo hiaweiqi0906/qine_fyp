@@ -303,7 +303,7 @@ $stmt->close();
             </div>
             <p>Informasi: <a href=\"../functions/generate_program.php?pid=" . $program_details[$i][0] . "\"><span>Muat Turun</span></a></p>
             <p>Tarikh: <span>", $program_details[$i][2], "</span></p>
-            <p>Masa : <span>", $program_details[$i][7], "</span></p>
+            <p>URL Fail Program : <span>", $program_details[$i][7], "</span></p>
             <p>Status : <span>", $program_details[$i][5], "</span></p>";
                echo "<p><label for=\"kat\">Kategori:</label></p>";
                if (!$assigned) {

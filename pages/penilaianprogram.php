@@ -188,7 +188,7 @@ $j = 0;
 
       <p>Jawatan: <span>Pengerusi</span></p>
       <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
-      <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
+      <p>URL Fail Program : <span>", $list_of_program_app[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
       <a href=\"./detailprogram.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
@@ -218,7 +218,7 @@ $j = 0;
 
       <p>Jawatan: <span>Ahli Panel 1</span></p>
       <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
-      <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
+      <p>URL Fail Program : <span>", $list_of_program_panel_1[$i][7], "</span></p>
       <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
       <a href=\"./detailprogram.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
    </div>";
@@ -262,7 +262,7 @@ $j = 0;
 
                <p>Jawatan: <span>Pengerusi</span></p>
                <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
-               <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
+               <p>URL Fail Program : <span>", $list_of_program_app[$i][7], "</span></p>
                <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
                <a href=\"./other_people_laporan.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div>";
@@ -294,7 +294,7 @@ $j = 0;
 
             <p>Jawatan: <span>Ahli Panel 1</span></p>
             <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
-            <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
+            <p>URL Fail Program : <span>", $list_of_program_panel_1[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
             <a href=\"./other_people_laporan.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
@@ -340,7 +340,7 @@ $j = 0;
 
                <p>Jawatan: <span>Pengerusi</span></p>
                <p>Tarikh: <span>", $list_of_program_app[$i][2], "</span></p>
-               <p>Masa : <span>", $list_of_program_app[$i][7], "</span></p>
+               <p>URL Fail Program : <span>", $list_of_program_app[$i][7], "</span></p>
                <p>Status : <span>", $list_of_program_app[$i][5], "</span></p>
                <a href=\"./detailprogram_maklum_balas.php?id=$current_application_id&type=0&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
             </div>";
@@ -373,7 +373,7 @@ $j = 0;
 
             <p>Jawatan: <span>Ahli Panel 1</span></p>
             <p>Tarikh: <span>", $list_of_program_panel_1[$i][2], "</span></p>
-            <p>Masa : <span>", $list_of_program_panel_1[$i][7], "</span></p>
+            <p>URL Fail Program : <span>", $list_of_program_panel_1[$i][7], "</span></p>
             <p>Status : <span>", $list_of_program_panel_1[$i][5], "</span></p>
             <a href=\"./detailprogram_maklum_balas.php?id=$current_application_id&type=1&pid=$current_pid\" class=\"inline-btn\">Lihat</a>
          </div>";
