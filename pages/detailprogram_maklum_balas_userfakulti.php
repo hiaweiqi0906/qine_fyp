@@ -381,9 +381,38 @@ for ($jj = 0; $jj < 7; $jj++) {
 
         <h2>Penilaian Detail Program</h2>
         <div class="promo_card">
-          <h1 class="collapsible">Tajuk Program</h1>
-          <span>Detail</span>
-          <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun</a>
+          <h1 class="collapsible">Informasi Program</h1>
+          <h2>Detail</h2>
+          <table>
+
+            <?php
+            //execute
+            if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `URL_FILE_DRIVE`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$programid'")) {
+
+              $stmt->execute();
+              mysqli_stmt_bind_result($stmt, $program_id, $tarikh, $masa, $nama, $url_drive, $bidang,$status,$description);
+
+           // }   /* fetch values */
+              while (mysqli_stmt_fetch($stmt)) {
+                 array_push($programinfo, array($program_id, $tarikh, $masa, $nama, $url_drive, $bidang,$status,$description));
+              }
+              // echo $stmt->field_count;
+           } else {
+              // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+              echo 'Could not prepare statement!';
+           }
+           
+            echo '
+   <tr><td style="width: 33%; border: 1px solid black;">Gambar Program: </td><td style="width: 66%; border: 1px solid black;"><img style="display: block; margin: 10px auto; margin-left: auto; margin-right: auto; width:200px; height: 200px;" src="'.$programinfo[0][4].'"></td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Nama Program: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][3].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Tarikh: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][1].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Link Fail-fail Proram: </td><td style="width: 66%; border: 1px solid black;"><a href="'.$programinfo[0][2].'">'.$programinfo[0][2].'</a></td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Bidang: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][5].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Informasi Seterusnya: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][7].'</td></tr>
+            ';
+            ?>
+          </table>
+          <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun Informasi</a>
 
 
         </div>

@@ -98,6 +98,10 @@ app xxx")
    echo 'Could not prepare statement!';
 }
 
+function arrangeInternalAndExternal($arr) {
+   return $arr;
+ }
+
 
 if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA` FROM `app` WHERE 1")) {
    $stmt->execute();
@@ -113,21 +117,43 @@ $list_of_app_iso = array();
 $list_of_app_eksa = array();
 $list_of_app_isms = array();
 $list_of_app_mqa = array();
+
+$list_of_app_iso_ = array();
+$list_of_app_eksa_ = array();
+$list_of_app_isms_ = array();
+$list_of_app_mqa_ = array();
+
 for ($uu = 0; $uu < count($appr_people); $uu++) {
    if (str_contains($appr_people[$uu][3], 'EKSA') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      if($appr_people[$uu][2] == "Universiti Kebangsaan Malaysia"){
+         array_push($list_of_app_eksa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }else{
+         array_push($list_of_app_eksa_, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }
    }
 
    if (str_contains($appr_people[$uu][3], 'ISO') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      if($appr_people[$uu][2] == "Universiti Kebangsaan Malaysia"){
+         array_push($list_of_app_iso, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }else{
+         array_push($list_of_app_iso_, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }
    }
 
    if (str_contains($appr_people[$uu][3], 'ISMS') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      if($appr_people[$uu][2] == "Universiti Kebangsaan Malaysia"){
+         array_push($list_of_app_isms, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }else{
+         array_push($list_of_app_isms_, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }
    }
 
    if (str_contains($appr_people[$uu][3], 'MQA') && $appr_people[$uu][4] < 5) {
-      array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      if($appr_people[$uu][2] == "Universiti Kebangsaan Malaysia"){
+         array_push($list_of_app_mqa, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }else{
+         array_push($list_of_app_mqa_, array($appr_people[$uu][0], $appr_people[$uu][1], $appr_people[$uu][4]));
+      }
    }
    // array_push($list_of_app, array($appr_people[$uu][0], $appr_people[$uu][1]));
 }
@@ -328,10 +354,20 @@ $stmt->close();
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_iso[$oo][1] . ", ";
                   }
+                  $lll =count($list_of_app_iso_) > 6? 6 : count($list_of_app_iso_);
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "" . $list_of_app_iso_[$oo][1] . ", ";
+                  }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_iso[$oo][1] . "</td><td>" . $list_of_app_iso[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
+
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_iso_[$oo][1] . "</td><td>" . $list_of_app_iso_[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
                }
@@ -344,7 +380,7 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_iso); $y++) {
+                  for ($y = 0; $y < ($ll); $y++) {
                      echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
                   }
                }
@@ -358,8 +394,8 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_iso); $y++) {
-                     echo "<option value='", $list_of_app_iso[$y][0], "'>", $list_of_app_iso[$y][1], "</option>";
+                  for ($y = 0; $y < ($lll); $y++) {
+                     echo "<option value='", $list_of_app_iso_[$y][0], "'>", $list_of_app_iso_[$y][1], "</option>";
                   }
                }
 
@@ -373,10 +409,20 @@ $stmt->close();
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_eksa[$oo][1] . ", ";
                   }
+                  $lll =count($list_of_app_eksa_) > 6? 6 : count($list_of_app_eksa_);
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "" . $list_of_app_eksa_[$oo][1] . ", ";
+                  }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_eksa[$oo][1] . "</td><td>" . $list_of_app_eksa[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
+
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_eksa_[$oo][1] . "</td><td>" . $list_of_app_eksa_[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
                }
@@ -388,7 +434,7 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_eksa); $y++) {
+                  for ($y = 0; $y < ($ll); $y++) {
                      echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
                   }
                }
@@ -402,8 +448,8 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_eksa); $y++) {
-                     echo "<option value='", $list_of_app_eksa[$y][0], "'>", $list_of_app_eksa[$y][1], "</option>";
+                  for ($y = 0; $y < $lll; $y++) {
+                     echo "<option value='", $list_of_app_eksa_[$y][0], "'>", $list_of_app_eksa_[$y][1], "</option>";
                   }
                }
 
@@ -417,10 +463,20 @@ $stmt->close();
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_isms[$oo][1] . ", ";
                   }
+                  $lll =count($list_of_app_isms_) > 6? 6 : count($list_of_app_isms_);
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "" . $list_of_app_isms_[$oo][1] . ", ";
+                  }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_isms[$oo][1] . "</td><td>" . $list_of_app_isms[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
+
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_isms_[$oo][1] . "</td><td>" . $list_of_app_isms_[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
                }
@@ -432,7 +488,7 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_isms); $y++) {
+                  for ($y = 0; $y < $ll; $y++) {
                      echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
                   }
                }
@@ -446,8 +502,8 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[1][0], "' selected>", $assigned_app[1][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_isms); $y++) {
-                     echo "<option value='", $list_of_app_isms[$y][0], "'>", $list_of_app_isms[$y][1], "</option>";
+                  for ($y = 0; $y < ($lll); $y++) {
+                     echo "<option value='", $list_of_app_isms_[$y][0], "'>", $list_of_app_isms_[$y][1], "</option>";
                   }
                }
 
@@ -461,10 +517,20 @@ $stmt->close();
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "" . $list_of_app_mqa[$oo][1] . ", ";
                   }
+                  $lll =count($list_of_app_mqa_) > 6? 6 : count($list_of_app_mqa_);
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "" . $list_of_app_mqa_[$oo][1] . ", ";
+                  }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_mqa[$oo][1] . "</td><td>" . $list_of_app_mqa[$oo][2] . "</td></tr>";
+                  }
+                  echo"</table>";
+
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  for ($oo = 0; $oo < $lll; $oo++) {
+                     echo "<tr><td>" . $list_of_app_mqa_[$oo][1] . "</td><td>" . $list_of_app_mqa_[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
                }
@@ -476,7 +542,7 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='", $assigned_app[0][0], "' selected>", $assigned_app[0][1], "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_mqa); $y++) {
+                  for ($y = 0; $y < ($ll); $y++) {
                      echo "<option value='", $list_of_app_mqa[$y][0], "'>", $list_of_app_mqa[$y][1], "</option>";
                   }
                }
@@ -490,8 +556,8 @@ $stmt->close();
                if ($assigned) {
                   echo "<option value='" . $assigned_app[1][0] . "' selected>" . $assigned_app[1][1] . "</option>";
                } else {
-                  for ($y = 0; $y < count($list_of_app_mqa); $y++) {
-                     echo "<option value='" . $list_of_app_mqa[$y][0] . "'>" . $list_of_app_mqa[$y][1] . "</option>";
+                  for ($y = 0; $y < ($lll); $y++) {
+                     echo "<option value='" . $list_of_app_mqa_[$y][0] . "'>" . $list_of_app_mqa_[$y][1] . "</option>";
                   }
                }
 

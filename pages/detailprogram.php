@@ -531,6 +531,87 @@ if (isset($_POST['submit'])) {
     }
   </style>
 
+<style>
+    /* .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+     */
+    @media print {
+      html {
+        padding: 10px;
+        overflow: visible !important;
+      }
+    }
+
+    .bahagian {
+      margin-top: 60px;
+    }
+
+    /* html {
+      padding: 15px;
+      overflow: visible !important;
+    } */
+
+    .collapsible {
+      /* display:none; */
+    }
+
+    textarea {
+      border: none;
+    }
+
+    textarea:focus {
+      outline: none;
+
+    }
+
+
+    .content {
+      padding: 0 18px;
+      display: block;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .div-center{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .invi-at-first {
+      display: block;
+    }
+
+    td{
+      padding:10px;
+    }
+
+    table,
+    td,
+    th {
+      border: 1px solid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px;
+    }
+
+    h3 {
+      margin: 10px;
+    }
+  </style>
+
+
   <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
@@ -608,10 +689,40 @@ if (isset($_POST['submit'])) {
       <section class="courses">
 
         <h2>Penilaian Detail Program</h2>
-        <div class="promo_card">
-          <h1 class="collapsible">Tajuk Program</h1>
-          <span>Detail</span>
-          <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>">Muat Turun</a>
+        <div class="promo_card1">
+          <h1 class="collapsible">Informasi Program</h1>
+          <table>
+
+            <?php
+            //execute
+            $programinfo = array();
+            if ($stmt = $con->prepare("SELECT `PROGRAM_ID`, `TARIKH`, `URL_FILE_DRIVE`, `NAMA`, `URL_DRIVE`, `BIDANG`, `STATUS`, `DESCRIPTION` FROM `program` WHERE `PROGRAM_ID` = '$pid'")) {
+
+              $stmt->execute();
+              mysqli_stmt_bind_result($stmt, $program_id, $tarikh, $masa, $nama, $url_drive, $bidang,$status,$description);
+
+           // }   /* fetch values */
+              while (mysqli_stmt_fetch($stmt)) {
+                 array_push($programinfo, array($program_id, $tarikh, $masa, $nama, $url_drive, $bidang,$status,$description));
+              }
+              // echo $stmt->field_count;
+           } else {
+              // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.
+              echo 'Could not prepare statement!';
+           }
+
+            echo '
+   <tr><td style="width: 33%; border: 1px solid black;">Gambar Program: </td><td style="width: 66%; border: 1px solid black;"><img style="display: block; margin: 10px auto; margin-left: auto; margin-right: auto; width:200px; height: 200px;" src="'.$programinfo[0][4].'"></td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Nama Program: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][3].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Tarikh: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][1].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Link Fail-fail Proram: </td><td style="width: 66%; border: 1px solid black;"><a href="'.$programinfo[0][2].'">'.$programinfo[0][2].'</a></td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Bidang: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][5].'</td></tr>
+   <tr><td style="width: 33%; border: 1px solid black;">Informasi Seterusnya: </td><td style="width: 66%; border: 1px solid black;">'.$programinfo[0][7].'</td></tr>
+            ';
+            ?>
+          </table>
+
+          <a href="../functions/generate_program.php?pid=<?php echo $pid; ?>"  class="btn" style="margin-top: 20px;">Muat Turun</a>
         </div>
 
         <div class="box-container">
