@@ -130,11 +130,12 @@ if (isset($_POST['submit'])) {
 
 
 
-if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG`, `KATEGORI` FROM app WHERE APP_ID = '$id' ")) {
+if ($stmt = $con->prepare("SELECT `APP_ID`, `NAMA`, `NO_KP`, `FAKULTI`, `EMEL`, `ALAMAT`, `NO_TELEFON`, `URL_AVATAR`, `PASSWORD`, `BIDANG`, `KATEGORI`, `CREATED_DATE` FROM app WHERE APP_ID = '$id' ")) {
   $stmt->execute();
-  mysqli_stmt_bind_result($stmt, $app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori);
+  mysqli_stmt_bind_result($stmt, $app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori, $created_date);
   while (mysqli_stmt_fetch($stmt)) {
-    array_push($user, array($app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori));
+    $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($created_date)));
+    array_push($user, array($app_id, $nama, $no_kp, $fakulti, $emel, $alamat, $no_telefon, $url_avatar, $password, $bidang, $kategori, $created_date));
   }
 } else {
   // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all 3 fields.

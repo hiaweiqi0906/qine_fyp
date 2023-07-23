@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
    $ringkasan = mysqli_real_escape_string($con, $_POST['ringkasan']);
    if (
       $stmt = $con->prepare("INSERT INTO pertanyaan (`TARIKH`, `PERKARA`, `RINGKASAN`, `PERTANYAAN_STATUS`, `TINDAKAN`, `JENIS`, `ID`) VALUES
-    ('$today_date', '$perkara', '$ringkasan', 'PROCESSING', '', 'app', '$id')")
+    ('$today_date', '$perkara', '$ringkasan', 'SEDANG DIPROSES', '', 'app', '$id')")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);

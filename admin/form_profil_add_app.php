@@ -43,12 +43,15 @@
         <label for="kategori">Kategori: </label>
     </div>
     <div class="column-10">
-        <select class="input-text" name="kategori" id="kategori" value="<?php if (isset($user[0][1]))
-            echo $user[0][1];
-        else
-            echo ""; ?>">
-            <option value="EKSA">EKSA</option>
-        </select>
+
+        <input type="checkbox" id="kategori1" name="kategori1" value="ISO">
+        <label for="kategori1"> ISO</label><br>
+        <input type="checkbox" id="kategori2" name="kategori2" value="ISMS">
+        <label for="kategori2"> ISMS</label><br>
+        <input type="checkbox" id="kategori3" name="kategori3" value="EKSA">
+        <label for="kategori3"> EKSA</label><br>
+        <input type="checkbox" id="kategori4" name="kategori4" value="MQA">
+        <label for="kategori4"> MQA</label><br>
     </div>
 
 </div>
@@ -66,7 +69,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="display: none;">
     <div class="column-2">
         <label for="alamat-tempat-bekerja">Alamat: </label>
     </div>
@@ -74,32 +77,30 @@
         <input type="text" class="input-text" value="<?php if (isset($user[0][5]))
             echo $user[0][5];
         else
-            echo ""; ?>" name="alamat-tempat-bekerja" id="alamat-tempat-bekerja">
+            echo " "; ?>" name="alamat-tempat-bekerja" id="alamat-tempat-bekerja">
     </div>
 </div>
-
-
 
 <div class="row">
     <div class="column-2">
         <label for="fakulti">Fakulti: </label>
     </div>
-    <div class="column-4">
-        <input type="text" value="<?php if (isset($user[0][3]))
-            echo $user[0][3];
-        else
-            echo ""; ?>" class="input-text" name="fakulti" id="fakulti">
-    </div>
+    <select name="fakulti" id="fakulti">
+            <?php if (isset($user[0][4]))
+                echo "<option selected>" . $user[0][4] . "</option>";
+            include('../components/bidang_options.php');
+            ?>
+        </select>
 
     <div class="column-2">
         <label for="bidang">Bidang: </label>
     </div>
-    <div class="column-4">
-        <input type="text" value="<?php if (isset($user[0][9]))
-            echo $user[0][9];
-        else
-            echo ""; ?>" class="input-text" name="bidang" id="bidang">
-    </div>
+    <select name="bidang" id="bidang">
+            <?php if (isset($user[0][4]))
+                echo "<option selected>" . $user[0][4] . "</option>";
+            include('../components/bidang_options.php');
+            ?>
+        </select>
 </div>
 
 <div class="row">

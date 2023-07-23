@@ -14,7 +14,7 @@ $list_of_application = array();
 // $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, lecturer.`LECTURER_ID`, `KATEGORI`, `NAMA`, appapplication.UNIVERSITI FROM `appapplication` LEFT JOIN `lecturer` ON appapplication.LECTURER_ID = lecturer.LECTURER_ID WHERE `STATUS` = 'PROCESSING'")) {
+if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, lecturer.`LECTURER_ID`, `KATEGORI`, `NAMA`, appapplication.UNIVERSITI FROM `appapplication` LEFT JOIN `lecturer` ON appapplication.LECTURER_ID = lecturer.LECTURER_ID WHERE `STATUS` = 'SEDANG DIPROSES'")) {
 
    $stmt->execute();
    mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kategori, $nama, $universiti);

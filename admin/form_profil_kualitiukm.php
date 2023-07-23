@@ -54,7 +54,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="display: none;">
     <div class="column-2">
         <label for="alamat-tempat-bekerja">Alamat: </label>
     </div>
@@ -62,7 +62,7 @@
         <input type="text" class="input-text" value="<?php if (isset($user[0][5]))
             echo $user[0][5];
         else
-            echo ""; ?>" name="alamat-tempat-bekerja" id="alamat-tempat-bekerja">
+            echo " "; ?>" name="alamat-tempat-bekerja" id="alamat-tempat-bekerja">
     </div>
 </div>
 

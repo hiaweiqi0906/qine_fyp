@@ -207,7 +207,7 @@ $stmt->close();
 
 		<div class="app">
 			<div class="title">
-				<h2 class="section--title">Lecturer</h2>
+				<h2 class="section--title">Pensyarah</h2>
 				<div class="app--right--btns">
 					<?php
 					if($count_lecturer > 6)

@@ -15,7 +15,7 @@ $list_of_application = array();
 $id = $_GET["lecturer_id"];
 $lid = $_GET["lecturer_id"];
 $aid = $_GET["id"];
-if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, lecturer.`LECTURER_ID`, `KATEGORI`, `NAMA`, appapplication.UNIVERSITI, appapplication.`KELAYAKAN_AKADEMIK`, appapplication.`PENGALAMAN`, appapplication.`PENGANUGERAHAN`, GELARAN, NO_KP, ALAMAT, POSKOD, NEGERI, DAERAH, FAKULTI, BIDANG, NO_TELEFON, NO_TELEFON_PEJABAT FROM `appapplication` LEFT JOIN `lecturer` ON appapplication.LECTURER_ID = lecturer.LECTURER_ID WHERE `STATUS` = 'PROCESSING' AND appapplication.LECTURER_ID = '$id'")) {
+if ($stmt = $con->prepare("SELECT `APPLICATION_ID`, `TARIKH`, `MASA`, `STATUS`, lecturer.`LECTURER_ID`, `KATEGORI`, `NAMA`, appapplication.UNIVERSITI, appapplication.`KELAYAKAN_AKADEMIK`, appapplication.`PENGALAMAN`, appapplication.`PENGANUGERAHAN`, GELARAN, NO_KP, ALAMAT, POSKOD, NEGERI, DAERAH, FAKULTI, BIDANG, NO_TELEFON, NO_TELEFON_PEJABAT FROM `appapplication` LEFT JOIN `lecturer` ON appapplication.LECTURER_ID = lecturer.LECTURER_ID WHERE `STATUS` = 'SEDANG DIPROSES' AND appapplication.LECTURER_ID = '$id'")) {
 
   $stmt->execute();
   mysqli_stmt_bind_result($stmt, $application_id, $tarikh, $masa, $status, $lecturer_id, $kategori, $nama, $universiti, $kelayakan_akademik, $pengalaman, $penganugerahan, $gelaran, $no_kp, $alamat, $poskod, $negeri, $daerah, $fakulti, $bidang, $no_telefon, $no_telefon_pejabat);

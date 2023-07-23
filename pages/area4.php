@@ -283,8 +283,12 @@
         var score_4_2_6 = Number(document.getElementById("score_4_2_6").value);
         var score_4_2_7 = Number(document.getElementById("score_4_2_7").value);
 
-        score_4 = score_4_1 + score_4_1_2 + score_4_1_1 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8 + score_4_2 + score_4_2_2 + score_4_2_1 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7;
-        score_4 /= 17;
+        score_4_1 = Number(Math.round((score_4_1_1 + score_4_1_2 + score_4_1_3 + score_4_1_4 + score_4_1_5 + score_4_1_6 + score_4_1_7 + score_4_1_8)/8 * 100) / 100).toFixed(2);
+        score_4_2 = Number(Math.round((score_4_2_1 + score_4_2_2 + score_4_2_3 + score_4_2_4 + score_4_2_5 + score_4_2_6 + score_4_2_7)/7 * 100) / 100).toFixed(2);
+
+        score_4 = Number(score_4_1) + Number(score_4_2);
+
+        score_4 /= 2;
         score_4 = (Math.round(score_4 * 100) / 100).toFixed(2);
         document.getElementById("score_4").value = score_4;
         document.getElementById("_score_4").value = score_4;
@@ -292,6 +296,9 @@
 
         document.getElementById("_score_4_1").value =score_4_1;
         document.getElementById("_score_4_2").value =score_4_2;
+
+        document.getElementById("score_4_1").value =score_4_1;
+        document.getElementById("score_4_2").value =score_4_2;
 
 
         drawChart();

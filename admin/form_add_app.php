@@ -16,7 +16,9 @@ if (isset($_POST['submit'])) {
 
   //  $gelaran = $_POST["gelaran"];
   $nama = $_POST["nama"];
-  $kategori = $_POST["kategori"];
+  // $kategori = $_POST["kategori"];
+  $kategori = (isset($_POST["kategori1"]) ? $_POST["kategori1"] : "") . ";" . (isset($_POST["kategori2"]) ? $_POST["kategori2"] : "") . ";" . (isset($_POST["kategori3"]) ? $_POST["kategori3"] : "") . ";" . (isset($_POST["kategori4"]) ? $_POST["kategori4"] : "");
+
   $no_kad_pengenalan = $_POST["no-kad-pengenalan"];
   $emel = $_POST["emel"];
   $password1 = $_POST["password1"];
@@ -87,30 +89,17 @@ $con->close();
       <?php
       include("./form_profil_add_app.php");
       ?>
-      <input type="submit" name="submit" value="Insert" class="sign-btn" />
-
+      <!-- <input type="submit" name="submit" value="Daftar" class="sign-btn" /> -->
+      <input type="submit" name="submit" value="Daftar" class="sign-btn"
+        style="background-color: #5d7851; width: 30%; height: 50px; color: white; border-radius: 5px; margin-left: auto; margin-right: auto; display: block; font-size: 1.8rem;" />
     </form>
 
 
   </div>
 
-  <footer>
-    <ul class="footer-icons">
-      <li><a href="#"><ion-icon name="call-outline"></ion-icon></a></li>
-      <li><a href="#"><ion-icon name="mail-outline"></ion-icon></a></li>
-    </ul>
-
-    <ul class="footer-menu">
-      <li><a href="">Disclaimer</a></li>
-      <li><a href="">Privacy Policy</a></li>
-      <li><a href="">Personal Data Protection</a></li>
-    </ul>
-
-    <div class="footer-copyright">
-      <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia.</p>
-    </div>
-  </footer>
-
+  <?php
+          include("../components/footer.php");
+        ?>
   <script src="../js/script.js"></script>
 
 </body>

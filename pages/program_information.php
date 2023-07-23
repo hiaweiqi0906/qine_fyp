@@ -317,10 +317,8 @@ $stmt->close();
             ";
                if (isset($program_details[$i][3])) {
                   echo "<img src=\"" . $program_details[$i][3] . "\" alt=\"\">";
-
                } else {
                   echo "<img src=\"../img/program.jpg\" alt=\"\">";
-
                }
                echo "               <div>
                   <h3>Nama Program: ", $program_details[$i][1], "</h3>
@@ -359,13 +357,13 @@ $stmt->close();
                      echo "" . $list_of_app_iso_[$oo][1] . ", ";
                   }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_iso[$oo][1] . "</td><td>" . $list_of_app_iso[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
 
-                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $lll; $oo++) {
                      echo "<tr><td>" . $list_of_app_iso_[$oo][1] . "</td><td>" . $list_of_app_iso_[$oo][2] . "</td></tr>";
                   }
@@ -414,13 +412,13 @@ $stmt->close();
                      echo "" . $list_of_app_eksa_[$oo][1] . ", ";
                   }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_eksa[$oo][1] . "</td><td>" . $list_of_app_eksa[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
 
-                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $lll; $oo++) {
                      echo "<tr><td>" . $list_of_app_eksa_[$oo][1] . "</td><td>" . $list_of_app_eksa_[$oo][2] . "</td></tr>";
                   }
@@ -468,13 +466,13 @@ $stmt->close();
                      echo "" . $list_of_app_isms_[$oo][1] . ", ";
                   }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_isms[$oo][1] . "</td><td>" . $list_of_app_isms[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
 
-                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $lll; $oo++) {
                      echo "<tr><td>" . $list_of_app_isms_[$oo][1] . "</td><td>" . $list_of_app_isms_[$oo][2] . "</td></tr>";
                   }
@@ -522,13 +520,13 @@ $stmt->close();
                      echo "" . $list_of_app_mqa_[$oo][1] . ", ";
                   }
                   echo "</span></p>";
-                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP Internal)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $ll; $oo++) {
                      echo "<tr><td>" . $list_of_app_mqa[$oo][1] . "</td><td>" . $list_of_app_mqa[$oo][2] . "</td></tr>";
                   }
                   echo"</table>";
 
-                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diasing</td></tr>";
+                  echo "<table><tr><td>Nama (APP External)</td><td>Bilangan Program Yang Diagih</td></tr>";
                   for ($oo = 0; $oo < $lll; $oo++) {
                      echo "<tr><td>" . $list_of_app_mqa_[$oo][1] . "</td><td>" . $list_of_app_mqa_[$oo][2] . "</td></tr>";
                   }

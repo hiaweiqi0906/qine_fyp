@@ -74,7 +74,7 @@ $id = $_SESSION["id"];
 
             if (count($results) == 1) {
               echo "<td>" . $results[0][1] . "</td>" . "<td>" . $results[0][2] . "</td>";
-              if ($results[0][3] == "PROCESSING")
+              if ($results[0][3] == "SEDANG DIPROSES")
                 echo "<td>Permohonan anda sedang diproseskan. </td>";
               else if ($results[0][3] == "ACCEPT")
                 echo "<td>Permohonan anda telah diterima. </td>";

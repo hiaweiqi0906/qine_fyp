@@ -63,7 +63,7 @@ $stmt->close();
    <section class="teachers">
 
       <div class="title">
-      <h1 class="heading">Senarai Program Belum Diasing</h1>
+      <h1 class="heading">Senarai Program Belum Diagih</h1>
          <div class="app--right--btns">
 
             <?php

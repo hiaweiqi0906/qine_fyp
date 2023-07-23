@@ -183,14 +183,16 @@
         var score_7_1_8 = Number(document.getElementById("score_7_1_8").value);
         var score_7_1_9 = Number(document.getElementById("score_7_1_9").value);
 
-        overall_score = score_7_1 + score_7_1_1 + score_7_1_2 + score_7_1_3 + score_7_1_4 + score_7_1_5 + score_7_1_6 + score_7_1_7 + score_7_1_8 + score_7_1_9;
-        overall_score =overall_score / 10;
+        score_7_1 = Number(Math.round((score_7_1_1 + score_7_1_2 + score_7_1_3 + score_7_1_4 + score_7_1_5 + score_7_1_6 + score_7_1_7 + score_7_1_8 + score_7_1_9)/9 * 100) / 100).toFixed(2);
+
+        overall_score = Number(score_7_1);
         overall_score = (Math.round(overall_score * 100) / 100).toFixed(2);
 
         document.getElementById("score_7").value =overall_score;
         document.getElementById("_score_7").value =overall_score;
         document.getElementById("__score_7").value =overall_score;
         document.getElementById("_score_7_1").value =score_7_1;
+        document.getElementById("score_7_1").value =score_7_1;
         drawChart();
     }
 </script>

@@ -18,7 +18,7 @@
                 <td></td>
                 <td></td>
                 <td><input type="text" id="score_1_1" name="score_1_1" autocomplete="off" onchange="calcOverall1()"
-                        required
+                        required readonly
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[0][1];
                         } else
@@ -102,7 +102,7 @@
                 <td></td>
                 <td></td>
                 <td><input type="text" id="score_1_2" name="score_1_2" autocomplete="off" onchange="calcOverall1()"
-                        required
+                        required readonly
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[0][7];
                         } else
@@ -203,7 +203,7 @@
                 <td></td>
                 <td></td>
                 <td><input type="text" id="score_1_3" name="score_1_3" autocomplete="off" onchange="calcOverall1()"
-                        required
+                        required readonly
                         value="<?php if (isset($akredasi_penuh_bidang)) {
                             echo $akredasi_penuh_bidang[0][14];
                         } else
@@ -332,11 +332,17 @@
         var score_1_3_6 = Number(document.getElementById("score_1_3_6").value);
 
 
-        score_1 = score_1_1 + score_1_1_1 + score_1_1_2 + score_1_1_3 + score_1_1_4 + score_1_1_5 + score_1_2 + score_1_2_1 + score_1_2_2 + score_1_2_3 + score_1_2_4 + score_1_2_5 + score_1_2_6 + score_1_3 + score_1_3_1 + score_1_3_2 + score_1_3_3 + score_1_3_4 + score_1_3_5 + score_1_3_6;
-        score_1 /= 20;
-        score_1 = (Math.round(score_1 * 100) / 100).toFixed(2);
+        score_1_1 = (Math.round((score_1_1_1 + score_1_1_2 + score_1_1_3 + score_1_1_4 + score_1_1_5)/5 * 100) / 100).toFixed(2);
+        score_1_2 = (Math.round((score_1_2_1 + score_1_2_2 + score_1_2_3 + score_1_2_4 + score_1_2_5 + score_1_2_6)/6 * 100) / 100).toFixed(2);
+        score_1_3 = (Math.round((score_1_3_1 + score_1_3_2 + score_1_3_3 + score_1_3_4 + score_1_3_5 + score_1_3_6)/6 * 100) / 100).toFixed(2);
+        score_1 = Number(score_1_1) + Number(score_1_2) + Number(score_1_3);
+        score_1 /= 3;
+        score_1 = (Math.round(score_1) * 100 / 100).toFixed(2);
 
         document.getElementById("score_1").value =score_1;
+        document.getElementById("score_1_1").value =score_1_1;
+        document.getElementById("score_1_2").value =score_1_2;
+        document.getElementById("score_1_3").value =score_1_3;
         document.getElementById("_score_1").value =score_1;
         document.getElementById("__score_1").value =score_1;
         document.getElementById("_score_1_3").value =score_1_3;

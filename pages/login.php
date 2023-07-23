@@ -52,11 +52,15 @@ if (isset($_POST["submit"])) {
   if (empty($email_err) && empty($password_err)) {
     // Prepare a select statement
     if ($types === "app") {
-      $sql = "SELECT APP_ID, EMEL, PASSWORD FROM app WHERE EMEL = '$email' AND PASSWORD = '$password'";
+      $today_date = date("Y-m-d");
+      $effectiveDate = date('Y-m-d', strtotime("+6 months", strtotime($today_date)));
+      echo '-->' . strtotime($today_date) . '<---->' . strtotime($effectiveDate);
+
+      $sql = "SELECT APP_ID, EMEL, PASSWORD FROM app WHERE EMEL = '$email' AND PASSWORD = '$password' AND CREATED_DATE > CURRENT_DATE() - INTERVAL 6 MONTH;";
 
     } else if ($types === "lecturer") {
       $sql = "SELECT LECTURER_ID, EMEL, PASSWORD FROM lecturer WHERE EMEL = '$email' AND PASSWORD = '$password'";
-      echo"hello";
+      echo "hello";
 
     }
 
@@ -102,7 +106,7 @@ if (isset($_POST["submit"])) {
         } else {
           // email doesn't exist, display a generic error message
           // alert("login fail");
-          $login_err = "Invalid login credentials.";
+          $login_err = "Kata Laluan Salah atau Sudah Ditamatkan.";
         }
       } else {
         // alert("login fail");
@@ -116,7 +120,7 @@ if (isset($_POST["submit"])) {
 
   // Close connection
   mysqli_close($con);
-}else if(isset($_POST["register"])){
+} else if (isset($_POST["register"])) {
   header("location: register.php");
 
 }
@@ -238,7 +242,7 @@ if (isset($_POST["submit"])) {
 
 
             <input type="submit" class="sign-btn" name="register" value="Daftar Akaun Baharu"
-            onclick="window.location.href='./register.php';" required>
+              onclick="window.location.href='./register.php';" required>
           </form>
 
         </div>

@@ -38,6 +38,26 @@
 </div>
 
 <div class="row">
+        <div class="column-2">
+            <label for="gelaran">Tarikh Tamat Tempoh: </label>
+        </div>
+        <div class="column-6">
+        <label for="gelaran"><?php if (isset($effectiveDate))
+            echo $effectiveDate;
+        else
+            echo ""; ?></label>
+
+    </div>
+    <div class="column-2">
+
+    </div>
+    <div class="column-10">
+
+    </div>
+
+</div>
+
+<div class="row">
     <div class="column-2">
         <label for="kategori">Kategori: </label>
     </div>

@@ -13,6 +13,6 @@
       </ul>
 
       <div class="footer-copyright">
-      <p>HakCipta @ 2023 Universiti Kebangsaan Malaysia student <a href="https://www.linkedin.com/in/leh-qine-wong-795672215/">Wong Leh Qine</a></p>
+      <p>HakCipta @ 2023 Pelajar Universiti Kebangsaan Malaysia <a href="https://www.linkedin.com/in/leh-qine-wong-795672215/">Wong Leh Qine</a></p>
       </div>
     </footer>

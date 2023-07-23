@@ -274,16 +274,16 @@ $stmt->close();
 			// create data
 			var data = [
 				{ x: "APP", value: <?php echo $count_app; ?> },
-				{ x: "LECTURER", value: <?php echo $count_lecturer; ?> },
+				{ x: "PENSYARAH", value: <?php echo $count_lecturer; ?> },
 				{ x: "KUALITI UKM", value: <?php echo $count_kukm; ?> },
-				{ x: "FAKULTI", value: <?php echo $count_uf; ?> }
+				{ x: "PIHAK FAKULTI", value: <?php echo $count_uf; ?> }
 			];
 
 			// create a chart and set the data
 			var chart = anychart.pie(data);
 			chart.background().fill("#eee");
 
-			chart.title("Peratusan APP, Pensyarah, dan Kualiti-UKM");
+			chart.title("Peratusan APP, Pensyarah, Pihak Fakulti dan Kualiti-UKM");
 
 			// set the container id
 			chart.container("chartContainer");
@@ -310,9 +310,9 @@ $stmt->close();
 		<div class="title-font">
 			<h2>Dashboard</h2><br>
 		</div>
-		<div class="overview">
+		<div class="Keseluruhan">
 			<div class="title">
-				<h2 class="size1">Overview</h2>
+				<h2 class="size1">Keseluruhan</h2>
 			</div>
 			<div class="chart-row">
 				<div id="pieChartContainer" style="height: 400px; width: 400px;" class="chart-col chart-left">
@@ -330,7 +330,7 @@ $stmt->close();
 					<span class="dot data-color">
 						<?php echo count($list_of_program); ?>
 					</span>
-					<h2 class="section--title data-margin">Program Diasing</h2><br>
+					<h2 class="section--title data-margin">Program Diagih</h2><br>
 					<span class="dot data-color">
 						<?php echo count($list_of_assigned_program); ?>
 					</span>
@@ -357,7 +357,7 @@ $stmt->close();
 					<span class="dot data-color">
 						<?php echo $count_kukm; ?>
 					</span>
-					<h2 class="section--title data-margin">Jumlah Fakulti</h2>
+					<h2 class="section--title data-margin">Jumlah Pihak Fakulti</h2>
 					<span class="dot data-color">
 						<?php echo $count_uf; ?>
 					</span>
@@ -457,7 +457,7 @@ $stmt->close();
 		</div>
 		<div class="app">
 			<div class="title">
-				<h2 class="section--title">Lecturer</h2>
+				<h2 class="section--title">Pensyarah</h2>
 				<div class="app--right--btns">
 					<?php
 					if ($count_lecturer > 6)

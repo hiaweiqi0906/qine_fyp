@@ -2,7 +2,7 @@
 <div class="row">
     <div class="column-5"></div>
     <div class="column-2">
-        <img src="<?php  if(isset($user[0][8])) echo $user[0][8]; else echo "../img/lehqine.jpg"?>" class="image" alt="" width="200" height="200">
+        <img src="<?php  if(isset($user[0][8])) echo $user[0][8]; else echo "../img/profile.png"?>" class="image" alt="" width="200" height="200">
         <input type="file" name="profil-img" id="profil-img">
 </div>
     <div class="column-5"></div>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="row">
-    
+
     <div class="column-2">
         <label for="no-kad-pengenalan">Nombor Kad Pengenalan: </label>
     </div>
@@ -104,4 +104,3 @@
     <br>
 
 
-      

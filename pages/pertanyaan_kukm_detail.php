@@ -19,7 +19,7 @@ $today_date = date("Y-m-d");
 if (isset($_POST['balas'])) {
    $tindakan = mysqli_real_escape_string($con, $_POST['tindakan']);
    if (
-      $stmt = $con->prepare("UPDATE pertanyaan SET `PERTANYAAN_STATUS` = 'PROCESSED', `TINDAKAN` = '$tindakan' WHERE `PERTANYAAN_ID` = '$pertanyaan_id'")
+      $stmt = $con->prepare("UPDATE pertanyaan SET `PERTANYAAN_STATUS` = 'SUDAH DIPROSES', `TINDAKAN` = '$tindakan' WHERE `PERTANYAAN_ID` = '$pertanyaan_id'")
    ) {
       // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
       // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);

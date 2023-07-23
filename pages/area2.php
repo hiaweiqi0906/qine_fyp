@@ -236,8 +236,13 @@
         var score_2_3_4 = Number(document.getElementById("score_2_3_4").value);
         var score_2_3_5 = Number(document.getElementById("score_2_3_5").value);
 
-        score_2 = score_2_1 + score_2_1_1 + score_2_1_2 + score_2_2 + score_2_2_1 + score_2_2_2 + score_2_2_3 + score_2_2_4 + score_2_3 + score_2_3_1 + score_2_3_2 + score_2_3_3 + score_2_3_4 + score_2_3_5;
-        score_2 /= 14;
+        score_2_1 = Number(Math.round((score_2_1_1 + score_2_1_2)/2 * 100) / 100).toFixed(2);
+        score_2_2 = Number(Math.round((score_2_2_1 + score_2_2_2 + score_2_2_3 + score_2_2_4)/4 * 100) / 100).toFixed(2);
+        score_2_3 = Number(Math.round((score_2_3_1 + score_2_3_2 + score_2_3_3 + score_2_3_4 + score_2_3_5)/5 * 100) / 100).toFixed(2);
+
+        score_2 = Number(score_2_1) + Number(score_2_2) + Number(score_2_3);
+        // score_2 += score_2_1_1 + score_2_1_2 + score_2_2_1 + score_2_2_2 + score_2_2_3 + score_2_2_4 + score_2_3_1 + score_2_3_2 + score_2_3_3 + score_2_3_4 + score_2_3_5;
+        score_2 /= 3;
         score_2 = (Math.round(score_2 * 100) / 100).toFixed(2);
 
         document.getElementById("score_2").value = score_2;
@@ -246,6 +251,9 @@
         document.getElementById("_score_2_3").value =score_2_3;
         document.getElementById("_score_2_2").value =score_2_2;
         document.getElementById("_score_2_1").value =score_2_1;
+        document.getElementById("score_2_3").value =score_2_3;
+        document.getElementById("score_2_2").value =score_2_2;
+        document.getElementById("score_2_1").value =score_2_1;
         drawChart();
     }
 </script>

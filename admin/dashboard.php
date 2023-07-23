@@ -216,14 +216,14 @@ $stmt->close();
 			// create data
 			var data = [
 				{ x: "APP", value: <?php echo $count_app; ?> },
-				{ x: "LECTURER", value: <?php echo $count_lecturer; ?> },
+				{ x: "PENSYARAH", value: <?php echo $count_lecturer; ?> },
 				{ x: "Kualiti UKM", value: <?php echo $count_kukm; ?> }
 			];
 
 			// create a chart and set the data
 			var chart = anychart.pie(data);
 
-			chart.title("Peratusan APP, Pensyarah, dan Kualiti-UKM");
+			chart.title("Peratusan APP, Pensyarah, Pihak Fakulti dan Kualiti-UKM");
 
 			// set the container id
 			chart.container("chartContainer");
@@ -382,7 +382,7 @@ $stmt->close();
 
 		<div class="app">
 			<div class="title">
-				<h2 class="section--title">Lecturer</h2>
+				<h2 class="section--title">Pensyarah</h2>
 				<div class="app--right--btns">
 					<?php
 					if ($count_lecturer > 6)

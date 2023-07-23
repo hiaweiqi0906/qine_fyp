@@ -208,8 +208,12 @@
         var score_5_3_2 = Number(document.getElementById("score_5_3_2").value);
         var score_5_3_3 = Number(document.getElementById("score_5_3_3").value);
 
-        score_5 = score_5_1 + score_5_1_1 + score_5_1_2 + score_5_1_3 + score_5_1_4 + score_5_2 + score_5_2_1 + score_5_2_2 + score_5_2_3 + score_5_3 + + score_5_3_1 + score_5_3_2 + score_5_3_3;
-        score_5 /= 13;
+        score_5_1 = Number(Math.round((score_5_1_1 + score_5_1_2 + score_5_1_3 + score_5_1_4)/4 * 100) / 100).toFixed(2);
+        score_5_2 = Number(Math.round((score_5_2_1 + score_5_2_2 + score_5_2_3)/3 * 100) / 100).toFixed(2);
+        score_5_3 = Number(Math.round((score_5_3_1 + score_5_3_2 + score_5_3_3)/3 * 100) / 100).toFixed(2);
+
+        score_5 = Number(score_5_1) + Number(score_5_2) + Number(score_5_3);
+        score_5 /= 3;
         score_5 = (Math.round(score_5 * 100) / 100).toFixed(2);
 
         document.getElementById("score_5").value = score_5;
@@ -218,6 +222,10 @@
         document.getElementById("_score_5_3").value =score_5_3;
         document.getElementById("_score_5_2").value =score_5_2;
         document.getElementById("_score_5_1").value =score_5_1;
+
+        document.getElementById("score_5_3").value =score_5_3;
+        document.getElementById("score_5_2").value =score_5_2;
+        document.getElementById("score_5_1").value =score_5_1;
         drawChart();
     }
 </script>

@@ -138,9 +138,9 @@ $stmt->close();
 			<h2>Dashboard</h2>
 		</div>
 
-		<div class="overview">
+		<div class="Keseluruhan">
 			<div class="title">
-				<h2 class="section--title">Overview</h2>
+				<h2 class="section--title">Keseluruhan</h2>
 
 			</div>
 			<div class="cards">

@@ -372,8 +372,16 @@
         var score_3_5 = Number(document.getElementById("score_3_5").value);
         var score_3_5_1 = Number(document.getElementById("score_3_5_1").value);
 
-        score_3 = score_3_1 + score_3_1_1 + score_3_1_2 + score_3_1_3 + score_3_1_4 + score_3_1_5 + score_3_2 + score_3_2_1 + score_3_2_2 + score_3_3 + score_3_3_1 + score_3_3_2 + score_3_3_3 + score_3_3_4 + score_3_3_5 + score_3_3_6 + score_3_3_7 + score_3_3_8 + score_3_4 + score_3_4_1 + score_3_4_2 + score_3_4_3 + score_3_4_4 + score_3_5 + score_3_5_1;
-        score_3 /= 25;
+        score_3_1 = Number(Math.round((score_3_1_1 + score_3_1_2 + score_3_1_3 + score_3_1_4 + score_3_1_5)/5 * 100) / 100).toFixed(2);
+        score_3_2 = Number(Math.round((score_3_2_1 + score_3_2_2)/2 * 100) / 100).toFixed(2);
+        score_3_3 = Number(Math.round((score_3_3_1 + score_3_3_2 + score_3_3_3 + score_3_3_4 + score_3_3_5 + score_3_3_6 + score_3_3_7 + score_3_3_8)/8 * 100) / 100).toFixed(2);
+        score_3_4 = Number(Math.round((score_3_4_1 + score_3_4_2 + score_3_4_3 + score_3_4_4)/4 * 100) / 100).toFixed(2);
+        score_3_5 = Number(Math.round((score_3_5_1)/1 * 100) / 100).toFixed(2);
+
+        score_3 = Number(score_3_1) + Number(score_3_2) + Number(score_3_3) + Number(score_3_4) + Number(score_3_5);
+
+        // score_3 += + score_3_1_1 + score_3_1_2 + score_3_1_3 + score_3_1_4 + score_3_1_5 + score_3_2_1 + score_3_2_2 + score_3_3_1 + score_3_3_2 + score_3_3_3 + score_3_3_4 + score_3_3_5 + score_3_3_6 + score_3_3_7 + score_3_3_8 + score_3_4_1 + score_3_4_2 + score_3_4_3 + score_3_4_4 + score_3_5_1;
+        score_3 /= 5;
         score_3 = (Math.round(score_3 * 100) / 100).toFixed(2);
 
         document.getElementById("score_3").value =score_3;
@@ -384,6 +392,12 @@
         document.getElementById("_score_3_1").value =score_3_1;
         document.getElementById("_score_3_5").value =score_3_5;
         document.getElementById("_score_3_4").value =score_3_4;
+
+        document.getElementById("score_3_3").value =score_3_3;
+        document.getElementById("score_3_2").value =score_3_2;
+        document.getElementById("score_3_1").value =score_3_1;
+        document.getElementById("score_3_5").value =score_3_5;
+        document.getElementById("score_3_4").value =score_3_4;
         drawChart();
     }
 </script>

@@ -8,7 +8,7 @@ if(!$_SESSION['loggedin']){
     }else if($_SESSION['type'] == "lecturer"){
         header("location: /qine%20fyp/pages/dashboardlecturer.php");
     }else if($_SESSION['type'] == "userfakulti"){
-        header("location: /qine%20fyp/pages/dashboarduserfakulti.php");
+        header("location: /qine%20fyp/pages/dashboard.php");
     }else if($_SESSION['type'] == "admin"){
         header("location: /qine%20fyp/admin/dashboard.php");
     }

@@ -12,7 +12,7 @@ $email = $password = $types = "";
 $email_err = $password_err = $login_err = "";
 
 $id = $_SESSION["id"];
-if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' AND (COUNT_KALI = 2 OR STATUS = 'ACCEPT' OR STATUS = 'PROCESSING')")) {
+if ($stmt = $con->prepare("SELECT * FROM appapplication WHERE LECTURER_ID = '$id' AND (COUNT_KALI = 2 OR STATUS = 'ACCEPT' OR STATUS = 'SEDANG DIPROSES')")) {
   // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
   // $stmt->bind_param('s', $_POST['username']);
   $stmt->execute();
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($stmt->num_rows == 0) {
         if (
           $stmt = $con->prepare("INSERT INTO appapplication (`UNIVERSITI`, `TARIKH`, `MASA`, `STATUS`, `LECTURER_ID`, `KELAYAKAN_AKADEMIK`, `PENGALAMAN`, `PENGANUGERAHAN`, `KATEGORI`) VALUES
-        ('$universiti', '$today_date', '$now_time', 'PROCESSING', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")
+        ('$universiti', '$today_date', '$now_time', 'SEDANG DIPROSES', '$id', '$kelayakan_akademik', '$pengalaman', '$penganugerahan', '$kategori')")
         ) {
 
           $stmt->execute();
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
       }else if ($stmt->num_rows == 1){
         if (
-          $stmt = $con->prepare("UPDATE appapplication SET `UNIVERSITI` = '$universiti', `TARIKH` = '$today_date', `MASA` = '$now_time', COUNT_KALI = 2, `STATUS` = 'PROCESSING', `LECTURER_ID` = '$id', `KELAYAKAN_AKADEMIK` = '$kelayakan_akademik', `PENGALAMAN` = '$pengalaman', `PENGANUGERAHAN` = '$penganugerahan', `KATEGORI` = '$kategori' WHERE LECTURER_ID = '$id' ")
+          $stmt = $con->prepare("UPDATE appapplication SET `UNIVERSITI` = '$universiti', `TARIKH` = '$today_date', `MASA` = '$now_time', COUNT_KALI = 2, `STATUS` = 'SEDANG DIPROSES', `LECTURER_ID` = '$id', `KELAYAKAN_AKADEMIK` = '$kelayakan_akademik', `PENGALAMAN` = '$pengalaman', `PENGANUGERAHAN` = '$penganugerahan', `KATEGORI` = '$kategori' WHERE LECTURER_ID = '$id' ")
         ) {
 
           $stmt->execute();
